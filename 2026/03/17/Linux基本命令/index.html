@@ -263,38 +263,33 @@
                 col-md-10 col-md-offset-1
                 post-container">
 
-                <h1 id="Linux常见命令"><a href="#Linux常见命令" class="headerlink" title="Linux常见命令"></a>Linux常见命令</h1><h2 id="ls-l-的命令展示的内容详情"><a href="#ls-l-的命令展示的内容详情" class="headerlink" title="ls -l 的命令展示的内容详情"></a>ls -l 的命令展示的内容详情</h2><p>ls -l</p>
-<h2 id="touch-命令怎么创造文件管道符的使用"><a href="#touch-命令怎么创造文件管道符的使用" class="headerlink" title="touch 命令怎么创造文件管道符的使用"></a>touch 命令怎么创造文件管道符的使用</h2><p>touch file1.txt file2.txt</p>
-<h2 id="mv-如何重命名文件"><a href="#mv-如何重命名文件" class="headerlink" title="mv 如何重命名文件"></a>mv 如何重命名文件</h2><p>mv old.txt new.txt</p>
-<h2 id="如何创建软连接并正常使用"><a href="#如何创建软连接并正常使用" class="headerlink" title="如何创建软连接并正常使用"></a>如何创建软连接并正常使用</h2><p>ln -s &#x2F;usr&#x2F;bin&#x2F;python3 .&#x2F;mypython</p>
-<p>.&#x2F;mypython –version</p>
-<p>ls -l mypython</p>
-<h2 id="如何复制文件到指定位置"><a href="#如何复制文件到指定位置" class="headerlink" title="如何复制文件到指定位置"></a>如何复制文件到指定位置</h2><p>cp file.txt &#x2F;home&#x2F;用户名</p>
-<h2 id="什么是绝对路径，什么是相对路径"><a href="#什么是绝对路径，什么是相对路径" class="headerlink" title="什么是绝对路径，什么是相对路径"></a>什么是绝对路径，什么是相对路径</h2><p>绝对路径：cd &#x2F;home&#x2F;xiaoyang233</p>
-<p>相对路径：cd ..&#x2F;xmx_aolg07</p>
-<h2 id="怎么设置用户密码和-root-用户密码，切换用户"><a href="#怎么设置用户密码和-root-用户密码，切换用户" class="headerlink" title="怎么设置用户密码和 root 用户密码，切换用户"></a>怎么设置用户密码和 root 用户密码，切换用户</h2><p>passwd(设置当前用户密码)</p>
-<p>su - (切换root)</p>
-<p>su - 用户名</p>
-<p>sudo 临时使用root权限</p>
-<h2 id="怎么使用文本编辑器"><a href="#怎么使用文本编辑器" class="headerlink" title="怎么使用文本编辑器"></a>怎么使用文本编辑器</h2><p>nano file.txt(ctrt+x保存)</p>
-<p>vim file.txt(i进入编辑 esc退出 :wq退出主界面“:”也是一部分)</p>
-<h2 id="怎么打包文件和压缩文件"><a href="#怎么打包文件和压缩文件" class="headerlink" title="怎么打包文件和压缩文件"></a>怎么打包文件和压缩文件</h2><p>tar -czvf archive.tar.gz file.txt&#x2F;</p>
-<p>tar -czvf archive.tar.gz file1.txt file2.txt&#x2F;</p>
-<p>tar -cjvf archive.tar.bz2 file.txt&#x2F;</p>
-<p>tar -xzvf atchive.tar.gz</p>
-<h2 id="怎么查看基本的日志文件"><a href="#怎么查看基本的日志文件" class="headerlink" title="怎么查看基本的日志文件"></a>怎么查看基本的日志文件</h2><p>sudo cat &#x2F;var&#x2F;log&#x2F;syslog</p>
-<h2 id="常用的二进制文件目录怎么给文件赋权"><a href="#常用的二进制文件目录怎么给文件赋权" class="headerlink" title="常用的二进制文件目录怎么给文件赋权"></a>常用的二进制文件目录怎么给文件赋权</h2><p>chmod +x script.sh</p>
-<p>chmod 755 script.sh</p>
-<p>chmod 644 script.sh</p>
-<p>chown 用户名:group file.txt</p>
-<h2 id="怎么运行可执行文件怎么递归删除"><a href="#怎么运行可执行文件怎么递归删除" class="headerlink" title="怎么运行可执行文件怎么递归删除"></a>怎么运行可执行文件怎么递归删除</h2><h3 id="执行文件"><a href="#执行文件" class="headerlink" title="执行文件"></a>执行文件</h3><p>.&#x2F;program</p>
-<p>bash script.sh</p>
-<h3 id="递归删除"><a href="#递归删除" class="headerlink" title="递归删除"></a>递归删除</h3><p>rm -rf directory&#x2F;</p>
-<p>rm -r directory&#x2F;</p>
-<h2 id="学会使用-find，grep-查找-flag-在哪些文件中"><a href="#学会使用-find，grep-查找-flag-在哪些文件中" class="headerlink" title="学会使用 find，grep 查找 flag 在哪些文件中"></a>学会使用 find，grep 查找 flag 在哪些文件中</h2><p>find &#x2F; -name “flag” 2&gt;&#x2F;dev&#x2F;null(查找包含flag的行)</p>
-<p>grep -r “flag” &#x2F;home&#x2F;user&#x2F; 2&gt;&#x2F;dev&#x2F;null(在文件中搜索flag内容)</p>
-<p>grep -rn “flag” &#x2F; 2&gt;&#x2F;dev&#x2F;null(查找所有文件包含flag的行)</p>
+                <h1 id="Linux常见命令"><a href="#Linux常见命令" class="headerlink" title="Linux常见命令"></a>Linux常见命令</h1><h2 id="ls-l-的命令展示的内容详情"><a href="#ls-l-的命令展示的内容详情" class="headerlink" title="ls -l 的命令展示的内容详情"></a>ls -l 的命令展示的内容详情</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">ls</span> -l</span><br></pre></td></tr></table></figure>
 
+<h2 id="touch-命令怎么创造文件管道符的使用"><a href="#touch-命令怎么创造文件管道符的使用" class="headerlink" title="touch 命令怎么创造文件管道符的使用"></a>touch 命令怎么创造文件管道符的使用</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">touch</span> file1.txt file2.txt</span><br></pre></td></tr></table></figure>
+
+<h2 id="mv-如何重命名文件"><a href="#mv-如何重命名文件" class="headerlink" title="mv 如何重命名文件"></a>mv 如何重命名文件</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">mv</span> old.txt new.txt</span><br></pre></td></tr></table></figure>
+
+<h2 id="如何创建软连接并正常使用"><a href="#如何创建软连接并正常使用" class="headerlink" title="如何创建软连接并正常使用"></a>如何创建软连接并正常使用</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">ln</span> -s /usr/bin/python3 ./mypython</span><br><span class="line">./mypython --version</span><br><span class="line"><span class="built_in">ls</span> -l mypython</span><br></pre></td></tr></table></figure>
+
+<h2 id="如何复制文件到指定位置"><a href="#如何复制文件到指定位置" class="headerlink" title="如何复制文件到指定位置"></a>如何复制文件到指定位置</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cp</span> file.txt /home/用户名</span><br></pre></td></tr></table></figure>
+
+<h2 id="什么是绝对路径，什么是相对路径"><a href="#什么是绝对路径，什么是相对路径" class="headerlink" title="什么是绝对路径，什么是相对路径"></a>什么是绝对路径，什么是相对路径</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 绝对路径</span></span><br><span class="line"><span class="built_in">cd</span> /home/xiaoyang233</span><br><span class="line"></span><br><span class="line"><span class="comment"># 相对路径</span></span><br><span class="line"><span class="built_in">cd</span> ../xmx_aolg07</span><br></pre></td></tr></table></figure>
+
+<h2 id="怎么设置用户密码和-root-用户密码，切换用户"><a href="#怎么设置用户密码和-root-用户密码，切换用户" class="headerlink" title="怎么设置用户密码和 root 用户密码，切换用户"></a>怎么设置用户密码和 root 用户密码，切换用户</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">passwd <span class="comment"># 设置当前用户密码</span></span><br><span class="line">su - <span class="comment"># 切换root</span></span><br><span class="line">su - 用户名</span><br><span class="line"><span class="built_in">sudo</span> <span class="comment"># 临时使用root权限</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="怎么使用文本编辑器"><a href="#怎么使用文本编辑器" class="headerlink" title="怎么使用文本编辑器"></a>怎么使用文本编辑器</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">nano file.txt <span class="comment"># ctrt+x保存</span></span><br><span class="line">vim file.txt <span class="comment"># i进入编辑 esc退出 :wq退出主界面“:”也是一部分</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="怎么打包文件和压缩文件"><a href="#怎么打包文件和压缩文件" class="headerlink" title="怎么打包文件和压缩文件"></a>怎么打包文件和压缩文件</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">tar -czvf archive.tar.gz file.txt/</span><br><span class="line">tar -czvf archive.tar.gz file1.txt file2.txt/</span><br><span class="line">tar -cjvf archive.tar.bz2 file.txt/</span><br><span class="line">tar -xzvf atchive.tar.gz</span><br></pre></td></tr></table></figure>
+
+<h2 id="怎么查看基本的日志文件"><a href="#怎么查看基本的日志文件" class="headerlink" title="怎么查看基本的日志文件"></a>怎么查看基本的日志文件</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> <span class="built_in">cat</span> /var/log/syslog</span><br></pre></td></tr></table></figure>
+
+<h2 id="常用的二进制文件目录怎么给文件赋权"><a href="#常用的二进制文件目录怎么给文件赋权" class="headerlink" title="常用的二进制文件目录怎么给文件赋权"></a>常用的二进制文件目录怎么给文件赋权</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">chmod</span> +x script.sh</span><br><span class="line"><span class="built_in">chmod</span> 755 script.sh</span><br><span class="line"><span class="built_in">chmod</span> 644 script.sh</span><br><span class="line"><span class="built_in">chown</span> 用户名:group file.txt</span><br></pre></td></tr></table></figure>
+
+<h2 id="怎么运行可执行文件怎么递归删除"><a href="#怎么运行可执行文件怎么递归删除" class="headerlink" title="怎么运行可执行文件怎么递归删除"></a>怎么运行可执行文件怎么递归删除</h2><h3 id="执行文件"><a href="#执行文件" class="headerlink" title="执行文件"></a>执行文件</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">./program</span><br><span class="line">bash script.sh</span><br></pre></td></tr></table></figure>
+
+<h3 id="递归删除"><a href="#递归删除" class="headerlink" title="递归删除"></a>递归删除</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">rm</span> -rf directory/</span><br><span class="line"><span class="built_in">rm</span> -r directory/</span><br></pre></td></tr></table></figure>
+
+<h2 id="学会使用-find，grep-查找-flag-在哪些文件中"><a href="#学会使用-find，grep-查找-flag-在哪些文件中" class="headerlink" title="学会使用 find，grep 查找 flag 在哪些文件中"></a>学会使用 find，grep 查找 flag 在哪些文件中</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">find / -name <span class="string">&quot;flag&quot;</span> 2&gt;/dev/null <span class="comment"># 查找包含flag的行</span></span><br><span class="line">grep -r <span class="string">&quot;flag&quot;</span> /home/user/ 2&gt;/dev/null <span class="comment"># 在文件中搜索flag内容</span></span><br><span class="line">grep -rn <span class="string">&quot;flag&quot;</span> / 2&gt;/dev/null <span class="comment"># 查找所有文件包含flag的行</span></span><br></pre></td></tr></table></figure>
                 
 
                 <hr>
