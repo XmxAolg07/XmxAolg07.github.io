@@ -18,7 +18,7 @@
         
     </title>
 
-    <link rel="canonical" href="http://example.com/archives/">
+    <link rel="canonical" href="http://example.com/2026/03/17/Linux基本命令/">
 
     <!-- Bootstrap Core CSS -->
 
@@ -119,13 +119,17 @@
 			
                 <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1" style="z-index:2;">
                 
-				
-                    <div class="site-heading"  style="padding:40px">
-                        <h1>Hexo</h1>
-                        <!--<hr class="small">-->
-                        <span class="subheading"></span>
+                    <div class="post-heading" style="padding:40px">
+                        <div class="tags">
+                            
+                        </div>
+                        <h1></h1>
+                        <h2 class="subheading"></h2>
+                        <span class="meta">
+                            Posted by John Doe on
+                            2026-03-17
+                        </span>
                     </div>
-                
                 
                 </div>
             </div>
@@ -246,194 +250,166 @@
 
 
     <!-- Main Content -->
-    <!-- Main Content -->
-<div class="container">
-    <div class="row">
-        
+    <!-- Modify by Yu-Hsuan Yen -->
 
-<!-- USE SIDEBAR -->
-    <!-- Post Container -->
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+
+            <!-- Post Container -->
             <div class="
-                col-lg-8 col-lg-offset-1
-                col-md-8 col-md-offset-1
-                col-sm-12
-                col-xs-12
-                post-container
-            ">
-            
-	        
-                
-<!-- Main Content -->
-<div class="container">
-    <div class="row">
-        <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-            <!-- 归档列表 -->
-            
-            
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                post-container">
 
-             <!-- 归档列表 -->
+                <p>#Linux常见命令</p>
+<p>##ls -l 的命令展示的内容详情</p>
+<p>ls -l</p>
+<p>##touch 命令怎么创造文件管道符的使用</p>
+<p>touch file1.txt file2.txt<br>mv 如何重命名文件</p>
+<p>mv old.txt new.txt</p>
+<p>##如何创建软连接并正常使用</p>
+<p>ln -s &#x2F;usr&#x2F;bin&#x2F;python3 .&#x2F;mypython<br>.&#x2F;mypython –version<br>ls -l mypython</p>
+<p>##如何复制文件到指定位置</p>
+<p>cp file.txt &#x2F;home&#x2F;用户名</p>
+<p>##什么事绝对路径什么是相对路径</p>
+<p>绝对路径：cd &#x2F;home&#x2F;xiaoyang233<br>相对路径：cd ..&#x2F;xmx_aolg07</p>
+<p>##怎么设置用户密码和 root 用户密码，切换用户</p>
+<p>passwd(设置当前用户密码)<br>su - (切换root)<br>su - 用户名<br>sudo 临时使用root权限</p>
+<p>##怎么使用文本编辑器</p>
+<p>nano file.txt(ctrt+x保存)<br>vim file.txt(i进入编辑 esc退出 :wq退出主界面“:”也是一部分)</p>
+<p>##怎么打包文件和压缩文件</p>
+<p>tar -czvf archive.tar.gz file.txt&#x2F;<br>tar -czvf archive.tar.gz file1.txt file2.txt&#x2F;<br>tar -cjvf archive.tar.bz2 file.txt&#x2F;nan’o<br>tar -xzvf atchive.tar.gz</p>
+<p>##怎么查看基本的日志文件</p>
+<p>sudo cat &#x2F;var&#x2F;log&#x2F;syslog</p>
+<p>##常用的二进制文件目录怎么给文件赋权</p>
+<p>chmod +x script.sh<br>chmod 755 script.sh<br>chmod 644 script.sh<br>chown 用户名:group file.txt</p>
+<p>##怎么运行可执行文件怎么递归删除</p>
+<p>###执行文件</p>
+<p>.&#x2F;program<br>bash script.sh</p>
+<p>###递归删除</p>
+<p>rm -rf directory&#x2F;<br>rm -r directory&#x2F;</p>
+<p>##学会使用 find，grep 查找 flag 在哪些文件中</p>
+<p>find &#x2F; -name “flag” 2&gt;&#x2F;dev&#x2F;null(查找包含flag的行)<br>grep -r “flag” &#x2F;home&#x2F;user&#x2F; 2&gt;&#x2F;dev&#x2F;null(在文件中搜索flag内容)<br>grep -rn “flag” &#x2F; 2&gt;&#x2F;dev&#x2F;null(查找所有文件包含flag的行)</p>
 
-            
-            <div class="one-tag-list">
-                <span class="fa fa-calendar-times-o listing-seperator" id="2026">
-                    <span class="tag-text">2026</span>
-                </span>
-                <ul>
                 
-                  <!-- <li class="listing-item">
-                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
-                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
-                  </li> -->
-                 <li >
-                    03-17
-                    <i class="fa fa-angle-double-right" aria-hidden="true"></i>
-                    <a href="/2026/03/17/Linux基本命令/" style="color: #0085a1">
-                        <span>
-                            Untitled
-                        </span>
-                    </a>
-                    <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
-                </li>
-                
-                  <!-- <li class="listing-item">
-                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
-                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
-                  </li> -->
-                 <li >
-                    03-12
-                    <i class="fa fa-angle-double-right" aria-hidden="true"></i>
-                    <a href="/2026/03/12/hello-world/" style="color: #0085a1">
-                        <span>
-                            Hello World
-                        </span>
-                    </a>
-                    <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
-                </li>
-                
+
+                <hr>
+                <!-- Pager -->
+                <ul class="pager">
+                    
+                    
+                        <li class="next">
+                            <a href="/2026/03/12/hello-world/" data-toggle="tooltip" data-placement="top" title="Hello World">Next post &rarr;</a>
+                        </li>
+                    
                 </ul>
+
+                <br>
+
+                <!--打赏-->
+                
+                <!--打赏-->
+
+                <br>
+                <!--分享-->
+                
+                    <div class="social-share"  data-wechat-qrcode-helper="" align="center"></div>
+                    <!--  css & js -->
+                    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/css/share.min.css">
+                    <script src="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/js/social-share.min.js"></script>
+                
+                <!--分享-->
+                <br>                       
+                
+                <!-- require APlayer -->
+                
+
+                <!-- disqus comment start -->
+                
+                <!-- disqus comment end -->
+
+                
+				
             </div>
-            
 
+            <!-- Tabe of Content -->
+            <!-- Table of Contents -->
 
+                
+            <!-- Sidebar Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                <!-- Featured Tags -->
+                
+                <section>
+                    <!-- no hr -->
+                    <h5><a href="/tags/">Tags</a></h5>
+                    <div class="tags">
+                       
+                    </div>
+                </section>
+                
+
+                <!-- Friends Blog -->
+                
+                <hr>
+                <h5>FRIENDS</h5>
+                <ul class="list-inline">
+
+                    
+                        <li><a href="http://www.sumoon.com" target="_blank">ACE theme</a></li>
+                    
+                </ul>
+                
+            </div>
         </div>
     </div>
-</div>
-            
+</article>
 
 
 
-                <!-- 如果开启评论功能 -->
-                
-            </div>
-
-          <!-- Sidebar Container -->
-<div class="
-    col-lg-3 col-lg-offset-0
-    col-md-3 col-md-offset-0
-    col-sm-12
-    col-xs-12
-    sidebar-container
-">
-    
-        <!-- Featured Tags -->
-
-<section>
-    <!-- no hr -->
-    <h5><a href="/tags/">Tags</a></h5>
-    <div class="tags">
-        
-    </div>
-</section>
-
-        <hr>
-    
-        <!-- Short About -->
-<section class="visible-md visible-lg">
-    <h5><a href="/about/">About me</a></h5>
-    <div class="short-about">
-
-        
-            <img id = "avatar_pic" src="/img/avatar/logo.png" />
-        
-
-        
-            <p>INNOVATION IS KING!</p>
-        
-
-        <!-- SNS Link -->
-        <ul class="list-inline">
-            
-            
-            
-
-            
-
-            
-
-            
-                <li>
-                    <a target="_blank"  href="https://github.com/kinggozhang">
-                        <span class="fa-stack fa-lg">
-                            <i class="fa fa-circle fa-stack-2x"></i>
-                            <i class="fa fa-github fa-stack-1x fa-inverse"></i>
-                        </span>
-                    </a>
-                </li>
-            
-            
-            
-            
-        </ul>
-    </div>
-</section>
-
-        <hr>
-    
-        
-  <h5>Recent posts</h3>
-  <div class="widget">
-    <ul>
-      
-        <li>
-          <a href="/2026/03/17/Linux%E5%9F%BA%E6%9C%AC%E5%91%BD%E4%BB%A4/">(no title)</a>
-        </li>
-      
-        <li>
-          <a href="/2026/03/12/hello-world/">Hello World</a>
-        </li>
-      
-    </ul>
-  </div>
-
-        <hr>
-    
-        
-    <h5>Achives</h5>
-    <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2026/03/">March 2026</a><span class="archive-list-count">2</span></li></ul>
-    </div>
-
-        <hr>
-    
-        <!-- Friends Blog -->
-
-<h5>Friends</h5>
-<ul class="list-inline">
-
-    
-        <li><a href="http://www.sumoon.com" target="_blank">ACE theme</a></li>
-    
-</ul>
 
 
-        <hr>
-    
-</div>
 
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+<!-- anchor-js, Doc:http://bryanbraun.github.io/anchorjs/ -->
+<script>
+    async("https://cdn.bootcss.com/anchor-js/1.1.1/anchor.min.js",function(){
+        anchors.options = {
+          visible: 'hover',
+          placement: 'left',
+          icon: 'ℬ'
+        };
+        anchors.add().remove('.intro-header h1').remove('.subheading').remove('.sidebar-container h5');
+    })
+</script>
+<style>
+    /* place left on bigger screen */
+    @media all and (min-width: 800px) {
+        .anchorjs-link{
+            position: absolute;
+            left: -0.75em;
+            font-size: 1.1em;
+            margin-top : -0.1em;
+        }
+    }
+</style>
 
-        
-    </div>
-</div>
 
 
     <!-- Footer -->
@@ -548,7 +524,7 @@
 <script>
     // only load tagcloud.js in tag.html
     if($('#tag_cloud').length !== 0){
-        async("http://example.com/archives/index.html/js/jquery.tagcloud.js",function(){
+        async("http://example.com/2026/03/17/Linux%E5%9F%BA%E6%9C%AC%E5%91%BD%E4%BB%A4/index.html/js/jquery.tagcloud.js",function(){
             $.fn.tagcloud.defaults = {
                 //size: {start: 1, end: 1, unit: 'em'},
                 color: {start: '#bbbbee', end: '#0085a1'},
