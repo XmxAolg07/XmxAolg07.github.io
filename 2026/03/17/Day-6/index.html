@@ -14,11 +14,11 @@
     <script async defer src="https://buttons.github.io/buttons.js"></script>
     <title>
         
-          linux基本命令 - null
+          Day-6 - null
         
     </title>
 
-    <link rel="canonical" href="http://example.com/2026/03/17/linux/">
+    <link rel="canonical" href="http://example.com/2026/03/17/Day-6/">
 
     <!-- Bootstrap Core CSS -->
 
@@ -123,7 +123,7 @@
                         <div class="tags">
                             
                         </div>
-                        <h1>linux基本命令</h1>
+                        <h1>Day-6</h1>
                         <h2 class="subheading"></h2>
                         <span class="meta">
                             Posted by John Doe on
@@ -263,46 +263,17 @@
                 col-md-10 col-md-offset-1
                 post-container">
 
-                <h1 id="Linux"><a href="#Linux" class="headerlink" title="Linux"></a>Linux</h1><h2 id="ls-l-的命令展示的内容详情"><a href="#ls-l-的命令展示的内容详情" class="headerlink" title="ls -l 的命令展示的内容详情"></a>ls -l 的命令展示的内容详情</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">ls</span> -l</span><br></pre></td></tr></table></figure>
+                <h1 id="1-Linux虚拟机的使用练习"><a href="#1-Linux虚拟机的使用练习" class="headerlink" title="1.Linux虚拟机的使用练习"></a>1.Linux虚拟机的使用练习</h1><h2 id="yazi的下载"><a href="#yazi的下载" class="headerlink" title="yazi的下载"></a>yazi的下载</h2><p>yazi 一款功能强大的软件，嵌入到终端里面，可以使用yazi指令启动</p>
 
-<h2 id="touch-命令怎么创造文件管道符的使用"><a href="#touch-命令怎么创造文件管道符的使用" class="headerlink" title="touch 命令怎么创造文件管道符的使用"></a>touch 命令怎么创造文件管道符的使用</h2><h3 id="touch的使用"><a href="#touch的使用" class="headerlink" title="touch的使用"></a>touch的使用</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">touch</span> file.txt <span class="comment">#创造单个文件</span></span><br><span class="line"><span class="built_in">touch</span> file1.txt file2.txt <span class="comment">#创造多个文件</span></span><br></pre></td></tr></table></figure>
-<h3 id="管道符的使用"><a href="#管道符的使用" class="headerlink" title="管道符的使用"></a>管道符的使用</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cat</span> /var/log/syslog | grep error <span class="comment"># 查看日志文件，找出error行</span></span><br><span class="line"><span class="built_in">cat</span> config.conf | <span class="built_in">nl</span> | grep <span class="string">&quot;server&quot;</span> <span class="comment"># 查看文件，显示行号，再筛选</span></span><br></pre></td></tr></table></figure>
-<h2 id="mv-如何重命名文件"><a href="#mv-如何重命名文件" class="headerlink" title="mv 如何重命名文件"></a>mv 如何重命名文件</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">mv</span> old.txt new.txt</span><br></pre></td></tr></table></figure>
-
-<h2 id="如何创建软连接并正常使用"><a href="#如何创建软连接并正常使用" class="headerlink" title="如何创建软连接并正常使用"></a>如何创建软连接并正常使用</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">ln</span> -s /usr/bin/python3 mypython</span><br><span class="line">./mypython --version</span><br><span class="line"><span class="built_in">ls</span> -l mypython</span><br></pre></td></tr></table></figure>
-
-<h2 id="如何复制文件到指定位置"><a href="#如何复制文件到指定位置" class="headerlink" title="如何复制文件到指定位置"></a>如何复制文件到指定位置</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cp</span> file.txt /home/</span><br></pre></td></tr></table></figure>
-
-<h2 id="什么是绝对路径，什么是相对路径"><a href="#什么是绝对路径，什么是相对路径" class="headerlink" title="什么是绝对路径，什么是相对路径"></a>什么是绝对路径，什么是相对路径</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 绝对路径</span></span><br><span class="line"><span class="built_in">cd</span> /home/xiaoyang233</span><br><span class="line"></span><br><span class="line"><span class="comment"># 相对路径</span></span><br><span class="line"><span class="built_in">cd</span> ../xmx_aolg07</span><br></pre></td></tr></table></figure>
-
-<h2 id="怎么设置用户密码和-root-用户密码，切换用户"><a href="#怎么设置用户密码和-root-用户密码，切换用户" class="headerlink" title="怎么设置用户密码和 root 用户密码，切换用户"></a>怎么设置用户密码和 root 用户密码，切换用户</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">passwd <span class="comment"># 更改当前用户密码</span></span><br><span class="line">su - <span class="comment"># 切换root</span></span><br><span class="line">su - username <span class="comment">#切换到用户</span></span><br><span class="line"><span class="built_in">sudo</span> <span class="comment"># 使用root权限</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="怎么使用文本编辑器"><a href="#怎么使用文本编辑器" class="headerlink" title="怎么使用文本编辑器"></a>怎么使用文本编辑器</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">nano file.txt <span class="comment"># ctrt+x保存</span></span><br><span class="line">vim file.txt <span class="comment"># i书写：wq退出</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="怎么打包文件和压缩文件"><a href="#怎么打包文件和压缩文件" class="headerlink" title="怎么打包文件和压缩文件"></a>怎么打包文件和压缩文件</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">tar -czvf archive.tar.gz file.txt/</span><br><span class="line">tar -czvf archive.tar.gz file1.txt file2.txt/</span><br><span class="line">tar -cjvf archive.tar.bz2 file.txt/</span><br><span class="line"><span class="comment">#解压</span></span><br><span class="line">tar -xzvf atchive.tar.gz</span><br></pre></td></tr></table></figure>
-
-<h2 id="怎么查看基本的日志文件"><a href="#怎么查看基本的日志文件" class="headerlink" title="怎么查看基本的日志文件"></a>怎么查看基本的日志文件</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> <span class="built_in">cat</span> /var/log/syslog <span class="comment"># Ubuntu/Debian 系统日志</span></span><br><span class="line"><span class="built_in">sudo</span> <span class="built_in">cat</span> /var/log/messages <span class="comment"># CentOS/RHEL 系统日志</span></span><br><span class="line"><span class="built_in">sudo</span> <span class="built_in">cat</span> /var/log/auth.log <span class="comment"># 认证日志（Ubuntu/Debian）</span></span><br><span class="line"><span class="built_in">sudo</span> <span class="built_in">cat</span> /var/log/secure <span class="comment"># 认证日志（CentOS/RHEL）</span></span><br><span class="line"><span class="built_in">sudo</span> <span class="built_in">cat</span> /var/log/kern.log <span class="comment"># 内核消息</span></span><br><span class="line"><span class="built_in">sudo</span> <span class="built_in">cat</span> /var/log/boot.log <span class="comment"># 系统启动日志</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="常用的二进制文件目录怎么给文件赋权"><a href="#常用的二进制文件目录怎么给文件赋权" class="headerlink" title="常用的二进制文件目录怎么给文件赋权"></a>常用的二进制文件目录怎么给文件赋权</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">chmod</span> a+x script.sh <span class="comment">#给所有用户添加执行权限</span></span><br><span class="line"><span class="built_in">chmod</span> 755 script.sh <span class="comment">#所有者可读写执行，其他人可读执行（</span></span><br><span class="line"><span class="built_in">chmod</span> 644 script.sh <span class="comment">#普通文件权限</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="怎么运行可执行文件怎么递归删除"><a href="#怎么运行可执行文件怎么递归删除" class="headerlink" title="怎么运行可执行文件怎么递归删除"></a>怎么运行可执行文件怎么递归删除</h2><h3 id="可执行文件"><a href="#可执行文件" class="headerlink" title="可执行文件"></a>可执行文件</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">./program</span><br><span class="line">bash script.sh</span><br></pre></td></tr></table></figure>
-
-<h3 id="递归删除"><a href="#递归删除" class="headerlink" title="递归删除"></a>递归删除</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">rm</span> -rf directory/</span><br><span class="line"><span class="built_in">rm</span> -r directory/</span><br></pre></td></tr></table></figure>
-
-<h2 id="学会使用-find，grep-查找-flag-在哪些文件中"><a href="#学会使用-find，grep-查找-flag-在哪些文件中" class="headerlink" title="学会使用 find，grep 查找 flag 在哪些文件中"></a>学会使用 find，grep 查找 flag 在哪些文件中</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">grep <span class="string">&quot;flag&quot;</span> * <span class="comment">#在当前目录所有文件里面找flag</span></span><br><span class="line">grep -r <span class="string">&quot;flag&quot;</span> /home/user/documents/ <span class="comment">#在指定目录搜索</span></span><br><span class="line">grep -rE <span class="string">&quot;(flag|FLAG|ctf)\&#123;[^&#125;]+\&#125;&quot;</span> <span class="comment">#识别多种格式</span></span><br><span class="line">find . -name <span class="string">&quot;flag.txt&quot;</span> <span class="comment"># 精确匹配文件名</span></span><br><span class="line">find . -name <span class="string">&quot;*.txt&quot;</span> <span class="comment">#所有txt结尾文件</span></span><br><span class="line">find . -name <span class="string">&quot;flag*&quot;</span> <span class="comment">#以flag开头的文件</span></span><br></pre></td></tr></table></figure>
                 
 
                 <hr>
                 <!-- Pager -->
                 <ul class="pager">
                     
-                        <li class="previous">
-                            <a href="/2026/03/17/Day-6/" data-toggle="tooltip" data-placement="top" title="Day-6">&larr; Previous post</a>
-                        </li>
-                    
                     
                         <li class="next">
-                            <a href="/2026/03/12/hello-world/" data-toggle="tooltip" data-placement="top" title="Hello World">Next post &rarr;</a>
+                            <a href="/2026/03/17/linux/" data-toggle="tooltip" data-placement="top" title="linux基本命令">Next post &rarr;</a>
                         </li>
                     
                 </ul>
@@ -525,7 +496,7 @@
 <script>
     // only load tagcloud.js in tag.html
     if($('#tag_cloud').length !== 0){
-        async("http://example.com/2026/03/17/linux/index.html/js/jquery.tagcloud.js",function(){
+        async("http://example.com/2026/03/17/Day-6/index.html/js/jquery.tagcloud.js",function(){
             $.fn.tagcloud.defaults = {
                 //size: {start: 1, end: 1, unit: 'em'},
                 color: {start: '#bbbbee', end: '#0085a1'},
