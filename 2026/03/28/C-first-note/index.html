@@ -1,0 +1,875 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="keyword"  content="">
+    <link rel="shortcut icon" href="/img/ironman-draw.png">
+    <!-- Place this tag in your head or just before your close body tag. -->
+    <script async defer src="https://buttons.github.io/buttons.js"></script>
+    <title>
+        
+          C语言笔记1 - null
+        
+    </title>
+
+    <link rel="canonical" href="http://example.com/2026/03/28/C-first-note/">
+
+    <!-- Bootstrap Core CSS -->
+
+   
+<link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.4.1/css/bootstrap.min.css">
+
+
+    
+
+    <!-- Custom CSS --> 
+    
+<link rel="stylesheet" href="/css/beantech.min.css">
+
+
+    
+<link rel="stylesheet" href="/css/donate.css">
+
+	
+<link rel="stylesheet" href="/css/w3.css">
+
+    <!-- Pygments Highlight CSS -->
+    
+<link rel="stylesheet" href="/css/highlight.css">
+
+
+    
+<link rel="stylesheet" href="/css/widget.css">
+
+
+    
+<link rel="stylesheet" href="/css/rocket.css">
+
+
+    
+<link rel="stylesheet" href="/css/signature.css">
+
+
+    
+<link rel="stylesheet" href="/css/toc.css">
+
+
+    <!-- Custom Fonts -->
+    <!-- <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css"> -->
+    <!-- Hux change font-awesome CDN to qiniu -->
+    <link href="https://cdn.staticfile.org/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+
+    <!-- Hux Delete, sad but pending in China
+    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/
+    css'>
+    -->
+
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+	
+
+    <!-- ga & ba script hoook -->
+    <script></script>
+<meta name="generator" content="Hexo 8.1.1"></head>
+
+
+<!-- hack iOS CSS :active style -->
+<body ontouchstart="">
+	<!-- Modified by Yu-Hsuan Yen -->
+<!-- Post Header -->
+<style type="text/css">
+    header.intro-header{
+    }
+   .post-heading{
+    padding:20px;
+    }
+  .person {
+    border: 10px solid transparent;
+    margin-bottom: 25px;
+    width: 80%;
+    height: 80%;
+    opacity: 0.7;
+  }
+  .person:hover {
+    border-color: #f1f1f1;
+  }
+
+</style>
+
+<header id="headerid" class="w3-indigo intro-header" style="position:relative;">
+    <!-- Signature -->
+	
+        <div class="container">
+            <div class=" row" >
+			
+			<canvas id="particles-js-canvas" style="position:absolute;z-index:1;top:0px;left:0px;" width="100%" height="50%"></canvas>
+			
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1" style="z-index:2;">
+                
+                    <div class="post-heading" style="padding:40px">
+                        <div class="tags">
+                            
+                        </div>
+                        <h1>C语言笔记1</h1>
+                        <h2 class="subheading"></h2>
+                        <span class="meta">
+                            Posted by John Doe on
+                            2026-03-28
+                        </span>
+                    </div>
+                
+                </div>
+            </div>
+        </div>
+  
+</header>
+
+	
+    <!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">Hexo</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <!-- Known Issue, found by Hux:
+            <nav>'s height woule be hold on by its content.
+            so, when navbar scale out, the <nav> will cover tags.
+            also mask any touch event of tags, unfortunately.
+        -->
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a  href="/">Homepage</a>
+                    </li>
+		    
+                    
+
+                        
+                        <li>
+           
+                            <a  href="#">menu1</a>
+                           
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+           
+                            <a  href="#">menu2</a>
+                           
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+           
+                            <a  href="#">menu3</a>
+                           
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+           
+                            <a  href="#">menu3</a>
+                           
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+           
+                            <a  href="#">menu5</a>
+                           
+                        </li>
+                        
+                    
+                    
+                </ul>
+            </div>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+<script>
+    // Drop Bootstarp low-performance Navbar
+    // Use customize navbar with high-quality material design animation
+    // in high-perf jank-free CSS3 implementation
+    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e){
+        if ($navbar.className.indexOf('in') > 0) {
+        // CLOSE
+            $navbar.className = " ";
+            // wait until animation end.
+            setTimeout(function(){
+                // prevent frequently toggle
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        }else{
+        // OPEN
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+</script>
+
+
+    <!-- Main Content -->
+    <!-- Modify by Yu-Hsuan Yen -->
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+
+            <!-- Post Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                post-container">
+
+                <h1 id="C语言构成，原理，基础语法等等"><a href="#C语言构成，原理，基础语法等等" class="headerlink" title="C语言构成，原理，基础语法等等"></a>C语言构成，原理，基础语法等等</h1><h2 id="构成"><a href="#构成" class="headerlink" title="构成"></a>构成</h2><p>c语言主要由以下几个方面构成</p>
+<ul>
+<li><p>预处理指令：#include #define 作为再编译前的预处理</p>
+</li>
+<li><p>主函数：每个c语言只能有一个main函数，作为执行程序的位置</p>
+</li>
+<li><p>函数定义：定义使用的函数，描述函数的运行逻辑</p>
+</li>
+<li><p>变量声明：所以变量声明前都需要使用指令声明，要求必须在代码开头</p>
+<p>实际演示</p>
+</li>
+</ul>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//预处理指令，头文件</span></span><br><span class="line">  <span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span> </span></span><br><span class="line">  </span><br><span class="line"><span class="comment">//函数声明</span></span><br><span class="line">  <span class="type">int</span> <span class="title function_">add</span><span class="params">(<span class="type">int</span> a,<span class="type">int</span> b)</span>;</span><br><span class="line">  <span class="type">int</span> <span class="title function_">main</span><span class="params">(<span class="type">void</span>)</span></span><br><span class="line">  &#123;</span><br><span class="line"></span><br><span class="line"><span class="comment">//变量声明</span></span><br><span class="line">    <span class="type">int</span> test1,test2,test3;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//函数定义</span></span><br><span class="line">  <span class="type">int</span> <span class="title function_">add</span><span class="params">(<span class="type">int</span> a, <span class="type">int</span> b)</span></span><br><span class="line">  &#123;</span><br><span class="line">    <span class="keyword">return</span> a + b;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h2><p>  程序的c代码先预处理编译成<strong>汇编</strong>语言，将汇编语言转换为机器码<strong>二进制</strong>指令输出.o文件，最后链接合并成<strong>可执行</strong>的.exe文件</p>
+<h2 id="常用语法"><a href="#常用语法" class="headerlink" title="常用语法"></a>常用语法</h2><table>
+<thead>
+<tr>
+<th align="left">语法类型</th>
+<th align="center">关键字</th>
+<th align="left">作用</th>
+<th align="left">实践案例</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">基本输入输出</td>
+<td align="center">printf()</td>
+<td align="left">格式化输出</td>
+<td align="left">print(“%d”,a);</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="center">scanf()</td>
+<td align="left">格式化输入</td>
+<td align="left">scanf(%d,&amp;a);</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="center">puts()</td>
+<td align="left">输出字符串</td>
+<td align="left">puts(“Hello”);</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="center">getchar()</td>
+<td align="left">获取单个字符</td>
+<td align="left">char c &#x3D; gerchar();</td>
+</tr>
+<tr>
+<td align="left">数据类型</td>
+<td align="center">int</td>
+<td align="left">整数类型</td>
+<td align="left">int a&#x3D;0;</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="center">float</td>
+<td align="left">单精度浮点数</td>
+<td align="left">float a&#x3D;0.1;</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="center">double</td>
+<td align="left">双精度浮点数</td>
+<td align="left">double a&#x3D;99.99;</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="center">char</td>
+<td align="left">字符类型</td>
+<td align="left">char grade &#x3D;’A’;</td>
+</tr>
+<tr>
+<td align="left">变量修饰</td>
+<td align="center">const</td>
+<td align="left">定义常量</td>
+<td align="left">const int MAX &#x3D; 100;</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="center">static</td>
+<td align="left">静态变量</td>
+<td align="left">static int count &#x3D; 0;</td>
+</tr>
+<tr>
+<td align="left">字符串</td>
+<td align="center">char shr[]</td>
+<td align="left">字符串数组</td>
+<td align="left">char name[] &#x3D;”张三”;</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="center">strlen()</td>
+<td align="left">获取字符串长度</td>
+<td align="left">int len &#x3D; strlen(str);</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="center">shrcpy()</td>
+<td align="left">字符串复制</td>
+<td align="left">strcpy(dest, src);</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="center">strcmp()</td>
+<td align="left">字符串比较</td>
+<td align="left">if(strcmp(s1,s2)&#x3D;&#x3D;0)</td>
+</tr>
+<tr>
+<td align="left">条件判断</td>
+<td align="center">if-else</td>
+<td align="left">条件分支</td>
+<td align="left">if(score &gt;&#x3D; 60) puts(“及格”); else puts(“不及格”);</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="center">switch-case</td>
+<td align="left">多分支选择</td>
+<td align="left">switch(grade) { case ‘A’: … break; }</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="center">? :</td>
+<td align="left">三元运算符</td>
+<td align="left">max &#x3D; (a &gt; b) ? a : b;</td>
+</tr>
+<tr>
+<td align="left">循环控制</td>
+<td align="center">for</td>
+<td align="left">计数循环</td>
+<td align="left">for(int i &#x3D; 0; i &lt; 10; i++)</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="center">while</td>
+<td align="left">条件循环</td>
+<td align="left">while(condition) { … }</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="center">do-while</td>
+<td align="left">至少执行一次</td>
+<td align="left">do { … } while(condition);</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="center">break</td>
+<td align="left">跳出循环</td>
+<td align="left">if(flag) break;</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="center">continue</td>
+<td align="left">跳过本次循环</td>
+<td align="left">if(i % 2 &#x3D;&#x3D; 0) continue;</td>
+</tr>
+<tr>
+<td align="left">函数</td>
+<td align="center">void func()</td>
+<td align="left">无返回值函数</td>
+<td align="left">void printHello() { printf(“Hi”); }</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="center">int func()</td>
+<td align="left">有返回值函数</td>
+<td align="left">int add(int a, int b) { return a+b; }</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="center">参数传递</td>
+<td align="left">值传递</td>
+<td align="left">void swap(int x, int y)</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="center">参数传递</td>
+<td align="left">指针传递</td>
+<td align="left">void swap(int *x, int *y)</td>
+</tr>
+<tr>
+<td align="left">指针</td>
+<td align="center">int *p</td>
+<td align="left">指针变量</td>
+<td align="left">int *p &#x3D;&num;</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="center">&amp;</td>
+<td align="left">取地址符</td>
+<td align="left">int *p &#x3D;&num;</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="center">*</td>
+<td align="left">解引用符</td>
+<td align="left">*p &#x3D; 20;</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="center">NULL</td>
+<td align="left">空指针</td>
+<td align="left">int *p &#x3D; NULL;</td>
+</tr>
+<tr>
+<td align="left">结构体</td>
+<td align="center">struct</td>
+<td align="left">定义结构体</td>
+<td align="left">struct Student { char name[20]; int age; };</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="center">-&gt;</td>
+<td align="left">结构体指针访问</td>
+<td align="left">p-&gt;age &#x3D; 18;</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="center">.</td>
+<td align="left">结构体变量访问</td>
+<td align="left">stu.age &#x3D; 18;</td>
+</tr>
+<tr>
+<td align="left">内存管理</td>
+<td align="center">malloc()</td>
+<td align="left">动态分配内存</td>
+<td align="left">int<em>p &#x3D; (int</em>)malloc(10*sizeof(int));</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="center">free()</td>
+<td align="left">释放内存</td>
+<td align="left">free(p);</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="center">sizeof()</td>
+<td align="left">计算字节大小</td>
+<td align="left">int size &#x3D; sizeof(arr);</td>
+</tr>
+<tr>
+<td align="left"><strong>预处理</strong></td>
+<td align="center">#include</td>
+<td align="left">包含头文件</td>
+<td align="left">#include &lt;stdio.h&gt;</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="center">#define</td>
+<td align="left">定义宏</td>
+<td align="left">#define PI 3.14159</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="center">#ifdef</td>
+<td align="left">条件编译</td>
+<td align="left">#ifdef DEBUG … #endif</td>
+</tr>
+<tr>
+<td align="left">常用库函数</td>
+<td align="center">math.h</td>
+<td align="left">数学函数</td>
+<td align="left">sqrt(16), pow(2,3), abs(-5)</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="center">stdlib.h</td>
+<td align="left">实用函数</td>
+<td align="left">rand(), srand(time(0))</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="center">time.h</td>
+<td align="left">时间函数</td>
+<td align="left">time(NULL), clock()</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="center">ctype.h</td>
+<td align="left">字符处理</td>
+<td align="left">isalpha(‘a’), isdigit(‘1’)</td>
+</tr>
+</tbody></table>
+<h2 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a>数据类型</h2><table>
+<thead>
+<tr>
+<th>类型</th>
+<th>存储大小</th>
+<th>值范围</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>char</td>
+<td>1 字节</td>
+<td>[-128,127]&#x2F;[0,255]</td>
+</tr>
+<tr>
+<td>unsigned char</td>
+<td>1 字节</td>
+<td>[0,255]</td>
+</tr>
+<tr>
+<td>signed char</td>
+<td>1 字节</td>
+<td>[-128,127]</td>
+</tr>
+<tr>
+<td>int</td>
+<td>2 或 4 字节</td>
+<td>[-32768,32767]&#x2F;[-2147483648,2147483647]</td>
+</tr>
+<tr>
+<td>unsigned int</td>
+<td>2 或 4 字节</td>
+<td>[0,65535]&#x2F;[0,4294967295]</td>
+</tr>
+<tr>
+<td>short</td>
+<td>2 字节</td>
+<td>[-32768,32767]</td>
+</tr>
+<tr>
+<td>unsigned short</td>
+<td>2 字节</td>
+<td>[0,65535]</td>
+</tr>
+<tr>
+<td>long</td>
+<td>4 字节</td>
+<td>[-2147483648,2147483647]</td>
+</tr>
+<tr>
+<td>unsigned long</td>
+<td>4 字节</td>
+<td>[0,4294967295]</td>
+</tr>
+</tbody></table>
+
+                
+
+                <hr>
+                <!-- Pager -->
+                <ul class="pager">
+                    
+                    
+                        <li class="next">
+                            <a href="/2026/03/28/test_week2/" data-toggle="tooltip" data-placement="top" title="第二周考核题部分解析">Next post &rarr;</a>
+                        </li>
+                    
+                </ul>
+
+                <br>
+
+                <!--打赏-->
+                
+                <!--打赏-->
+
+                <br>
+                <!--分享-->
+                
+                    <div class="social-share"  data-wechat-qrcode-helper="" align="center"></div>
+                    <!--  css & js -->
+                    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/css/share.min.css">
+                    <script src="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/js/social-share.min.js"></script>
+                
+                <!--分享-->
+                <br>                       
+                
+                <!-- require APlayer -->
+                
+
+                <!-- disqus comment start -->
+                
+                <!-- disqus comment end -->
+
+                
+				
+            </div>
+
+            <!-- Tabe of Content -->
+            <!-- Table of Contents -->
+
+                
+            <!-- Sidebar Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                <!-- Featured Tags -->
+                
+                <section>
+                    <!-- no hr -->
+                    <h5><a href="/tags/">Tags</a></h5>
+                    <div class="tags">
+                       
+                    </div>
+                </section>
+                
+
+                <!-- Friends Blog -->
+                
+                <hr>
+                <h5>FRIENDS</h5>
+                <ul class="list-inline">
+
+                    
+                        <li><a href="http://www.sumoon.com" target="_blank">ACE theme</a></li>
+                    
+                </ul>
+                
+            </div>
+        </div>
+    </div>
+</article>
+
+
+
+
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+<!-- anchor-js, Doc:http://bryanbraun.github.io/anchorjs/ -->
+<script>
+    async("https://cdn.bootcss.com/anchor-js/1.1.1/anchor.min.js",function(){
+        anchors.options = {
+          visible: 'hover',
+          placement: 'left',
+          icon: 'ℬ'
+        };
+        anchors.add().remove('.intro-header h1').remove('.subheading').remove('.sidebar-container h5');
+    })
+</script>
+<style>
+    /* place left on bigger screen */
+    @media all and (min-width: 800px) {
+        .anchorjs-link{
+            position: absolute;
+            left: -0.75em;
+            font-size: 1.1em;
+            margin-top : -0.1em;
+        }
+    }
+</style>
+
+
+
+    <!-- Footer -->
+    <!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                
+                
+                
+
+                
+
+                
+
+                
+                    <li>
+                        <a target="_blank"  href="https://github.com/kinggozhang">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+
+                </ul>
+                <p class="copyright text-muted">
+                    Copyright &copy; John Doe 2026 
+                    <br>
+                    Powered by <a target="_blank" rel="noopener" href="http://www.hexo.io">Hexo</a> 
+                    <span style="display: inline-block; margin: 0 5px;">
+                        <i class="fa fa-heart"></i>
+                    </span> 
+                    Theme by <a target="_blank" rel="noopener" href="https://github.com/kinggozhang/hexo-theme-ace">ACE</a> 
+					
+					
+					<i class="fa fa-eye" id="leancounter"></i>
+					
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- jQuery -->
+
+   
+<script src="https://cdn.staticfile.org/jquery/2.2.4/jquery.min.js"></script>
+
+
+
+
+<!-- Bootstrap Core JavaScript -->
+
+   
+<script src="https://cdn.staticfile.org/twitter-bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+
+
+<!-- Custom Theme JavaScript -->
+
+<script src="/js/hux-blog.min.js"></script>
+
+
+
+	
+<script src="/js/particles.js"></script>
+
+	
+<script src="/js/particles_config.js"></script>
+
+
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+<!-- 
+     Because of the native support for backtick-style fenced code blocks 
+     right within the Markdown is landed in Github Pages, 
+     From V1.6, There is no need for Highlight.js, 
+     so Huxblog drops it officially.
+
+     - https://github.com/blog/2100-github-pages-now-faster-and-simpler-with-jekyll-3-0  
+     - https://help.github.com/articles/creating-and-highlighting-code-blocks/    
+-->
+<!--
+    <script>
+        async("http://cdn.bootcss.com/highlight.js/8.6/highlight.min.js", function(){
+            hljs.initHighlightingOnLoad();
+        })
+    </script>
+    <link href="http://cdn.bootcss.com/highlight.js/8.6/styles/github.min.css" rel="stylesheet">
+-->
+
+
+<!-- jquery.tagcloud.js -->
+<script>
+    // only load tagcloud.js in tag.html
+    if($('#tag_cloud').length !== 0){
+        async("http://example.com/2026/03/28/C-first-note/index.html/js/jquery.tagcloud.js",function(){
+            $.fn.tagcloud.defaults = {
+                //size: {start: 1, end: 1, unit: 'em'},
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+<!--fastClick.js -->
+<script>
+    async("https://cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+
+<!-- Google Analytics -->
+
+
+
+
+<!-- Baidu Tongji -->
+
+
+
+
+
+
+	<a id="rocket" href="#top" class=""></a>
+	<script type="text/javascript" src="/js/totop.js?v=1.0.0" async=""></script>
+    <script type="text/javascript" src="/js/toc.js?v=1.0.0" async=""></script>
+<!-- Image to hack wechat -->
+<img src="http://example.com/img/icon_wechat.png" width="0" height="0" />
+<!-- Migrate from head to bottom, no longer block render and still work -->
+
+</body>
+
+</html>
