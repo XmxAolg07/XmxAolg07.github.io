@@ -14,11 +14,11 @@
     <script async defer src="https://buttons.github.io/buttons.js"></script>
     <title>
         
-          C语言笔记1 - null
+          C_second_note - null
         
     </title>
 
-    <link rel="canonical" href="http://example.com/2026/03/29/C-first-note/">
+    <link rel="canonical" href="http://example.com/2026/03/30/C-second-note/">
 
     <!-- Bootstrap Core CSS -->
 
@@ -123,11 +123,11 @@
                         <div class="tags">
                             
                         </div>
-                        <h1>C语言笔记1</h1>
+                        <h1>C_second_note</h1>
                         <h2 class="subheading"></h2>
                         <span class="meta">
                             Posted by John Doe on
-                            2026-03-29
+                            2026-03-30
                         </span>
                     </div>
                 
@@ -263,343 +263,113 @@
                 col-md-10 col-md-offset-1
                 post-container">
 
-                <h1 id="C语言构成，原理，基础语法等等"><a href="#C语言构成，原理，基础语法等等" class="headerlink" title="C语言构成，原理，基础语法等等"></a>C语言构成，原理，基础语法等等</h1><h2 id="构成"><a href="#构成" class="headerlink" title="构成"></a>构成</h2><p>c语言主要由以下几个方面构成</p>
-<ul>
-<li><p>预处理指令：#include #define 作为再编译前的预处理</p>
-</li>
-<li><p>主函数：每个c语言只能有一个main函数，作为执行程序的位置</p>
-</li>
-<li><p>函数定义：定义使用的函数，描述函数的运行逻辑</p>
-</li>
-<li><p>变量声明：所以变量声明前都需要使用指令声明，要求必须在代码开头</p>
-<p>实际演示</p>
-</li>
-</ul>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//预处理指令，头文件</span></span><br><span class="line">  <span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span> </span></span><br><span class="line">  </span><br><span class="line"><span class="comment">//函数声明</span></span><br><span class="line">  <span class="type">int</span> <span class="title function_">add</span><span class="params">(<span class="type">int</span> a,<span class="type">int</span> b)</span>;</span><br><span class="line">  <span class="type">int</span> <span class="title function_">main</span><span class="params">(<span class="type">void</span>)</span></span><br><span class="line">  &#123;</span><br><span class="line"></span><br><span class="line"><span class="comment">//变量声明</span></span><br><span class="line">    <span class="type">int</span> test1,test2,test3;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//函数定义</span></span><br><span class="line">  <span class="type">int</span> <span class="title function_">add</span><span class="params">(<span class="type">int</span> a, <span class="type">int</span> b)</span></span><br><span class="line">  &#123;</span><br><span class="line">    <span class="keyword">return</span> a + b;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+                <h1 id="C语言格式说明符（格式转义符）完整指南"><a href="#C语言格式说明符（格式转义符）完整指南" class="headerlink" title="C语言格式说明符（格式转义符）完整指南"></a>C语言格式说明符（格式转义符）完整指南</h1><h2 id="格式说明符表格"><a href="#格式说明符表格" class="headerlink" title="格式说明符表格"></a>格式说明符表格</h2><table>
+<thead>
+<tr>
+<th>格式符</th>
+<th>数据类型</th>
+<th>说明</th>
+<th>示例代码</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>%d</code></td>
+<td><code>int</code></td>
+<td>十进制有符号整数</td>
+<td><code>printf(&quot;%d&quot;, 123);</code></td>
+</tr>
+<tr>
+<td><code>%i</code></td>
+<td><code>int</code></td>
+<td>十进制有符号整数（同%d）</td>
+<td><code>printf(&quot;%i&quot;, -456);</code></td>
+</tr>
+<tr>
+<td><code>%u</code></td>
+<td><code>unsigned int</code></td>
+<td>十进制无符号整数</td>
+<td><code>printf(&quot;%u&quot;, 456);</code></td>
+</tr>
+<tr>
+<td><code>%o</code></td>
+<td><code>unsigned int</code></td>
+<td>八进制无符号整数</td>
+<td><code>printf(&quot;%o&quot;, 8); // 输出10</code></td>
+</tr>
+<tr>
+<td><code>%x</code></td>
+<td><code>unsigned int</code></td>
+<td>十六进制无符号整数（小写）</td>
+<td><code>printf(&quot;%x&quot;, 255); // 输出ff</code></td>
+</tr>
+<tr>
+<td><code>%X</code></td>
+<td><code>unsigned int</code></td>
+<td>十六进制无符号整数（大写）</td>
+<td><code>printf(&quot;%X&quot;, 255); // 输出FF</code></td>
+</tr>
+<tr>
+<td><code>%f</code></td>
+<td><code>float/double</code></td>
+<td>十进制浮点数</td>
+<td><code>printf(&quot;%f&quot;, 3.14159);</code></td>
+</tr>
+<tr>
+<td><code>%lf</code></td>
+<td><code>double</code></td>
+<td>十进制双精度浮点数</td>
+<td><code>printf(&quot;%lf&quot;, 3.1415926535);</code></td>
+</tr>
+<tr>
+<td><code>%e</code></td>
+<td><code>float/double</code></td>
+<td>科学计数法（小写e）</td>
+<td><code>printf(&quot;%e&quot;, 123.45); // 1.234500e+02</code></td>
+</tr>
+<tr>
+<td><code>%E</code></td>
+<td><code>float/double</code></td>
+<td>科学计数法（大写E）</td>
+<td><code>printf(&quot;%E&quot;, 123.45); // 1.234500E+02</code></td>
+</tr>
+<tr>
+<td><code>%g</code></td>
+<td><code>float/double</code></td>
+<td>自动选择%f或%e</td>
+<td><code>printf(&quot;%g&quot;, 0.00012345);</code></td>
+</tr>
+<tr>
+<td><code>%c</code></td>
+<td><code>char</code></td>
+<td>单个字符</td>
+<td><code>printf(&quot;%c&quot;, &#39;A&#39;);</code></td>
+</tr>
+<tr>
+<td><code>%s</code></td>
+<td><code>char[]</code></td>
+<td>字符串</td>
+<td><code>printf(&quot;%s&quot;, &quot;Hello&quot;);</code></td>
+</tr>
+<tr>
+<td><code>%p</code></td>
+<td><code>指针</code></td>
+<td>指针地址</td>
+<td><code>printf(&quot;%p&quot;, &amp;变量);</code></td>
+</tr>
+<tr>
+<td><code>%%</code></td>
+<td>-</td>
+<td>输出百分号本身</td>
+<td><code>printf(&quot;%%&quot;); // 输出%</code></td>
+</tr>
+</tbody></table>
+<h2 id="实际代码演示"><a href="#实际代码演示" class="headerlink" title="实际代码演示"></a>实际代码演示</h2><h3 id="1-整数类型演示"><a href="#1-整数类型演示" class="headerlink" title="1. 整数类型演示"></a>1. 整数类型演示</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span> &#123;</span><br><span class="line">    <span class="type">int</span> num = <span class="number">255</span>;</span><br><span class="line">    <span class="type">unsigned</span> <span class="type">int</span> unum = <span class="number">255</span>;</span><br><span class="line">  </span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;=== 整数类型演示 ===\n&quot;</span>);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;十进制: %%d = %d\n&quot;</span>, num);           <span class="comment">// 输出: 255</span></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;八进制: %%o = %o\n&quot;</span>, num);           <span class="comment">// 输出: 377</span></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;十六进制: %%x = %x\n&quot;</span>, num);         <span class="comment">// 输出: ff</span></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;十六进制大写: %%X = %X\n&quot;</span>, num);     <span class="comment">// 输出: FF</span></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;无符号: %%u = %u\n&quot;</span>, unum);          <span class="comment">// 输出: 255</span></span><br><span class="line">  </span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<h2 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h2><p>  程序的c代码先预处理编译成<strong>汇编</strong>语言，将汇编语言转换为机器码<strong>二进制</strong>指令输出.o文件，最后链接合并成<strong>可执行</strong>的.exe文件</p>
-<h2 id="常用语法"><a href="#常用语法" class="headerlink" title="常用语法"></a>常用语法</h2><table>
-<thead>
-<tr>
-<th align="left">语法类型</th>
-<th align="center">关键字</th>
-<th align="left">作用</th>
-<th align="left">实践案例</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="left">基本输入输出</td>
-<td align="center">printf()</td>
-<td align="left">格式化输出</td>
-<td align="left">print(“%d”,a);</td>
-</tr>
-<tr>
-<td align="left"></td>
-<td align="center">scanf()</td>
-<td align="left">格式化输入</td>
-<td align="left">scanf(%d,&amp;a);</td>
-</tr>
-<tr>
-<td align="left"></td>
-<td align="center">puts()</td>
-<td align="left">输出字符串</td>
-<td align="left">puts(“Hello”);</td>
-</tr>
-<tr>
-<td align="left"></td>
-<td align="center">getchar()</td>
-<td align="left">获取单个字符</td>
-<td align="left">char c &#x3D; gerchar();</td>
-</tr>
-<tr>
-<td align="left">数据类型</td>
-<td align="center">int</td>
-<td align="left">整数类型</td>
-<td align="left">int a&#x3D;0;</td>
-</tr>
-<tr>
-<td align="left"></td>
-<td align="center">float</td>
-<td align="left">单精度浮点数</td>
-<td align="left">float a&#x3D;0.1;</td>
-</tr>
-<tr>
-<td align="left"></td>
-<td align="center">double</td>
-<td align="left">双精度浮点数</td>
-<td align="left">double a&#x3D;99.99;</td>
-</tr>
-<tr>
-<td align="left"></td>
-<td align="center">char</td>
-<td align="left">字符类型</td>
-<td align="left">char grade &#x3D;’A’;</td>
-</tr>
-<tr>
-<td align="left">变量修饰</td>
-<td align="center">const</td>
-<td align="left">定义常量</td>
-<td align="left">const int MAX &#x3D; 100;</td>
-</tr>
-<tr>
-<td align="left"></td>
-<td align="center">static</td>
-<td align="left">静态变量</td>
-<td align="left">static int count &#x3D; 0;</td>
-</tr>
-<tr>
-<td align="left">字符串</td>
-<td align="center">char shr[]</td>
-<td align="left">字符串数组</td>
-<td align="left">char name[] &#x3D;”张三”;</td>
-</tr>
-<tr>
-<td align="left"></td>
-<td align="center">strlen()</td>
-<td align="left">获取字符串长度</td>
-<td align="left">int len &#x3D; strlen(str);</td>
-</tr>
-<tr>
-<td align="left"></td>
-<td align="center">shrcpy()</td>
-<td align="left">字符串复制</td>
-<td align="left">strcpy(dest, src);</td>
-</tr>
-<tr>
-<td align="left"></td>
-<td align="center">strcmp()</td>
-<td align="left">字符串比较</td>
-<td align="left">if(strcmp(s1,s2)&#x3D;&#x3D;0)</td>
-</tr>
-<tr>
-<td align="left">条件判断</td>
-<td align="center">if-else</td>
-<td align="left">条件分支</td>
-<td align="left">if(score &gt;&#x3D; 60) puts(“及格”); else puts(“不及格”);</td>
-</tr>
-<tr>
-<td align="left"></td>
-<td align="center">switch-case</td>
-<td align="left">多分支选择</td>
-<td align="left">switch(grade) { case ‘A’: … break; }</td>
-</tr>
-<tr>
-<td align="left"></td>
-<td align="center">? :</td>
-<td align="left">三元运算符</td>
-<td align="left">max &#x3D; (a &gt; b) ? a : b;</td>
-</tr>
-<tr>
-<td align="left">循环控制</td>
-<td align="center">for</td>
-<td align="left">计数循环</td>
-<td align="left">for(int i &#x3D; 0; i &lt; 10; i++)</td>
-</tr>
-<tr>
-<td align="left"></td>
-<td align="center">while</td>
-<td align="left">条件循环</td>
-<td align="left">while(condition) { … }</td>
-</tr>
-<tr>
-<td align="left"></td>
-<td align="center">do-while</td>
-<td align="left">至少执行一次</td>
-<td align="left">do { … } while(condition);</td>
-</tr>
-<tr>
-<td align="left"></td>
-<td align="center">break</td>
-<td align="left">跳出循环</td>
-<td align="left">if(flag) break;</td>
-</tr>
-<tr>
-<td align="left"></td>
-<td align="center">continue</td>
-<td align="left">跳过本次循环</td>
-<td align="left">if(i % 2 &#x3D;&#x3D; 0) continue;</td>
-</tr>
-<tr>
-<td align="left">函数</td>
-<td align="center">void func()</td>
-<td align="left">无返回值函数</td>
-<td align="left">void printHello() { printf(“Hi”); }</td>
-</tr>
-<tr>
-<td align="left"></td>
-<td align="center">int func()</td>
-<td align="left">有返回值函数</td>
-<td align="left">int add(int a, int b) { return a+b; }</td>
-</tr>
-<tr>
-<td align="left"></td>
-<td align="center">参数传递</td>
-<td align="left">值传递</td>
-<td align="left">void swap(int x, int y)</td>
-</tr>
-<tr>
-<td align="left"></td>
-<td align="center">参数传递</td>
-<td align="left">指针传递</td>
-<td align="left">void swap(int *x, int *y)</td>
-</tr>
-<tr>
-<td align="left">指针</td>
-<td align="center">int *p</td>
-<td align="left">指针变量</td>
-<td align="left">int *p &#x3D;&num;</td>
-</tr>
-<tr>
-<td align="left"></td>
-<td align="center">&amp;</td>
-<td align="left">取地址符</td>
-<td align="left">int *p &#x3D;&num;</td>
-</tr>
-<tr>
-<td align="left"></td>
-<td align="center">*</td>
-<td align="left">解引用符</td>
-<td align="left">*p &#x3D; 20;</td>
-</tr>
-<tr>
-<td align="left"></td>
-<td align="center">NULL</td>
-<td align="left">空指针</td>
-<td align="left">int *p &#x3D; NULL;</td>
-</tr>
-<tr>
-<td align="left">结构体</td>
-<td align="center">struct</td>
-<td align="left">定义结构体</td>
-<td align="left">struct Student { char name[20]; int age; };</td>
-</tr>
-<tr>
-<td align="left"></td>
-<td align="center">-&gt;</td>
-<td align="left">结构体指针访问</td>
-<td align="left">p-&gt;age &#x3D; 18;</td>
-</tr>
-<tr>
-<td align="left"></td>
-<td align="center">.</td>
-<td align="left">结构体变量访问</td>
-<td align="left">stu.age &#x3D; 18;</td>
-</tr>
-<tr>
-<td align="left">内存管理</td>
-<td align="center">malloc()</td>
-<td align="left">动态分配内存</td>
-<td align="left">int<em>p &#x3D; (int</em>)malloc(10*sizeof(int));</td>
-</tr>
-<tr>
-<td align="left"></td>
-<td align="center">free()</td>
-<td align="left">释放内存</td>
-<td align="left">free(p);</td>
-</tr>
-<tr>
-<td align="left"></td>
-<td align="center">sizeof()</td>
-<td align="left">计算字节大小</td>
-<td align="left">int size &#x3D; sizeof(arr);</td>
-</tr>
-<tr>
-<td align="left"><strong>预处理</strong></td>
-<td align="center">#include</td>
-<td align="left">包含头文件</td>
-<td align="left">#include &lt;stdio.h&gt;</td>
-</tr>
-<tr>
-<td align="left"></td>
-<td align="center">#define</td>
-<td align="left">定义宏</td>
-<td align="left">#define PI 3.14159</td>
-</tr>
-<tr>
-<td align="left"></td>
-<td align="center">#ifdef</td>
-<td align="left">条件编译</td>
-<td align="left">#ifdef DEBUG … #endif</td>
-</tr>
-<tr>
-<td align="left">常用库函数</td>
-<td align="center">math.h</td>
-<td align="left">数学函数</td>
-<td align="left">sqrt(16), pow(2,3), abs(-5)</td>
-</tr>
-<tr>
-<td align="left"></td>
-<td align="center">stdlib.h</td>
-<td align="left">实用函数</td>
-<td align="left">rand(), srand(time(0))</td>
-</tr>
-<tr>
-<td align="left"></td>
-<td align="center">time.h</td>
-<td align="left">时间函数</td>
-<td align="left">time(NULL), clock()</td>
-</tr>
-<tr>
-<td align="left"></td>
-<td align="center">ctype.h</td>
-<td align="left">字符处理</td>
-<td align="left">isalpha(‘a’), isdigit(‘1’)</td>
-</tr>
-</tbody></table>
-<h2 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a>数据类型</h2><table>
-<thead>
-<tr>
-<th>类型</th>
-<th>存储大小</th>
-<th>值范围</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>char</td>
-<td>1 字节</td>
-<td>[-128,127]&#x2F;[0,255]</td>
-</tr>
-<tr>
-<td>unsigned char</td>
-<td>1 字节</td>
-<td>[0,255]</td>
-</tr>
-<tr>
-<td>signed char</td>
-<td>1 字节</td>
-<td>[-128,127]</td>
-</tr>
-<tr>
-<td>int</td>
-<td>2 或 4 字节</td>
-<td>[-32768,32767]&#x2F;[-2147483648,2147483647]</td>
-</tr>
-<tr>
-<td>unsigned int</td>
-<td>2 或 4 字节</td>
-<td>[0,65535]&#x2F;[0,4294967295]</td>
-</tr>
-<tr>
-<td>short</td>
-<td>2 字节</td>
-<td>[-32768,32767]</td>
-</tr>
-<tr>
-<td>unsigned short</td>
-<td>2 字节</td>
-<td>[0,65535]</td>
-</tr>
-<tr>
-<td>long</td>
-<td>4 字节</td>
-<td>[-2147483648,2147483647]</td>
-</tr>
-<tr>
-<td>unsigned long</td>
-<td>4 字节</td>
-<td>[0,4294967295]</td>
-</tr>
-</tbody></table>
+<h3 id="2-浮点数类型演示"><a href="#2-浮点数类型演示" class="headerlink" title="2.浮点数类型演示"></a>2.浮点数类型演示</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span> &#123;</span><br><span class="line">    <span class="type">float</span> fnum = <span class="number">3.14159f</span>;</span><br><span class="line">    <span class="type">double</span> dnum = <span class="number">3.14159265358979</span>;</span><br><span class="line">    </span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;=== 浮点数类型演示 ===\n&quot;</span>);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;标准浮点数: %%f = %f\n&quot;</span>, fnum);           <span class="comment">// 输出: 3.141590</span></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;指定精度: %%.2f = %.2f\n&quot;</span>, fnum);         <span class="comment">// 输出: 3.14</span></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;双精度: %%lf = %lf\n&quot;</span>, dnum);             <span class="comment">// 输出: 3.141593</span></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;科学计数法: %%e = %e\n&quot;</span>, fnum);           <span class="comment">// 输出: 3.141590e+00</span></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;自动选择: %%g = %g\n&quot;</span>, <span class="number">0.00012345</span>);       <span class="comment">// 输出: 0.00012345</span></span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="3-字符和字符串演示"><a href="#3-字符和字符串演示" class="headerlink" title="3.字符和字符串演示"></a>3.字符和字符串演示</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span> &#123;</span><br><span class="line">    <span class="type">char</span> ch = <span class="string">&#x27;A&#x27;</span>;</span><br><span class="line">    <span class="type">char</span> str[] = <span class="string">&quot;Hello, World!&quot;</span>;</span><br><span class="line">    </span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;=== 字符和字符串演示 ===\n&quot;</span>);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;单个字符: %%c = %c\n&quot;</span>, ch);              <span class="comment">// 输出: A</span></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;字符ASCII码: %%d = %d\n&quot;</span>, ch);           <span class="comment">// 输出: 65</span></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;字符串: %%s = %s\n&quot;</span>, str);               <span class="comment">// 输出: Hello, World!</span></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;字符串截取: %%.5s = %.5s\n&quot;</span>, str);       <span class="comment">// 输出: Hello</span></span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="4-指针地址演示"><a href="#4-指针地址演示" class="headerlink" title="4. 指针地址演示"></a>4. 指针地址演示</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span> &#123;</span><br><span class="line">    <span class="type">int</span> num = <span class="number">42</span>;</span><br><span class="line">    <span class="type">int</span> *ptr = &amp;num;</span><br><span class="line">    </span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;=== 指针地址演示 ===\n&quot;</span>);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;变量值: %%d = %d\n&quot;</span>, num);               <span class="comment">// 输出: 42</span></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;变量地址: %%p = %p\n&quot;</span>, &amp;num);            <span class="comment">// 输出: 类似 0x7ffc12345678</span></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;指针指向的值: %%d = %d\n&quot;</span>, *ptr);        <span class="comment">// 输出: 42</span></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;指针本身的值: %%p = %p\n&quot;</span>, ptr);         <span class="comment">// 输出: 类似 0x7ffc12345678</span></span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
                 
 
@@ -607,13 +377,9 @@
                 <!-- Pager -->
                 <ul class="pager">
                     
-                        <li class="previous">
-                            <a href="/2026/03/30/C-second-note/" data-toggle="tooltip" data-placement="top" title="C_second_note">&larr; Previous post</a>
-                        </li>
-                    
                     
                         <li class="next">
-                            <a href="/2026/03/28/test_week2/" data-toggle="tooltip" data-placement="top" title="第二周考核题部分解析">Next post &rarr;</a>
+                            <a href="/2026/03/29/C-first-note/" data-toggle="tooltip" data-placement="top" title="C语言笔记1">Next post &rarr;</a>
                         </li>
                     
                 </ul>
@@ -836,7 +602,7 @@
 <script>
     // only load tagcloud.js in tag.html
     if($('#tag_cloud').length !== 0){
-        async("http://example.com/2026/03/29/C-first-note/index.html/js/jquery.tagcloud.js",function(){
+        async("http://example.com/2026/03/30/C-second-note/index.html/js/jquery.tagcloud.js",function(){
             $.fn.tagcloud.defaults = {
                 //size: {start: 1, end: 1, unit: 'em'},
                 color: {start: '#bbbbee', end: '#0085a1'},
