@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="keyword"  content="">
+    <link rel="shortcut icon" href="/img/ironman-draw.png">
+    <!-- Place this tag in your head or just before your close body tag. -->
+    <script async defer src="https://buttons.github.io/buttons.js"></script>
+    <title>
+        
+          C语言笔记3 - null
+        
+    </title>
+
+    <link rel="canonical" href="http://example.com/2026/03/31/C-third-note/">
+
+    <!-- Bootstrap Core CSS -->
+
+   
+<link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.4.1/css/bootstrap.min.css">
+
+
+    
+
+    <!-- Custom CSS --> 
+    
+<link rel="stylesheet" href="/css/beantech.min.css">
+
+
+    
+<link rel="stylesheet" href="/css/donate.css">
+
+	
+<link rel="stylesheet" href="/css/w3.css">
+
+    <!-- Pygments Highlight CSS -->
+    
+<link rel="stylesheet" href="/css/highlight.css">
+
+
+    
+<link rel="stylesheet" href="/css/widget.css">
+
+
+    
+<link rel="stylesheet" href="/css/rocket.css">
+
+
+    
+<link rel="stylesheet" href="/css/signature.css">
+
+
+    
+<link rel="stylesheet" href="/css/toc.css">
+
+
+    <!-- Custom Fonts -->
+    <!-- <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css"> -->
+    <!-- Hux change font-awesome CDN to qiniu -->
+    <link href="https://cdn.staticfile.org/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+
+    <!-- Hux Delete, sad but pending in China
+    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/
+    css'>
+    -->
+
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+	
+
+    <!-- ga & ba script hoook -->
+    <script></script>
+<meta name="generator" content="Hexo 8.1.1"></head>
+
+
+<!-- hack iOS CSS :active style -->
+<body ontouchstart="">
+	<!-- Modified by Yu-Hsuan Yen -->
+<!-- Post Header -->
+<style type="text/css">
+    header.intro-header{
+    }
+   .post-heading{
+    padding:20px;
+    }
+  .person {
+    border: 10px solid transparent;
+    margin-bottom: 25px;
+    width: 80%;
+    height: 80%;
+    opacity: 0.7;
+  }
+  .person:hover {
+    border-color: #f1f1f1;
+  }
+
+</style>
+
+<header id="headerid" class="w3-indigo intro-header" style="position:relative;">
+    <!-- Signature -->
+	
+        <div class="container">
+            <div class=" row" >
+			
+			<canvas id="particles-js-canvas" style="position:absolute;z-index:1;top:0px;left:0px;" width="100%" height="50%"></canvas>
+			
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1" style="z-index:2;">
+                
+                    <div class="post-heading" style="padding:40px">
+                        <div class="tags">
+                            
+                        </div>
+                        <h1>C语言笔记3</h1>
+                        <h2 class="subheading"></h2>
+                        <span class="meta">
+                            Posted by John Doe on
+                            2026-03-31
+                        </span>
+                    </div>
+                
+                </div>
+            </div>
+        </div>
+  
+</header>
+
+	
+    <!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">Hexo</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <!-- Known Issue, found by Hux:
+            <nav>'s height woule be hold on by its content.
+            so, when navbar scale out, the <nav> will cover tags.
+            also mask any touch event of tags, unfortunately.
+        -->
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a  href="/">Homepage</a>
+                    </li>
+		    
+                    
+
+                        
+                        <li>
+           
+                            <a  href="#">menu1</a>
+                           
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+           
+                            <a  href="#">menu2</a>
+                           
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+           
+                            <a  href="#">menu3</a>
+                           
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+           
+                            <a  href="#">menu3</a>
+                           
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+           
+                            <a  href="#">menu5</a>
+                           
+                        </li>
+                        
+                    
+                    
+                </ul>
+            </div>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+<script>
+    // Drop Bootstarp low-performance Navbar
+    // Use customize navbar with high-quality material design animation
+    // in high-perf jank-free CSS3 implementation
+    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e){
+        if ($navbar.className.indexOf('in') > 0) {
+        // CLOSE
+            $navbar.className = " ";
+            // wait until animation end.
+            setTimeout(function(){
+                // prevent frequently toggle
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        }else{
+        // OPEN
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+</script>
+
+
+    <!-- Main Content -->
+    <!-- Modify by Yu-Hsuan Yen -->
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+
+            <!-- Post Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                post-container">
+
+                <h1 id="C语言数组笔记"><a href="#C语言数组笔记" class="headerlink" title="C语言数组笔记"></a>C语言数组笔记</h1><h2 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h2><ol>
+<li><a href="#%E4%BB%80%E4%B9%88%E6%98%AF%E6%95%B0%E7%BB%84">什么是数组</a></li>
+<li><a href="#%E4%B8%80%E7%BB%B4%E6%95%B0%E7%BB%84">一维数组</a></li>
+<li><a href="#%E4%BA%8C%E7%BB%B4%E6%95%B0%E7%BB%84">二维数组</a></li>
+<li><a href="#%E5%AE%9E%E6%88%98%E5%9C%BA%E6%99%AF%E5%BA%94%E7%94%A8">实战场景应用</a></li>
+</ol>
+<hr>
+<h2 id="什么是数组"><a href="#什么是数组" class="headerlink" title="什么是数组"></a>什么是数组</h2><p>想象你要存储全班30个同学的成绩。难道要定义30个变量吗？</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> score1, score2, score3, ... score30;  <span class="comment">// 太麻烦了！</span></span><br></pre></td></tr></table></figure>
+
+<p>数组就是解决这个问题的！它就像一排连续的房间，每个房间都有一个编号（下标），可以存放相同类型的数据。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> scores[<span class="number">30</span>];  <span class="comment">// 一次性定义30个整型变量</span></span><br><span class="line"><span class="comment">// 下标从0开始：scores[0], scores[1], ..., scores[29]</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="一维数组"><a href="#一维数组" class="headerlink" title="一维数组"></a>一维数组</h2><h3 id="1-1-数组的定义"><a href="#1-1-数组的定义" class="headerlink" title="1.1 数组的定义"></a>1.1 数组的定义</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span> &#123;</span><br><span class="line">    <span class="comment">// 方式1：只定义不初始化</span></span><br><span class="line">    <span class="type">int</span> arr1[<span class="number">5</span>];  <span class="comment">// 定义了5个int类型的空间，里面的值是随机的</span></span><br><span class="line">  </span><br><span class="line">    <span class="comment">// 方式2：定义时全部初始化为0</span></span><br><span class="line">    <span class="type">int</span> arr2[<span class="number">5</span>] = &#123;<span class="number">0</span>&#125;;  <span class="comment">// 所有元素都是0</span></span><br><span class="line">  </span><br><span class="line">    <span class="comment">// 方式3：定义时初始化部分值</span></span><br><span class="line">    <span class="type">int</span> arr3[<span class="number">5</span>] = &#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>&#125;;  <span class="comment">// arr3[0]=1, arr3[1]=2, arr3[2]=3, 后面自动为0</span></span><br><span class="line">  </span><br><span class="line">    <span class="comment">// 方式4：不指定大小，由初始值决定</span></span><br><span class="line">    <span class="type">int</span> arr4[] = &#123;<span class="number">10</span>, <span class="number">20</span>, <span class="number">30</span>, <span class="number">40</span>&#125;;  <span class="comment">// 自动确定大小为4</span></span><br><span class="line">  </span><br><span class="line">    <span class="comment">// 方式5：使用宏定义大小（推荐）</span></span><br><span class="line">    <span class="meta">#<span class="keyword">define</span> SIZE 10</span></span><br><span class="line">    <span class="type">int</span> arr5[SIZE];</span><br><span class="line">  </span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="1-2-数组的访问和赋值"><a href="#1-2-数组的访问和赋值" class="headerlink" title="1.2 数组的访问和赋值"></a>1.2 数组的访问和赋值</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span> &#123;</span><br><span class="line">    <span class="type">int</span> scores[<span class="number">5</span>];</span><br><span class="line">  </span><br><span class="line">    <span class="comment">// 给数组元素赋值</span></span><br><span class="line">    scores[<span class="number">0</span>] = <span class="number">85</span>;</span><br><span class="line">    scores[<span class="number">1</span>] = <span class="number">92</span>;</span><br><span class="line">    scores[<span class="number">2</span>] = <span class="number">78</span>;</span><br><span class="line">    scores[<span class="number">3</span>] = <span class="number">88</span>;</span><br><span class="line">    scores[<span class="number">4</span>] = <span class="number">95</span>;</span><br><span class="line">  </span><br><span class="line">    <span class="comment">// 访问数组元素</span></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;第一个学生的成绩：%d\n&quot;</span>, scores[<span class="number">0</span>]);  <span class="comment">// 输出85</span></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;第三个学生的成绩：%d\n&quot;</span>, scores[<span class="number">2</span>]);  <span class="comment">// 输出78</span></span><br><span class="line">  </span><br><span class="line">    <span class="comment">// 修改数组元素</span></span><br><span class="line">    scores[<span class="number">2</span>] = <span class="number">80</span>;  <span class="comment">// 修改第三个学生的成绩</span></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;修改后的成绩：%d\n&quot;</span>, scores[<span class="number">2</span>]);  <span class="comment">// 输出80</span></span><br><span class="line">  </span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>1.3 使用循环遍历数组（最重要！）</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span> &#123;</span><br><span class="line">    <span class="type">int</span> scores[<span class="number">5</span>] = &#123;<span class="number">85</span>, <span class="number">92</span>, <span class="number">78</span>, <span class="number">88</span>, <span class="number">95</span>&#125;;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 遍历数组并打印</span></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;所有学生的成绩：\n&quot;</span>);</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">0</span>; i &lt; <span class="number">5</span>; i++) &#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;第%d个学生的成绩：%d\n&quot;</span>, i + <span class="number">1</span>, scores[i]);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 计算平均分</span></span><br><span class="line">    <span class="type">int</span> sum = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">0</span>; i &lt; <span class="number">5</span>; i++) &#123;</span><br><span class="line">        sum += scores[i];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="type">float</span> average = sum / <span class="number">5.0</span>;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;平均分：%.2f\n&quot;</span>, average);</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>1.4 数组的输入输出</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span> &#123;</span><br><span class="line">    <span class="type">int</span> scores[<span class="number">5</span>];</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 从键盘输入5个成绩</span></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;请输入5个学生的成绩：\n&quot;</span>);</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">0</span>; i &lt; <span class="number">5</span>; i++) &#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;第%d个学生：&quot;</span>, i + <span class="number">1</span>);</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>, &amp;scores[i]);  <span class="comment">// 注意：需要加&amp;</span></span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 输出这些成绩</span></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;\n输入的成绩是：\n&quot;</span>);</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">0</span>; i &lt; <span class="number">5</span>; i++) &#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;%d &quot;</span>, scores[i]);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;\n&quot;</span>);</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="二维数组"><a href="#二维数组" class="headerlink" title="二维数组"></a>二维数组</h2><p>二维数组可以想象成一张表格，有行和列。</p>
+<h3 id="2-1-二维数组的定义"><a href="#2-1-二维数组的定义" class="headerlink" title="2.1 二维数组的定义"></a>2.1 二维数组的定义</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span> &#123;</span><br><span class="line">    <span class="comment">// 定义一个3行4列的二维数组</span></span><br><span class="line">    <span class="comment">// 就像一个3行4列的表格</span></span><br><span class="line">    <span class="type">int</span> matrix[<span class="number">3</span>][<span class="number">4</span>];</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 定义并初始化</span></span><br><span class="line">    <span class="type">int</span> scores[<span class="number">3</span>][<span class="number">4</span>] = &#123;</span><br><span class="line">        &#123;<span class="number">85</span>, <span class="number">92</span>, <span class="number">78</span>, <span class="number">88</span>&#125;,  <span class="comment">// 第1行（0号学生）</span></span><br><span class="line">        &#123;<span class="number">90</span>, <span class="number">87</span>, <span class="number">93</span>, <span class="number">89</span>&#125;,  <span class="comment">// 第2行（1号学生）</span></span><br><span class="line">        &#123;<span class="number">76</span>, <span class="number">82</span>, <span class="number">79</span>, <span class="number">91</span>&#125;   <span class="comment">// 第3行（2号学生）</span></span><br><span class="line">    &#125;;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 也可以这样初始化（不推荐，可读性差）</span></span><br><span class="line">    <span class="type">int</span> arr[<span class="number">2</span>][<span class="number">3</span>] = &#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>&#125;;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 部分初始化</span></span><br><span class="line">    <span class="type">int</span> partial[<span class="number">2</span>][<span class="number">3</span>] = &#123;</span><br><span class="line">        &#123;<span class="number">1</span>, <span class="number">2</span>&#125;,     <span class="comment">// 后面自动补0：&#123;1, 2, 0&#125;</span></span><br><span class="line">        &#123;<span class="number">4</span>&#125;         <span class="comment">// &#123;4, 0, 0&#125;</span></span><br><span class="line">    &#125;;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="2-2-二维数组的访问"><a href="#2-2-二维数组的访问" class="headerlink" title="2.2 二维数组的访问"></a>2.2 二维数组的访问</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span> &#123;</span><br><span class="line">    <span class="type">int</span> scores[<span class="number">3</span>][<span class="number">4</span>] = &#123;</span><br><span class="line">        &#123;<span class="number">85</span>, <span class="number">92</span>, <span class="number">78</span>, <span class="number">88</span>&#125;,  <span class="comment">// 学生0的4科成绩</span></span><br><span class="line">        &#123;<span class="number">90</span>, <span class="number">87</span>, <span class="number">93</span>, <span class="number">89</span>&#125;,  <span class="comment">// 学生1的4科成绩</span></span><br><span class="line">        &#123;<span class="number">76</span>, <span class="number">82</span>, <span class="number">79</span>, <span class="number">91</span>&#125;   <span class="comment">// 学生2的4科成绩</span></span><br><span class="line">    &#125;;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 访问单个元素</span></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;学生0的语文成绩：%d\n&quot;</span>, scores[<span class="number">0</span>][<span class="number">0</span>]);  <span class="comment">// 85</span></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;学生1的数学成绩：%d\n&quot;</span>, scores[<span class="number">1</span>][<span class="number">1</span>]);  <span class="comment">// 87</span></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;学生2的英语成绩：%d\n&quot;</span>, scores[<span class="number">2</span>][<span class="number">2</span>]);  <span class="comment">// 79</span></span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 修改元素</span></span><br><span class="line">    scores[<span class="number">2</span>][<span class="number">1</span>] = <span class="number">88</span>;  <span class="comment">// 修改学生2的数学成绩为88</span></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;修改后的数学成绩：%d\n&quot;</span>, scores[<span class="number">2</span>][<span class="number">1</span>]);</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="2-3-二维数组的遍历（双重循环）"><a href="#2-3-二维数组的遍历（双重循环）" class="headerlink" title="2.3 二维数组的遍历（双重循环）"></a>2.3 二维数组的遍历（双重循环）</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span> &#123;</span><br><span class="line">    <span class="type">int</span> scores[<span class="number">3</span>][<span class="number">4</span>] = &#123;</span><br><span class="line">        &#123;<span class="number">85</span>, <span class="number">92</span>, <span class="number">78</span>, <span class="number">88</span>&#125;,</span><br><span class="line">        &#123;<span class="number">90</span>, <span class="number">87</span>, <span class="number">93</span>, <span class="number">89</span>&#125;,</span><br><span class="line">        &#123;<span class="number">76</span>, <span class="number">82</span>, <span class="number">79</span>, <span class="number">91</span>&#125;</span><br><span class="line">    &#125;;</span><br><span class="line">    </span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;成绩表：\n&quot;</span>);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;    语文 数学 英语 科学\n&quot;</span>);</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 双重循环遍历二维数组</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">0</span>; i &lt; <span class="number">3</span>; i++) &#123;      <span class="comment">// 外层循环：行（学生）</span></span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;学生%d &quot;</span>, i);</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> j = <span class="number">0</span>; j &lt; <span class="number">4</span>; j++) &#123;  <span class="comment">// 内层循环：列（科目）</span></span><br><span class="line">            <span class="built_in">printf</span>(<span class="string">&quot;%3d &quot;</span>, scores[i][j]);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;\n&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 计算每个学生的总分</span></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;\n学生总分：\n&quot;</span>);</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">0</span>; i &lt; <span class="number">3</span>; i++) &#123;</span><br><span class="line">        <span class="type">int</span> sum = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> j = <span class="number">0</span>; j &lt; <span class="number">4</span>; j++) &#123;</span><br><span class="line">            sum += scores[i][j];</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;学生%d的总分：%d\n&quot;</span>, i, sum);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="实战场景应用"><a href="#实战场景应用" class="headerlink" title="实战场景应用"></a>实战场景应用</h2><h3 id="场景1：学生成绩管理系统"><a href="#场景1：学生成绩管理系统" class="headerlink" title="场景1：学生成绩管理系统"></a>场景1：学生成绩管理系统</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> STUDENT_NUM 5  <span class="comment">// 学生人数</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> SUBJECT_NUM 3  <span class="comment">// 科目数</span></span></span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span> &#123;</span><br><span class="line">    <span class="comment">// 存储学生成绩的二维数组</span></span><br><span class="line">    <span class="comment">// 行：学生，列：科目（0语文，1数学，2英语）</span></span><br><span class="line">    <span class="type">int</span> scores[STUDENT_NUM][SUBJECT_NUM];</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 1. 输入成绩</span></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;========== 学生成绩录入系统 ==========\n&quot;</span>);</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">0</span>; i &lt; STUDENT_NUM; i++) &#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;\n请输入第%d个学生的成绩：\n&quot;</span>, i + <span class="number">1</span>);</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;语文：&quot;</span>);</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>, &amp;scores[i][<span class="number">0</span>]);</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;数学：&quot;</span>);</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>, &amp;scores[i][<span class="number">1</span>]);</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;英语：&quot;</span>);</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>, &amp;scores[i][<span class="number">2</span>]);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 2. 显示所有成绩</span></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;\n========== 成绩表 ==========\n&quot;</span>);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;学号\t语文\t数学\t英语\t总分\n&quot;</span>);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;--------------------------------\n&quot;</span>);</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">0</span>; i &lt; STUDENT_NUM; i++) &#123;</span><br><span class="line">        <span class="type">int</span> sum = <span class="number">0</span>;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;%d\t&quot;</span>, i + <span class="number">1</span>);</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> j = <span class="number">0</span>; j &lt; SUBJECT_NUM; j++) &#123;</span><br><span class="line">            <span class="built_in">printf</span>(<span class="string">&quot;%d\t&quot;</span>, scores[i][j]);</span><br><span class="line">            sum += scores[i][j];</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;%d\n&quot;</span>, sum);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 3. 计算各科平均分</span></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;\n========== 各科平均分 ==========\n&quot;</span>);</span><br><span class="line">    <span class="type">char</span>* subjects[] = &#123;<span class="string">&quot;语文&quot;</span>, <span class="string">&quot;数学&quot;</span>, <span class="string">&quot;英语&quot;</span>&#125;;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> j = <span class="number">0</span>; j &lt; SUBJECT_NUM; j++) &#123;</span><br><span class="line">        <span class="type">int</span> sum = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">0</span>; i &lt; STUDENT_NUM; i++) &#123;</span><br><span class="line">            sum += scores[i][j];</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="type">float</span> avg = sum / (<span class="type">float</span>)STUDENT_NUM;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;%s平均分：%.2f\n&quot;</span>, subjects[j], avg);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 4. 找出最高分和最低分</span></span><br><span class="line">    <span class="type">int</span> max_score = scores[<span class="number">0</span>][<span class="number">0</span>], min_score = scores[<span class="number">0</span>][<span class="number">0</span>];</span><br><span class="line">    <span class="type">int</span> max_stu = <span class="number">0</span>, max_sub = <span class="number">0</span>, min_stu = <span class="number">0</span>, min_sub = <span class="number">0</span>;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">0</span>; i &lt; STUDENT_NUM; i++) &#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> j = <span class="number">0</span>; j &lt; SUBJECT_NUM; j++) &#123;</span><br><span class="line">            <span class="keyword">if</span>(scores[i][j] &gt; max_score) &#123;</span><br><span class="line">                max_score = scores[i][j];</span><br><span class="line">                max_stu = i;</span><br><span class="line">                max_sub = j;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span>(scores[i][j] &lt; min_score) &#123;</span><br><span class="line">                min_score = scores[i][j];</span><br><span class="line">                min_stu = i;</span><br><span class="line">                min_sub = j;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;\n最高分：%d分 (学生%d，%s)\n&quot;</span>, </span><br><span class="line">           max_score, max_stu + <span class="number">1</span>, subjects[max_sub]);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;最低分：%d分 (学生%d，%s)\n&quot;</span>, </span><br><span class="line">           min_score, min_stu + <span class="number">1</span>, subjects[min_sub]);</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="场景2：矩阵运算"><a href="#场景2：矩阵运算" class="headerlink" title="场景2：矩阵运算"></a>场景2：矩阵运算</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> ROW 3</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> COL 3</span></span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span> &#123;</span><br><span class="line">    <span class="type">int</span> matrix1[ROW][COL] = &#123;</span><br><span class="line">        &#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>&#125;,</span><br><span class="line">        &#123;<span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>&#125;,</span><br><span class="line">        &#123;<span class="number">7</span>, <span class="number">8</span>, <span class="number">9</span>&#125;</span><br><span class="line">    &#125;;</span><br><span class="line">    </span><br><span class="line">    <span class="type">int</span> matrix2[ROW][COL] = &#123;</span><br><span class="line">        &#123;<span class="number">9</span>, <span class="number">8</span>, <span class="number">7</span>&#125;,</span><br><span class="line">        &#123;<span class="number">6</span>, <span class="number">5</span>, <span class="number">4</span>&#125;,</span><br><span class="line">        &#123;<span class="number">3</span>, <span class="number">2</span>, <span class="number">1</span>&#125;</span><br><span class="line">    &#125;;</span><br><span class="line">    </span><br><span class="line">    <span class="type">int</span> result[ROW][COL];  <span class="comment">// 存储运算结果</span></span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 矩阵相加</span></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;========== 矩阵相加 ==========\n&quot;</span>);</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">0</span>; i &lt; ROW; i++) &#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> j = <span class="number">0</span>; j &lt; COL; j++) &#123;</span><br><span class="line">            result[i][j] = matrix1[i][j] + matrix2[i][j];</span><br><span class="line">            <span class="built_in">printf</span>(<span class="string">&quot;%3d &quot;</span>, result[i][j]);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;\n&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 矩阵转置</span></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;\n========== 矩阵转置 ==========\n&quot;</span>);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;原矩阵：\n&quot;</span>);</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">0</span>; i &lt; ROW; i++) &#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> j = <span class="number">0</span>; j &lt; COL; j++) &#123;</span><br><span class="line">            <span class="built_in">printf</span>(<span class="string">&quot;%3d &quot;</span>, matrix1[i][j]);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;\n&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;转置后：\n&quot;</span>);</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">0</span>; i &lt; COL; i++) &#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> j = <span class="number">0</span>; j &lt; ROW; j++) &#123;</span><br><span class="line">            <span class="built_in">printf</span>(<span class="string">&quot;%3d &quot;</span>, matrix1[j][i]);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;\n&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="场景3：字符数组（字符串）"><a href="#场景3：字符数组（字符串）" class="headerlink" title="场景3：字符数组（字符串）"></a>场景3：字符数组（字符串）</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;string.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span> &#123;</span><br><span class="line">    <span class="comment">// 一维字符数组 = 字符串</span></span><br><span class="line">    <span class="type">char</span> name[<span class="number">20</span>] = <span class="string">&quot;张三&quot;</span>;</span><br><span class="line">    <span class="type">char</span> greeting[<span class="number">50</span>];</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 字符串操作</span></span><br><span class="line">    <span class="built_in">strcpy</span>(greeting, <span class="string">&quot;你好，&quot;</span>);  <span class="comment">// 复制字符串</span></span><br><span class="line">    <span class="built_in">strcat</span>(greeting, name);      <span class="comment">// 连接字符串</span></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;%s\n&quot;</span>, greeting);</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 二维字符数组 = 多个字符串</span></span><br><span class="line">    <span class="type">char</span> students[<span class="number">3</span>][<span class="number">20</span>] = &#123;</span><br><span class="line">        <span class="string">&quot;张三&quot;</span>,</span><br><span class="line">        <span class="string">&quot;李四&quot;</span>,</span><br><span class="line">        <span class="string">&quot;王五&quot;</span></span><br><span class="line">    &#125;;</span><br><span class="line">    </span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;\n学生名单：\n&quot;</span>);</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">0</span>; i &lt; <span class="number">3</span>; i++) &#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;第%d个学生：%s\n&quot;</span>, i + <span class="number">1</span>, students[i]);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 从键盘输入多个字符串</span></span><br><span class="line">    <span class="type">char</span> names[<span class="number">5</span>][<span class="number">30</span>];</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;\n请输入5个名字：\n&quot;</span>);</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">0</span>; i &lt; <span class="number">5</span>; i++) &#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;第%d个：&quot;</span>, i + <span class="number">1</span>);</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">&quot;%s&quot;</span>, names[i]);  <span class="comment">// 注意：字符串不需要&amp;</span></span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;\n你输入的名字：\n&quot;</span>);</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">0</span>; i &lt; <span class="number">5</span>; i++) &#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;%s\n&quot;</span>, names[i]);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>场景4：数据统计与分析</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> DAYS 7  <span class="comment">// 一周7天</span></span></span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span> &#123;</span><br><span class="line">    <span class="comment">// 存储一周的温度</span></span><br><span class="line">    <span class="type">int</span> temperatures[DAYS];</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 输入温度</span></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;请输入一周7天的温度：\n&quot;</span>);</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">0</span>; i &lt; DAYS; i++) &#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;第%d天：&quot;</span>, i + <span class="number">1</span>);</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>, &amp;temperatures[i]);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 统计信息</span></span><br><span class="line">    <span class="type">int</span> sum = <span class="number">0</span>;</span><br><span class="line">    <span class="type">int</span> max_temp = temperatures[<span class="number">0</span>];</span><br><span class="line">    <span class="type">int</span> min_temp = temperatures[<span class="number">0</span>];</span><br><span class="line">    <span class="type">int</span> max_day = <span class="number">0</span>, min_day = <span class="number">0</span>;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">0</span>; i &lt; DAYS; i++) &#123;</span><br><span class="line">        sum += temperatures[i];</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">if</span>(temperatures[i] &gt; max_temp) &#123;</span><br><span class="line">            max_temp = temperatures[i];</span><br><span class="line">            max_day = i;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">if</span>(temperatures[i] &lt; min_temp) &#123;</span><br><span class="line">            min_temp = temperatures[i];</span><br><span class="line">            min_day = i;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="type">float</span> avg = sum / (<span class="type">float</span>)DAYS;</span><br><span class="line">    </span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;\n========== 温度统计 ==========\n&quot;</span>);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;最高温度：%d℃ (第%d天)\n&quot;</span>, max_temp, max_day + <span class="number">1</span>);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;最低温度：%d℃ (第%d天)\n&quot;</span>, min_temp, min_day + <span class="number">1</span>);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;平均温度：%.1f℃\n&quot;</span>, avg);</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 找出高于平均温度的天数</span></span><br><span class="line">    <span class="type">int</span> above_avg = <span class="number">0</span>;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;\n高于平均温度的天数：&quot;</span>);</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">0</span>; i &lt; DAYS; i++) &#123;</span><br><span class="line">        <span class="keyword">if</span>(temperatures[i] &gt; avg) &#123;</span><br><span class="line">            above_avg++;</span><br><span class="line">            <span class="built_in">printf</span>(<span class="string">&quot; %d&quot;</span>, i + <span class="number">1</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;\n共%d天\n&quot;</span>, above_avg);</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+                
+
+                <hr>
+                <!-- Pager -->
+                <ul class="pager">
+                    
+                    
+                        <li class="next">
+                            <a href="/2026/03/30/C-second-note/" data-toggle="tooltip" data-placement="top" title="C语言笔记2">Next post &rarr;</a>
+                        </li>
+                    
+                </ul>
+
+                <br>
+
+                <!--打赏-->
+                
+                <!--打赏-->
+
+                <br>
+                <!--分享-->
+                
+                    <div class="social-share"  data-wechat-qrcode-helper="" align="center"></div>
+                    <!--  css & js -->
+                    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/css/share.min.css">
+                    <script src="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/js/social-share.min.js"></script>
+                
+                <!--分享-->
+                <br>                       
+                
+                <!-- require APlayer -->
+                
+
+                <!-- disqus comment start -->
+                
+                <!-- disqus comment end -->
+
+                
+				
+            </div>
+
+            <!-- Tabe of Content -->
+            <!-- Table of Contents -->
+
+                
+            <!-- Sidebar Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                <!-- Featured Tags -->
+                
+                <section>
+                    <!-- no hr -->
+                    <h5><a href="/tags/">Tags</a></h5>
+                    <div class="tags">
+                       
+                    </div>
+                </section>
+                
+
+                <!-- Friends Blog -->
+                
+                <hr>
+                <h5>FRIENDS</h5>
+                <ul class="list-inline">
+
+                    
+                        <li><a href="http://www.sumoon.com" target="_blank">ACE theme</a></li>
+                    
+                </ul>
+                
+            </div>
+        </div>
+    </div>
+</article>
+
+
+
+
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+<!-- anchor-js, Doc:http://bryanbraun.github.io/anchorjs/ -->
+<script>
+    async("https://cdn.bootcss.com/anchor-js/1.1.1/anchor.min.js",function(){
+        anchors.options = {
+          visible: 'hover',
+          placement: 'left',
+          icon: 'ℬ'
+        };
+        anchors.add().remove('.intro-header h1').remove('.subheading').remove('.sidebar-container h5');
+    })
+</script>
+<style>
+    /* place left on bigger screen */
+    @media all and (min-width: 800px) {
+        .anchorjs-link{
+            position: absolute;
+            left: -0.75em;
+            font-size: 1.1em;
+            margin-top : -0.1em;
+        }
+    }
+</style>
+
+
+
+    <!-- Footer -->
+    <!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                
+                
+                
+
+                
+
+                
+
+                
+                    <li>
+                        <a target="_blank"  href="https://github.com/kinggozhang">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+
+                </ul>
+                <p class="copyright text-muted">
+                    Copyright &copy; John Doe 2026 
+                    <br>
+                    Powered by <a target="_blank" rel="noopener" href="http://www.hexo.io">Hexo</a> 
+                    <span style="display: inline-block; margin: 0 5px;">
+                        <i class="fa fa-heart"></i>
+                    </span> 
+                    Theme by <a target="_blank" rel="noopener" href="https://github.com/kinggozhang/hexo-theme-ace">ACE</a> 
+					
+					
+					<i class="fa fa-eye" id="leancounter"></i>
+					
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- jQuery -->
+
+   
+<script src="https://cdn.staticfile.org/jquery/2.2.4/jquery.min.js"></script>
+
+
+
+
+<!-- Bootstrap Core JavaScript -->
+
+   
+<script src="https://cdn.staticfile.org/twitter-bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+
+
+<!-- Custom Theme JavaScript -->
+
+<script src="/js/hux-blog.min.js"></script>
+
+
+
+	
+<script src="/js/particles.js"></script>
+
+	
+<script src="/js/particles_config.js"></script>
+
+
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+<!-- 
+     Because of the native support for backtick-style fenced code blocks 
+     right within the Markdown is landed in Github Pages, 
+     From V1.6, There is no need for Highlight.js, 
+     so Huxblog drops it officially.
+
+     - https://github.com/blog/2100-github-pages-now-faster-and-simpler-with-jekyll-3-0  
+     - https://help.github.com/articles/creating-and-highlighting-code-blocks/    
+-->
+<!--
+    <script>
+        async("http://cdn.bootcss.com/highlight.js/8.6/highlight.min.js", function(){
+            hljs.initHighlightingOnLoad();
+        })
+    </script>
+    <link href="http://cdn.bootcss.com/highlight.js/8.6/styles/github.min.css" rel="stylesheet">
+-->
+
+
+<!-- jquery.tagcloud.js -->
+<script>
+    // only load tagcloud.js in tag.html
+    if($('#tag_cloud').length !== 0){
+        async("http://example.com/2026/03/31/C-third-note/index.html/js/jquery.tagcloud.js",function(){
+            $.fn.tagcloud.defaults = {
+                //size: {start: 1, end: 1, unit: 'em'},
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+<!--fastClick.js -->
+<script>
+    async("https://cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+
+<!-- Google Analytics -->
+
+
+
+
+<!-- Baidu Tongji -->
+
+
+
+
+
+
+	<a id="rocket" href="#top" class=""></a>
+	<script type="text/javascript" src="/js/totop.js?v=1.0.0" async=""></script>
+    <script type="text/javascript" src="/js/toc.js?v=1.0.0" async=""></script>
+<!-- Image to hack wechat -->
+<img src="http://example.com/img/icon_wechat.png" width="0" height="0" />
+<!-- Migrate from head to bottom, no longer block render and still work -->
+
+</body>
+
+</html>
