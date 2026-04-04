@@ -1,0 +1,627 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="keyword"  content="">
+    <link rel="shortcut icon" href="/img/ironman-draw.png">
+    <!-- Place this tag in your head or just before your close body tag. -->
+    <script async defer src="https://buttons.github.io/buttons.js"></script>
+    <title>
+        
+          第三周考核题部分解析 - null
+        
+    </title>
+
+    <link rel="canonical" href="http://example.com/2026/04/04/test-week3/">
+
+    <!-- Bootstrap Core CSS -->
+
+   
+<link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.4.1/css/bootstrap.min.css">
+
+
+    
+
+    <!-- Custom CSS --> 
+    
+<link rel="stylesheet" href="/css/beantech.min.css">
+
+
+    
+<link rel="stylesheet" href="/css/donate.css">
+
+	
+<link rel="stylesheet" href="/css/w3.css">
+
+    <!-- Pygments Highlight CSS -->
+    
+<link rel="stylesheet" href="/css/highlight.css">
+
+
+    
+<link rel="stylesheet" href="/css/widget.css">
+
+
+    
+<link rel="stylesheet" href="/css/rocket.css">
+
+
+    
+<link rel="stylesheet" href="/css/signature.css">
+
+
+    
+<link rel="stylesheet" href="/css/toc.css">
+
+
+    <!-- Custom Fonts -->
+    <!-- <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css"> -->
+    <!-- Hux change font-awesome CDN to qiniu -->
+    <link href="https://cdn.staticfile.org/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+
+    <!-- Hux Delete, sad but pending in China
+    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/
+    css'>
+    -->
+
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+	
+
+    <!-- ga & ba script hoook -->
+    <script></script>
+<meta name="generator" content="Hexo 8.1.1"></head>
+
+
+<!-- hack iOS CSS :active style -->
+<body ontouchstart="">
+	<!-- Modified by Yu-Hsuan Yen -->
+<!-- Post Header -->
+<style type="text/css">
+    header.intro-header{
+    }
+   .post-heading{
+    padding:20px;
+    }
+  .person {
+    border: 10px solid transparent;
+    margin-bottom: 25px;
+    width: 80%;
+    height: 80%;
+    opacity: 0.7;
+  }
+  .person:hover {
+    border-color: #f1f1f1;
+  }
+
+</style>
+
+<header id="headerid" class="w3-indigo intro-header" style="position:relative;">
+    <!-- Signature -->
+	
+        <div class="container">
+            <div class=" row" >
+			
+			<canvas id="particles-js-canvas" style="position:absolute;z-index:1;top:0px;left:0px;" width="100%" height="50%"></canvas>
+			
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1" style="z-index:2;">
+                
+                    <div class="post-heading" style="padding:40px">
+                        <div class="tags">
+                            
+                        </div>
+                        <h1>第三周考核题部分解析</h1>
+                        <h2 class="subheading"></h2>
+                        <span class="meta">
+                            Posted by John Doe on
+                            2026-04-04
+                        </span>
+                    </div>
+                
+                </div>
+            </div>
+        </div>
+  
+</header>
+
+	
+    <!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">Hexo</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <!-- Known Issue, found by Hux:
+            <nav>'s height woule be hold on by its content.
+            so, when navbar scale out, the <nav> will cover tags.
+            also mask any touch event of tags, unfortunately.
+        -->
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a  href="/">Homepage</a>
+                    </li>
+		    
+                    
+
+                        
+                        <li>
+           
+                            <a  href="#">menu1</a>
+                           
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+           
+                            <a  href="#">menu2</a>
+                           
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+           
+                            <a  href="#">menu3</a>
+                           
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+           
+                            <a  href="#">menu3</a>
+                           
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+           
+                            <a  href="#">menu5</a>
+                           
+                        </li>
+                        
+                    
+                    
+                </ul>
+            </div>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+<script>
+    // Drop Bootstarp low-performance Navbar
+    // Use customize navbar with high-quality material design animation
+    // in high-perf jank-free CSS3 implementation
+    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e){
+        if ($navbar.className.indexOf('in') > 0) {
+        // CLOSE
+            $navbar.className = " ";
+            // wait until animation end.
+            setTimeout(function(){
+                // prevent frequently toggle
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        }else{
+        // OPEN
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+</script>
+
+
+    <!-- Main Content -->
+    <!-- Modify by Yu-Hsuan Yen -->
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+
+            <!-- Post Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                post-container">
+
+                <h1 id="第一题"><a href="#第一题" class="headerlink" title="第一题"></a>第一题</h1><p>1.现在有一段神秘的伪代码，但是不用管这个函数实现了啥功能，根据上面回复出来的伪代码与下面没有进行回复的代码进行比较，恢复这个名为VM的结构体并且在IDA里面修复,结构如下:</p>
+<p>需要恢复结构体的函数的地址为0x16BC</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">struct <span class="variable constant_">VM</span></span><br><span class="line">&#123;</span><br><span class="line">  ????</span><br><span class="line">  ????</span><br><span class="line">  ????</span><br><span class="line">  ????</span><br><span class="line">  ....</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">unsigned __int16 __fastcall <span class="attr">vm</span>::<span class="title function_">step</span>(<span class="params">VM *<span class="variable language_">this</span></span>)</span><br><span class="line">&#123;</span><br><span class="line">  unsigned int n0xFC; <span class="comment">// eax</span></span><br><span class="line">  unsigned __int16 v2; <span class="comment">// dx</span></span><br><span class="line">  unsigned __int16 sp; <span class="comment">// ax</span></span><br><span class="line">  unsigned __int16 v4; <span class="comment">// cx</span></span><br><span class="line">  unsigned __int16 v5; <span class="comment">// cx</span></span><br><span class="line">  unsigned __int16 v6; <span class="comment">// ax</span></span><br><span class="line">  unsigned __int16 result; <span class="comment">// ax</span></span><br><span class="line">  unsigned __int16 v8; <span class="comment">// [rsp+1Eh] [rbp-2h]</span></span><br><span class="line"></span><br><span class="line">  v8 = <span class="variable language_">this</span>-&gt;regs[<span class="variable language_">this</span>-&gt;mem[<span class="variable language_">this</span>-&gt;pc + <span class="number">2</span>]];</span><br><span class="line">  n0xFC = <span class="variable language_">this</span>-&gt;mem[<span class="variable language_">this</span>-&gt;pc];</span><br><span class="line">  <span class="keyword">if</span> ( n0xFC &gt; <span class="number">0xFC</span> )</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">  <span class="keyword">if</span> ( <span class="variable language_">this</span>-&gt;mem[<span class="variable language_">this</span>-&gt;pc] &lt; 0xB0u )</span><br><span class="line">  &#123;</span><br><span class="line">    <span class="keyword">if</span> ( <span class="variable language_">this</span>-&gt;mem[<span class="variable language_">this</span>-&gt;pc] &lt;= 0xA0u )</span><br><span class="line">    &#123;</span><br><span class="line">      <span class="keyword">if</span> ( <span class="variable language_">this</span>-&gt;mem[<span class="variable language_">this</span>-&gt;pc] &gt;= 0x80u )</span><br><span class="line">      &#123;</span><br><span class="line">        <span class="keyword">switch</span> ( <span class="variable language_">this</span>-&gt;mem[<span class="variable language_">this</span>-&gt;pc] )</span><br><span class="line">        &#123;</span><br><span class="line">          <span class="keyword">case</span> 0<span class="attr">x80u</span>:</span><br><span class="line">            <span class="variable language_">this</span>-&gt;regs[<span class="variable language_">this</span>-&gt;mem[<span class="variable language_">this</span>-&gt;pc + <span class="number">1</span>]] = v8;</span><br><span class="line">            <span class="variable language_">this</span>-&gt;pc += <span class="number">3</span>;</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">          <span class="keyword">case</span> 0<span class="attr">x81u</span>:</span><br><span class="line">            <span class="variable language_">this</span>-&gt;regs[<span class="variable language_">this</span>-&gt;mem[<span class="variable language_">this</span>-&gt;pc + <span class="number">1</span>]] = (<span class="variable language_">this</span>-&gt;mem[<span class="variable language_">this</span>-&gt;pc + <span class="number">3</span>] &lt;&lt; <span class="number">8</span>) | <span class="variable language_">this</span>-&gt;mem[<span class="variable language_">this</span>-&gt;pc + <span class="number">2</span>];</span><br><span class="line">            <span class="variable language_">this</span>-&gt;pc += <span class="number">4</span>;</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">          <span class="keyword">case</span> 0<span class="attr">x90u</span>:</span><br><span class="line">            <span class="variable language_">this</span>-&gt;regs[<span class="variable language_">this</span>-&gt;mem[<span class="variable language_">this</span>-&gt;pc + <span class="number">1</span>]] += v8;</span><br><span class="line">            <span class="variable language_">this</span>-&gt;pc += <span class="number">3</span>;</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">          <span class="keyword">case</span> 0<span class="attr">x91u</span>:</span><br><span class="line">            <span class="variable language_">this</span>-&gt;regs[<span class="variable language_">this</span>-&gt;mem[<span class="variable language_">this</span>-&gt;pc + <span class="number">1</span>]] += <span class="variable language_">this</span>-&gt;mem[<span class="variable language_">this</span>-&gt;pc + <span class="number">2</span>] | (<span class="variable language_">this</span>-&gt;mem[<span class="variable language_">this</span>-&gt;pc + <span class="number">3</span>] &lt;&lt; <span class="number">8</span>);</span><br><span class="line">            <span class="variable language_">this</span>-&gt;pc += <span class="number">4</span>;</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">          <span class="keyword">case</span> 0<span class="attr">xA0u</span>:</span><br><span class="line">            <span class="variable language_">this</span>-&gt;regs[<span class="variable language_">this</span>-&gt;mem[<span class="variable language_">this</span>-&gt;pc + <span class="number">1</span>]] -= v8;</span><br><span class="line">            <span class="variable language_">this</span>-&gt;pc += <span class="number">3</span>;</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">          <span class="attr">default</span>:</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="keyword">else</span> <span class="keyword">if</span> ( n0xFC == <span class="number">0x4C</span> )</span><br><span class="line">      &#123;</span><br><span class="line">        sp = <span class="variable language_">this</span>-&gt;sp;</span><br><span class="line">        <span class="variable language_">this</span>-&gt;sp = sp - <span class="number">1</span>;</span><br><span class="line">        <span class="variable language_">this</span>-&gt;regs[<span class="variable language_">this</span>-&gt;mem[<span class="variable language_">this</span>-&gt;pc + <span class="number">1</span>]] = <span class="variable language_">this</span>-&gt;stack[sp];</span><br><span class="line">        <span class="variable language_">this</span>-&gt;pc += <span class="number">2</span>;</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="keyword">else</span> <span class="keyword">if</span> ( <span class="variable language_">this</span>-&gt;mem[<span class="variable language_">this</span>-&gt;pc] &lt;= 0x4Cu )</span><br><span class="line">      &#123;</span><br><span class="line">        <span class="keyword">if</span> ( <span class="variable language_">this</span>-&gt;mem[<span class="variable language_">this</span>-&gt;pc] &gt; 0x29u )</span><br><span class="line">        &#123;</span><br><span class="line">          <span class="keyword">if</span> ( n0xFC == <span class="number">0x48</span> )</span><br><span class="line">          &#123;</span><br><span class="line">            v2 = <span class="variable language_">this</span>-&gt;regs[<span class="variable language_">this</span>-&gt;mem[<span class="variable language_">this</span>-&gt;pc + <span class="number">1</span>]];</span><br><span class="line">            <span class="variable language_">this</span>-&gt;stack[++<span class="variable language_">this</span>-&gt;sp] = v2;</span><br><span class="line">            <span class="variable language_">this</span>-&gt;pc += <span class="number">2</span>;</span><br><span class="line">          &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span> ( <span class="variable language_">this</span>-&gt;mem[<span class="variable language_">this</span>-&gt;pc] &gt;= 8u )</span><br><span class="line">        &#123;</span><br><span class="line">          <span class="keyword">switch</span> ( <span class="variable language_">this</span>-&gt;mem[<span class="variable language_">this</span>-&gt;pc] )</span><br><span class="line">          &#123;</span><br><span class="line">            <span class="keyword">case</span> 8<span class="attr">u</span>:</span><br><span class="line">              <span class="variable language_">this</span>-&gt;regs[<span class="variable language_">this</span>-&gt;mem[<span class="variable language_">this</span>-&gt;pc + <span class="number">1</span>]] = <span class="variable language_">this</span>-&gt;mem[v8];</span><br><span class="line">              <span class="variable language_">this</span>-&gt;pc += <span class="number">3</span>;</span><br><span class="line">              <span class="keyword">break</span>;</span><br><span class="line">            <span class="keyword">case</span> 0<span class="attr">xAu</span>:</span><br><span class="line">              <span class="variable language_">this</span>-&gt;regs[<span class="variable language_">this</span>-&gt;mem[<span class="variable language_">this</span>-&gt;pc + <span class="number">1</span>]] = (<span class="variable language_">this</span>-&gt;mem[v8 + <span class="number">1</span>] &lt;&lt; <span class="number">8</span>) | <span class="variable language_">this</span>-&gt;mem[v8];</span><br><span class="line">              <span class="variable language_">this</span>-&gt;pc += <span class="number">3</span>;</span><br><span class="line">              <span class="keyword">break</span>;</span><br><span class="line">            <span class="keyword">case</span> 0<span class="attr">x18u</span>:</span><br><span class="line">              <span class="variable language_">this</span>-&gt;mem[<span class="variable language_">this</span>-&gt;regs[<span class="variable language_">this</span>-&gt;mem[<span class="variable language_">this</span>-&gt;pc + <span class="number">1</span>]]] = v8;</span><br><span class="line">              <span class="variable language_">this</span>-&gt;pc += <span class="number">3</span>;</span><br><span class="line">              <span class="keyword">break</span>;</span><br><span class="line">            <span class="keyword">case</span> 0<span class="attr">x1Au</span>:</span><br><span class="line">              <span class="variable language_">this</span>-&gt;mem[<span class="variable language_">this</span>-&gt;regs[<span class="variable language_">this</span>-&gt;mem[<span class="variable language_">this</span>-&gt;pc + <span class="number">1</span>]]] = v8;</span><br><span class="line">              <span class="variable language_">this</span>-&gt;mem[<span class="variable language_">this</span>-&gt;regs[<span class="variable language_">this</span>-&gt;mem[<span class="variable language_">this</span>-&gt;pc + <span class="number">1</span>]] + <span class="number">1</span>] = <span class="title function_">HIBYTE</span>(v8);</span><br><span class="line">              <span class="variable language_">this</span>-&gt;pc += <span class="number">3</span>;</span><br><span class="line">              <span class="keyword">break</span>;</span><br><span class="line">            <span class="keyword">case</span> 0<span class="attr">x28u</span>:</span><br><span class="line">              <span class="variable language_">this</span>-&gt;flags = v8 == <span class="variable language_">this</span>-&gt;regs[<span class="variable language_">this</span>-&gt;mem[<span class="variable language_">this</span>-&gt;pc + <span class="number">1</span>]];</span><br><span class="line">              <span class="variable language_">this</span>-&gt;pc += <span class="number">3</span>;</span><br><span class="line">              <span class="keyword">break</span>;</span><br><span class="line">            <span class="keyword">case</span> 0<span class="attr">x29u</span>:</span><br><span class="line">              <span class="variable language_">this</span>-&gt;flags = <span class="variable language_">this</span>-&gt;regs[<span class="variable language_">this</span>-&gt;mem[<span class="variable language_">this</span>-&gt;pc + <span class="number">1</span>]] == (<span class="variable language_">this</span>-&gt;mem[<span class="variable language_">this</span>-&gt;pc + <span class="number">2</span>]</span><br><span class="line">                                                                  | (<span class="variable language_">this</span>-&gt;mem[<span class="variable language_">this</span>-&gt;pc + <span class="number">3</span>] &lt;&lt; <span class="number">8</span>));</span><br><span class="line">              <span class="variable language_">this</span>-&gt;pc += <span class="number">4</span>;</span><br><span class="line">              <span class="keyword">break</span>;</span><br><span class="line">            <span class="attr">default</span>:</span><br><span class="line">              <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">          &#125;</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">switch</span> ( <span class="variable language_">this</span>-&gt;mem[<span class="variable language_">this</span>-&gt;pc] )</span><br><span class="line">  &#123;</span><br><span class="line">    <span class="keyword">case</span> 0<span class="attr">xB0u</span>:</span><br><span class="line">      <span class="variable language_">this</span>-&gt;regs[<span class="variable language_">this</span>-&gt;mem[<span class="variable language_">this</span>-&gt;pc + <span class="number">1</span>]] ^= v8;</span><br><span class="line">      <span class="variable language_">this</span>-&gt;pc += <span class="number">3</span>;</span><br><span class="line">      <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">case</span> 0<span class="attr">xC1u</span>:</span><br><span class="line">      <span class="variable language_">this</span>-&gt;regs[<span class="variable language_">this</span>-&gt;mem[<span class="variable language_">this</span>-&gt;pc + <span class="number">1</span>]] *= <span class="variable language_">this</span>-&gt;mem[<span class="variable language_">this</span>-&gt;pc + <span class="number">2</span>] | (unsigned __int16)(<span class="variable language_">this</span>-&gt;mem[<span class="variable language_">this</span>-&gt;pc + <span class="number">3</span>] &lt;&lt; <span class="number">8</span>);</span><br><span class="line">      <span class="variable language_">this</span>-&gt;pc += <span class="number">4</span>;</span><br><span class="line">      <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">case</span> 0<span class="attr">xE0u</span>:</span><br><span class="line">      <span class="variable language_">this</span>-&gt;pc = <span class="variable language_">this</span>-&gt;mem[<span class="variable language_">this</span>-&gt;pc + <span class="number">1</span>] | (<span class="variable language_">this</span>-&gt;mem[<span class="variable language_">this</span>-&gt;pc + <span class="number">2</span>] &lt;&lt; <span class="number">8</span>);</span><br><span class="line">      <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">case</span> 0<span class="attr">xE8u</span>:</span><br><span class="line">      <span class="keyword">if</span> ( <span class="variable language_">this</span>-&gt;flags )</span><br><span class="line">        <span class="variable language_">this</span>-&gt;pc = <span class="variable language_">this</span>-&gt;mem[<span class="variable language_">this</span>-&gt;pc + <span class="number">1</span>] | (<span class="variable language_">this</span>-&gt;mem[<span class="variable language_">this</span>-&gt;pc + <span class="number">2</span>] &lt;&lt; <span class="number">8</span>);</span><br><span class="line">      <span class="keyword">else</span></span><br><span class="line">        <span class="variable language_">this</span>-&gt;pc += <span class="number">3</span>;</span><br><span class="line">      <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">case</span> 0<span class="attr">xECu</span>:</span><br><span class="line">      <span class="keyword">if</span> ( <span class="variable language_">this</span>-&gt;flags )</span><br><span class="line">        <span class="variable language_">this</span>-&gt;pc += <span class="number">3</span>;</span><br><span class="line">      <span class="keyword">else</span></span><br><span class="line">        <span class="variable language_">this</span>-&gt;pc = <span class="variable language_">this</span>-&gt;mem[<span class="variable language_">this</span>-&gt;pc + <span class="number">1</span>] | (<span class="variable language_">this</span>-&gt;mem[<span class="variable language_">this</span>-&gt;pc + <span class="number">2</span>] &lt;&lt; <span class="number">8</span>);</span><br><span class="line">      <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">case</span> 0<span class="attr">xEEu</span>:</span><br><span class="line">      v4 = <span class="variable language_">this</span>-&gt;pc + <span class="number">2</span>;</span><br><span class="line">      <span class="variable language_">this</span>-&gt;stack[++<span class="variable language_">this</span>-&gt;sp] = v4;</span><br><span class="line">      <span class="variable language_">this</span>-&gt;pc = <span class="variable language_">this</span>-&gt;regs[<span class="variable language_">this</span>-&gt;mem[<span class="variable language_">this</span>-&gt;pc + <span class="number">1</span>]];</span><br><span class="line">      <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">case</span> 0<span class="attr">xEFu</span>:</span><br><span class="line">      v5 = <span class="variable language_">this</span>-&gt;pc + <span class="number">3</span>;</span><br><span class="line">      <span class="variable language_">this</span>-&gt;stack[++<span class="variable language_">this</span>-&gt;sp] = v5;</span><br><span class="line">      <span class="variable language_">this</span>-&gt;pc = <span class="variable language_">this</span>-&gt;mem[<span class="variable language_">this</span>-&gt;pc + <span class="number">1</span>] | (<span class="variable language_">this</span>-&gt;mem[<span class="variable language_">this</span>-&gt;pc + <span class="number">2</span>] &lt;&lt; <span class="number">8</span>);</span><br><span class="line">      <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">case</span> 0<span class="attr">xF0u</span>:</span><br><span class="line">      v6 = <span class="variable language_">this</span>-&gt;sp;</span><br><span class="line">      <span class="variable language_">this</span>-&gt;sp = v6 - <span class="number">1</span>;</span><br><span class="line">      <span class="variable language_">this</span>-&gt;pc = <span class="variable language_">this</span>-&gt;stack[v6];</span><br><span class="line">      <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">case</span> 0<span class="attr">xF8u</span>:</span><br><span class="line">      result = -<span class="number">1</span>;</span><br><span class="line">      <span class="keyword">break</span>;</span><br><span class="line">    <span class="keyword">case</span> 0<span class="attr">xFCu</span>:</span><br><span class="line">      <span class="keyword">if</span> ( <span class="variable language_">this</span>-&gt;regs[<span class="number">0</span>] )</span><br><span class="line">        <span class="variable language_">this</span>-&gt;regs[<span class="number">0</span>] = <span class="title function_">read</span>(<span class="number">0</span>, &amp;<span class="variable language_">this</span>-&gt;mem[<span class="variable language_">this</span>-&gt;regs[<span class="number">1</span>]], <span class="variable language_">this</span>-&gt;regs[<span class="number">2</span>]);</span><br><span class="line">      <span class="keyword">else</span></span><br><span class="line">        <span class="title function_">write</span>(<span class="number">1</span>, &amp;<span class="variable language_">this</span>-&gt;mem[<span class="variable language_">this</span>-&gt;regs[<span class="number">1</span>]], <span class="variable language_">this</span>-&gt;regs[<span class="number">2</span>]);</span><br><span class="line">      ++<span class="variable language_">this</span>-&gt;pc;</span><br><span class="line">      <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    <span class="attr">default</span>:</span><br><span class="line">      <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> result;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="解析"><a href="#解析" class="headerlink" title="解析"></a>解析</h2><p>首先我们先把题目拖到ida里面</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br></pre></td><td class="code"><pre><span class="line">__int64 __fastcall <span class="title function_">sub_16BC</span><span class="params">(<span class="type">unsigned</span> __int16 *this)</span></span><br><span class="line">&#123;</span><br><span class="line">  <span class="type">unsigned</span> <span class="type">int</span> n0xFC; <span class="comment">// eax</span></span><br><span class="line">  <span class="type">unsigned</span> __int16 v2; <span class="comment">// dx</span></span><br><span class="line">  <span class="type">unsigned</span> __int16 v3; <span class="comment">// ax</span></span><br><span class="line">  <span class="type">unsigned</span> __int16 v4; <span class="comment">// cx</span></span><br><span class="line">  <span class="type">unsigned</span> __int16 v5; <span class="comment">// cx</span></span><br><span class="line">  <span class="type">unsigned</span> __int16 v6; <span class="comment">// ax</span></span><br><span class="line">  __int64 result; <span class="comment">// rax</span></span><br><span class="line">  <span class="type">unsigned</span> __int16 v8; <span class="comment">// [rsp+1Eh] [rbp-2h]</span></span><br><span class="line"></span><br><span class="line">  v8 = *(this + *((<span class="type">unsigned</span> __int8 *)this + *(this + <span class="number">2304</span>) + <span class="number">2</span>) + <span class="number">2307</span>);</span><br><span class="line">  n0xFC = *((<span class="type">unsigned</span> __int8 *)this + *(this + <span class="number">2304</span>));</span><br><span class="line">  <span class="keyword">if</span> ( n0xFC &gt; <span class="number">0xFC</span> )</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">  <span class="keyword">if</span> ( *((<span class="type">unsigned</span> __int8 *)this + *(this + <span class="number">2304</span>)) &lt; <span class="number">0xB0u</span> )</span><br><span class="line">  &#123;</span><br><span class="line">    <span class="keyword">if</span> ( *((<span class="type">unsigned</span> __int8 *)this + *(this + <span class="number">2304</span>)) &lt;= <span class="number">0xA0u</span> )</span><br><span class="line">    &#123;</span><br><span class="line">      <span class="keyword">if</span> ( *((<span class="type">unsigned</span> __int8 *)this + *(this + <span class="number">2304</span>)) &gt;= <span class="number">0x80u</span> )</span><br><span class="line">      &#123;</span><br><span class="line">        <span class="keyword">switch</span> ( *((_BYTE *)this + *(this + <span class="number">2304</span>)) )</span><br><span class="line">        &#123;</span><br><span class="line">          <span class="keyword">case</span> <span class="number">0x80</span>:</span><br><span class="line">            *(this + *((<span class="type">unsigned</span> __int8 *)this + *(this + <span class="number">2304</span>) + <span class="number">1</span>) + <span class="number">2307</span>) = v8;</span><br><span class="line">            *(this + <span class="number">2304</span>) += <span class="number">3</span>;</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">          <span class="keyword">case</span> <span class="number">0x81</span>:</span><br><span class="line">            *(this + *((<span class="type">unsigned</span> __int8 *)this + *(this + <span class="number">2304</span>) + <span class="number">1</span>) + <span class="number">2307</span>) = (*((<span class="type">unsigned</span> __int8 *)this</span><br><span class="line">                                                                                + *(this + <span class="number">2304</span>)</span><br><span class="line">                                                                                + <span class="number">3</span>) &lt;&lt; <span class="number">8</span>)</span><br><span class="line">                                                                             | *((<span class="type">unsigned</span> __int8 *)this</span><br><span class="line">                                                                               + *(this + <span class="number">2304</span>)</span><br><span class="line">                                                                               + <span class="number">2</span>);</span><br><span class="line">            *(this + <span class="number">2304</span>) += <span class="number">4</span>;</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">          <span class="keyword">case</span> <span class="number">0x90</span>:</span><br><span class="line">            *(this + *((<span class="type">unsigned</span> __int8 *)this + *(this + <span class="number">2304</span>) + <span class="number">1</span>) + <span class="number">2307</span>) += v8;</span><br><span class="line">            *(this + <span class="number">2304</span>) += <span class="number">3</span>;</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">          <span class="keyword">case</span> <span class="number">0x91</span>:</span><br><span class="line">            *(this + *((<span class="type">unsigned</span> __int8 *)this + *(this + <span class="number">2304</span>) + <span class="number">1</span>) + <span class="number">2307</span>) += *((<span class="type">unsigned</span> __int8 *)this</span><br><span class="line">                                                                                + *(this + <span class="number">2304</span>)</span><br><span class="line">                                                                                + <span class="number">2</span>)</span><br><span class="line">                                                                              | (*((<span class="type">unsigned</span> __int8 *)this</span><br><span class="line">                                                                                 + *(this + <span class="number">2304</span>)</span><br><span class="line">                                                                                 + <span class="number">3</span>) &lt;&lt; <span class="number">8</span>);</span><br><span class="line">            *(this + <span class="number">2304</span>) += <span class="number">4</span>;</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">          <span class="keyword">case</span> <span class="number">0xA0</span>:</span><br><span class="line">            *(this + *((<span class="type">unsigned</span> __int8 *)this + *(this + <span class="number">2304</span>) + <span class="number">1</span>) + <span class="number">2307</span>) -= v8;</span><br><span class="line">            *(this + <span class="number">2304</span>) += <span class="number">3</span>;</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">          <span class="keyword">default</span>:</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="keyword">else</span> <span class="keyword">if</span> ( n0xFC == <span class="number">76</span> )</span><br><span class="line">      &#123;</span><br><span class="line">        v3 = *(this + <span class="number">2305</span>);</span><br><span class="line">        *(this + <span class="number">2305</span>) = v3 - <span class="number">1</span>;</span><br><span class="line">        *(this + *((<span class="type">unsigned</span> __int8 *)this + *(this + <span class="number">2304</span>) + <span class="number">1</span>) + <span class="number">2307</span>) = *(this + v3 + <span class="number">2048</span>);</span><br><span class="line">        *(this + <span class="number">2304</span>) += <span class="number">2</span>;</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="keyword">else</span> <span class="keyword">if</span> ( *((<span class="type">unsigned</span> __int8 *)this + *(this + <span class="number">2304</span>)) &lt;= <span class="number">0x4Cu</span> )</span><br><span class="line">      &#123;</span><br><span class="line">        <span class="keyword">if</span> ( *((<span class="type">unsigned</span> __int8 *)this + *(this + <span class="number">2304</span>)) &gt; <span class="number">0x29u</span> )</span><br><span class="line">        &#123;</span><br><span class="line">          <span class="keyword">if</span> ( n0xFC == <span class="number">72</span> )</span><br><span class="line">          &#123;</span><br><span class="line">            v2 = *(this + *((<span class="type">unsigned</span> __int8 *)this + *(this + <span class="number">2304</span>) + <span class="number">1</span>) + <span class="number">2307</span>);</span><br><span class="line">            *(this + ++*(this + <span class="number">2305</span>) + <span class="number">2048</span>) = v2;</span><br><span class="line">            *(this + <span class="number">2304</span>) += <span class="number">2</span>;</span><br><span class="line">          &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span> ( *((<span class="type">unsigned</span> __int8 *)this + *(this + <span class="number">2304</span>)) &gt;= <span class="number">8u</span> )</span><br><span class="line">        &#123;</span><br><span class="line">          <span class="keyword">switch</span> ( *((_BYTE *)this + *(this + <span class="number">2304</span>)) )</span><br><span class="line">          &#123;</span><br><span class="line">            <span class="keyword">case</span> <span class="number">8</span>:</span><br><span class="line">              *(this + *((<span class="type">unsigned</span> __int8 *)this + *(this + <span class="number">2304</span>) + <span class="number">1</span>) + <span class="number">2307</span>) = *((<span class="type">unsigned</span> __int8 *)this + v8);</span><br><span class="line">              *(this + <span class="number">2304</span>) += <span class="number">3</span>;</span><br><span class="line">              <span class="keyword">break</span>;</span><br><span class="line">            <span class="keyword">case</span> <span class="number">0xA</span>:</span><br><span class="line">              *(this + *((<span class="type">unsigned</span> __int8 *)this + *(this + <span class="number">2304</span>) + <span class="number">1</span>) + <span class="number">2307</span>) = (*((<span class="type">unsigned</span> __int8 *)this + v8 + <span class="number">1</span>) &lt;&lt; <span class="number">8</span>)</span><br><span class="line">                                                                               | *((<span class="type">unsigned</span> __int8 *)this + v8);</span><br><span class="line">              *(this + <span class="number">2304</span>) += <span class="number">3</span>;</span><br><span class="line">              <span class="keyword">break</span>;</span><br><span class="line">            <span class="keyword">case</span> <span class="number">0x18</span>:</span><br><span class="line">              *((_BYTE *)this + *(this + *((<span class="type">unsigned</span> __int8 *)this + *(this + <span class="number">2304</span>) + <span class="number">1</span>) + <span class="number">2307</span>)) = v8;</span><br><span class="line">              *(this + <span class="number">2304</span>) += <span class="number">3</span>;</span><br><span class="line">              <span class="keyword">break</span>;</span><br><span class="line">            <span class="keyword">case</span> <span class="number">0x1A</span>:</span><br><span class="line">              *((_BYTE *)this + *(this + *((<span class="type">unsigned</span> __int8 *)this + *(this + <span class="number">2304</span>) + <span class="number">1</span>) + <span class="number">2307</span>)) = v8;</span><br><span class="line">              *((_BYTE *)this + *(this + *((<span class="type">unsigned</span> __int8 *)this + *(this + <span class="number">2304</span>) + <span class="number">1</span>) + <span class="number">2307</span>) + <span class="number">1</span>) = HIBYTE(v8);</span><br><span class="line">              *(this + <span class="number">2304</span>) += <span class="number">3</span>;</span><br><span class="line">              <span class="keyword">break</span>;</span><br><span class="line">            <span class="keyword">case</span> <span class="number">0x28</span>:</span><br><span class="line">              *(this + <span class="number">2306</span>) = v8 == *(this + *((<span class="type">unsigned</span> __int8 *)this + *(this + <span class="number">2304</span>) + <span class="number">1</span>) + <span class="number">2307</span>);</span><br><span class="line">              *(this + <span class="number">2304</span>) += <span class="number">3</span>;</span><br><span class="line">              <span class="keyword">break</span>;</span><br><span class="line">            <span class="keyword">case</span> <span class="number">0x29</span>:</span><br><span class="line">              *(this + <span class="number">2306</span>) = *(this + *((<span class="type">unsigned</span> __int8 *)this + *(this + <span class="number">2304</span>) + <span class="number">1</span>) + <span class="number">2307</span>) == (*((<span class="type">unsigned</span> __int8 *)this + *(this + <span class="number">2304</span>) + <span class="number">2</span>)</span><br><span class="line">                                                                                                  | (*((<span class="type">unsigned</span> __int8 *)this + *(this + <span class="number">2304</span>) + <span class="number">3</span>) &lt;&lt; <span class="number">8</span>));</span><br><span class="line">              *(this + <span class="number">2304</span>) += <span class="number">4</span>;</span><br><span class="line">              <span class="keyword">break</span>;</span><br><span class="line">            <span class="keyword">default</span>:</span><br><span class="line">              <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">          &#125;</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">switch</span> ( *((_BYTE *)this + *(this + <span class="number">2304</span>)) )</span><br><span class="line">  &#123;</span><br><span class="line">    <span class="keyword">case</span> <span class="number">0xB0</span>:</span><br><span class="line">      *(this + *((<span class="type">unsigned</span> __int8 *)this + *(this + <span class="number">2304</span>) + <span class="number">1</span>) + <span class="number">2307</span>) ^= v8;</span><br><span class="line">      *(this + <span class="number">2304</span>) += <span class="number">3</span>;</span><br><span class="line">      <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">case</span> <span class="number">0xC1</span>:</span><br><span class="line">      *(this + *((<span class="type">unsigned</span> __int8 *)this + *(this + <span class="number">2304</span>) + <span class="number">1</span>) + <span class="number">2307</span>) *= *((<span class="type">unsigned</span> __int8 *)this + *(this + <span class="number">2304</span>) + <span class="number">2</span>)</span><br><span class="line">                                                                        | (<span class="type">unsigned</span> __int16)(*((<span class="type">unsigned</span> __int8 *)this</span><br><span class="line">                                                                                             + *(this + <span class="number">2304</span>)</span><br><span class="line">                                                                                             + <span class="number">3</span>) &lt;&lt; <span class="number">8</span>);</span><br><span class="line">      *(this + <span class="number">2304</span>) += <span class="number">4</span>;</span><br><span class="line">      <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">case</span> <span class="number">0xE0</span>:</span><br><span class="line">      *(this + <span class="number">2304</span>) = *((<span class="type">unsigned</span> __int8 *)this + *(this + <span class="number">2304</span>) + <span class="number">1</span>)</span><br><span class="line">                     | (*((<span class="type">unsigned</span> __int8 *)this + *(this + <span class="number">2304</span>) + <span class="number">2</span>) &lt;&lt; <span class="number">8</span>);</span><br><span class="line">      <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">case</span> <span class="number">0xE8</span>:</span><br><span class="line">      <span class="keyword">if</span> ( *(this + <span class="number">2306</span>) )</span><br><span class="line">        *(this + <span class="number">2304</span>) = *((<span class="type">unsigned</span> __int8 *)this + *(this + <span class="number">2304</span>) + <span class="number">1</span>)</span><br><span class="line">                       | (*((<span class="type">unsigned</span> __int8 *)this + *(this + <span class="number">2304</span>) + <span class="number">2</span>) &lt;&lt; <span class="number">8</span>);</span><br><span class="line">      <span class="keyword">else</span></span><br><span class="line">        *(this + <span class="number">2304</span>) += <span class="number">3</span>;</span><br><span class="line">      <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">case</span> <span class="number">0xEC</span>:</span><br><span class="line">      <span class="keyword">if</span> ( *(this + <span class="number">2306</span>) )</span><br><span class="line">        *(this + <span class="number">2304</span>) += <span class="number">3</span>;</span><br><span class="line">      <span class="keyword">else</span></span><br><span class="line">        *(this + <span class="number">2304</span>) = *((<span class="type">unsigned</span> __int8 *)this + *(this + <span class="number">2304</span>) + <span class="number">1</span>)</span><br><span class="line">                       | (*((<span class="type">unsigned</span> __int8 *)this + *(this + <span class="number">2304</span>) + <span class="number">2</span>) &lt;&lt; <span class="number">8</span>);</span><br><span class="line">      <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">case</span> <span class="number">0xEE</span>:</span><br><span class="line">      v4 = *(this + <span class="number">2304</span>) + <span class="number">2</span>;</span><br><span class="line">      *(this + ++*(this + <span class="number">2305</span>) + <span class="number">2048</span>) = v4;</span><br><span class="line">      *(this + <span class="number">2304</span>) = *(this + *((<span class="type">unsigned</span> __int8 *)this + *(this + <span class="number">2304</span>) + <span class="number">1</span>) + <span class="number">2307</span>);</span><br><span class="line">      <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">case</span> <span class="number">0xEF</span>:</span><br><span class="line">      v5 = *(this + <span class="number">2304</span>) + <span class="number">3</span>;</span><br><span class="line">      *(this + ++*(this + <span class="number">2305</span>) + <span class="number">2048</span>) = v5;</span><br><span class="line">      *(this + <span class="number">2304</span>) = *((<span class="type">unsigned</span> __int8 *)this + *(this + <span class="number">2304</span>) + <span class="number">1</span>)</span><br><span class="line">                     | (*((<span class="type">unsigned</span> __int8 *)this + *(this + <span class="number">2304</span>) + <span class="number">2</span>) &lt;&lt; <span class="number">8</span>);</span><br><span class="line">      <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">case</span> <span class="number">0xF0</span>:</span><br><span class="line">      v6 = *(this + <span class="number">2305</span>);</span><br><span class="line">      *(this + <span class="number">2305</span>) = v6 - <span class="number">1</span>;</span><br><span class="line">      *(this + <span class="number">2304</span>) = *(this + v6 + <span class="number">2048</span>);</span><br><span class="line">      <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">case</span> <span class="number">0xF8</span>:</span><br><span class="line">      result = <span class="number">0xFFFFFFFFL</span>L;</span><br><span class="line">      <span class="keyword">break</span>;</span><br><span class="line">    <span class="keyword">case</span> <span class="number">0xFC</span>:</span><br><span class="line">      <span class="keyword">if</span> ( *(this + <span class="number">2307</span>) )</span><br><span class="line">        *(this + <span class="number">2307</span>) = read(<span class="number">0</span>, (<span class="type">char</span> *)this + *(this + <span class="number">2308</span>), *(this + <span class="number">2309</span>));</span><br><span class="line">      <span class="keyword">else</span></span><br><span class="line">        write(<span class="number">1</span>, (<span class="type">char</span> *)this + *(this + <span class="number">2308</span>), *(this + <span class="number">2309</span>));</span><br><span class="line">      ++*(this + <span class="number">2304</span>);</span><br><span class="line">      <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">default</span>:</span><br><span class="line">      <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> result;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>对比正确代码与ida原始输出整理出</p>
+<table>
+<thead>
+<tr>
+<th>正确代码</th>
+<th>ida原始偏移</th>
+<th>字节偏移</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>this-&gt;mem[addr]</td>
+<td>*((unsigned __int8 *)this + addr)</td>
+<td>可变</td>
+<td>内存字节</td>
+</tr>
+<tr>
+<td>this-&gt;pc</td>
+<td>*((_WORD *)this + 2304)</td>
+<td>4608</td>
+<td>程序计数器</td>
+</tr>
+<tr>
+<td>this-&gt;sp</td>
+<td>*((_WORD *)this + 2305)</td>
+<td>4610</td>
+<td>栈指针</td>
+</tr>
+<tr>
+<td>this-&gt;flags</td>
+<td>*((_WORD *)this + 2306)</td>
+<td>4612</td>
+<td>标志位</td>
+</tr>
+<tr>
+<td>this-&gt;regs[0]</td>
+<td>*((_WORD *)this + 2307)</td>
+<td>4614</td>
+<td>寄存器0</td>
+</tr>
+<tr>
+<td>this-&gt;stack[0]</td>
+<td>*((_WORD *)this + 2308)</td>
+<td>4096</td>
+<td>栈底</td>
+</tr>
+</tbody></table>
+<p>然后我们推导出结构体的内存布局</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">字节偏移 0 - 4095:    内存区域 (mem)</span><br><span class="line">字节偏移 4096 - 5118:  栈区域 (stack)</span><br><span class="line">字节偏移 4608:         PC</span><br><span class="line">字节偏移 4610:         SP</span><br><span class="line">字节偏移 4612:         FLAGS</span><br><span class="line">字节偏移 4614 - 5638:  寄存器数组 (regs)</span><br></pre></td></tr></table></figure>
+
+<p>定义结构体</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">VM</span> &#123;</span></span><br><span class="line">    <span class="type">unsigned</span> __int8  mem[<span class="number">4096</span>];   </span><br><span class="line">    <span class="type">unsigned</span> __int16 <span class="built_in">stack</span>[<span class="number">256</span>];   </span><br><span class="line">    <span class="type">unsigned</span> __int16 pc;         </span><br><span class="line">    <span class="type">unsigned</span> __int16 sp;        </span><br><span class="line">    <span class="type">unsigned</span> __int16 flags;      </span><br><span class="line">    <span class="type">unsigned</span> __int16 regs[<span class="number">256</span>];   </span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>在ida中定义结构体</p>
+<p>把题目拖到ida里面</p>
+<p>在伪代码界面使用shift+F1使用Add type到C syntax复制结构体</p>
+<p>回到伪代码界面找到定义行Set function type然后输入__int64 __fastcall sub_16BC(struct VM *this)</p>
+<p>使用F5重新生成伪代码最后修复成功</p>
+<h1 id="第二题"><a href="#第二题" class="headerlink" title="第二题"></a>第二题</h1><p>2.将一个2行3列的二维数组转置为3行2列的数组</p>
+<p>示例：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Input <span class="number">6</span> integers:</span><br><span class="line"><span class="number">123</span> <span class="number">43</span> <span class="number">12</span></span><br><span class="line"><span class="number">64</span> <span class="number">234</span> <span class="number">12</span></span><br><span class="line">转换后的数组:</span><br><span class="line">  <span class="number">123</span>   <span class="number">64</span></span><br><span class="line">   <span class="number">43</span>  <span class="number">234</span></span><br><span class="line">   <span class="number">12</span>   <span class="number">12</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="解析-1"><a href="#解析-1" class="headerlink" title="解析"></a>解析</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="comment">//先判断此题如何解决，要把一个数组行和列换一下</span></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">(<span class="type">void</span>)</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="comment">//定义二维数组</span></span><br><span class="line">    <span class="type">int</span> test[<span class="number">2</span>][<span class="number">3</span>]=&#123;</span><br><span class="line">        &#123;<span class="number">123</span>,<span class="number">43</span>,<span class="number">12</span>&#125;,</span><br><span class="line">        &#123;<span class="number">64</span>,<span class="number">234</span>,<span class="number">12</span>&#125;</span><br><span class="line">    &#125;;</span><br><span class="line">    <span class="comment">//定义转换后的数组</span></span><br><span class="line">    <span class="type">int</span> temp[<span class="number">3</span>][<span class="number">2</span>]=&#123;<span class="number">0</span>&#125;;</span><br><span class="line">    <span class="comment">//利用for循环把test的行和temp的列互换</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>;i&lt;<span class="number">2</span>;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> j=<span class="number">0</span>;j&lt;<span class="number">3</span>;j++)</span><br><span class="line">        &#123;</span><br><span class="line">            temp[j][i]=test[i][j];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//遍历转换后的数组</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>;i&lt;<span class="number">3</span>;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> j=<span class="number">0</span>;j&lt;<span class="number">2</span>;j++)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="built_in">printf</span>(<span class="string">&quot;%d &quot;</span>,temp[i][j]);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//每行打印一个换行符</span></span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;\n&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="第三题"><a href="#第三题" class="headerlink" title="第三题"></a>第三题</h1><p>3.编写一个C语言程序，使用指针将数组{10, 20, 30, 40, 50}反转并输出结果。</p>
+<p>实现如下：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">原数组: <span class="number">10</span> <span class="number">20</span> <span class="number">30</span> <span class="number">40</span> <span class="number">50</span></span><br><span class="line">反转后: <span class="number">50</span> <span class="number">40</span> <span class="number">30</span> <span class="number">20</span> <span class="number">10</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="解析-2"><a href="#解析-2" class="headerlink" title="解析"></a>解析</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="comment">//这题要求用指针反转一维数组</span></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">(<span class="type">void</span>)</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="comment">//定义一维数组</span></span><br><span class="line">    <span class="type">int</span> test[<span class="number">5</span>]=&#123;<span class="number">10</span>,<span class="number">20</span>,<span class="number">30</span>,<span class="number">40</span>,<span class="number">50</span>&#125;;</span><br><span class="line">    <span class="comment">//定义指针地址从头和尾</span></span><br><span class="line">    <span class="type">int</span> *p =test;</span><br><span class="line">    <span class="type">int</span> *q =test+<span class="number">4</span>;</span><br><span class="line">    <span class="comment">//使用临时数据</span></span><br><span class="line">    <span class="type">int</span> temp;</span><br><span class="line">    <span class="comment">//使用循环然数组的头和尾互换，然后指针指向下/上一个</span></span><br><span class="line">    <span class="keyword">while</span> (p&lt;q)</span><br><span class="line">    &#123;</span><br><span class="line">        temp=*p;</span><br><span class="line">        *p=*q;</span><br><span class="line">        *q=temp;</span><br><span class="line">        p++;</span><br><span class="line">        q--;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//遍历数组</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>;i&lt;<span class="number">5</span>;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;%d &quot;</span>,test[i]);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="第四题"><a href="#第四题" class="headerlink" title="第四题"></a>第四题</h1><p>4.从标准输入读入 <code>M×N</code> 矩阵，将其：</p>
+<ul>
+<li>以整齐的表格形式写入文本文件 <code>output.txt</code>；</li>
+<li>以<strong>二进制</strong>格式写入 <code>output.bin</code>，格式为（均 32 位小端有符号整数）：<code>R</code>、<code>C</code> 头两个数，然后是按<strong>行主序</strong>存放的 <code>R*C</code> 个元素。</li>
+</ul>
+<p>示例输入</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">2</span> <span class="number">3</span></span><br><span class="line"><span class="number">11</span> <span class="number">26</span> <span class="number">32</span></span><br><span class="line"><span class="number">24</span> <span class="number">85</span> <span class="number">96</span></span><br></pre></td></tr></table></figure>
+
+<p><code>output.txt</code> 内容（文本）：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">11</span> <span class="number">26</span> <span class="number">32</span></span><br><span class="line"><span class="number">24</span> <span class="number">85</span> <span class="number">96</span></span><br></pre></td></tr></table></figure>
+<p>学习进度未到暂时无法解题</p>
+
+                
+
+                <hr>
+                <!-- Pager -->
+                <ul class="pager">
+                    
+                    
+                        <li class="next">
+                            <a href="/2026/04/02/C-fifth-note/" data-toggle="tooltip" data-placement="top" title="C语言笔记5">Next post &rarr;</a>
+                        </li>
+                    
+                </ul>
+
+                <br>
+
+                <!--打赏-->
+                
+                <!--打赏-->
+
+                <br>
+                <!--分享-->
+                
+                    <div class="social-share"  data-wechat-qrcode-helper="" align="center"></div>
+                    <!--  css & js -->
+                    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/css/share.min.css">
+                    <script src="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/js/social-share.min.js"></script>
+                
+                <!--分享-->
+                <br>                       
+                
+                <!-- require APlayer -->
+                
+
+                <!-- disqus comment start -->
+                
+                <!-- disqus comment end -->
+
+                
+				
+            </div>
+
+            <!-- Tabe of Content -->
+            <!-- Table of Contents -->
+
+                
+            <!-- Sidebar Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                <!-- Featured Tags -->
+                
+                <section>
+                    <!-- no hr -->
+                    <h5><a href="/tags/">Tags</a></h5>
+                    <div class="tags">
+                       
+                    </div>
+                </section>
+                
+
+                <!-- Friends Blog -->
+                
+                <hr>
+                <h5>FRIENDS</h5>
+                <ul class="list-inline">
+
+                    
+                        <li><a href="http://www.sumoon.com" target="_blank">ACE theme</a></li>
+                    
+                </ul>
+                
+            </div>
+        </div>
+    </div>
+</article>
+
+
+
+
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+<!-- anchor-js, Doc:http://bryanbraun.github.io/anchorjs/ -->
+<script>
+    async("https://cdn.bootcss.com/anchor-js/1.1.1/anchor.min.js",function(){
+        anchors.options = {
+          visible: 'hover',
+          placement: 'left',
+          icon: 'ℬ'
+        };
+        anchors.add().remove('.intro-header h1').remove('.subheading').remove('.sidebar-container h5');
+    })
+</script>
+<style>
+    /* place left on bigger screen */
+    @media all and (min-width: 800px) {
+        .anchorjs-link{
+            position: absolute;
+            left: -0.75em;
+            font-size: 1.1em;
+            margin-top : -0.1em;
+        }
+    }
+</style>
+
+
+
+    <!-- Footer -->
+    <!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                
+                
+                
+
+                
+
+                
+
+                
+                    <li>
+                        <a target="_blank"  href="https://github.com/kinggozhang">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+
+                </ul>
+                <p class="copyright text-muted">
+                    Copyright &copy; John Doe 2026 
+                    <br>
+                    Powered by <a target="_blank" rel="noopener" href="http://www.hexo.io">Hexo</a> 
+                    <span style="display: inline-block; margin: 0 5px;">
+                        <i class="fa fa-heart"></i>
+                    </span> 
+                    Theme by <a target="_blank" rel="noopener" href="https://github.com/kinggozhang/hexo-theme-ace">ACE</a> 
+					
+					
+					<i class="fa fa-eye" id="leancounter"></i>
+					
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- jQuery -->
+
+   
+<script src="https://cdn.staticfile.org/jquery/2.2.4/jquery.min.js"></script>
+
+
+
+
+<!-- Bootstrap Core JavaScript -->
+
+   
+<script src="https://cdn.staticfile.org/twitter-bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+
+
+<!-- Custom Theme JavaScript -->
+
+<script src="/js/hux-blog.min.js"></script>
+
+
+
+	
+<script src="/js/particles.js"></script>
+
+	
+<script src="/js/particles_config.js"></script>
+
+
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+<!-- 
+     Because of the native support for backtick-style fenced code blocks 
+     right within the Markdown is landed in Github Pages, 
+     From V1.6, There is no need for Highlight.js, 
+     so Huxblog drops it officially.
+
+     - https://github.com/blog/2100-github-pages-now-faster-and-simpler-with-jekyll-3-0  
+     - https://help.github.com/articles/creating-and-highlighting-code-blocks/    
+-->
+<!--
+    <script>
+        async("http://cdn.bootcss.com/highlight.js/8.6/highlight.min.js", function(){
+            hljs.initHighlightingOnLoad();
+        })
+    </script>
+    <link href="http://cdn.bootcss.com/highlight.js/8.6/styles/github.min.css" rel="stylesheet">
+-->
+
+
+<!-- jquery.tagcloud.js -->
+<script>
+    // only load tagcloud.js in tag.html
+    if($('#tag_cloud').length !== 0){
+        async("http://example.com/2026/04/04/test-week3/index.html/js/jquery.tagcloud.js",function(){
+            $.fn.tagcloud.defaults = {
+                //size: {start: 1, end: 1, unit: 'em'},
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+<!--fastClick.js -->
+<script>
+    async("https://cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+
+<!-- Google Analytics -->
+
+
+
+
+<!-- Baidu Tongji -->
+
+
+
+
+
+
+	<a id="rocket" href="#top" class=""></a>
+	<script type="text/javascript" src="/js/totop.js?v=1.0.0" async=""></script>
+    <script type="text/javascript" src="/js/toc.js?v=1.0.0" async=""></script>
+<!-- Image to hack wechat -->
+<img src="http://example.com/img/icon_wechat.png" width="0" height="0" />
+<!-- Migrate from head to bottom, no longer block render and still work -->
+
+</body>
+
+</html>
