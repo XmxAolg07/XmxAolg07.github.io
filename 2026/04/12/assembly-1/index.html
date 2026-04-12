@@ -1,0 +1,797 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="keyword"  content="">
+    <link rel="shortcut icon" href="/img/ironman-draw.png">
+    <!-- Place this tag in your head or just before your close body tag. -->
+    <script async defer src="https://buttons.github.io/buttons.js"></script>
+    <title>
+        
+          汇编笔记-1 - null
+        
+    </title>
+
+    <link rel="canonical" href="http://example.com/2026/04/12/assembly-1/">
+
+    <!-- Bootstrap Core CSS -->
+
+   
+<link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.4.1/css/bootstrap.min.css">
+
+
+    
+
+    <!-- Custom CSS --> 
+    
+<link rel="stylesheet" href="/css/beantech.min.css">
+
+
+    
+<link rel="stylesheet" href="/css/donate.css">
+
+	
+<link rel="stylesheet" href="/css/w3.css">
+
+    <!-- Pygments Highlight CSS -->
+    
+<link rel="stylesheet" href="/css/highlight.css">
+
+
+    
+<link rel="stylesheet" href="/css/widget.css">
+
+
+    
+<link rel="stylesheet" href="/css/rocket.css">
+
+
+    
+<link rel="stylesheet" href="/css/signature.css">
+
+
+    
+<link rel="stylesheet" href="/css/toc.css">
+
+
+    <!-- Custom Fonts -->
+    <!-- <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css"> -->
+    <!-- Hux change font-awesome CDN to qiniu -->
+    <link href="https://cdn.staticfile.org/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+
+    <!-- Hux Delete, sad but pending in China
+    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/
+    css'>
+    -->
+
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+	
+
+    <!-- ga & ba script hoook -->
+    <script></script>
+<meta name="generator" content="Hexo 8.1.1"></head>
+
+
+<!-- hack iOS CSS :active style -->
+<body ontouchstart="">
+	<!-- Modified by Yu-Hsuan Yen -->
+<!-- Post Header -->
+<style type="text/css">
+    header.intro-header{
+    }
+   .post-heading{
+    padding:20px;
+    }
+  .person {
+    border: 10px solid transparent;
+    margin-bottom: 25px;
+    width: 80%;
+    height: 80%;
+    opacity: 0.7;
+  }
+  .person:hover {
+    border-color: #f1f1f1;
+  }
+
+</style>
+
+<header id="headerid" class="w3-indigo intro-header" style="position:relative;">
+    <!-- Signature -->
+	
+        <div class="container">
+            <div class=" row" >
+			
+			<canvas id="particles-js-canvas" style="position:absolute;z-index:1;top:0px;left:0px;" width="100%" height="50%"></canvas>
+			
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1" style="z-index:2;">
+                
+                    <div class="post-heading" style="padding:40px">
+                        <div class="tags">
+                            
+                        </div>
+                        <h1>汇编笔记-1</h1>
+                        <h2 class="subheading"></h2>
+                        <span class="meta">
+                            Posted by John Doe on
+                            2026-04-12
+                        </span>
+                    </div>
+                
+                </div>
+            </div>
+        </div>
+  
+</header>
+
+	
+    <!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">Hexo</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <!-- Known Issue, found by Hux:
+            <nav>'s height woule be hold on by its content.
+            so, when navbar scale out, the <nav> will cover tags.
+            also mask any touch event of tags, unfortunately.
+        -->
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a  href="/">Homepage</a>
+                    </li>
+		    
+                    
+
+                        
+                        <li>
+           
+                            <a  href="#">menu1</a>
+                           
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+           
+                            <a  href="#">menu2</a>
+                           
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+           
+                            <a  href="#">menu3</a>
+                           
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+           
+                            <a  href="#">menu3</a>
+                           
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+           
+                            <a  href="#">menu5</a>
+                           
+                        </li>
+                        
+                    
+                    
+                </ul>
+            </div>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+<script>
+    // Drop Bootstarp low-performance Navbar
+    // Use customize navbar with high-quality material design animation
+    // in high-perf jank-free CSS3 implementation
+    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e){
+        if ($navbar.className.indexOf('in') > 0) {
+        // CLOSE
+            $navbar.className = " ";
+            // wait until animation end.
+            setTimeout(function(){
+                // prevent frequently toggle
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        }else{
+        // OPEN
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+</script>
+
+
+    <!-- Main Content -->
+    <!-- Modify by Yu-Hsuan Yen -->
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+
+            <!-- Post Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                post-container">
+
+                <h1 id="汇编笔记-1"><a href="#汇编笔记-1" class="headerlink" title="汇编笔记-1"></a>汇编笔记-1</h1><h2 id="一、6-种常用Debug指令"><a href="#一、6-种常用Debug指令" class="headerlink" title="一、6 种常用Debug指令"></a>一、6 种常用Debug指令</h2><table>
+<thead>
+<tr>
+<th align="left">指令</th>
+<th align="left">全称</th>
+<th align="left">作用说明</th>
+<th align="left">GDB 示例</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left"><code>int 3</code></td>
+<td align="left">Interrupt 3</td>
+<td align="left"><strong>软件断点</strong>。程序执行到此会触发调试器暂停。常用于手动插入断点。</td>
+<td align="left">无需输入，CPU遇到即停。</td>
+</tr>
+<tr>
+<td align="left"><code>nop</code></td>
+<td align="left">No Operation</td>
+<td align="left"><strong>空操作</strong>。占用一个字节 (<code>0x90</code>)，什么都不做。常用于对齐代码或预留补丁位置。</td>
+<td align="left"><code>x/10i $rip</code> (查看后续指令)</td>
+</tr>
+<tr>
+<td align="left"><code>ud2</code></td>
+<td align="left">Undefined Instruction</td>
+<td align="left"><strong>未定义指令</strong>。强制产生 <code>SIGILL</code> 非法指令异常，调试器会捕获。用于标记不该执行的代码路径。</td>
+<td align="left"><code>run</code> 后自动停在异常处。</td>
+</tr>
+<tr>
+<td align="left"><code>pushf</code> &#x2F; <code>pushfq</code></td>
+<td align="left">Push Flags</td>
+<td align="left"><strong>保存标志寄存器</strong>。将 <code>RFLAGS</code>&#x2F;<code>EFLAGS</code> 压栈，调试时用于查看条件码（如 ZF, CF）。</td>
+<td align="left"><code>print $eflags</code></td>
+</tr>
+<tr>
+<td align="left"><code>cpuid</code></td>
+<td align="left">CPU Identification</td>
+<td align="left"><strong>获取CPU信息</strong>。常用于检测是否支持特定指令集（如 AVX），调试时用来确认环境。</td>
+<td align="left"><code>info registers eax</code></td>
+</tr>
+<tr>
+<td align="left"><code>hlt</code></td>
+<td align="left">Halt</td>
+<td align="left"><strong>停机</strong>。使CPU进入低功耗暂停状态，直到收到中断。在用户态程序中使用会触发 <code>SIGSEGV</code> 或异常。</td>
+<td align="left">通常用于内核调试，用户态极少用。</td>
+</tr>
+</tbody></table>
+<h2 id="二、内存空间地址"><a href="#二、内存空间地址" class="headerlink" title="二、内存空间地址"></a>二、内存空间地址</h2><p>CPU中可寻到的内存单元构成内存空间地址</p>
+<table>
+<thead>
+<tr>
+<th>CPU</th>
+<th>内存地址空间</th>
+<th></th>
+</tr>
+</thead>
+<tbody><tr>
+<td></td>
+<td>主存储器地址空间</td>
+<td>RAM 主储存器&#96;&#96;RAM 主存储器（内存条）</td>
+</tr>
+<tr>
+<td></td>
+<td>显存地址空间</td>
+<td>RAM（显存）【显卡】</td>
+</tr>
+<tr>
+<td></td>
+<td>显卡BIOS ROM 地址空间</td>
+<td>ROM（装有显卡BIOS）【显卡】</td>
+</tr>
+<tr>
+<td></td>
+<td>网卡BIOS ROM 地址空间</td>
+<td>ROM（装有网卡的BIOS）【网卡】</td>
+</tr>
+<tr>
+<td></td>
+<td>系统BIOS ROM 地址空间</td>
+<td>ROM（装有系统BIOS）</td>
+</tr>
+</tbody></table>
+<h2 id="三、寄存器"><a href="#三、寄存器" class="headerlink" title="三、寄存器"></a>三、寄存器</h2><p>CPU是由运算器，控制器，寄存器等构成</p>
+<ul>
+<li>运算器进行信息处理</li>
+<li>寄存器进行信息储存</li>
+<li>控制器控制器件进行工作</li>
+<li><h3 id="四个通用寄存器"><a href="#四个通用寄存器" class="headerlink" title="四个通用寄存器"></a>四个通用寄存器</h3></li>
+</ul>
+<table>
+<thead>
+<tr>
+<th align="left">64位</th>
+<th align="left">低32位</th>
+<th align="left">低16位</th>
+<th align="left">低8位</th>
+<th align="left">特殊用途 &#x2F; 备注</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left"><strong>RAX</strong></td>
+<td align="left">EAX</td>
+<td align="left">AX</td>
+<td align="left">AL</td>
+<td align="left"><strong>累加器</strong>。<code>mul</code>&#x2F;<code>div</code> 隐式使用；函数返回值通常存于此。</td>
+</tr>
+<tr>
+<td align="left"><strong>RBX</strong></td>
+<td align="left">EBX</td>
+<td align="left">BX</td>
+<td align="left">BL</td>
+<td align="left"><strong>基址寄存器</strong>。被调用者保存（Callee-saved），函数内用需先压栈。</td>
+</tr>
+<tr>
+<td align="left"><strong>RCX</strong></td>
+<td align="left">ECX</td>
+<td align="left">CX</td>
+<td align="left">CL</td>
+<td align="left"><strong>计数器</strong>。<code>loop</code> 指令；<code>shl</code>&#x2F;<code>shr</code> 移位位数非立即数时存于此。</td>
+</tr>
+<tr>
+<td align="left"><strong>RDX</strong></td>
+<td align="left">EDX</td>
+<td align="left">DX</td>
+<td align="left">DL</td>
+<td align="left"><strong>数据寄存器</strong>。<code>mul</code> 乘法结果高64位存此；<code>div</code> 除法余数存此；系统调用第3参数。</td>
+</tr>
+</tbody></table>
+<h2 id="四、基本运算与逻辑指令"><a href="#四、基本运算与逻辑指令" class="headerlink" title="四、基本运算与逻辑指令"></a>四、基本运算与逻辑指令</h2><h3 id="1-数据传送与交换"><a href="#1-数据传送与交换" class="headerlink" title="1. 数据传送与交换"></a>1. 数据传送与交换</h3><table>
+<thead>
+<tr>
+<th align="left">指令</th>
+<th align="left">作用</th>
+<th align="left">实例</th>
+<th align="left">执行后效果</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left"><code>mov</code></td>
+<td align="left">数据复制</td>
+<td align="left"><code>mov rax, 1337&lt;br&gt;``mov rbx, rax</code></td>
+<td align="left">RAX &#x3D; 1337 <code>&lt;br&gt;</code>RBX &#x3D; 1337</td>
+</tr>
+<tr>
+<td align="left"><code>xchg</code></td>
+<td align="left">交换数据</td>
+<td align="left"><code>mov rax, 10&lt;br&gt;``mov rbx, 20&lt;br&gt;``xchg rax, rbx</code></td>
+<td align="left">RAX &#x3D; 20 <code>&lt;br&gt;</code>RBX &#x3D; 10</td>
+</tr>
+</tbody></table>
+<hr>
+<h3 id="2-算术运算"><a href="#2-算术运算" class="headerlink" title="2. 算术运算"></a>2. 算术运算</h3><table>
+<thead>
+<tr>
+<th align="left">指令</th>
+<th align="left">作用</th>
+<th align="left">实例</th>
+<th align="left">执行后效果</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left"><code>add</code></td>
+<td align="left">加法</td>
+<td align="left"><code>mov rax, 10&lt;br&gt;``add rax, 5</code></td>
+<td align="left">RAX &#x3D; 15</td>
+</tr>
+<tr>
+<td align="left"><code>sub</code></td>
+<td align="left">减法</td>
+<td align="left"><code>mov rax, 10&lt;br&gt;``sub rax, 3</code></td>
+<td align="left">RAX &#x3D; 7</td>
+</tr>
+<tr>
+<td align="left"><code>mul</code></td>
+<td align="left">无符号乘法</td>
+<td align="left"><code>mov rax, 5&lt;br&gt;``mov rcx, 6&lt;br&gt;``mul rcx</code></td>
+<td align="left">RAX &#x3D; 30, RDX &#x3D; 0</td>
+</tr>
+<tr>
+<td align="left"><code>div</code></td>
+<td align="left">无符号除法</td>
+<td align="left"><code>mov rdx, 0&lt;br&gt;``mov rax, 17&lt;br&gt;``mov rcx, 5&lt;br&gt;``div rcx</code></td>
+<td align="left">RAX &#x3D; 3 (商)<code>&lt;br&gt;</code>RDX &#x3D; 2 (余数)</td>
+</tr>
+<tr>
+<td align="left"><code>inc</code></td>
+<td align="left">自增 1</td>
+<td align="left"><code>mov rax, 10&lt;br&gt;``inc rax</code></td>
+<td align="left">RAX &#x3D; 11</td>
+</tr>
+<tr>
+<td align="left"><code>dec</code></td>
+<td align="left">自减 1</td>
+<td align="left"><code>mov rax, 10&lt;br&gt;``dec rax</code></td>
+<td align="left">RAX &#x3D; 9</td>
+</tr>
+<tr>
+<td align="left"><code>neg</code></td>
+<td align="left">取负数（补码）</td>
+<td align="left"><code>mov rax, 5&lt;br&gt;``neg rax</code></td>
+<td align="left">RAX &#x3D; -5</td>
+</tr>
+</tbody></table>
+<hr>
+<h3 id="3-逻辑与移位"><a href="#3-逻辑与移位" class="headerlink" title="3. 逻辑与移位"></a>3. 逻辑与移位</h3><table>
+<thead>
+<tr>
+<th align="left">指令</th>
+<th align="left">作用</th>
+<th align="left">实例</th>
+<th align="left">执行后效果（二进制视角）</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left"><code>and</code></td>
+<td align="left">按位与</td>
+<td align="left"><code>mov al, 0b1100&lt;br&gt;``and al, 0b1010</code></td>
+<td align="left">AL &#x3D; 0b1000</td>
+</tr>
+<tr>
+<td align="left"><code>or</code></td>
+<td align="left">按位或</td>
+<td align="left"><code>mov al, 0b1100&lt;br&gt;``or al, 0b0011</code></td>
+<td align="left">AL &#x3D; 0b1111</td>
+</tr>
+<tr>
+<td align="left"><code>shl</code></td>
+<td align="left">逻辑左移</td>
+<td align="left"><code>mov rax, 1&lt;br&gt;``shl rax, 3</code></td>
+<td align="left">RAX &#x3D; 8</td>
+</tr>
+<tr>
+<td align="left"><code>shr</code></td>
+<td align="left">逻辑右移</td>
+<td align="left"><code>mov rax, 8&lt;br&gt;``shr rax, 2</code></td>
+<td align="left">RAX &#x3D; 2</td>
+</tr>
+</tbody></table>
+<hr>
+<h3 id="4-中断与控制"><a href="#4-中断与控制" class="headerlink" title="4. 中断与控制"></a>4. 中断与控制</h3><table>
+<thead>
+<tr>
+<th align="left">指令</th>
+<th align="left">作用</th>
+<th align="left">实例</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left"><code>int</code></td>
+<td align="left">软件中断</td>
+<td align="left"><code>int 0x80&lt;br&gt;``int 3</code></td>
+<td align="left">32位系统调用 <code>&lt;br&gt;</code>触发调试断点</td>
+</tr>
+</tbody></table>
+<h3 id="5-具体实例"><a href="#5-具体实例" class="headerlink" title="5.具体实例"></a>5.具体实例</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line">.inter_syntax noprefix</span><br><span class="line">.global _start</span><br><span class="line">_start:</span><br><span class="line">    mov rax, 1337</span><br><span class="line">    mov rbx, rax</span><br><span class="line"></span><br><span class="line">    mov rcx, 10</span><br><span class="line">    add rcx, 5          ; RCX = 15</span><br><span class="line">    sub rcx, 3          ; RCX = 12</span><br><span class="line"></span><br><span class="line">    mov rdx, 100</span><br><span class="line">    inc rdx             ; RDX = 101</span><br><span class="line">    dec rdx             ; RDX = 100</span><br><span class="line"></span><br><span class="line">    mov al, 0b11001100</span><br><span class="line">    and al, 0b11110000  ; AL = 0b11000000</span><br><span class="line">    mov bl, 0b00001111</span><br><span class="line">    or  bl, al          ; BL = 0b11001111</span><br><span class="line"></span><br><span class="line">    mov rax, 1</span><br><span class="line">    shl rax, 4          ; RAX = 16</span><br><span class="line">    shr rax, 1          ; RAX = 8</span><br><span class="line"></span><br><span class="line">    mov rax, 6</span><br><span class="line">    mov rcx, 7</span><br><span class="line">    mul rcx             ; RAX = 42, RDX = 0</span><br><span class="line"></span><br><span class="line">    mov rdx, 0          ; 高位清零</span><br><span class="line">    mov rax, 20</span><br><span class="line">    mov rcx, 6</span><br><span class="line">    div rcx             ; RAX = 3 (商), RDX = 2 (余数)</span><br><span class="line"></span><br><span class="line">    mov rax, 111</span><br><span class="line">    mov rbx, 222</span><br><span class="line">    xchg rax, rbx       ; RAX = 222, RBX = 111</span><br><span class="line"></span><br><span class="line">    mov rax, 5</span><br><span class="line">    neg rax             ; RAX = -5 (0xFFFFFFFFFFFFFFFB)</span><br><span class="line"></span><br><span class="line">    nop                 ; 空操作，单步时直接跳过</span><br><span class="line">    pushfq              ; 保存标志位到栈</span><br><span class="line">    popfq               ; 恢复标志位（保持栈平衡）</span><br><span class="line">    int3                ; 断点，GDB 会自动停下</span><br><span class="line"></span><br><span class="line"> </span><br><span class="line">    mov rax, 60         ; sys_exit</span><br><span class="line">    xor rdi, rdi        ; 返回 0</span><br><span class="line">    syscall</span><br></pre></td></tr></table></figure>
+
+<h2 id="五、简单程序编写"><a href="#五、简单程序编写" class="headerlink" title="五、简单程序编写"></a>五、简单程序编写</h2><p>环境WSL-Ubuntu，gcc</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">.inter_syntax noprefix</span><br><span class="line">.global _start</span><br><span class="line">_start:</span><br><span class="line">        mov rdi, 42     ;退出状态码</span><br><span class="line">        mov rax, 60     ;系统调用约定 退出</span><br><span class="line">        syscall</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">as ./program.s -o ./program.o</span><br><span class="line">ld ./program.o -o ./program</span><br><span class="line"></span><br><span class="line">&gt; ./program</span><br><span class="line">&gt; <span class="built_in">echo</span> $?</span><br><span class="line">42</span><br></pre></td></tr></table></figure>
+<h3 id="Hello-World"><a href="#Hello-World" class="headerlink" title="Hello World"></a>Hello World</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">.inter_syntax noprefix</span><br><span class="line">.data</span><br><span class="line">msg:</span><br><span class="line">    .ascii &quot;Helko_World\n&quot;</span><br><span class="line">    len = . - msg</span><br><span class="line"></span><br><span class="line">.text</span><br><span class="line">    .global _start</span><br><span class="line"></span><br><span class="line">_start:</span><br><span class="line">    # 写入</span><br><span class="line">    mov rax, 1 # 系统调用</span><br><span class="line">    mov rdi, 1</span><br><span class="line">    lea rsi, [msg]</span><br><span class="line">    mov rdx, len</span><br><span class="line">    syscall</span><br><span class="line"></span><br><span class="line">    #exit</span><br><span class="line">    mov rax, 60</span><br><span class="line">    mov rdi, 0</span><br><span class="line">    syscall</span><br></pre></td></tr></table></figure>
+                
+
+                <hr>
+                <!-- Pager -->
+                <ul class="pager">
+                    
+                    
+                        <li class="next">
+                            <a href="/2026/04/11/C-tenth-note/" data-toggle="tooltip" data-placement="top" title="C语言笔记7">Next post &rarr;</a>
+                        </li>
+                    
+                </ul>
+
+                <br>
+
+                <!--打赏-->
+                
+                <!--打赏-->
+
+                <br>
+                <!--分享-->
+                
+                    <div class="social-share"  data-wechat-qrcode-helper="" align="center"></div>
+                    <!--  css & js -->
+                    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/css/share.min.css">
+                    <script src="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/js/social-share.min.js"></script>
+                
+                <!--分享-->
+                <br>                       
+                
+                <!-- require APlayer -->
+                
+
+                <!-- disqus comment start -->
+                
+                <!-- disqus comment end -->
+
+                
+				
+            </div>
+
+            <!-- Tabe of Content -->
+            <!-- Table of Contents -->
+
+                
+            <!-- Sidebar Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                <!-- Featured Tags -->
+                
+                <section>
+                    <!-- no hr -->
+                    <h5><a href="/tags/">Tags</a></h5>
+                    <div class="tags">
+                       
+                    </div>
+                </section>
+                
+
+                <!-- Friends Blog -->
+                
+                <hr>
+                <h5>FRIENDS</h5>
+                <ul class="list-inline">
+
+                    
+                        <li><a href="http://www.sumoon.com" target="_blank">ACE theme</a></li>
+                    
+                </ul>
+                
+            </div>
+        </div>
+    </div>
+</article>
+
+
+
+
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+<!-- anchor-js, Doc:http://bryanbraun.github.io/anchorjs/ -->
+<script>
+    async("https://cdn.bootcss.com/anchor-js/1.1.1/anchor.min.js",function(){
+        anchors.options = {
+          visible: 'hover',
+          placement: 'left',
+          icon: 'ℬ'
+        };
+        anchors.add().remove('.intro-header h1').remove('.subheading').remove('.sidebar-container h5');
+    })
+</script>
+<style>
+    /* place left on bigger screen */
+    @media all and (min-width: 800px) {
+        .anchorjs-link{
+            position: absolute;
+            left: -0.75em;
+            font-size: 1.1em;
+            margin-top : -0.1em;
+        }
+    }
+</style>
+
+
+
+    <!-- Footer -->
+    <!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                
+                
+                
+
+                
+
+                
+
+                
+                    <li>
+                        <a target="_blank"  href="https://github.com/kinggozhang">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+
+                </ul>
+                <p class="copyright text-muted">
+                    Copyright &copy; John Doe 2026 
+                    <br>
+                    Powered by <a target="_blank" rel="noopener" href="http://www.hexo.io">Hexo</a> 
+                    <span style="display: inline-block; margin: 0 5px;">
+                        <i class="fa fa-heart"></i>
+                    </span> 
+                    Theme by <a target="_blank" rel="noopener" href="https://github.com/kinggozhang/hexo-theme-ace">ACE</a> 
+					
+					
+					<i class="fa fa-eye" id="leancounter"></i>
+					
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- jQuery -->
+
+   
+<script src="https://cdn.staticfile.org/jquery/2.2.4/jquery.min.js"></script>
+
+
+
+
+<!-- Bootstrap Core JavaScript -->
+
+   
+<script src="https://cdn.staticfile.org/twitter-bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+
+
+<!-- Custom Theme JavaScript -->
+
+<script src="/js/hux-blog.min.js"></script>
+
+
+
+	
+<script src="/js/particles.js"></script>
+
+	
+<script src="/js/particles_config.js"></script>
+
+
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+<!-- 
+     Because of the native support for backtick-style fenced code blocks 
+     right within the Markdown is landed in Github Pages, 
+     From V1.6, There is no need for Highlight.js, 
+     so Huxblog drops it officially.
+
+     - https://github.com/blog/2100-github-pages-now-faster-and-simpler-with-jekyll-3-0  
+     - https://help.github.com/articles/creating-and-highlighting-code-blocks/    
+-->
+<!--
+    <script>
+        async("http://cdn.bootcss.com/highlight.js/8.6/highlight.min.js", function(){
+            hljs.initHighlightingOnLoad();
+        })
+    </script>
+    <link href="http://cdn.bootcss.com/highlight.js/8.6/styles/github.min.css" rel="stylesheet">
+-->
+
+
+<!-- jquery.tagcloud.js -->
+<script>
+    // only load tagcloud.js in tag.html
+    if($('#tag_cloud').length !== 0){
+        async("http://example.com/2026/04/12/assembly-1/index.html/js/jquery.tagcloud.js",function(){
+            $.fn.tagcloud.defaults = {
+                //size: {start: 1, end: 1, unit: 'em'},
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+<!--fastClick.js -->
+<script>
+    async("https://cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+
+<!-- Google Analytics -->
+
+
+
+
+<!-- Baidu Tongji -->
+
+
+
+
+
+
+	<a id="rocket" href="#top" class=""></a>
+	<script type="text/javascript" src="/js/totop.js?v=1.0.0" async=""></script>
+    <script type="text/javascript" src="/js/toc.js?v=1.0.0" async=""></script>
+<!-- Image to hack wechat -->
+<img src="http://example.com/img/icon_wechat.png" width="0" height="0" />
+<!-- Migrate from head to bottom, no longer block render and still work -->
+
+</body>
+
+</html>

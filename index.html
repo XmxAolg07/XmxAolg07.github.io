@@ -268,6 +268,59 @@
 
 
 <div class="w3-row-padding">
+	<a href="/2026/04/12/assembly-1/">
+        <h2 class="post-title">
+            汇编笔记-1
+        </h2>
+        <h3 class="post-subtitle">
+            
+        </h3>
+	</a>
+
+<div>
+
+    <a href="/2026/04/12/assembly-1/">
+
+        <div class="post-content-preview">
+            汇编笔记-1一、6 种常用Debug指令
+
+
+指令
+全称
+作用说明
+GDB 示例
+
+
+
+int 3
+Interrupt 3
+软件断点。程序执行到此会触发调试器暂停。常用于手动插入断点。
+无需输入，CPU遇到即停。
+
+
+nop
+No Operation
+空操作。占用一个字节 (0x90)，什么都不做。常用于对齐代码或预留补丁位置。
+x/10i $rip (查看后续指令)
+
+
+ud2
+Un.........
+        </div>
+    </a>
+    
+        <p class="post-meta">
+            Posted by John Doe on
+            2026-04-12
+        </p>
+    
+
+</div>
+</div>
+<hr>
+
+
+<div class="w3-row-padding">
 	<a href="/2026/04/11/C-tenth-note/">
         <h2 class="post-title">
             C语言笔记7
@@ -569,61 +622,6 @@
 <hr>
 
 
-<div class="w3-row-padding">
-	<a href="/2026/03/30/C-second-note/">
-        <h2 class="post-title">
-            C语言笔记2
-        </h2>
-        <h3 class="post-subtitle">
-            
-        </h3>
-	</a>
-
-<div>
-
-    <a href="/2026/03/30/C-second-note/">
-
-        <div class="post-content-preview">
-            C语言格式说明符（格式转义符）完整指南格式说明符表格
-
-
-格式符
-数据类型
-说明
-示例代码
-
-
-
-%d
-int
-十进制有符号整数
-printf(&quot;%d&quot;, 123);
-
-
-%i
-int
-十进制有符号整数（同%d）
-printf(&quot;%i&quot;, -456);
-
-
-%u
-unsigned int
-十进制无符号整数
-printf(&quot;%u&quot.........
-        </div>
-    </a>
-    
-        <p class="post-meta">
-            Posted by John Doe on
-            2026-03-30
-        </p>
-    
-
-</div>
-</div>
-<hr>
-
-
 
 <!-- Pager -->
 
@@ -714,6 +712,10 @@ printf(&quot;%u&quot.........
     <ul>
       
         <li>
+          <a href="/2026/04/12/assembly-1/">汇编笔记-1</a>
+        </li>
+      
+        <li>
           <a href="/2026/04/11/C-tenth-note/">C语言笔记7</a>
         </li>
       
@@ -729,10 +731,6 @@ printf(&quot;%u&quot.........
           <a href="/2026/04/07/C-seventh-note/">C语言编程题5题</a>
         </li>
       
-        <li>
-          <a href="/2026/04/05/C-sixth-note/">C语言笔记6</a>
-        </li>
-      
     </ul>
   </div>
 
@@ -741,7 +739,7 @@ printf(&quot;%u&quot.........
         
     <h5>Achives</h5>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2026/04/">April 2026</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2026/03/">March 2026</a><span class="archive-list-count">6</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2026/04/">April 2026</a><span class="archive-list-count">9</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2026/03/">March 2026</a><span class="archive-list-count">6</span></li></ul>
     </div>
 
         <hr>
