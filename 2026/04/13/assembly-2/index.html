@@ -1,0 +1,975 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="keyword"  content="">
+    <link rel="shortcut icon" href="/img/ironman-draw.png">
+    <!-- Place this tag in your head or just before your close body tag. -->
+    <script async defer src="https://buttons.github.io/buttons.js"></script>
+    <title>
+        
+          汇编笔记-2 - null
+        
+    </title>
+
+    <link rel="canonical" href="http://example.com/2026/04/13/assembly-2/">
+
+    <!-- Bootstrap Core CSS -->
+
+   
+<link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.4.1/css/bootstrap.min.css">
+
+
+    
+
+    <!-- Custom CSS --> 
+    
+<link rel="stylesheet" href="/css/beantech.min.css">
+
+
+    
+<link rel="stylesheet" href="/css/donate.css">
+
+	
+<link rel="stylesheet" href="/css/w3.css">
+
+    <!-- Pygments Highlight CSS -->
+    
+<link rel="stylesheet" href="/css/highlight.css">
+
+
+    
+<link rel="stylesheet" href="/css/widget.css">
+
+
+    
+<link rel="stylesheet" href="/css/rocket.css">
+
+
+    
+<link rel="stylesheet" href="/css/signature.css">
+
+
+    
+<link rel="stylesheet" href="/css/toc.css">
+
+
+    <!-- Custom Fonts -->
+    <!-- <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css"> -->
+    <!-- Hux change font-awesome CDN to qiniu -->
+    <link href="https://cdn.staticfile.org/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+
+    <!-- Hux Delete, sad but pending in China
+    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/
+    css'>
+    -->
+
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+	
+
+    <!-- ga & ba script hoook -->
+    <script></script>
+<meta name="generator" content="Hexo 8.1.1"></head>
+
+
+<!-- hack iOS CSS :active style -->
+<body ontouchstart="">
+	<!-- Modified by Yu-Hsuan Yen -->
+<!-- Post Header -->
+<style type="text/css">
+    header.intro-header{
+    }
+   .post-heading{
+    padding:20px;
+    }
+  .person {
+    border: 10px solid transparent;
+    margin-bottom: 25px;
+    width: 80%;
+    height: 80%;
+    opacity: 0.7;
+  }
+  .person:hover {
+    border-color: #f1f1f1;
+  }
+
+</style>
+
+<header id="headerid" class="w3-indigo intro-header" style="position:relative;">
+    <!-- Signature -->
+	
+        <div class="container">
+            <div class=" row" >
+			
+			<canvas id="particles-js-canvas" style="position:absolute;z-index:1;top:0px;left:0px;" width="100%" height="50%"></canvas>
+			
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1" style="z-index:2;">
+                
+                    <div class="post-heading" style="padding:40px">
+                        <div class="tags">
+                            
+                        </div>
+                        <h1>汇编笔记-2</h1>
+                        <h2 class="subheading"></h2>
+                        <span class="meta">
+                            Posted by John Doe on
+                            2026-04-13
+                        </span>
+                    </div>
+                
+                </div>
+            </div>
+        </div>
+  
+</header>
+
+	
+    <!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">Hexo</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <!-- Known Issue, found by Hux:
+            <nav>'s height woule be hold on by its content.
+            so, when navbar scale out, the <nav> will cover tags.
+            also mask any touch event of tags, unfortunately.
+        -->
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a  href="/">Homepage</a>
+                    </li>
+		    
+                    
+
+                        
+                        <li>
+           
+                            <a  href="#">menu1</a>
+                           
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+           
+                            <a  href="#">menu2</a>
+                           
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+           
+                            <a  href="#">menu3</a>
+                           
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+           
+                            <a  href="#">menu3</a>
+                           
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+           
+                            <a  href="#">menu5</a>
+                           
+                        </li>
+                        
+                    
+                    
+                </ul>
+            </div>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+<script>
+    // Drop Bootstarp low-performance Navbar
+    // Use customize navbar with high-quality material design animation
+    // in high-perf jank-free CSS3 implementation
+    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e){
+        if ($navbar.className.indexOf('in') > 0) {
+        // CLOSE
+            $navbar.className = " ";
+            // wait until animation end.
+            setTimeout(function(){
+                // prevent frequently toggle
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        }else{
+        // OPEN
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+</script>
+
+
+    <!-- Main Content -->
+    <!-- Modify by Yu-Hsuan Yen -->
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+
+            <!-- Post Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                post-container">
+
+                <h1 id="汇编笔记-2"><a href="#汇编笔记-2" class="headerlink" title="汇编笔记-2"></a>汇编笔记-2</h1><h2 id="一、核心概念：物理地址的计算"><a href="#一、核心概念：物理地址的计算" class="headerlink" title="一、核心概念：物理地址的计算"></a>一、核心概念：物理地址的计算</h2><p>在实模式下，CPU 通过 <strong>段地址</strong> 和 <strong>偏移地址</strong> 组合生成 20 位的 <strong>物理地址</strong>。</p>
+<table>
+<thead>
+<tr>
+<th align="left">术语</th>
+<th align="left">英文</th>
+<th align="left">作用</th>
+<th align="left">计算规则</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left"><strong>DS</strong></td>
+<td align="left">Data Segment</td>
+<td align="left">数据段寄存器，指向数据存放的内存段基址</td>
+<td align="left"><strong>物理地址 &#x3D; DS × 16 + 偏移地址</strong></td>
+</tr>
+<tr>
+<td align="left"><strong>CS</strong></td>
+<td align="left">Code Segment</td>
+<td align="left">代码段寄存器，指向指令存放的内存段基址</td>
+<td align="left"><strong>物理地址 &#x3D; CS × 16 + IP</strong></td>
+</tr>
+<tr>
+<td align="left"><strong>SS</strong></td>
+<td align="left">Stack Segment</td>
+<td align="left">栈段寄存器，指向栈空间的内存段基址</td>
+<td align="left"><strong>物理地址 &#x3D; SS × 16 + SP</strong></td>
+</tr>
+<tr>
+<td align="left"><strong>ES</strong></td>
+<td align="left">Extra Segment</td>
+<td align="left">附加段寄存器，常用于字符串操作的目标地址</td>
+<td align="left"><strong>物理地址 &#x3D; ES × 16 + DI</strong></td>
+</tr>
+</tbody></table>
+<h3 id="地址转换实例"><a href="#地址转换实例" class="headerlink" title="地址转换实例"></a>地址转换实例</h3><figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">假设：</span><br><span class="line">段寄存器 DS = 0x1234</span><br><span class="line">偏移地址 BX  = 0x5678</span><br><span class="line"></span><br><span class="line">计算物理地址：</span><br><span class="line">0x1234 × 16 (即 0x10) = 0x12340</span><br><span class="line">              + 0x5678 = 0x179B8  (这是 CPU 真正送往地址总线的 20 位地址)</span><br></pre></td></tr></table></figure>
+
+
+<h2 id="二、CS-IP-与-JMP-指令（程序跳转）"><a href="#二、CS-IP-与-JMP-指令（程序跳转）" class="headerlink" title="二、CS:IP 与 JMP 指令（程序跳转）"></a>二、CS:IP 与 JMP 指令（程序跳转）</h2><p>CS (代码段) 和 IP (指令指针) 组合决定了 CPU  <strong>下一条要执行哪里的指令</strong> 。</p>
+<h3 id="1-寄存器状态"><a href="#1-寄存器状态" class="headerlink" title="1. 寄存器状态"></a>1. 寄存器状态</h3><table>
+<thead>
+<tr>
+<th>寄存器对</th>
+<th>作用</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>CS:IP</strong></td>
+<td>指向当前正在执行的指令</td>
+<td><strong>不可</strong>直接通过 <code>mov</code> 修改，需通过跳转指令修改</td>
+</tr>
+</tbody></table>
+<h3 id="2-jmp-指令实例表"><a href="#2-jmp-指令实例表" class="headerlink" title="2. jmp 指令实例表"></a>2. <code>jmp</code> 指令实例表</h3><table>
+<thead>
+<tr>
+<th>指令格式</th>
+<th>实例</th>
+<th>执行效果</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>段内短跳转</strong></td>
+<td><code>jmp short label</code></td>
+<td>IP &#x3D; IP + 位移量 (范围 -128~127 字节)</td>
+</tr>
+<tr>
+<td><strong>段内近跳转</strong></td>
+<td><code>jmp near label``jmp ax</code></td>
+<td>IP &#x3D; 新偏移地址 (CS 不变)</td>
+</tr>
+<tr>
+<td><strong>段间远跳转</strong></td>
+<td><code>jmp 0x1000:0x0000</code></td>
+<td>CS &#x3D; 0x1000, IP &#x3D; 0x0000 (同时修改段和偏移)</td>
+</tr>
+</tbody></table>
+<h3 id="3-代码实例"><a href="#3-代码实例" class="headerlink" title="3. 代码实例"></a>3. 代码实例</h3><p><strong>assembly</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">; 假设当前 CS = 0x1000</span><br><span class="line"></span><br><span class="line">section .text</span><br><span class="line">    mov ax, 0</span><br><span class="line">loop_start:</span><br><span class="line">    inc ax</span><br><span class="line">    cmp ax, 10</span><br><span class="line">    jne loop_start    ; 段内跳转：仅修改 IP，CS 保持 0x1000</span><br><span class="line"></span><br><span class="line">    ; 远跳转：跳到另一段代码执行</span><br><span class="line">    jmp 0x2000:0x0000 ; CS 变为 0x2000，IP 变为 0x0000</span><br></pre></td></tr></table></figure>
+
+<h2 id="三、SS-SP-与栈操作（PUSH-POP）"><a href="#三、SS-SP-与栈操作（PUSH-POP）" class="headerlink" title="三、SS:SP 与栈操作（PUSH &#x2F; POP）"></a>三、SS:SP 与栈操作（PUSH &#x2F; POP）</h2><p>栈是<strong>向下增长</strong>的（高地址向低地址），<code>SS</code> 指向栈段，<code>SP</code> 指向栈顶。</p>
+<h3 id="1-寄存器定义"><a href="#1-寄存器定义" class="headerlink" title="1. 寄存器定义"></a>1. 寄存器定义</h3><table>
+<thead>
+<tr>
+<th>寄存器对</th>
+<th>作用</th>
+<th>栈顶物理地址计算</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>SS:SP</strong></td>
+<td>指向栈顶元素</td>
+<td>物理地址 &#x3D;<strong>SS × 16 + SP</strong></td>
+</tr>
+</tbody></table>
+<h3 id="2-入栈与出栈指令"><a href="#2-入栈与出栈指令" class="headerlink" title="2. 入栈与出栈指令"></a>2. 入栈与出栈指令</h3><table>
+<thead>
+<tr>
+<th>指令</th>
+<th>操作流程</th>
+<th>SP 变化</th>
+<th>等效动作 (仅示意逻辑)</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>push ax</code></td>
+<td>1. SP &#x3D; SP - 2&#96;&#96;2. 将 AX 存入 [SS:SP]</td>
+<td><strong>减小</strong> 2</td>
+<td><code>sub sp, 2</code> + <code>mov [ss:sp], ax</code></td>
+</tr>
+<tr>
+<td><code>pop ax</code></td>
+<td>1. 从 [SS:SP] 取值给 AX&#96;&#96;2. SP &#x3D; SP + 2</td>
+<td><strong>增加</strong> 2</td>
+<td><code>mov ax, [ss:sp]</code> + <code>add sp, 2</code></td>
+</tr>
+<tr>
+<td><code>pushf</code></td>
+<td>将标志寄存器 FLAGS 压栈</td>
+<td>减小 2</td>
+<td>保存所有状态标志位</td>
+</tr>
+<tr>
+<td><code>popf</code></td>
+<td>从栈恢复 FLAGS</td>
+<td>增加 2</td>
+<td>恢复状态标志位</td>
+</tr>
+</tbody></table>
+<h3 id="3-栈操作示意图"><a href="#3-栈操作示意图" class="headerlink" title="3. 栈操作示意图"></a>3. 栈操作示意图</h3><p><strong>text</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">初始状态: SP = 0x100</span><br><span class="line">-----------------------------</span><br><span class="line">|         (空)          | 高地址</span><br><span class="line">|-----------------------| </span><br><span class="line">|         (空)          | SS:0x100 (SP 初始位置)</span><br><span class="line">|-----------------------|</span><br><span class="line">|         (空)          | 低地址</span><br><span class="line"></span><br><span class="line">执行 push ax (ax = 0x1234) 后:</span><br><span class="line">-----------------------------</span><br><span class="line">|         (空)          | SS:0x100 (原 SP)</span><br><span class="line">|-----------------------|</span><br><span class="line">|        0x1234         | SS:0x0FE (新 SP 指向这里) </span><br><span class="line">|-----------------------|</span><br><span class="line">|         (空)          | 低地址</span><br></pre></td></tr></table></figure>
+
+<h3 id="4-实际编程示例"><a href="#4-实际编程示例" class="headerlink" title="4. 实际编程示例"></a>4. 实际编程示例</h3><p><strong>assembly</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">; 设置栈段 (实模式 DOS 环境)</span><br><span class="line">mov ax, 0x9000</span><br><span class="line">mov ss, ax      ; 栈段基址</span><br><span class="line">mov sp, 0x100   ; 栈顶偏移，栈空间在 0x90000 ~ 0x90100</span><br><span class="line"></span><br><span class="line">; 压栈操作</span><br><span class="line">mov ax, 0x1234</span><br><span class="line">mov bx, 0x5678</span><br><span class="line">push ax         ; 先压 AX</span><br><span class="line">push bx         ; 后压 BX (后进先出)</span><br><span class="line"></span><br><span class="line">; 出栈操作</span><br><span class="line">pop cx          ; CX = 0x5678 (后进先出)</span><br><span class="line">pop dx          ; DX = 0x1234</span><br></pre></td></tr></table></figure>
+
+<h2 id="四、综合调试示例"><a href="#四、综合调试示例" class="headerlink" title="四、综合调试示例"></a>四、综合调试示例</h2><p>在 Debug 中查看这些寄存器组合：</p>
+<table>
+<thead>
+<tr>
+<th>命令</th>
+<th>作用</th>
+<th>示例输出解读</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>R</code></td>
+<td>查看所有寄存器</td>
+<td><code>DS=13A7 CS=13A8 SS=13A7 SP=00FE</code></td>
+</tr>
+<tr>
+<td><code>D DS:0</code></td>
+<td>查看数据段开头</td>
+<td>显示 <code>13A7:0000</code> 处内存数据</td>
+</tr>
+<tr>
+<td><code>U CS:IP</code></td>
+<td>反汇编当前指令</td>
+<td>显示接下来要执行的代码</td>
+</tr>
+<tr>
+<td><code>T</code></td>
+<td>单步执行</td>
+<td>观察 <code>push</code> 后 <code>SP</code> 减 2；<code>pop</code> 后 <code>SP</code> 加 2</td>
+</tr>
+</tbody></table>
+<h3 id="常见的段寄存器隐含使用"><a href="#常见的段寄存器隐含使用" class="headerlink" title="常见的段寄存器隐含使用"></a>常见的段寄存器隐含使用</h3><ul>
+<li>访问数据默认用 <code>DS:[偏移]</code>，如 <code>mov ax, [bx]</code></li>
+<li>栈操作默认用 <code>SS:[SP]</code>，如 <code>push</code> &#x2F; <code>pop</code></li>
+<li>指令读取默认用 <code>CS:[IP]</code></li>
+<li>字符串写操作 (<code>stosb</code>) 强制使用 <code>ES:[DI]</code></li>
+</ul>
+<h2 id="五、x86-常用寻址方式详解"><a href="#五、x86-常用寻址方式详解" class="headerlink" title="五、x86 常用寻址方式详解"></a>五、x86 常用寻址方式详解</h2><blockquote>
+<p>说明：<strong>EA</strong> 为有效地址（Effective Address），<strong>SA</strong> 为段地址（Segment Address）。<br>默认段约定：除 <code>BP</code> 默认配合 <code>SS</code> 段外，其余寄存器默认配合 <code>DS</code> 段。</p>
+</blockquote>
+<h3 id="1-直接寻址"><a href="#1-直接寻址" class="headerlink" title="1. 直接寻址"></a>1. 直接寻址</h3><table>
+<thead>
+<tr>
+<th>格式</th>
+<th>EA 计算</th>
+<th>默认段</th>
+<th>示例</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>[idata]</code></td>
+<td>EA &#x3D; idata</td>
+<td>DS</td>
+<td><code>mov ax, [1234h]</code></td>
+</tr>
+</tbody></table>
+<h3 id="2-寄存器间接寻址"><a href="#2-寄存器间接寻址" class="headerlink" title="2. 寄存器间接寻址"></a>2. 寄存器间接寻址</h3><table>
+<thead>
+<tr>
+<th>格式</th>
+<th>EA 计算</th>
+<th>默认段</th>
+<th>示例</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>[bx]</code></td>
+<td>EA &#x3D; (BX)</td>
+<td>DS</td>
+<td><code>mov ax, [bx]</code></td>
+</tr>
+<tr>
+<td><code>[si]</code></td>
+<td>EA &#x3D; (SI)</td>
+<td>DS</td>
+<td><code>mov ax, [si]</code></td>
+</tr>
+<tr>
+<td><code>[di]</code></td>
+<td>EA &#x3D; (DI)</td>
+<td>DS</td>
+<td><code>mov ax, [di]</code></td>
+</tr>
+<tr>
+<td><code>[bp]</code></td>
+<td>EA &#x3D; (BP)</td>
+<td><strong>SS</strong></td>
+<td><code>mov ax, [bp]</code></td>
+</tr>
+</tbody></table>
+<h3 id="3-寄存器相对寻址"><a href="#3-寄存器相对寻址" class="headerlink" title="3. 寄存器相对寻址"></a>3. 寄存器相对寻址</h3><table>
+<thead>
+<tr>
+<th>格式</th>
+<th>EA 计算</th>
+<th>默认段</th>
+<th>等效写法</th>
+<th>常见用途</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>[bx + idata]</code></td>
+<td>(BX) + idata</td>
+<td>DS</td>
+<td><code>[bx].idata</code></td>
+<td>结构体成员</td>
+</tr>
+<tr>
+<td><code>[si + idata]</code></td>
+<td>(SI) + idata</td>
+<td>DS</td>
+<td><code>idata[si]</code></td>
+<td>一维数组</td>
+</tr>
+<tr>
+<td><code>[di + idata]</code></td>
+<td>(DI) + idata</td>
+<td>DS</td>
+<td><code>idata[di]</code></td>
+<td>一维数组</td>
+</tr>
+<tr>
+<td><code>[bp + idata]</code></td>
+<td>(BP) + idata</td>
+<td><strong>SS</strong></td>
+<td><code>[bp].idata</code></td>
+<td>栈内参数访问</td>
+</tr>
+</tbody></table>
+<h3 id="4-基址变址寻址"><a href="#4-基址变址寻址" class="headerlink" title="4. 基址变址寻址"></a>4. 基址变址寻址</h3><table>
+<thead>
+<tr>
+<th>格式</th>
+<th>EA 计算</th>
+<th>默认段</th>
+<th>等效写法</th>
+<th>常见用途</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>[bx + si]</code></td>
+<td>(BX) + (SI)</td>
+<td>DS</td>
+<td><code>[bx][si]</code></td>
+<td>二维数组</td>
+</tr>
+<tr>
+<td><code>[bx + di]</code></td>
+<td>(BX) + (DI)</td>
+<td>DS</td>
+<td><code>[bx][di]</code></td>
+<td>二维数组</td>
+</tr>
+<tr>
+<td><code>[bp + si]</code></td>
+<td>(BP) + (SI)</td>
+<td><strong>SS</strong></td>
+<td><code>[bp][si]</code></td>
+<td>栈内二维访问</td>
+</tr>
+<tr>
+<td><code>[bp + di]</code></td>
+<td>(BP) + (DI)</td>
+<td><strong>SS</strong></td>
+<td><code>[bp][di]</code></td>
+<td>栈内二维访问</td>
+</tr>
+</tbody></table>
+<h3 id="5-相对基址变址寻址"><a href="#5-相对基址变址寻址" class="headerlink" title="5. 相对基址变址寻址"></a>5. 相对基址变址寻址</h3><table>
+<thead>
+<tr>
+<th>格式</th>
+<th>EA 计算</th>
+<th>默认段</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>[bx + si + idata]</code></td>
+<td>(BX) + (SI) + idata</td>
+<td>DS</td>
+</tr>
+<tr>
+<td><code>[bx + di + idata]</code></td>
+<td>(BX) + (DI) + idata</td>
+<td>DS</td>
+</tr>
+<tr>
+<td><code>[bp + si + idata]</code></td>
+<td>(BP) + (SI) + idata</td>
+<td><strong>SS</strong></td>
+</tr>
+<tr>
+<td><code>[bp + di + idata]</code></td>
+<td>(BP) + (DI) + idata</td>
+<td><strong>SS</strong></td>
+</tr>
+</tbody></table>
+<h2 id="六、标志寄存器-FLAGS-各标志位详解"><a href="#六、标志寄存器-FLAGS-各标志位详解" class="headerlink" title="六、标志寄存器 FLAGS 各标志位详解"></a>六、标志寄存器 FLAGS 各标志位详解</h2><table>
+<thead>
+<tr>
+<th>缩写</th>
+<th>全称</th>
+<th>中文名称</th>
+<th>置 1 条件</th>
+<th>主要用途</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>ZF</strong></td>
+<td>Zero Flag</td>
+<td>零标志</td>
+<td>运算结果 &#x3D; 0</td>
+<td><code>je</code> &#x2F; <code>jz</code> 条件跳转</td>
+</tr>
+<tr>
+<td><strong>CF</strong></td>
+<td>Carry Flag</td>
+<td>进位标志</td>
+<td>最高位产生进位&#x2F;借位</td>
+<td><code>jc</code> &#x2F; <code>jnc</code>，无符号数溢出判断</td>
+</tr>
+<tr>
+<td><strong>AF</strong></td>
+<td>Auxiliary Carry Flag</td>
+<td>辅助进位标志</td>
+<td>第 3 位向第 4 位进位</td>
+<td>BCD 码调整指令 (<code>daa</code>, <code>aaa</code>)</td>
+</tr>
+<tr>
+<td><strong>PF</strong></td>
+<td>Parity Flag</td>
+<td>奇偶标志</td>
+<td>结果低 8 位中 1 的个数为偶数</td>
+<td>串行通信数据校验</td>
+</tr>
+<tr>
+<td><strong>DF</strong></td>
+<td>Direction Flag</td>
+<td>方向标志</td>
+<td>DF&#x3D;1 时地址递减</td>
+<td>串操作方向控制 (<code>cld</code>&#x2F;<code>std</code>)</td>
+</tr>
+<tr>
+<td><strong>IF</strong></td>
+<td>Interrupt Flag</td>
+<td>中断标志</td>
+<td>IF&#x3D;1 时允许响应可屏蔽中断</td>
+<td><code>sti</code>(开中断) &#x2F; <code>cli</code>(关中断)</td>
+</tr>
+<tr>
+<td><strong>TF</strong></td>
+<td>Trap Flag</td>
+<td>陷阱标志</td>
+<td>TF&#x3D;1 时 CPU 单步执行</td>
+<td>调试器单步调试</td>
+</tr>
+</tbody></table>
+<h3 id="标志位快速记忆口诀"><a href="#标志位快速记忆口诀" class="headerlink" title="标志位快速记忆口诀"></a>标志位快速记忆口诀</h3><ul>
+<li><strong>Z</strong>F：结果是 <strong>Z</strong>ero（零）</li>
+<li><strong>C</strong>F：最高位有 <strong>C</strong>arry（进位）</li>
+<li><strong>P</strong>F：1 的个数是 <strong>P</strong>arity（偶数）</li>
+<li><strong>D</strong>F：地址 <strong>D</strong>ecrease（减少）还是 Increase</li>
+<li><strong>I</strong>F：<strong>I</strong>nterrupt（中断）是否允许</li>
+<li><strong>T</strong>F：<strong>T</strong>rap（陷阱&#x2F;单步）</li>
+</ul>
+<h2 id="七、寻址方式与段寄存器对应关系速查表"><a href="#七、寻址方式与段寄存器对应关系速查表" class="headerlink" title="七、寻址方式与段寄存器对应关系速查表"></a>七、寻址方式与段寄存器对应关系速查表</h2><table>
+<thead>
+<tr>
+<th>寻址组合</th>
+<th>默认段寄存器</th>
+<th>可否超越前缀</th>
+<th>典型应用场景</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>[bx]</code> &#x2F; <code>[si]</code> &#x2F; <code>[di]</code></td>
+<td>DS</td>
+<td>可改为 ES&#x2F;SS&#x2F;CS</td>
+<td>访问数据段</td>
+</tr>
+<tr>
+<td><code>[bp]</code></td>
+<td><strong>SS</strong></td>
+<td>可改为 DS&#x2F;ES&#x2F;CS</td>
+<td>访问栈内局部变量</td>
+</tr>
+<tr>
+<td><code>[bx + si]</code> 等组合</td>
+<td>DS</td>
+<td>可超越</td>
+<td>访问结构体&#x2F;二维数组</td>
+</tr>
+<tr>
+<td><code>[bp + si]</code> 等组合</td>
+<td><strong>SS</strong></td>
+<td>可超越</td>
+<td>访问栈帧内的数组</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p><strong>段超越前缀示例</strong> ：</p>
+<p><strong>assembly</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">mov ax, [bx]      ; 默认 DS:[BX]</span><br><span class="line">mov ax, es:[bx]   ; 强制使用 ES 段</span><br><span class="line">mov ax, ss:[bx]   ; 强制使用 SS 段</span><br></pre></td></tr></table></figure></blockquote>
+
+                
+
+                <hr>
+                <!-- Pager -->
+                <ul class="pager">
+                    
+                    
+                        <li class="next">
+                            <a href="/2026/04/12/assembly-1/" data-toggle="tooltip" data-placement="top" title="汇编笔记-1">Next post &rarr;</a>
+                        </li>
+                    
+                </ul>
+
+                <br>
+
+                <!--打赏-->
+                
+                <!--打赏-->
+
+                <br>
+                <!--分享-->
+                
+                    <div class="social-share"  data-wechat-qrcode-helper="" align="center"></div>
+                    <!--  css & js -->
+                    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/css/share.min.css">
+                    <script src="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/js/social-share.min.js"></script>
+                
+                <!--分享-->
+                <br>                       
+                
+                <!-- require APlayer -->
+                
+
+                <!-- disqus comment start -->
+                
+                <!-- disqus comment end -->
+
+                
+				
+            </div>
+
+            <!-- Tabe of Content -->
+            <!-- Table of Contents -->
+
+                
+            <!-- Sidebar Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                <!-- Featured Tags -->
+                
+                <section>
+                    <!-- no hr -->
+                    <h5><a href="/tags/">Tags</a></h5>
+                    <div class="tags">
+                       
+                    </div>
+                </section>
+                
+
+                <!-- Friends Blog -->
+                
+                <hr>
+                <h5>FRIENDS</h5>
+                <ul class="list-inline">
+
+                    
+                        <li><a href="http://www.sumoon.com" target="_blank">ACE theme</a></li>
+                    
+                </ul>
+                
+            </div>
+        </div>
+    </div>
+</article>
+
+
+
+
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+<!-- anchor-js, Doc:http://bryanbraun.github.io/anchorjs/ -->
+<script>
+    async("https://cdn.bootcss.com/anchor-js/1.1.1/anchor.min.js",function(){
+        anchors.options = {
+          visible: 'hover',
+          placement: 'left',
+          icon: 'ℬ'
+        };
+        anchors.add().remove('.intro-header h1').remove('.subheading').remove('.sidebar-container h5');
+    })
+</script>
+<style>
+    /* place left on bigger screen */
+    @media all and (min-width: 800px) {
+        .anchorjs-link{
+            position: absolute;
+            left: -0.75em;
+            font-size: 1.1em;
+            margin-top : -0.1em;
+        }
+    }
+</style>
+
+
+
+    <!-- Footer -->
+    <!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                
+                
+                
+
+                
+
+                
+
+                
+                    <li>
+                        <a target="_blank"  href="https://github.com/kinggozhang">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+
+                </ul>
+                <p class="copyright text-muted">
+                    Copyright &copy; John Doe 2026 
+                    <br>
+                    Powered by <a target="_blank" rel="noopener" href="http://www.hexo.io">Hexo</a> 
+                    <span style="display: inline-block; margin: 0 5px;">
+                        <i class="fa fa-heart"></i>
+                    </span> 
+                    Theme by <a target="_blank" rel="noopener" href="https://github.com/kinggozhang/hexo-theme-ace">ACE</a> 
+					
+					
+					<i class="fa fa-eye" id="leancounter"></i>
+					
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- jQuery -->
+
+   
+<script src="https://cdn.staticfile.org/jquery/2.2.4/jquery.min.js"></script>
+
+
+
+
+<!-- Bootstrap Core JavaScript -->
+
+   
+<script src="https://cdn.staticfile.org/twitter-bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+
+
+<!-- Custom Theme JavaScript -->
+
+<script src="/js/hux-blog.min.js"></script>
+
+
+
+	
+<script src="/js/particles.js"></script>
+
+	
+<script src="/js/particles_config.js"></script>
+
+
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+<!-- 
+     Because of the native support for backtick-style fenced code blocks 
+     right within the Markdown is landed in Github Pages, 
+     From V1.6, There is no need for Highlight.js, 
+     so Huxblog drops it officially.
+
+     - https://github.com/blog/2100-github-pages-now-faster-and-simpler-with-jekyll-3-0  
+     - https://help.github.com/articles/creating-and-highlighting-code-blocks/    
+-->
+<!--
+    <script>
+        async("http://cdn.bootcss.com/highlight.js/8.6/highlight.min.js", function(){
+            hljs.initHighlightingOnLoad();
+        })
+    </script>
+    <link href="http://cdn.bootcss.com/highlight.js/8.6/styles/github.min.css" rel="stylesheet">
+-->
+
+
+<!-- jquery.tagcloud.js -->
+<script>
+    // only load tagcloud.js in tag.html
+    if($('#tag_cloud').length !== 0){
+        async("http://example.com/2026/04/13/assembly-2/index.html/js/jquery.tagcloud.js",function(){
+            $.fn.tagcloud.defaults = {
+                //size: {start: 1, end: 1, unit: 'em'},
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+<!--fastClick.js -->
+<script>
+    async("https://cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+
+<!-- Google Analytics -->
+
+
+
+
+<!-- Baidu Tongji -->
+
+
+
+
+
+
+	<a id="rocket" href="#top" class=""></a>
+	<script type="text/javascript" src="/js/totop.js?v=1.0.0" async=""></script>
+    <script type="text/javascript" src="/js/toc.js?v=1.0.0" async=""></script>
+<!-- Image to hack wechat -->
+<img src="http://example.com/img/icon_wechat.png" width="0" height="0" />
+<!-- Migrate from head to bottom, no longer block render and still work -->
+
+</body>
+
+</html>
