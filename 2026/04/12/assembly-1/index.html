@@ -402,14 +402,14 @@
 <tbody><tr>
 <td align="left"><code>mov</code></td>
 <td align="left">数据复制</td>
-<td align="left"><code>mov rax, 1337&lt;br&gt;``mov rbx, rax</code></td>
-<td align="left">RAX &#x3D; 1337 <code>&lt;br&gt;</code>RBX &#x3D; 1337</td>
+<td align="left"><code>mov rax, 1337</code></td>
+<td align="left">RAX &#x3D; 1337<br />RBX &#x3D; 1337</td>
 </tr>
 <tr>
 <td align="left"><code>xchg</code></td>
 <td align="left">交换数据</td>
-<td align="left"><code>mov rax, 10&lt;br&gt;``mov rbx, 20&lt;br&gt;``xchg rax, rbx</code></td>
-<td align="left">RAX &#x3D; 20 <code>&lt;br&gt;</code>RBX &#x3D; 10</td>
+<td align="left"><code>mov rax, 10</code></td>
+<td align="left">RAX &#x3D; 20<br />RBX &#x3D; 10</td>
 </tr>
 </tbody></table>
 <hr>
@@ -425,43 +425,43 @@
 <tbody><tr>
 <td align="left"><code>add</code></td>
 <td align="left">加法</td>
-<td align="left"><code>mov rax, 10&lt;br&gt;``add rax, 5</code></td>
+<td align="left"><code>mov rax, 10</code></td>
 <td align="left">RAX &#x3D; 15</td>
 </tr>
 <tr>
 <td align="left"><code>sub</code></td>
 <td align="left">减法</td>
-<td align="left"><code>mov rax, 10&lt;br&gt;``sub rax, 3</code></td>
+<td align="left"><code>mov rax, 10</code></td>
 <td align="left">RAX &#x3D; 7</td>
 </tr>
 <tr>
 <td align="left"><code>mul</code></td>
 <td align="left">无符号乘法</td>
-<td align="left"><code>mov rax, 5&lt;br&gt;``mov rcx, 6&lt;br&gt;``mul rcx</code></td>
+<td align="left"><code>mov rax, 5</code></td>
 <td align="left">RAX &#x3D; 30, RDX &#x3D; 0</td>
 </tr>
 <tr>
 <td align="left"><code>div</code></td>
 <td align="left">无符号除法</td>
-<td align="left"><code>mov rdx, 0&lt;br&gt;``mov rax, 17&lt;br&gt;``mov rcx, 5&lt;br&gt;``div rcx</code></td>
-<td align="left">RAX &#x3D; 3 (商)<code>&lt;br&gt;</code>RDX &#x3D; 2 (余数)</td>
+<td align="left"><code>mov rdx, 0</code></td>
+<td align="left">RAX &#x3D; 3 (商)<br />RDX &#x3D; 2 (余数)</td>
 </tr>
 <tr>
 <td align="left"><code>inc</code></td>
 <td align="left">自增 1</td>
-<td align="left"><code>mov rax, 10&lt;br&gt;``inc rax</code></td>
+<td align="left"><code>mov rax, 10</code></td>
 <td align="left">RAX &#x3D; 11</td>
 </tr>
 <tr>
 <td align="left"><code>dec</code></td>
 <td align="left">自减 1</td>
-<td align="left"><code>mov rax, 10&lt;br&gt;``dec rax</code></td>
+<td align="left"><code>mov rax, 10</code></td>
 <td align="left">RAX &#x3D; 9</td>
 </tr>
 <tr>
 <td align="left"><code>neg</code></td>
 <td align="left">取负数（补码）</td>
-<td align="left"><code>mov rax, 5&lt;br&gt;``neg rax</code></td>
+<td align="left"><code>mov rax, 5</code></td>
 <td align="left">RAX &#x3D; -5</td>
 </tr>
 </tbody></table>
@@ -478,25 +478,25 @@
 <tbody><tr>
 <td align="left"><code>and</code></td>
 <td align="left">按位与</td>
-<td align="left"><code>mov al, 0b1100&lt;br&gt;``and al, 0b1010</code></td>
+<td align="left"><code>mov al, 0b1100</code></td>
 <td align="left">AL &#x3D; 0b1000</td>
 </tr>
 <tr>
 <td align="left"><code>or</code></td>
 <td align="left">按位或</td>
-<td align="left"><code>mov al, 0b1100&lt;br&gt;``or al, 0b0011</code></td>
+<td align="left"><code>mov al, 0b1100</code></td>
 <td align="left">AL &#x3D; 0b1111</td>
 </tr>
 <tr>
 <td align="left"><code>shl</code></td>
 <td align="left">逻辑左移</td>
-<td align="left"><code>mov rax, 1&lt;br&gt;``shl rax, 3</code></td>
+<td align="left"><code>mov rax, 1</code></td>
 <td align="left">RAX &#x3D; 8</td>
 </tr>
 <tr>
 <td align="left"><code>shr</code></td>
 <td align="left">逻辑右移</td>
-<td align="left"><code>mov rax, 8&lt;br&gt;``shr rax, 2</code></td>
+<td align="left"><code>mov rax, 8</code></td>
 <td align="left">RAX &#x3D; 2</td>
 </tr>
 </tbody></table>
@@ -513,16 +513,19 @@
 <tbody><tr>
 <td align="left"><code>int</code></td>
 <td align="left">软件中断</td>
-<td align="left"><code>int 0x80&lt;br&gt;``int 3</code></td>
-<td align="left">32位系统调用 <code>&lt;br&gt;</code>触发调试断点</td>
+<td align="left"><code>int 0x80</code></td>
+<td align="left">32位系统调用<br />触发调试断点</td>
 </tr>
 </tbody></table>
 <h3 id="5-具体实例"><a href="#5-具体实例" class="headerlink" title="5.具体实例"></a>5.具体实例</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line">.inter_syntax noprefix</span><br><span class="line">.global _start</span><br><span class="line">_start:</span><br><span class="line">    mov rax, 1337</span><br><span class="line">    mov rbx, rax</span><br><span class="line"></span><br><span class="line">    mov rcx, 10</span><br><span class="line">    add rcx, 5          ; RCX = 15</span><br><span class="line">    sub rcx, 3          ; RCX = 12</span><br><span class="line"></span><br><span class="line">    mov rdx, 100</span><br><span class="line">    inc rdx             ; RDX = 101</span><br><span class="line">    dec rdx             ; RDX = 100</span><br><span class="line"></span><br><span class="line">    mov al, 0b11001100</span><br><span class="line">    and al, 0b11110000  ; AL = 0b11000000</span><br><span class="line">    mov bl, 0b00001111</span><br><span class="line">    or  bl, al          ; BL = 0b11001111</span><br><span class="line"></span><br><span class="line">    mov rax, 1</span><br><span class="line">    shl rax, 4          ; RAX = 16</span><br><span class="line">    shr rax, 1          ; RAX = 8</span><br><span class="line"></span><br><span class="line">    mov rax, 6</span><br><span class="line">    mov rcx, 7</span><br><span class="line">    mul rcx             ; RAX = 42, RDX = 0</span><br><span class="line"></span><br><span class="line">    mov rdx, 0          ; 高位清零</span><br><span class="line">    mov rax, 20</span><br><span class="line">    mov rcx, 6</span><br><span class="line">    div rcx             ; RAX = 3 (商), RDX = 2 (余数)</span><br><span class="line"></span><br><span class="line">    mov rax, 111</span><br><span class="line">    mov rbx, 222</span><br><span class="line">    xchg rax, rbx       ; RAX = 222, RBX = 111</span><br><span class="line"></span><br><span class="line">    mov rax, 5</span><br><span class="line">    neg rax             ; RAX = -5 (0xFFFFFFFFFFFFFFFB)</span><br><span class="line"></span><br><span class="line">    nop                 ; 空操作，单步时直接跳过</span><br><span class="line">    pushfq              ; 保存标志位到栈</span><br><span class="line">    popfq               ; 恢复标志位（保持栈平衡）</span><br><span class="line">    int3                ; 断点，GDB 会自动停下</span><br><span class="line"></span><br><span class="line"> </span><br><span class="line">    mov rax, 60         ; sys_exit</span><br><span class="line">    xor rdi, rdi        ; 返回 0</span><br><span class="line">    syscall</span><br></pre></td></tr></table></figure>
 
 <h2 id="五、简单程序编写"><a href="#五、简单程序编写" class="headerlink" title="五、简单程序编写"></a>五、简单程序编写</h2><p>环境WSL-Ubuntu，gcc</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">.inter_syntax noprefix</span><br><span class="line">.global _start</span><br><span class="line">_start:</span><br><span class="line">        mov rdi, 42     ;退出状态码</span><br><span class="line">        mov rax, 60     ;系统调用约定 退出</span><br><span class="line">        syscall</span><br></pre></td></tr></table></figure>
+
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">as ./program.s -o ./program.o</span><br><span class="line">ld ./program.o -o ./program</span><br><span class="line"></span><br><span class="line">&gt; ./program</span><br><span class="line">&gt; <span class="built_in">echo</span> $?</span><br><span class="line">42</span><br></pre></td></tr></table></figure>
+
 <h3 id="Hello-World"><a href="#Hello-World" class="headerlink" title="Hello World"></a>Hello World</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">.inter_syntax noprefix</span><br><span class="line">.data</span><br><span class="line">msg:</span><br><span class="line">    .ascii &quot;Helko_World\n&quot;</span><br><span class="line">    len = . - msg</span><br><span class="line"></span><br><span class="line">.text</span><br><span class="line">    .global _start</span><br><span class="line"></span><br><span class="line">_start:</span><br><span class="line">    # 写入</span><br><span class="line">    mov rax, 1 # 系统调用</span><br><span class="line">    mov rdi, 1</span><br><span class="line">    lea rsi, [msg]</span><br><span class="line">    mov rdx, len</span><br><span class="line">    syscall</span><br><span class="line"></span><br><span class="line">    #exit</span><br><span class="line">    mov rax, 60</span><br><span class="line">    mov rdi, 0</span><br><span class="line">    syscall</span><br></pre></td></tr></table></figure>
+
                 
 
                 <hr>
