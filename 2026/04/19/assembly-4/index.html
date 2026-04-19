@@ -1,0 +1,722 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="keyword"  content="">
+    <link rel="shortcut icon" href="/img/ironman-draw.png">
+    <!-- Place this tag in your head or just before your close body tag. -->
+    <script async defer src="https://buttons.github.io/buttons.js"></script>
+    <title>
+        
+          汇编4 - null
+        
+    </title>
+
+    <link rel="canonical" href="http://example.com/2026/04/19/assembly-4/">
+
+    <!-- Bootstrap Core CSS -->
+
+   
+<link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.4.1/css/bootstrap.min.css">
+
+
+    
+
+    <!-- Custom CSS --> 
+    
+<link rel="stylesheet" href="/css/beantech.min.css">
+
+
+    
+<link rel="stylesheet" href="/css/donate.css">
+
+	
+<link rel="stylesheet" href="/css/w3.css">
+
+    <!-- Pygments Highlight CSS -->
+    
+<link rel="stylesheet" href="/css/highlight.css">
+
+
+    
+<link rel="stylesheet" href="/css/widget.css">
+
+
+    
+<link rel="stylesheet" href="/css/rocket.css">
+
+
+    
+<link rel="stylesheet" href="/css/signature.css">
+
+
+    
+<link rel="stylesheet" href="/css/toc.css">
+
+
+    <!-- Custom Fonts -->
+    <!-- <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css"> -->
+    <!-- Hux change font-awesome CDN to qiniu -->
+    <link href="https://cdn.staticfile.org/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+
+    <!-- Hux Delete, sad but pending in China
+    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/
+    css'>
+    -->
+
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+	
+
+    <!-- ga & ba script hoook -->
+    <script></script>
+<meta name="generator" content="Hexo 8.1.1"></head>
+
+
+<!-- hack iOS CSS :active style -->
+<body ontouchstart="">
+	<!-- Modified by Yu-Hsuan Yen -->
+<!-- Post Header -->
+<style type="text/css">
+    header.intro-header{
+    }
+   .post-heading{
+    padding:20px;
+    }
+  .person {
+    border: 10px solid transparent;
+    margin-bottom: 25px;
+    width: 80%;
+    height: 80%;
+    opacity: 0.7;
+  }
+  .person:hover {
+    border-color: #f1f1f1;
+  }
+
+</style>
+
+<header id="headerid" class="w3-indigo intro-header" style="position:relative;">
+    <!-- Signature -->
+	
+        <div class="container">
+            <div class=" row" >
+			
+			<canvas id="particles-js-canvas" style="position:absolute;z-index:1;top:0px;left:0px;" width="100%" height="50%"></canvas>
+			
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1" style="z-index:2;">
+                
+                    <div class="post-heading" style="padding:40px">
+                        <div class="tags">
+                            
+                        </div>
+                        <h1>汇编4</h1>
+                        <h2 class="subheading"></h2>
+                        <span class="meta">
+                            Posted by John Doe on
+                            2026-04-19
+                        </span>
+                    </div>
+                
+                </div>
+            </div>
+        </div>
+  
+</header>
+
+	
+    <!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">Hexo</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <!-- Known Issue, found by Hux:
+            <nav>'s height woule be hold on by its content.
+            so, when navbar scale out, the <nav> will cover tags.
+            also mask any touch event of tags, unfortunately.
+        -->
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a  href="/">Homepage</a>
+                    </li>
+		    
+                    
+
+                        
+                        <li>
+           
+                            <a  href="#">menu1</a>
+                           
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+           
+                            <a  href="#">menu2</a>
+                           
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+           
+                            <a  href="#">menu3</a>
+                           
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+           
+                            <a  href="#">menu3</a>
+                           
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+           
+                            <a  href="#">menu5</a>
+                           
+                        </li>
+                        
+                    
+                    
+                </ul>
+            </div>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+<script>
+    // Drop Bootstarp low-performance Navbar
+    // Use customize navbar with high-quality material design animation
+    // in high-perf jank-free CSS3 implementation
+    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e){
+        if ($navbar.className.indexOf('in') > 0) {
+        // CLOSE
+            $navbar.className = " ";
+            // wait until animation end.
+            setTimeout(function(){
+                // prevent frequently toggle
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        }else{
+        // OPEN
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+</script>
+
+
+    <!-- Main Content -->
+    <!-- Modify by Yu-Hsuan Yen -->
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+
+            <!-- Post Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                post-container">
+
+                <h1 id="GDB调试学习笔记（含汇编调试）"><a href="#GDB调试学习笔记（含汇编调试）" class="headerlink" title="GDB调试学习笔记（含汇编调试）"></a>GDB调试学习笔记（含汇编调试）</h1><h2 id="什么是GDB"><a href="#什么是GDB" class="headerlink" title="什么是GDB"></a>什么是GDB</h2><p>GDB（GNU Debugger）是Linux下的C&#x2F;C++调试工具，可以让你一步步运行程序，查看变量值，查看汇编指令，找出bug。</p>
+<h2 id="准备工作：编译时加调试信息"><a href="#准备工作：编译时加调试信息" class="headerlink" title="准备工作：编译时加调试信息"></a>准备工作：编译时加调试信息</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 必须加 -g 选项，否则无法调试</span></span><br><span class="line">gcc -g -o program program.c</span><br><span class="line"></span><br><span class="line"><span class="comment"># 查看汇编代码需要加 -S 或使用objdump</span></span><br><span class="line">gcc -S -o program.s program.c  <span class="comment"># 生成汇编文件</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 编译时保留汇编符号</span></span><br><span class="line">gcc -g -o program program.c</span><br></pre></td></tr></table></figure>
+
+<h2 id="启动GDB"><a href="#启动GDB" class="headerlink" title="启动GDB"></a>启动GDB</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 方式1：直接调试程序</span></span><br><span class="line">gdb ./program</span><br><span class="line"></span><br><span class="line"><span class="comment"># 方式2：先启动gdb，再加载程序</span></span><br><span class="line">gdb</span><br><span class="line">file ./program</span><br><span class="line"></span><br><span class="line"><span class="comment"># 方式3：调试带参数的程序</span></span><br><span class="line">gdb --args ./program arg1 arg2</span><br></pre></td></tr></table></figure>
+
+<h2 id="核心命令速查表"><a href="#核心命令速查表" class="headerlink" title="核心命令速查表"></a>核心命令速查表</h2><table>
+<thead>
+<tr>
+<th>命令</th>
+<th>简写</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>break</code></td>
+<td><code>b</code></td>
+<td>设置断点</td>
+</tr>
+<tr>
+<td><code>run</code></td>
+<td><code>r</code></td>
+<td>运行程序</td>
+</tr>
+<tr>
+<td><code>continue</code></td>
+<td><code>c</code></td>
+<td>继续运行到下一个断点</td>
+</tr>
+<tr>
+<td><code>next</code></td>
+<td><code>n</code></td>
+<td>单步执行（不进入函数）</td>
+</tr>
+<tr>
+<td><code>step</code></td>
+<td><code>s</code></td>
+<td>单步执行（进入函数）</td>
+</tr>
+<tr>
+<td><code>print</code></td>
+<td><code>p</code></td>
+<td>打印变量值</td>
+</tr>
+<tr>
+<td><code>list</code></td>
+<td><code>l</code></td>
+<td>查看源代码</td>
+</tr>
+<tr>
+<td><code>backtrace</code></td>
+<td><code>bt</code></td>
+<td>查看函数调用栈</td>
+</tr>
+<tr>
+<td><code>info</code></td>
+<td><code>i</code></td>
+<td>查看信息</td>
+</tr>
+<tr>
+<td><code>quit</code></td>
+<td><code>q</code></td>
+<td>退出GDB</td>
+</tr>
+</tbody></table>
+<h2 id="汇编调试相关命令"><a href="#汇编调试相关命令" class="headerlink" title="汇编调试相关命令"></a>汇编调试相关命令</h2><table>
+<thead>
+<tr>
+<th>命令</th>
+<th>简写</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>disassemble</code></td>
+<td><code>disas</code></td>
+<td>查看汇编代码</td>
+</tr>
+<tr>
+<td><code>stepi</code></td>
+<td><code>si</code></td>
+<td>单步执行一条汇编指令</td>
+</tr>
+<tr>
+<td><code>nexti</code></td>
+<td><code>ni</code></td>
+<td>单步执行（不进入函数调用）</td>
+</tr>
+<tr>
+<td><code>info registers</code></td>
+<td><code>i r</code></td>
+<td>查看寄存器值</td>
+</tr>
+<tr>
+<td><code>print $rax</code></td>
+<td><code>p $rax</code></td>
+<td>打印寄存器值</td>
+</tr>
+<tr>
+<td><code>x</code></td>
+<td><code>x</code></td>
+<td>查看内存</td>
+</tr>
+<tr>
+<td><code>layout asm</code></td>
+<td>-</td>
+<td>显示汇编布局</td>
+</tr>
+<tr>
+<td><code>layout reg</code></td>
+<td>-</td>
+<td>显示寄存器布局</td>
+</tr>
+</tbody></table>
+<h2 id="常用操作示例"><a href="#常用操作示例" class="headerlink" title="常用操作示例"></a>常用操作示例</h2><h3 id="1-设置断点"><a href="#1-设置断点" class="headerlink" title="1. 设置断点"></a>1. 设置断点</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 在函数处打断点</span></span><br><span class="line">(gdb) <span class="built_in">break</span> main</span><br><span class="line">(gdb) b main</span><br><span class="line"></span><br><span class="line"><span class="comment"># 在行号处打断点</span></span><br><span class="line">(gdb) b 15</span><br><span class="line"></span><br><span class="line"><span class="comment"># 在文件指定行打断点</span></span><br><span class="line">(gdb) b test.c:20</span><br><span class="line"></span><br><span class="line"><span class="comment"># 条件断点（i==5时才停下）</span></span><br><span class="line">(gdb) b 15 <span class="keyword">if</span> i == 5</span><br><span class="line"></span><br><span class="line"><span class="comment"># 查看所有断点</span></span><br><span class="line">(gdb) info breakpoints</span><br><span class="line">(gdb) i b</span><br><span class="line"></span><br><span class="line"><span class="comment"># 删除断点（编号1）</span></span><br><span class="line">(gdb) delete 1</span><br><span class="line">(gdb) d 1</span><br><span class="line"></span><br><span class="line"><span class="comment"># 禁用断点</span></span><br><span class="line">(gdb) <span class="built_in">disable</span> 1</span><br><span class="line"></span><br><span class="line"><span class="comment"># 启用断点</span></span><br><span class="line">(gdb) <span class="built_in">enable</span> 1</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-运行和控制"><a href="#2-运行和控制" class="headerlink" title="2. 运行和控制"></a>2. 运行和控制</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 开始运行</span></span><br><span class="line">(gdb) run</span><br><span class="line">(gdb) r</span><br><span class="line"></span><br><span class="line"><span class="comment"># 继续执行</span></span><br><span class="line">(gdb) <span class="built_in">continue</span></span><br><span class="line">(gdb) c</span><br><span class="line"></span><br><span class="line"><span class="comment"># 单步执行（不进入函数）</span></span><br><span class="line">(gdb) next</span><br><span class="line">(gdb) n</span><br><span class="line"></span><br><span class="line"><span class="comment"># 单步执行（进入函数）</span></span><br><span class="line">(gdb) step</span><br><span class="line">(gdb) s</span><br><span class="line"></span><br><span class="line"><span class="comment"># 汇编级单步</span></span><br><span class="line">(gdb) stepi   <span class="comment"># 执行一条汇编指令</span></span><br><span class="line">(gdb) si</span><br><span class="line">(gdb) nexti   <span class="comment"># 执行一条汇编指令（不进入调用）</span></span><br><span class="line">(gdb) ni</span><br><span class="line"></span><br><span class="line"><span class="comment"># 执行到当前函数返回</span></span><br><span class="line">(gdb) finish</span><br></pre></td></tr></table></figure>
+
+<h3 id="3-查看变量和内存"><a href="#3-查看变量和内存" class="headerlink" title="3. 查看变量和内存"></a>3. 查看变量和内存</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 打印变量值</span></span><br><span class="line">(gdb) <span class="built_in">print</span> i</span><br><span class="line">(gdb) p i</span><br><span class="line"></span><br><span class="line"><span class="comment"># 打印表达式</span></span><br><span class="line">(gdb) p i * 2 + 3</span><br><span class="line"></span><br><span class="line"><span class="comment"># 查看数组内容</span></span><br><span class="line">(gdb) p arr[0]@10    <span class="comment"># 打印arr前10个元素</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 查看指针指向的内容</span></span><br><span class="line">(gdb) p *ptr</span><br><span class="line"></span><br><span class="line"><span class="comment"># 查看变量类型</span></span><br><span class="line">(gdb) ptype i</span><br><span class="line"></span><br><span class="line"><span class="comment"># 查看内存</span></span><br><span class="line">(gdb) x/10x addr      <span class="comment"># 16进制显示10个单元</span></span><br><span class="line">(gdb) x/10d addr      <span class="comment"># 10进制显示</span></span><br><span class="line">(gdb) x/s addr        <span class="comment"># 显示字符串</span></span><br><span class="line">(gdb) x/10i addr      <span class="comment"># 显示10条汇编指令</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 显示格式：x/数量格式大小</span></span><br><span class="line"><span class="comment"># 格式：x(hex) d(dec) s(string) c(char) i(instruction)</span></span><br><span class="line"><span class="comment"># 大小：b(byte) h(halfword) w(word) g(giant)</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="4-查看汇编和寄存器"><a href="#4-查看汇编和寄存器" class="headerlink" title="4. 查看汇编和寄存器"></a>4. 查看汇编和寄存器</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 查看当前函数汇编代码</span></span><br><span class="line">(gdb) disassemble</span><br><span class="line">(gdb) disas</span><br><span class="line"></span><br><span class="line"><span class="comment"># 查看指定函数汇编</span></span><br><span class="line">(gdb) disas main</span><br><span class="line"></span><br><span class="line"><span class="comment"># 查看指定地址范围汇编</span></span><br><span class="line">(gdb) disas 0x401000,0x401010</span><br><span class="line"></span><br><span class="line"><span class="comment"># 查看所有寄存器</span></span><br><span class="line">(gdb) info registers</span><br><span class="line">(gdb) i r</span><br><span class="line"></span><br><span class="line"><span class="comment"># 查看特定寄存器</span></span><br><span class="line">(gdb) p <span class="variable">$rax</span></span><br><span class="line">(gdb) p <span class="variable">$rbx</span></span><br><span class="line">(gdb) p <span class="variable">$rip</span>   <span class="comment"># 指令指针</span></span><br><span class="line">(gdb) p <span class="variable">$rsp</span>   <span class="comment"># 栈指针</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 查看寄存器值（16进制）</span></span><br><span class="line">(gdb) p/x <span class="variable">$rax</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 查看内存中的汇编指令</span></span><br><span class="line">(gdb) x/10i <span class="variable">$rip</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="5-源码和汇编混合显示"><a href="#5-源码和汇编混合显示" class="headerlink" title="5. 源码和汇编混合显示"></a>5. 源码和汇编混合显示</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 进入TUI模式</span></span><br><span class="line">(gdb) layout asm    <span class="comment"># 显示汇编代码</span></span><br><span class="line">(gdb) layout reg    <span class="comment"># 显示寄存器</span></span><br><span class="line">(gdb) layout <span class="built_in">split</span>  <span class="comment"># 源码和汇编分屏显示</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># TUI快捷键</span></span><br><span class="line"><span class="comment"># Ctrl+X A：退出TUI模式</span></span><br><span class="line"><span class="comment"># Ctrl+X 1：单窗口</span></span><br><span class="line"><span class="comment"># Ctrl+X 2：双窗口</span></span><br><span class="line"><span class="comment"># Ctrl+X O：切换窗口焦点</span></span><br><span class="line"><span class="comment"># Ctrl+L：刷新屏幕</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="完整调试演示"><a href="#完整调试演示" class="headerlink" title="完整调试演示"></a>完整调试演示</h2><h3 id="示例程序（add-c）"><a href="#示例程序（add-c）" class="headerlink" title="示例程序（add.c）"></a>示例程序（add.c）</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="title function_">add</span><span class="params">(<span class="type">int</span> a, <span class="type">int</span> b)</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> a + b;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span> &#123;</span><br><span class="line">    <span class="type">int</span> x = <span class="number">10</span>;</span><br><span class="line">    <span class="type">int</span> y = <span class="number">20</span>;</span><br><span class="line">    <span class="type">int</span> z = add(x, y);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;Result: %d\n&quot;</span>, z);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="编译并调试"><a href="#编译并调试" class="headerlink" title="编译并调试"></a>编译并调试</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 编译（保留调试信息和符号）</span></span><br><span class="line">gcc -g -o add add.c</span><br><span class="line"></span><br><span class="line"><span class="comment"># 启动gdb</span></span><br><span class="line">gdb ./add</span><br></pre></td></tr></table></figure>
+
+<h3 id="完整调试会话"><a href="#完整调试会话" class="headerlink" title="完整调试会话"></a>完整调试会话</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 1. 设置断点</span></span><br><span class="line">(gdb) b main</span><br><span class="line">Breakpoint 1 at 0x1149: file add.c, line 8.</span><br><span class="line"></span><br><span class="line"><span class="comment"># 2. 运行程序</span></span><br><span class="line">(gdb) r</span><br><span class="line">Starting program: ./add</span><br><span class="line"></span><br><span class="line">Breakpoint 1, main () at add.c:8</span><br><span class="line">8       int x = 10;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 3. 查看汇编代码</span></span><br><span class="line">(gdb) disas main</span><br><span class="line">Dump of assembler code <span class="keyword">for</span> <span class="keyword">function</span> main:</span><br><span class="line">   0x0000555555555149 &lt;+0&gt;:     push   %rbp</span><br><span class="line">   0x000055555555514a &lt;+1&gt;:     mov    %rsp,%rbp</span><br><span class="line">   0x000055555555514d &lt;+4&gt;:     sub    <span class="variable">$0x10</span>,%rsp</span><br><span class="line">=&gt; 0x0000555555555151 &lt;+8&gt;:     movl   <span class="variable">$0xa</span>,-0xc(%rbp)</span><br><span class="line">   0x0000555555555158 &lt;+15&gt;:    movl   <span class="variable">$0x14</span>,-0x8(%rbp)</span><br><span class="line">   0x000055555555515f &lt;+22&gt;:    mov    -0xc(%rbp),%edx</span><br><span class="line">   0x0000555555555162 &lt;+25&gt;:    mov    -0x8(%rbp),%eax</span><br><span class="line">   0x0000555555555165 &lt;+28&gt;:    mov    %edx,%esi</span><br><span class="line">   0x0000555555555167 &lt;+30&gt;:    mov    %eax,%edi</span><br><span class="line">   0x0000555555555169 &lt;+32&gt;:    call   0x555555555135 &lt;add&gt;</span><br><span class="line">   0x000055555555516e &lt;+37&gt;:    mov    %eax,-0x4(%rbp)</span><br><span class="line">   0x0000555555555171 &lt;+40&gt;:    mov    -0x4(%rbp),%eax</span><br><span class="line">   0x0000555555555174 &lt;+43&gt;:    mov    %eax,%esi</span><br><span class="line">   0x0000555555555176 &lt;+45&gt;:    lea    0xec7(%rip),%rdi</span><br><span class="line">   0x000055555555517d &lt;+52&gt;:    mov    <span class="variable">$0x0</span>,%eax</span><br><span class="line">   0x0000555555555182 &lt;+57&gt;:    call   0x555555555030 &lt;<span class="built_in">printf</span>@plt&gt;</span><br><span class="line">   0x0000555555555187 &lt;+62&gt;:    mov    <span class="variable">$0x0</span>,%eax</span><br><span class="line">   0x000055555555518c &lt;+67&gt;:    leave</span><br><span class="line">   0x000055555555518d &lt;+68&gt;:    ret</span><br><span class="line"></span><br><span class="line"><span class="comment"># 4. 查看寄存器初始状态</span></span><br><span class="line">(gdb) i r</span><br><span class="line">rax            0x555555555149      93824992235849</span><br><span class="line">rbx            0x0                 0</span><br><span class="line">rcx            0x5555555550e0      93824992235744</span><br><span class="line">rdx            0x7fffffffe038      140737488347192</span><br><span class="line">rsi            0x7fffffffe028      140737488347176</span><br><span class="line">rdi            0x1                 1</span><br><span class="line">rbp            0x7fffffffe3d0      0x7fffffffe3d0</span><br><span class="line">rsp            0x7fffffffe3d0      0x7fffffffe3d0</span><br><span class="line">rip            0x555555555149      0x555555555149 &lt;main&gt;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 5. 单步执行并观察寄存器变化</span></span><br><span class="line">(gdb) si    <span class="comment"># 执行 push %rbp</span></span><br><span class="line">0x000055555555514a <span class="keyword">in</span> main () at add.c:8</span><br><span class="line">8       int x = 10;</span><br><span class="line"></span><br><span class="line">(gdb) i r rbp rsp</span><br><span class="line">rbp            0x7fffffffe3d0      0x7fffffffe3d0</span><br><span class="line">rsp            0x7fffffffe3c8      0x7fffffffe3c8  <span class="comment"># rsp减了8</span></span><br><span class="line"></span><br><span class="line">(gdb) si    <span class="comment"># 执行 mov %rsp,%rbp</span></span><br><span class="line">0x000055555555514d <span class="keyword">in</span> main () at add.c:8</span><br><span class="line">8       int x = 10;</span><br><span class="line"></span><br><span class="line">(gdb) i r rbp</span><br><span class="line">rbp            0x7fffffffe3c8      0x7fffffffe3c8</span><br><span class="line"></span><br><span class="line"><span class="comment"># 6. 查看局部变量地址</span></span><br><span class="line">(gdb) si 2   <span class="comment"># 执行 sub $0x10,%rsp 和 movl $0xa,-0xc(%rbp)</span></span><br><span class="line">0x0000555555555158 <span class="keyword">in</span> main () at add.c:9</span><br><span class="line">9       int y = 20;</span><br><span class="line"></span><br><span class="line">(gdb) p &amp;x</span><br><span class="line"><span class="variable">$1</span> = (int *) 0x7fffffffe3bc</span><br><span class="line">(gdb) p &amp;y</span><br><span class="line"><span class="variable">$2</span> = (int *) 0x7fffffffe3c0</span><br><span class="line"></span><br><span class="line"><span class="comment"># 7. 查看内存中的值</span></span><br><span class="line">(gdb) x/d 0x7fffffffe3bc</span><br><span class="line">0x7fffffffe3bc: 10</span><br><span class="line"></span><br><span class="line"><span class="comment"># 8. 继续执行到函数调用前</span></span><br><span class="line">(gdb) b add</span><br><span class="line">Breakpoint 2 at 0x555555555135: file add.c, line 4.</span><br><span class="line"></span><br><span class="line">(gdb) c</span><br><span class="line">Continuing.</span><br><span class="line"></span><br><span class="line">Breakpoint 2, add (a=10, b=20) at add.c:4</span><br><span class="line">4       <span class="built_in">return</span> a + b;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 9. 查看函数调用时的汇编</span></span><br><span class="line">(gdb) disas</span><br><span class="line">Dump of assembler code <span class="keyword">for</span> <span class="keyword">function</span> add:</span><br><span class="line">=&gt; 0x0000555555555135 &lt;+0&gt;:     push   %rbp</span><br><span class="line">   0x0000555555555136 &lt;+1&gt;:     mov    %rsp,%rbp</span><br><span class="line">   0x0000555555555139 &lt;+4&gt;:     mov    %edi,-0x4(%rbp)</span><br><span class="line">   0x000055555555513c &lt;+7&gt;:     mov    %esi,-0x8(%rbp)</span><br><span class="line">   0x000055555555513f &lt;+10&gt;:    mov    -0x4(%rbp),%edx</span><br><span class="line">   0x0000555555555142 &lt;+13&gt;:    mov    -0x8(%rbp),%eax</span><br><span class="line">   0x0000555555555145 &lt;+16&gt;:    add    %edx,%eax</span><br><span class="line">   0x0000555555555147 &lt;+18&gt;:    pop    %rbp</span><br><span class="line">   0x0000555555555148 &lt;+19&gt;:    ret</span><br><span class="line"></span><br><span class="line"><span class="comment"># 10. 查看函数参数传递（x86-64调用约定）</span></span><br><span class="line">(gdb) p <span class="variable">$rdi</span></span><br><span class="line"><span class="variable">$3</span> = 10</span><br><span class="line">(gdb) p <span class="variable">$rsi</span></span><br><span class="line"><span class="variable">$4</span> = 20</span><br><span class="line"></span><br><span class="line"><span class="comment"># 11. 单步执行函数</span></span><br><span class="line">(gdb) si 5   <span class="comment"># 执行到 add 指令</span></span><br><span class="line">0x0000555555555145 <span class="keyword">in</span> add (a=10, b=20) at add.c:4</span><br><span class="line">4       <span class="built_in">return</span> a + b;</span><br><span class="line"></span><br><span class="line">(gdb) i r rax rdx</span><br><span class="line">rax            0x14                20</span><br><span class="line">rdx            0xa                 10</span><br><span class="line"></span><br><span class="line">(gdb) si    <span class="comment"># 执行 add %edx,%eax</span></span><br><span class="line">0x0000555555555147 <span class="keyword">in</span> add (a=10, b=20) at add.c:4</span><br><span class="line">4       <span class="built_in">return</span> a + b;</span><br><span class="line"></span><br><span class="line">(gdb) p <span class="variable">$rax</span></span><br><span class="line"><span class="variable">$5</span> = 30</span><br><span class="line"></span><br><span class="line"><span class="comment"># 12. 继续执行，查看printf调用</span></span><br><span class="line">(gdb) c</span><br><span class="line">Continuing.</span><br><span class="line">Result: 30</span><br><span class="line"></span><br><span class="line">[Inferior 1 (process 12345) exited normally]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 13. 退出</span></span><br><span class="line">(gdb) q</span><br></pre></td></tr></table></figure>
+
+<p>调试例子来源于pwn.college网站题目中截取</p>
+<h2 id="汇编调试实用技巧"><a href="#汇编调试实用技巧" class="headerlink" title="汇编调试实用技巧"></a>汇编调试实用技巧</h2><h3 id="查看指令执行过程"><a href="#查看指令执行过程" class="headerlink" title="查看指令执行过程"></a>查看指令执行过程</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 显示当前将要执行的指令</span></span><br><span class="line">(gdb) x/i <span class="variable">$rip</span></span><br><span class="line">=&gt; 0x555555555149 &lt;main+8&gt;: movl   <span class="variable">$0xa</span>,-0xc(%rbp)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 显示下5条指令</span></span><br><span class="line">(gdb) x/5i <span class="variable">$rip</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 显示当前函数的完整汇编</span></span><br><span class="line">(gdb) disas</span><br><span class="line"></span><br><span class="line"><span class="comment"># 显示并标注源码对应关系</span></span><br><span class="line">(gdb) disas /m</span><br></pre></td></tr></table></figure>
+
+<h3 id="条件断点在汇编级别"><a href="#条件断点在汇编级别" class="headerlink" title="条件断点在汇编级别"></a>条件断点在汇编级别</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 当rax等于特定值时停下</span></span><br><span class="line">(gdb) b *0x555555555145 <span class="keyword">if</span> <span class="variable">$rax</span> == 30</span><br><span class="line"></span><br><span class="line"><span class="comment"># 当内存地址的值变化时停下</span></span><br><span class="line">(gdb) watch *(int*)0x7fffffffe3bc</span><br></pre></td></tr></table></figure>
+
+<h3 id="查看栈帧信息"><a href="#查看栈帧信息" class="headerlink" title="查看栈帧信息"></a>查看栈帧信息</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 查看当前栈帧</span></span><br><span class="line">(gdb) info frame</span><br><span class="line"></span><br><span class="line"><span class="comment"># 查看所有栈帧</span></span><br><span class="line">(gdb) bt</span><br><span class="line"></span><br><span class="line"><span class="comment"># 查看栈内存</span></span><br><span class="line">(gdb) x/20x <span class="variable">$rsp</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="x86-64-常用寄存器"><a href="#x86-64-常用寄存器" class="headerlink" title="x86-64 常用寄存器"></a>x86-64 常用寄存器</h2><table>
+<thead>
+<tr>
+<th>寄存器</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>rax</code></td>
+<td>返回值、累加器</td>
+</tr>
+<tr>
+<td><code>rbx</code></td>
+<td>通用寄存器</td>
+</tr>
+<tr>
+<td><code>rcx</code></td>
+<td>第4个参数、计数器</td>
+</tr>
+<tr>
+<td><code>rdx</code></td>
+<td>第3个参数、数据寄存器</td>
+</tr>
+<tr>
+<td><code>rsi</code></td>
+<td>第2个参数</td>
+</tr>
+<tr>
+<td><code>rdi</code></td>
+<td>第1个参数</td>
+</tr>
+<tr>
+<td><code>rbp</code></td>
+<td>栈基址指针</td>
+</tr>
+<tr>
+<td><code>rsp</code></td>
+<td>栈指针</td>
+</tr>
+<tr>
+<td><code>rip</code></td>
+<td>指令指针</td>
+</tr>
+<tr>
+<td><code>r8-r15</code></td>
+<td>通用寄存器</td>
+</tr>
+</tbody></table>
+
+                
+
+                <hr>
+                <!-- Pager -->
+                <ul class="pager">
+                    
+                    
+                        <li class="next">
+                            <a href="/2026/04/15/assembly-3/" data-toggle="tooltip" data-placement="top" title="汇编笔记3">Next post &rarr;</a>
+                        </li>
+                    
+                </ul>
+
+                <br>
+
+                <!--打赏-->
+                
+                <!--打赏-->
+
+                <br>
+                <!--分享-->
+                
+                    <div class="social-share"  data-wechat-qrcode-helper="" align="center"></div>
+                    <!--  css & js -->
+                    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/css/share.min.css">
+                    <script src="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/js/social-share.min.js"></script>
+                
+                <!--分享-->
+                <br>                       
+                
+                <!-- require APlayer -->
+                
+
+                <!-- disqus comment start -->
+                
+                <!-- disqus comment end -->
+
+                
+				
+            </div>
+
+            <!-- Tabe of Content -->
+            <!-- Table of Contents -->
+
+                
+            <!-- Sidebar Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                <!-- Featured Tags -->
+                
+                <section>
+                    <!-- no hr -->
+                    <h5><a href="/tags/">Tags</a></h5>
+                    <div class="tags">
+                       
+                    </div>
+                </section>
+                
+
+                <!-- Friends Blog -->
+                
+                <hr>
+                <h5>FRIENDS</h5>
+                <ul class="list-inline">
+
+                    
+                        <li><a href="http://www.sumoon.com" target="_blank">ACE theme</a></li>
+                    
+                </ul>
+                
+            </div>
+        </div>
+    </div>
+</article>
+
+
+
+
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+<!-- anchor-js, Doc:http://bryanbraun.github.io/anchorjs/ -->
+<script>
+    async("https://cdn.bootcss.com/anchor-js/1.1.1/anchor.min.js",function(){
+        anchors.options = {
+          visible: 'hover',
+          placement: 'left',
+          icon: 'ℬ'
+        };
+        anchors.add().remove('.intro-header h1').remove('.subheading').remove('.sidebar-container h5');
+    })
+</script>
+<style>
+    /* place left on bigger screen */
+    @media all and (min-width: 800px) {
+        .anchorjs-link{
+            position: absolute;
+            left: -0.75em;
+            font-size: 1.1em;
+            margin-top : -0.1em;
+        }
+    }
+</style>
+
+
+
+    <!-- Footer -->
+    <!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                
+                
+                
+
+                
+
+                
+
+                
+                    <li>
+                        <a target="_blank"  href="https://github.com/kinggozhang">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+
+                </ul>
+                <p class="copyright text-muted">
+                    Copyright &copy; John Doe 2026 
+                    <br>
+                    Powered by <a target="_blank" rel="noopener" href="http://www.hexo.io">Hexo</a> 
+                    <span style="display: inline-block; margin: 0 5px;">
+                        <i class="fa fa-heart"></i>
+                    </span> 
+                    Theme by <a target="_blank" rel="noopener" href="https://github.com/kinggozhang/hexo-theme-ace">ACE</a> 
+					
+					
+					<i class="fa fa-eye" id="leancounter"></i>
+					
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- jQuery -->
+
+   
+<script src="https://cdn.staticfile.org/jquery/2.2.4/jquery.min.js"></script>
+
+
+
+
+<!-- Bootstrap Core JavaScript -->
+
+   
+<script src="https://cdn.staticfile.org/twitter-bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+
+
+<!-- Custom Theme JavaScript -->
+
+<script src="/js/hux-blog.min.js"></script>
+
+
+
+	
+<script src="/js/particles.js"></script>
+
+	
+<script src="/js/particles_config.js"></script>
+
+
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+<!-- 
+     Because of the native support for backtick-style fenced code blocks 
+     right within the Markdown is landed in Github Pages, 
+     From V1.6, There is no need for Highlight.js, 
+     so Huxblog drops it officially.
+
+     - https://github.com/blog/2100-github-pages-now-faster-and-simpler-with-jekyll-3-0  
+     - https://help.github.com/articles/creating-and-highlighting-code-blocks/    
+-->
+<!--
+    <script>
+        async("http://cdn.bootcss.com/highlight.js/8.6/highlight.min.js", function(){
+            hljs.initHighlightingOnLoad();
+        })
+    </script>
+    <link href="http://cdn.bootcss.com/highlight.js/8.6/styles/github.min.css" rel="stylesheet">
+-->
+
+
+<!-- jquery.tagcloud.js -->
+<script>
+    // only load tagcloud.js in tag.html
+    if($('#tag_cloud').length !== 0){
+        async("http://example.com/2026/04/19/assembly-4/index.html/js/jquery.tagcloud.js",function(){
+            $.fn.tagcloud.defaults = {
+                //size: {start: 1, end: 1, unit: 'em'},
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+<!--fastClick.js -->
+<script>
+    async("https://cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+
+<!-- Google Analytics -->
+
+
+
+
+<!-- Baidu Tongji -->
+
+
+
+
+
+
+	<a id="rocket" href="#top" class=""></a>
+	<script type="text/javascript" src="/js/totop.js?v=1.0.0" async=""></script>
+    <script type="text/javascript" src="/js/toc.js?v=1.0.0" async=""></script>
+<!-- Image to hack wechat -->
+<img src="http://example.com/img/icon_wechat.png" width="0" height="0" />
+<!-- Migrate from head to bottom, no longer block render and still work -->
+
+</body>
+
+</html>
