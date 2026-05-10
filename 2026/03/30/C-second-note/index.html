@@ -1,10 +1,10 @@
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-CN">
 <head>
     <meta charset="utf-8" />
-    <title>C语言笔记2 | Hexo</title>
-    <meta name="author" content="John Doe" />
+    <title>C语言笔记2 | Xmx_Aolg07</title>
+    <meta name="author" content="Xmx_Aolg07" />
     <meta name="description" content="" />
     <meta name="keywords" content="" />
     <meta
@@ -63,7 +63,7 @@
         <div id="menu" :class="{ hidden: hiddenMenu, 'menu-color': menuColor}">
     <nav id="desktop-menu">
         <a class="title" href="/">
-            <span>HEXO</span>
+            <span>XMX_AOLG07</span>
         </a>
         
         <a href="/">
@@ -95,7 +95,7 @@
     <nav id="mobile-menu">
         <div class="title" @click="showMenuItems = !showMenuItems">
             <i class="fa-solid fa-bars fa-fw"></i>
-            <span>&emsp;HEXO</span>
+            <span>&emsp;XMX_AOLG07</span>
         </div>
         <transition name="slide">
             <div class="items" v-show="showMenuItems">
@@ -154,38 +154,39 @@
 </transition>
 
         <div id="main" :class="loading ? 'into-enter-from': 'into-enter-active'">
-            <div class="article">
-    <div>
-        <h1>C语言笔记2</h1>
-    </div>
-    <div class="info">
-        <span class="date">
-            <span class="icon">
-                <i class="fa-solid fa-calendar fa-fw"></i>
-            </span>
-            2026/3/30
-        </span>
-        
-        
-        <span class="tags">
-            <span class="icon">
-                <i class="fa-solid fa-tags fa-fw"></i>
+            <div class="post-container">
+    <div class="article">
+        <div>
+            <h1>C语言笔记2</h1>
+        </div>
+        <div class="info">
+            <span class="date">
+                <span class="icon">
+                    <i class="fa-solid fa-calendar fa-fw"></i>
+                </span>
+                2026/3/30
             </span>
             
             
-            <span class="tag">
+            <span class="tags">
+                <span class="icon">
+                    <i class="fa-solid fa-tags fa-fw"></i>
+                </span>
                 
-                <a href="/tags/C%E8%AF%AD%E8%A8%80/" style="color: #00a596">
-                    C语言
-                </a>
+                
+                <span class="tag">
+                    
+                    <a href="/tags/C%E8%AF%AD%E8%A8%80/" style="color: #ffa2c4">
+                        C语言
+                    </a>
+                </span>
+                
             </span>
             
-        </span>
+        </div>
         
-    </div>
-    
-    <div class="content" v-pre>
-        <h1 id="C语言格式说明符（格式转义符）完整指南"><a href="#C语言格式说明符（格式转义符）完整指南" class="headerlink" title="C语言格式说明符（格式转义符）完整指南"></a>C语言格式说明符（格式转义符）完整指南</h1><h2 id="格式说明符表格"><a href="#格式说明符表格" class="headerlink" title="格式说明符表格"></a>格式说明符表格</h2><table>
+        <div class="content" v-pre>
+            <h1 id="C语言格式说明符（格式转义符）完整指南"><a href="#C语言格式说明符（格式转义符）完整指南" class="headerlink" title="C语言格式说明符（格式转义符）完整指南"></a>C语言格式说明符（格式转义符）完整指南</h1><h2 id="格式说明符表格"><a href="#格式说明符表格" class="headerlink" title="格式说明符表格"></a>格式说明符表格</h2><table>
 <thead>
 <tr>
 <th>格式符</th>
@@ -347,25 +348,83 @@
     <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
 &#125;</code></pre>
 
+        </div>
+        
+        
+        
+        
+        
+        
+        
     </div>
-    
-    
-    
-    
-    
-    
-    
-</div>
+    <div class="post-sidebar">
+        <div id="card-style">
+            <div id="card-div">
+                <div class="avatar">
+                    <img src="/images/avatar.jpg" alt="avatar" />
+                </div>
+                <div class="name">
+                    Xmx_Aolg07
+                </div>
+                <div class="description">
+                    <p>欢迎来到Xmx_Aolg07的博客</p>
 
+                </div>
+                
+                    <div class="icon-links">
+                        
+                            <span class="icon-link">
+                                <a target="_blank" rel="noopener" href="https://github.com/XmxAolg07/XmxAolg07.github.io">
+                                    <i class="fa-brands fa-github fa-fw"></i>
+                                </a>
+                            </span>
+                            
+                            <span class="icon-link">
+                                <a target="_blank" rel="noopener" href="https://space.bilibili.com/121888760">
+                                    <i class="fa-solid fa-video fa-fw"></i>
+                                </a>
+                            </span>
+                            
+                            <span class="icon-link">
+                                <a href="tencent://message/?uin=1804229132">
+                                    <i class="fa-solid fa-comment fa-fw"></i>
+                                </a>
+                            </span>
+                            
+                    </div>
+                    
+                <div class="music-player">
+                    <h4>Music</h4>
+                    <audio id="music-audio" hidden>
+                        <source src="/music/002.ogg" type="audio/ogg">
+                    
+                    <div class="music-progress">
+                        <span class="music-time current-time">0:00</span>
+                        <div class="music-progress-bar">
+                            <div class="music-progress-fill"></div>
+                            <div class="music-progress-thumb"></div>
+                        </div>
+                        <span class="music-time total-time">0:00</span>
+                    </div>
+                    <div class="music-controls">
+                        <button id="music-prev" class="music-btn"><i class="fa-solid fa-backward"></i></button>
+                        <button id="music-toggle" class="music-btn play-btn"><i class="fa-solid fa-play"></i></button>
+                        <button id="music-next" class="music-btn"><i class="fa-solid fa-forward"></i></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
             <footer id="footer">
     <div id="footer-wrap">
         <div>
             &copy;
-            2022 - 2026 Hexo
+            2022 - 2026 Xmx_Aolg07
             <span id="footer-icon">
                 <i class="fa-solid fa-font-awesome fa-fw"></i>
             </span>
-            &commat;John Doe
+            &commat;Xmx_Aolg07
         </div>
         <div>
             Based on the <a target="_blank" rel="noopener" href="https://hexo.io">Hexo Engine</a> &amp;
