@@ -267,7 +267,7 @@
                 <div class="music-player">
                     <h4>Music</h4>
                     <audio id="music-audio" hidden>
-                        <source src="/music/002.ogg" type="audio/ogg">
+                        <source src="/music/019.ogg" type="audio/ogg">
                     </audio>
                     <div class="music-progress">
                         <span class="music-time current-time">0:00</span>
@@ -278,9 +278,11 @@
                         <span class="music-time total-time">0:00</span>
                     </div>
                     <div class="music-controls">
-                        <button id="music-prev" class="music-btn"><i class="fa-solid fa-backward"></i></button>
                         <button id="music-toggle" class="music-btn play-btn"><i class="fa-solid fa-play"></i></button>
-                        <button id="music-next" class="music-btn"><i class="fa-solid fa-forward"></i></button>
+                        <div class="music-volume">
+                            <i class="fa-solid fa-volume-high"></i>
+                            <input type="range" id="music-volume-slider" min="0" max="100" value="70">
+                        </div>
                     </div>
                 </div>
                 
