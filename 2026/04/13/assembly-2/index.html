@@ -167,6 +167,21 @@
         </span>
         
         
+        <span class="tags">
+            <span class="icon">
+                <i class="fa-solid fa-tags fa-fw"></i>
+            </span>
+            
+            
+            <span class="tag">
+                
+                <a href="/tags/%E6%B1%87%E7%BC%96/" style="color: #00bcd4">
+                    汇编
+                </a>
+            </span>
+            
+        </span>
+        
     </div>
     
     <div class="content" v-pre>
@@ -205,7 +220,13 @@
 <td align="left"><strong>物理地址 &#x3D; ES × 16 + DI</strong></td>
 </tr>
 </tbody></table>
-<h3 id="地址转换实例"><a href="#地址转换实例" class="headerlink" title="地址转换实例"></a>地址转换实例</h3><figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">假设：</span><br><span class="line">段寄存器 DS = 0x1234</span><br><span class="line">偏移地址 BX  = 0x5678</span><br><span class="line"></span><br><span class="line">计算物理地址：</span><br><span class="line">0x1234 × 16 (即 0x10) = 0x12340</span><br><span class="line">              + 0x5678 = 0x179B8  (这是 CPU 真正送往地址总线的 20 位地址)</span><br></pre></td></tr></table></figure>
+<h3 id="地址转换实例"><a href="#地址转换实例" class="headerlink" title="地址转换实例"></a>地址转换实例</h3><pre><code class="hljs text">假设：
+段寄存器 DS = 0x1234
+偏移地址 BX  = 0x5678
+
+计算物理地址：
+0x1234 × 16 (即 0x10) = 0x12340
+              + 0x5678 = 0x179B8  (这是 CPU 真正送往地址总线的 20 位地址)</code></pre>
 
 
 <h2 id="二、CS-IP-与-JMP-指令（程序跳转）"><a href="#二、CS-IP-与-JMP-指令（程序跳转）" class="headerlink" title="二、CS:IP 与 JMP 指令（程序跳转）"></a>二、CS:IP 与 JMP 指令（程序跳转）</h2><p>CS (代码段) 和 IP (指令指针) 组合决定了 CPU  <strong>下一条要执行哪里的指令</strong> 。</p>
@@ -248,7 +269,17 @@
 </tr>
 </tbody></table>
 <h3 id="3-代码实例"><a href="#3-代码实例" class="headerlink" title="3. 代码实例"></a>3. 代码实例</h3><p><strong>assembly</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">; 假设当前 CS = 0x1000</span><br><span class="line"></span><br><span class="line">section .text</span><br><span class="line">    mov ax, 0</span><br><span class="line">loop_start:</span><br><span class="line">    inc ax</span><br><span class="line">    cmp ax, 10</span><br><span class="line">    jne loop_start    ; 段内跳转：仅修改 IP，CS 保持 0x1000</span><br><span class="line"></span><br><span class="line">    ; 远跳转：跳到另一段代码执行</span><br><span class="line">    jmp 0x2000:0x0000 ; CS 变为 0x2000，IP 变为 0x0000</span><br></pre></td></tr></table></figure>
+<pre><code class="hljs x86asm"><span class="hljs-comment">; 假设当前 CS = 0x1000</span>
+
+<span class="hljs-meta">section</span> .text
+    <span class="hljs-keyword">mov</span> <span class="hljs-built_in">ax</span>, <span class="hljs-number">0</span>
+<span class="hljs-symbol">loop_start:</span>
+    <span class="hljs-keyword">inc</span> <span class="hljs-built_in">ax</span>
+    <span class="hljs-keyword">cmp</span> <span class="hljs-built_in">ax</span>, <span class="hljs-number">10</span>
+    <span class="hljs-keyword">jne</span> loop_start    <span class="hljs-comment">; 段内跳转：仅修改 IP，CS 保持 0x1000</span>
+
+    <span class="hljs-comment">; 远跳转：跳到另一段代码执行</span>
+    <span class="hljs-keyword">jmp</span> <span class="hljs-number">0x2000</span>:<span class="hljs-number">0x0000</span> <span class="hljs-comment">; CS 变为 0x2000，IP 变为 0x0000</span></code></pre>
 
 <h2 id="三、SS-SP-与栈操作（PUSH-POP）"><a href="#三、SS-SP-与栈操作（PUSH-POP）" class="headerlink" title="三、SS:SP 与栈操作（PUSH &#x2F; POP）"></a>三、SS:SP 与栈操作（PUSH &#x2F; POP）</h2><p>栈是<strong>向下增长</strong>的（高地址向低地址），<code>SS</code> 指向栈段，<code>SP</code> 指向栈顶。</p>
 <h3 id="1-寄存器定义"><a href="#1-寄存器定义" class="headerlink" title="1. 寄存器定义"></a>1. 寄存器定义</h3><table>
@@ -300,10 +331,37 @@
 </tr>
 </tbody></table>
 <h3 id="3-栈操作示意图"><a href="#3-栈操作示意图" class="headerlink" title="3. 栈操作示意图"></a>3. 栈操作示意图</h3><p><strong>text</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">初始状态: SP = 0x100</span><br><span class="line">-----------------------------</span><br><span class="line">|         (空)          | 高地址</span><br><span class="line">|-----------------------| </span><br><span class="line">|         (空)          | SS:0x100 (SP 初始位置)</span><br><span class="line">|-----------------------|</span><br><span class="line">|         (空)          | 低地址</span><br><span class="line"></span><br><span class="line">执行 push ax (ax = 0x1234) 后:</span><br><span class="line">-----------------------------</span><br><span class="line">|         (空)          | SS:0x100 (原 SP)</span><br><span class="line">|-----------------------|</span><br><span class="line">|        0x1234         | SS:0x0FE (新 SP 指向这里) </span><br><span class="line">|-----------------------|</span><br><span class="line">|         (空)          | 低地址</span><br></pre></td></tr></table></figure>
+<pre><code class="hljs asciidoc"><span class="hljs-section">初始状态: SP = 0x100</span>
+<span class="hljs-section">-----------------------------</span>
+|         (空)          | 高地址
+|-----------------------| 
+|         (空)          | SS:0x100 (SP 初始位置)
+|-----------------------|
+|         (空)          | 低地址
+
+<span class="hljs-section">执行 push ax (ax = 0x1234) 后:</span>
+<span class="hljs-section">-----------------------------</span>
+|         (空)          | SS:0x100 (原 SP)
+|-----------------------|
+|        0x1234         | SS:0x0FE (新 SP 指向这里) 
+|-----------------------|
+|         (空)          | 低地址</code></pre>
 
 <h3 id="4-实际编程示例"><a href="#4-实际编程示例" class="headerlink" title="4. 实际编程示例"></a>4. 实际编程示例</h3><p><strong>assembly</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">; 设置栈段 (实模式 DOS 环境)</span><br><span class="line">mov ax, 0x9000</span><br><span class="line">mov ss, ax      ; 栈段基址</span><br><span class="line">mov sp, 0x100   ; 栈顶偏移，栈空间在 0x90000 ~ 0x90100</span><br><span class="line"></span><br><span class="line">; 压栈操作</span><br><span class="line">mov ax, 0x1234</span><br><span class="line">mov bx, 0x5678</span><br><span class="line">push ax         ; 先压 AX</span><br><span class="line">push bx         ; 后压 BX (后进先出)</span><br><span class="line"></span><br><span class="line">; 出栈操作</span><br><span class="line">pop cx          ; CX = 0x5678 (后进先出)</span><br><span class="line">pop dx          ; DX = 0x1234</span><br></pre></td></tr></table></figure>
+<pre><code class="hljs x86asm"><span class="hljs-comment">; 设置栈段 (实模式 DOS 环境)</span>
+<span class="hljs-keyword">mov</span> <span class="hljs-built_in">ax</span>, <span class="hljs-number">0x9000</span>
+<span class="hljs-keyword">mov</span> <span class="hljs-built_in">ss</span>, <span class="hljs-built_in">ax</span>      <span class="hljs-comment">; 栈段基址</span>
+<span class="hljs-keyword">mov</span> <span class="hljs-built_in">sp</span>, <span class="hljs-number">0x100</span>   <span class="hljs-comment">; 栈顶偏移，栈空间在 0x90000 ~ 0x90100</span>
+
+<span class="hljs-comment">; 压栈操作</span>
+<span class="hljs-keyword">mov</span> <span class="hljs-built_in">ax</span>, <span class="hljs-number">0x1234</span>
+<span class="hljs-keyword">mov</span> <span class="hljs-built_in">bx</span>, <span class="hljs-number">0x5678</span>
+<span class="hljs-keyword">push</span> <span class="hljs-built_in">ax</span>         <span class="hljs-comment">; 先压 AX</span>
+<span class="hljs-keyword">push</span> <span class="hljs-built_in">bx</span>         <span class="hljs-comment">; 后压 BX (后进先出)</span>
+
+<span class="hljs-comment">; 出栈操作</span>
+<span class="hljs-keyword">pop</span> <span class="hljs-built_in">cx</span>          <span class="hljs-comment">; CX = 0x5678 (后进先出)</span>
+<span class="hljs-keyword">pop</span> <span class="hljs-built_in">dx</span>          <span class="hljs-comment">; DX = 0x1234</span></code></pre>
 
 <h2 id="四、综合调试示例"><a href="#四、综合调试示例" class="headerlink" title="四、综合调试示例"></a>四、综合调试示例</h2><p>在 Debug 中查看这些寄存器组合：</p>
 <table>
@@ -606,7 +664,9 @@
 <blockquote>
 <p><strong>段超越前缀示例</strong> ：</p>
 <p><strong>assembly</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">mov ax, [bx]      ; 默认 DS:[BX]</span><br><span class="line">mov ax, es:[bx]   ; 强制使用 ES 段</span><br><span class="line">mov ax, ss:[bx]   ; 强制使用 SS 段</span><br></pre></td></tr></table></figure></blockquote>
+<pre><code class="hljs x86asm"><span class="hljs-keyword">mov</span> <span class="hljs-built_in">ax</span>, [<span class="hljs-built_in">bx</span>]      <span class="hljs-comment">; 默认 DS:[BX]</span>
+<span class="hljs-keyword">mov</span> <span class="hljs-built_in">ax</span>, <span class="hljs-built_in">es</span>:[<span class="hljs-built_in">bx</span>]   <span class="hljs-comment">; 强制使用 ES 段</span>
+<span class="hljs-keyword">mov</span> <span class="hljs-built_in">ax</span>, <span class="hljs-built_in">ss</span>:[<span class="hljs-built_in">bx</span>]   <span class="hljs-comment">; 强制使用 SS 段</span></code></pre></blockquote>
 
     </div>
     

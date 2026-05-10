@@ -167,12 +167,42 @@
         </span>
         
         
+        <span class="tags">
+            <span class="icon">
+                <i class="fa-solid fa-tags fa-fw"></i>
+            </span>
+            
+            
+            <span class="tag">
+                
+                <a href="/tags/CTF%E8%A7%A3%E9%A2%98/" style="color: #03a9f4">
+                    CTF解题
+                </a>
+            </span>
+            
+        </span>
+        
     </div>
     
     <div class="content" v-pre>
         <h1 id="BUUCTF-解题过程"><a href="#BUUCTF-解题过程" class="headerlink" title="BUUCTF 解题过程"></a>BUUCTF 解题过程</h1><h2 id="简单注册器"><a href="#简单注册器" class="headerlink" title="简单注册器"></a>简单注册器</h2><p>我们把文件下载好之后拿到一个apk文件，下载jadx-gui来打开它</p>
 <p>在com.example.flag里面的MainActivty我们找的如下代码</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (flag == <span class="number">1</span>) &#123;</span><br><span class="line">                    <span class="type">char</span>[] x = <span class="string">&quot;dd2940c04462b4dd7c450528835cca15&quot;</span>.toCharArray();</span><br><span class="line">                    x[<span class="number">2</span>] = (<span class="type">char</span>) ((x[<span class="number">2</span>] + x[<span class="number">3</span>]) - <span class="number">50</span>);</span><br><span class="line">                    x[<span class="number">4</span>] = (<span class="type">char</span>) ((x[<span class="number">2</span>] + x[<span class="number">5</span>]) - <span class="number">48</span>);</span><br><span class="line">                    x[<span class="number">30</span>] = (<span class="type">char</span>) ((x[<span class="number">31</span>] + x[<span class="number">9</span>]) - <span class="number">48</span>);</span><br><span class="line">                    x[<span class="number">14</span>] = (<span class="type">char</span>) ((x[<span class="number">27</span>] + x[<span class="number">28</span>]) - <span class="number">97</span>);</span><br><span class="line">                    <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; <span class="number">16</span>; i++) &#123;</span><br><span class="line">                        <span class="type">char</span> <span class="variable">a</span> <span class="operator">=</span> x[<span class="number">31</span> - i];</span><br><span class="line">                        x[<span class="number">31</span> - i] = x[i];</span><br><span class="line">                        x[i] = a;</span><br><span class="line">                    &#125;</span><br><span class="line">                    <span class="type">String</span> <span class="variable">bbb</span> <span class="operator">=</span> String.valueOf(x);</span><br><span class="line">                    textview.setText(<span class="string">&quot;flag&#123;&quot;</span> + bbb + <span class="string">&quot;&#125;&quot;</span>);</span><br><span class="line">                    <span class="keyword">return</span>;</span><br><span class="line">                &#125;</span><br><span class="line">                textview.setText(<span class="string">&quot;输入注册码错误&quot;</span>);</span><br></pre></td></tr></table></figure>
+<pre><code class="hljs java"><span class="hljs-keyword">if</span> (flag == <span class="hljs-number">1</span>) &#123;
+                    <span class="hljs-type">char</span>[] x = <span class="hljs-string">&quot;dd2940c04462b4dd7c450528835cca15&quot;</span>.toCharArray();
+                    x[<span class="hljs-number">2</span>] = (<span class="hljs-type">char</span>) ((x[<span class="hljs-number">2</span>] + x[<span class="hljs-number">3</span>]) - <span class="hljs-number">50</span>);
+                    x[<span class="hljs-number">4</span>] = (<span class="hljs-type">char</span>) ((x[<span class="hljs-number">2</span>] + x[<span class="hljs-number">5</span>]) - <span class="hljs-number">48</span>);
+                    x[<span class="hljs-number">30</span>] = (<span class="hljs-type">char</span>) ((x[<span class="hljs-number">31</span>] + x[<span class="hljs-number">9</span>]) - <span class="hljs-number">48</span>);
+                    x[<span class="hljs-number">14</span>] = (<span class="hljs-type">char</span>) ((x[<span class="hljs-number">27</span>] + x[<span class="hljs-number">28</span>]) - <span class="hljs-number">97</span>);
+                    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">16</span>; i++) &#123;
+                        <span class="hljs-type">char</span> <span class="hljs-variable">a</span> <span class="hljs-operator">=</span> x[<span class="hljs-number">31</span> - i];
+                        x[<span class="hljs-number">31</span> - i] = x[i];
+                        x[i] = a;
+                    &#125;
+                    <span class="hljs-type">String</span> <span class="hljs-variable">bbb</span> <span class="hljs-operator">=</span> String.valueOf(x);
+                    textview.setText(<span class="hljs-string">&quot;flag&#123;&quot;</span> + bbb + <span class="hljs-string">&quot;&#125;&quot;</span>);
+                    <span class="hljs-keyword">return</span>;
+                &#125;
+                textview.setText(<span class="hljs-string">&quot;输入注册码错误&quot;</span>);</code></pre>
 
 <p>通过这里，我们可以看出此题的加密逻辑</p>
 <p><strong>把第[2]个字符变为[2]和[3]的ASCII码减少50</strong></p>
@@ -181,26 +211,108 @@
 <p><strong>把第[14]个字符变为[27]和[27]的ASCII码减少97</strong></p>
 <p><strong>把整个数组逆序处理</strong></p>
 <p>理清加密逻辑后，我们可以写出代码来解决此题，以下给出python和c的两个解题代码</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">x = <span class="built_in">bytearray</span>(<span class="string">&quot;dd2940c04462b4dd7c450528835cca15&quot;</span>, <span class="string">&#x27;utf-8&#x27;</span>)</span><br><span class="line">x[<span class="number">2</span>] = x[<span class="number">2</span>] + x[<span class="number">3</span>] - <span class="number">50</span></span><br><span class="line">x[<span class="number">4</span>] = x[<span class="number">2</span>] + x[<span class="number">5</span>] - <span class="number">48</span></span><br><span class="line">x[<span class="number">30</span>] = x[<span class="number">31</span>] + x[<span class="number">9</span>] - <span class="number">48</span></span><br><span class="line">x[<span class="number">14</span>] = x[<span class="number">27</span>] + x[<span class="number">28</span>] - <span class="number">97</span></span><br><span class="line">x = x[::-<span class="number">1</span>]</span><br><span class="line"><span class="built_in">print</span>(x.decode())</span><br></pre></td></tr></table></figure>
+<pre><code class="hljs python">x = <span class="hljs-built_in">bytearray</span>(<span class="hljs-string">&quot;dd2940c04462b4dd7c450528835cca15&quot;</span>, <span class="hljs-string">&#x27;utf-8&#x27;</span>)
+x[<span class="hljs-number">2</span>] = x[<span class="hljs-number">2</span>] + x[<span class="hljs-number">3</span>] - <span class="hljs-number">50</span>
+x[<span class="hljs-number">4</span>] = x[<span class="hljs-number">2</span>] + x[<span class="hljs-number">5</span>] - <span class="hljs-number">48</span>
+x[<span class="hljs-number">30</span>] = x[<span class="hljs-number">31</span>] + x[<span class="hljs-number">9</span>] - <span class="hljs-number">48</span>
+x[<span class="hljs-number">14</span>] = x[<span class="hljs-number">27</span>] + x[<span class="hljs-number">28</span>] - <span class="hljs-number">97</span>
+x = x[::-<span class="hljs-number">1</span>]
+<span class="hljs-built_in">print</span>(x.decode())</code></pre>
 
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;string.h&gt;</span> <span class="comment">//</span></span></span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">(<span class="type">void</span>)</span></span><br><span class="line">&#123;</span><br><span class="line">  <span class="type">int</span> flag = <span class="number">1</span>;</span><br><span class="line">  <span class="keyword">if</span> (flag == <span class="number">1</span>) &#123;</span><br><span class="line">    <span class="type">char</span> x[] = <span class="string">&quot;dd2940c04462b4dd7c450528835cca15&quot;</span>;</span><br><span class="line">    <span class="type">int</span> len = <span class="built_in">strlen</span>(x);</span><br><span class="line">    </span><br><span class="line">    x[<span class="number">2</span>] = (<span class="type">char</span>)((x[<span class="number">2</span>] + x[<span class="number">3</span>]) - <span class="number">50</span>);</span><br><span class="line">    x[<span class="number">4</span>] = (<span class="type">char</span>)((x[<span class="number">2</span>] + x[<span class="number">5</span>]) - <span class="number">48</span>);</span><br><span class="line">    x[<span class="number">30</span>] = (<span class="type">char</span>)((x[<span class="number">31</span>] + x[<span class="number">9</span>]) - <span class="number">48</span>);</span><br><span class="line">    x[<span class="number">14</span>] = (<span class="type">char</span>)((x[<span class="number">27</span>] + x[<span class="number">28</span>]) - <span class="number">97</span>);</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; <span class="number">16</span>; i++) &#123;</span><br><span class="line">        <span class="type">char</span> a = x[<span class="number">31</span> - i];</span><br><span class="line">        x[<span class="number">31</span> - i] = x[i];</span><br><span class="line">        x[i] = a;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;%s\n&quot;</span>, x);</span><br><span class="line">&#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre><code class="hljs c"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stdio.h&gt;</span></span>
+<span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;string.h&gt;</span> <span class="hljs-comment">//</span></span>
+
+<span class="hljs-type">int</span> <span class="hljs-title function_">main</span><span class="hljs-params">(<span class="hljs-type">void</span>)</span>
+&#123;
+  <span class="hljs-type">int</span> flag = <span class="hljs-number">1</span>;
+  <span class="hljs-keyword">if</span> (flag == <span class="hljs-number">1</span>) &#123;
+    <span class="hljs-type">char</span> x[] = <span class="hljs-string">&quot;dd2940c04462b4dd7c450528835cca15&quot;</span>;
+    <span class="hljs-type">int</span> len = <span class="hljs-built_in">strlen</span>(x);
+    
+    x[<span class="hljs-number">2</span>] = (<span class="hljs-type">char</span>)((x[<span class="hljs-number">2</span>] + x[<span class="hljs-number">3</span>]) - <span class="hljs-number">50</span>);
+    x[<span class="hljs-number">4</span>] = (<span class="hljs-type">char</span>)((x[<span class="hljs-number">2</span>] + x[<span class="hljs-number">5</span>]) - <span class="hljs-number">48</span>);
+    x[<span class="hljs-number">30</span>] = (<span class="hljs-type">char</span>)((x[<span class="hljs-number">31</span>] + x[<span class="hljs-number">9</span>]) - <span class="hljs-number">48</span>);
+    x[<span class="hljs-number">14</span>] = (<span class="hljs-type">char</span>)((x[<span class="hljs-number">27</span>] + x[<span class="hljs-number">28</span>]) - <span class="hljs-number">97</span>);
+    
+    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">16</span>; i++) &#123;
+        <span class="hljs-type">char</span> a = x[<span class="hljs-number">31</span> - i];
+        x[<span class="hljs-number">31</span> - i] = x[i];
+        x[i] = a;
+    &#125;
+    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%s\n&quot;</span>, x);
+&#125;
+    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+&#125;</code></pre>
 
 <p>最后解出flag为59acc538825054c7de4b26440c0999dd，用flag{}包裹</p>
 <p><strong>flag{59acc538825054c7de4b26440c0999dd}</strong></p>
 <h2 id="GWCTF-2019-pyre"><a href="#GWCTF-2019-pyre" class="headerlink" title="[GWCTF 2019]pyre"></a>[GWCTF 2019]pyre</h2><p>首先我们拿到了一个attachment.pyc文件，我们先把pyc文件反编译成python（工具任选）</p>
 <p>然后我们拿到了如下代码</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">print</span> <span class="string">&#x27;Welcome to Re World!&#x27;</span></span><br><span class="line"><span class="built_in">print</span> <span class="string">&#x27;Your input1 is your flag~&#x27;</span></span><br><span class="line">l = <span class="built_in">len</span>(input1)</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(l):</span><br><span class="line">    num = ((input1[i] + i) % <span class="number">128</span> + <span class="number">128</span>) % <span class="number">128</span></span><br><span class="line">    code += num</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(l - <span class="number">1</span>):</span><br><span class="line">    code[i] = code[i] ^ code[i + <span class="number">1</span>]</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span> code</span><br><span class="line">code = [</span><br><span class="line">    <span class="string">&#x27;\x1f&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;\x12&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;\x1d&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;(&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;0&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;4&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;\x01&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;\x06&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;\x14&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;4&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;,&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;\x1b&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;U&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;?&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;o&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;6&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;*&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;:&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;\x01&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;D&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;;&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;%&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;\x13&#x27;</span>]</span><br></pre></td></tr></table></figure>
+<pre><code class="hljs python"><span class="hljs-built_in">print</span> <span class="hljs-string">&#x27;Welcome to Re World!&#x27;</span>
+<span class="hljs-built_in">print</span> <span class="hljs-string">&#x27;Your input1 is your flag~&#x27;</span>
+l = <span class="hljs-built_in">len</span>(input1)
+<span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(l):
+    num = ((input1[i] + i) % <span class="hljs-number">128</span> + <span class="hljs-number">128</span>) % <span class="hljs-number">128</span>
+    code += num
+
+<span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(l - <span class="hljs-number">1</span>):
+    code[i] = code[i] ^ code[i + <span class="hljs-number">1</span>]
+
+<span class="hljs-built_in">print</span> code
+code = [
+    <span class="hljs-string">&#x27;\x1f&#x27;</span>,
+    <span class="hljs-string">&#x27;\x12&#x27;</span>,
+    <span class="hljs-string">&#x27;\x1d&#x27;</span>,
+    <span class="hljs-string">&#x27;(&#x27;</span>,
+    <span class="hljs-string">&#x27;0&#x27;</span>,
+    <span class="hljs-string">&#x27;4&#x27;</span>,
+    <span class="hljs-string">&#x27;\x01&#x27;</span>,
+    <span class="hljs-string">&#x27;\x06&#x27;</span>,
+    <span class="hljs-string">&#x27;\x14&#x27;</span>,
+    <span class="hljs-string">&#x27;4&#x27;</span>,
+    <span class="hljs-string">&#x27;,&#x27;</span>,
+    <span class="hljs-string">&#x27;\x1b&#x27;</span>,
+    <span class="hljs-string">&#x27;U&#x27;</span>,
+    <span class="hljs-string">&#x27;?&#x27;</span>,
+    <span class="hljs-string">&#x27;o&#x27;</span>,
+    <span class="hljs-string">&#x27;6&#x27;</span>,
+    <span class="hljs-string">&#x27;*&#x27;</span>,
+    <span class="hljs-string">&#x27;:&#x27;</span>,
+    <span class="hljs-string">&#x27;\x01&#x27;</span>,
+    <span class="hljs-string">&#x27;D&#x27;</span>,
+    <span class="hljs-string">&#x27;;&#x27;</span>,
+    <span class="hljs-string">&#x27;%&#x27;</span>,
+    <span class="hljs-string">&#x27;\x13&#x27;</span>]</code></pre>
 
 <p>我们看第一段运算</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(l):</span><br><span class="line">    num = ((input1[i] + i) % <span class="number">128</span> + <span class="number">128</span>) % <span class="number">128</span></span><br><span class="line">    code += num</span><br></pre></td></tr></table></figure>
+<pre><code class="hljs python"><span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(l):
+    num = ((input1[i] + i) % <span class="hljs-number">128</span> + <span class="hljs-number">128</span>) % <span class="hljs-number">128</span>
+    code += num</code></pre>
 
 <p>运算 <code>((input1[i] + i) % 128 + 128) % 128</code> 其实就是<code>(input1[i] + i) % 128</code></p>
 <p>再看第二部分</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(l - <span class="number">1</span>):</span><br><span class="line">    code[i] = code[i] ^ code[i + <span class="number">1</span>]</span><br></pre></td></tr></table></figure>
+<pre><code class="hljs python"><span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(l - <span class="hljs-number">1</span>):
+    code[i] = code[i] ^ code[i + <span class="hljs-number">1</span>]</code></pre>
 
 <p>这是从前往后，将每个元素与后一个元素异或</p>
 <p>再根据给出的数据我们写出解密脚本</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">code = [</span><br><span class="line">    <span class="string">&#x27;\x1f&#x27;</span>, <span class="string">&#x27;\x12&#x27;</span>, <span class="string">&#x27;\x1d&#x27;</span>, <span class="string">&#x27;(&#x27;</span>, <span class="string">&#x27;0&#x27;</span>, <span class="string">&#x27;4&#x27;</span>, <span class="string">&#x27;\x01&#x27;</span>, <span class="string">&#x27;\x06&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;\x14&#x27;</span>, <span class="string">&#x27;4&#x27;</span>, <span class="string">&#x27;,&#x27;</span>, <span class="string">&#x27;\x1b&#x27;</span>, <span class="string">&#x27;U&#x27;</span>, <span class="string">&#x27;?&#x27;</span>, <span class="string">&#x27;o&#x27;</span>, <span class="string">&#x27;6&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;*&#x27;</span>, <span class="string">&#x27;:&#x27;</span>, <span class="string">&#x27;\x01&#x27;</span>, <span class="string">&#x27;D&#x27;</span>, <span class="string">&#x27;;&#x27;</span>, <span class="string">&#x27;%&#x27;</span>, <span class="string">&#x27;\x13&#x27;</span></span><br><span class="line">]</span><br><span class="line">final_code = [<span class="built_in">ord</span>(c) <span class="keyword">if</span> <span class="built_in">isinstance</span>(c, <span class="built_in">str</span>) <span class="keyword">else</span> c <span class="keyword">for</span> c <span class="keyword">in</span> code]</span><br><span class="line">l = <span class="built_in">len</span>(final_code)</span><br><span class="line">xorred_code = [<span class="number">0</span>] * l</span><br><span class="line">xorred_code[l-<span class="number">1</span>] = final_code[l-<span class="number">1</span>]</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(l-<span class="number">2</span>, -<span class="number">1</span>, -<span class="number">1</span>):</span><br><span class="line">    xorred_code[i] = final_code[i] ^ xorred_code[i+<span class="number">1</span>]</span><br><span class="line">input1 = []</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(l):</span><br><span class="line">    ch = (xorred_code[i] - i) % <span class="number">128</span></span><br><span class="line">    input1.append(<span class="built_in">chr</span>(ch))</span><br><span class="line">flag = <span class="string">&#x27;&#x27;</span>.join(input1)</span><br><span class="line"><span class="built_in">print</span>(flag)</span><br></pre></td></tr></table></figure>
+<pre><code class="hljs python">code = [
+    <span class="hljs-string">&#x27;\x1f&#x27;</span>, <span class="hljs-string">&#x27;\x12&#x27;</span>, <span class="hljs-string">&#x27;\x1d&#x27;</span>, <span class="hljs-string">&#x27;(&#x27;</span>, <span class="hljs-string">&#x27;0&#x27;</span>, <span class="hljs-string">&#x27;4&#x27;</span>, <span class="hljs-string">&#x27;\x01&#x27;</span>, <span class="hljs-string">&#x27;\x06&#x27;</span>,
+    <span class="hljs-string">&#x27;\x14&#x27;</span>, <span class="hljs-string">&#x27;4&#x27;</span>, <span class="hljs-string">&#x27;,&#x27;</span>, <span class="hljs-string">&#x27;\x1b&#x27;</span>, <span class="hljs-string">&#x27;U&#x27;</span>, <span class="hljs-string">&#x27;?&#x27;</span>, <span class="hljs-string">&#x27;o&#x27;</span>, <span class="hljs-string">&#x27;6&#x27;</span>,
+    <span class="hljs-string">&#x27;*&#x27;</span>, <span class="hljs-string">&#x27;:&#x27;</span>, <span class="hljs-string">&#x27;\x01&#x27;</span>, <span class="hljs-string">&#x27;D&#x27;</span>, <span class="hljs-string">&#x27;;&#x27;</span>, <span class="hljs-string">&#x27;%&#x27;</span>, <span class="hljs-string">&#x27;\x13&#x27;</span>
+]
+final_code = [<span class="hljs-built_in">ord</span>(c) <span class="hljs-keyword">if</span> <span class="hljs-built_in">isinstance</span>(c, <span class="hljs-built_in">str</span>) <span class="hljs-keyword">else</span> c <span class="hljs-keyword">for</span> c <span class="hljs-keyword">in</span> code]
+l = <span class="hljs-built_in">len</span>(final_code)
+xorred_code = [<span class="hljs-number">0</span>] * l
+xorred_code[l-<span class="hljs-number">1</span>] = final_code[l-<span class="hljs-number">1</span>]
+<span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(l-<span class="hljs-number">2</span>, -<span class="hljs-number">1</span>, -<span class="hljs-number">1</span>):
+    xorred_code[i] = final_code[i] ^ xorred_code[i+<span class="hljs-number">1</span>]
+input1 = []
+<span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(l):
+    ch = (xorred_code[i] - i) % <span class="hljs-number">128</span>
+    input1.append(<span class="hljs-built_in">chr</span>(ch))
+flag = <span class="hljs-string">&#x27;&#x27;</span>.join(input1)
+<span class="hljs-built_in">print</span>(flag)</code></pre>
 
 <p>然后我们就可以拿到flag了</p>
 <p>GWHT{Just_Re_1s_Ha66y!}</p>
@@ -208,13 +320,59 @@
 <p><strong>flag{Just_Re_1s_Ha66y!}</strong></p>
 <h2 id="ACTF新生赛2020-rome"><a href="#ACTF新生赛2020-rome" class="headerlink" title="[ACTF新生赛2020]rome"></a>[ACTF新生赛2020]rome</h2><p>首先我们下载下来后是exe文件，先查壳，确认无壳然后使用ida打开</p>
 <p>我们点击main函数</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> __cdecl <span class="title function_">main</span><span class="params">(<span class="type">int</span> argc, <span class="type">const</span> <span class="type">char</span> **argv, <span class="type">const</span> <span class="type">char</span> **envp)</span></span><br><span class="line">&#123;</span><br><span class="line">  __main();</span><br><span class="line">  func();</span><br><span class="line">  <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre><code class="hljs c"><span class="hljs-type">int</span> __cdecl <span class="hljs-title function_">main</span><span class="hljs-params">(<span class="hljs-type">int</span> argc, <span class="hljs-type">const</span> <span class="hljs-type">char</span> **argv, <span class="hljs-type">const</span> <span class="hljs-type">char</span> **envp)</span>
+&#123;
+  __main();
+  func();
+  <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+&#125;</code></pre>
 
 <p>发现跳转到了_func函数我们去看 _func函数</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">strcpy</span>(Qsw3sj_lz4_Ujw@l, <span class="string">&quot;Qsw3sj_lz4_Ujw@l&quot;</span>);</span><br><span class="line"><span class="built_in">printf</span>(<span class="string">&quot;Please input:&quot;</span>);</span><br><span class="line"><span class="built_in">scanf</span>(<span class="string">&quot;%s&quot;</span>, &amp;n65);</span><br><span class="line">n65_1 = n65;</span><br><span class="line"><span class="keyword">if</span> ( n65 == <span class="number">65</span> )</span><br><span class="line">&#123;</span><br><span class="line">  n65_1 = n67;</span><br><span class="line">  <span class="keyword">if</span> ( n67 == <span class="number">67</span> )</span><br><span class="line">  &#123;</span><br><span class="line">    n65_1 = n84;</span><br><span class="line">    <span class="keyword">if</span> ( n84 == <span class="number">84</span> )</span><br><span class="line">    &#123;</span><br><span class="line">      n65_1 = n70;</span><br><span class="line">      <span class="keyword">if</span> ( n70 == <span class="number">70</span> )</span><br><span class="line">      &#123;</span><br><span class="line">        n65_1 = n123;</span><br><span class="line">        <span class="keyword">if</span> ( n123 == <span class="number">123</span> )</span><br><span class="line">        &#123;</span><br><span class="line">          n65_1 = n125;</span><br><span class="line">          <span class="keyword">if</span> ( n125 == <span class="number">125</span> )</span><br><span class="line">          &#123;</span><br><span class="line">            v1[<span class="number">0</span>] = v7;</span><br><span class="line">            v1[<span class="number">1</span>] = v8;</span><br><span class="line">            v1[<span class="number">2</span>] = v9;</span><br><span class="line">            v1[<span class="number">3</span>] = v10;</span><br><span class="line">            <span class="keyword">for</span> ( i = <span class="number">0</span>; i &lt;= <span class="number">15</span>; ++i )</span><br><span class="line">            &#123;</span><br><span class="line">              <span class="keyword">if</span> ( *((<span class="type">char</span> *)v1 + i) &gt; <span class="number">64</span> &amp;&amp; *((<span class="type">char</span> *)v1 + i) &lt;= <span class="number">90</span> )</span><br><span class="line">                *((_BYTE *)v1 + i) = (*((<span class="type">char</span> *)v1 + i) - <span class="number">51</span>) % <span class="number">26</span> + <span class="number">65</span>;</span><br><span class="line">              <span class="keyword">if</span> ( *((<span class="type">char</span> *)v1 + i) &gt; <span class="number">96</span> &amp;&amp; *((<span class="type">char</span> *)v1 + i) &lt;= <span class="number">122</span> )</span><br><span class="line">                *((_BYTE *)v1 + i) = (*((<span class="type">char</span> *)v1 + i) - <span class="number">79</span>) % <span class="number">26</span> + <span class="number">97</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">for</span> ( i = <span class="number">0</span>; i &lt;= <span class="number">15</span>; ++i )</span><br><span class="line">            &#123;</span><br><span class="line">              n65_1 = (<span class="type">unsigned</span> __int8)Qsw3sj_lz4_Ujw@l[i];</span><br><span class="line">              <span class="keyword">if</span> ( *((_BYTE *)v1 + i) != (_BYTE)n65_1 )</span><br><span class="line">                <span class="keyword">return</span> n65_1;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">return</span> <span class="built_in">printf</span>(<span class="string">&quot;You are correct!&quot;</span>);</span><br></pre></td></tr></table></figure>
+<pre><code class="hljs c"><span class="hljs-built_in">strcpy</span>(Qsw3sj_lz4_Ujw@l, <span class="hljs-string">&quot;Qsw3sj_lz4_Ujw@l&quot;</span>);
+<span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;Please input:&quot;</span>);
+<span class="hljs-built_in">scanf</span>(<span class="hljs-string">&quot;%s&quot;</span>, &amp;n65);
+n65_1 = n65;
+<span class="hljs-keyword">if</span> ( n65 == <span class="hljs-number">65</span> )
+&#123;
+  n65_1 = n67;
+  <span class="hljs-keyword">if</span> ( n67 == <span class="hljs-number">67</span> )
+  &#123;
+    n65_1 = n84;
+    <span class="hljs-keyword">if</span> ( n84 == <span class="hljs-number">84</span> )
+    &#123;
+      n65_1 = n70;
+      <span class="hljs-keyword">if</span> ( n70 == <span class="hljs-number">70</span> )
+      &#123;
+        n65_1 = n123;
+        <span class="hljs-keyword">if</span> ( n123 == <span class="hljs-number">123</span> )
+        &#123;
+          n65_1 = n125;
+          <span class="hljs-keyword">if</span> ( n125 == <span class="hljs-number">125</span> )
+          &#123;
+            v1[<span class="hljs-number">0</span>] = v7;
+            v1[<span class="hljs-number">1</span>] = v8;
+            v1[<span class="hljs-number">2</span>] = v9;
+            v1[<span class="hljs-number">3</span>] = v10;
+            <span class="hljs-keyword">for</span> ( i = <span class="hljs-number">0</span>; i &lt;= <span class="hljs-number">15</span>; ++i )
+            &#123;
+              <span class="hljs-keyword">if</span> ( *((<span class="hljs-type">char</span> *)v1 + i) &gt; <span class="hljs-number">64</span> &amp;&amp; *((<span class="hljs-type">char</span> *)v1 + i) &lt;= <span class="hljs-number">90</span> )
+                *((_BYTE *)v1 + i) = (*((<span class="hljs-type">char</span> *)v1 + i) - <span class="hljs-number">51</span>) % <span class="hljs-number">26</span> + <span class="hljs-number">65</span>;
+              <span class="hljs-keyword">if</span> ( *((<span class="hljs-type">char</span> *)v1 + i) &gt; <span class="hljs-number">96</span> &amp;&amp; *((<span class="hljs-type">char</span> *)v1 + i) &lt;= <span class="hljs-number">122</span> )
+                *((_BYTE *)v1 + i) = (*((<span class="hljs-type">char</span> *)v1 + i) - <span class="hljs-number">79</span>) % <span class="hljs-number">26</span> + <span class="hljs-number">97</span>;
+            &#125;
+            <span class="hljs-keyword">for</span> ( i = <span class="hljs-number">0</span>; i &lt;= <span class="hljs-number">15</span>; ++i )
+            &#123;
+              n65_1 = (<span class="hljs-type">unsigned</span> __int8)Qsw3sj_lz4_Ujw@l[i];
+              <span class="hljs-keyword">if</span> ( *((_BYTE *)v1 + i) != (_BYTE)n65_1 )
+                <span class="hljs-keyword">return</span> n65_1;
+            &#125;
+            <span class="hljs-keyword">return</span> <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;You are correct!&quot;</span>);</code></pre>
 
 <p>这串代码是最主要的,我们分析一下算法</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> ( *((<span class="type">char</span> *)v1 + i) &gt; <span class="number">64</span> &amp;&amp; *((<span class="type">char</span> *)v1 + i) &lt;= <span class="number">90</span> )</span><br><span class="line">*((_BYTE *)v1 + i) = (*((<span class="type">char</span> *)v1 + i) - <span class="number">51</span>) % <span class="number">26</span> + <span class="number">65</span>;</span><br><span class="line"><span class="keyword">if</span> ( *((<span class="type">char</span> *)v1 + i) &gt; <span class="number">96</span> &amp;&amp; *((<span class="type">char</span> *)v1 + i) &lt;= <span class="number">122</span> )</span><br><span class="line">*((_BYTE *)v1 + i) = (*((<span class="type">char</span> *)v1 + i) - <span class="number">79</span>) % <span class="number">26</span> + <span class="number">97</span>;</span><br></pre></td></tr></table></figure>
+<pre><code class="hljs c"><span class="hljs-keyword">if</span> ( *((<span class="hljs-type">char</span> *)v1 + i) &gt; <span class="hljs-number">64</span> &amp;&amp; *((<span class="hljs-type">char</span> *)v1 + i) &lt;= <span class="hljs-number">90</span> )
+*((_BYTE *)v1 + i) = (*((<span class="hljs-type">char</span> *)v1 + i) - <span class="hljs-number">51</span>) % <span class="hljs-number">26</span> + <span class="hljs-number">65</span>;
+<span class="hljs-keyword">if</span> ( *((<span class="hljs-type">char</span> *)v1 + i) &gt; <span class="hljs-number">96</span> &amp;&amp; *((<span class="hljs-type">char</span> *)v1 + i) &lt;= <span class="hljs-number">122</span> )
+*((_BYTE *)v1 + i) = (*((<span class="hljs-type">char</span> *)v1 + i) - <span class="hljs-number">79</span>) % <span class="hljs-number">26</span> + <span class="hljs-number">97</span>;</code></pre>
 
 <p>这一共是两段加密，每一段又可以分场两段</p>
 <p>我们可以把ASCII码分为四部分</p>
@@ -222,7 +380,18 @@
 <p>然后八加密后的ASCII码分为</p>
 <p>65 - 78    79 - 90    97 - 114    112 -122</p>
 <p>这四个部分，然后根据是否加26分为总共的四部分然后写出如下代码</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">a = <span class="built_in">bytearray</span>(<span class="string">&#x27;Qsw3sj_lz4_Ujw@l&#x27;</span>, <span class="string">&#x27;UTF-8&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="built_in">len</span>(a)):</span><br><span class="line">    <span class="keyword">if</span> <span class="number">65</span> &lt;= a[i] &lt;= <span class="number">78</span>:</span><br><span class="line">        a[i] = a[i] + <span class="number">12</span></span><br><span class="line">    <span class="keyword">elif</span> <span class="number">79</span> &lt;= a[i] &lt;= <span class="number">90</span>:</span><br><span class="line">        a[i] = a[i] - <span class="number">14</span></span><br><span class="line">    <span class="keyword">elif</span> <span class="number">97</span> &lt;= a[i] &lt;= <span class="number">114</span>:</span><br><span class="line">        a[i] = a[i] + <span class="number">8</span></span><br><span class="line">    <span class="keyword">elif</span> <span class="number">115</span> &lt;= a[i] &lt;= <span class="number">122</span>:</span><br><span class="line">        a[i] = a[i] - <span class="number">18</span></span><br><span class="line"><span class="built_in">print</span>(a.decode())</span><br></pre></td></tr></table></figure>
+<pre><code class="hljs python">a = <span class="hljs-built_in">bytearray</span>(<span class="hljs-string">&#x27;Qsw3sj_lz4_Ujw@l&#x27;</span>, <span class="hljs-string">&#x27;UTF-8&#x27;</span>)
+
+<span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-built_in">len</span>(a)):
+    <span class="hljs-keyword">if</span> <span class="hljs-number">65</span> &lt;= a[i] &lt;= <span class="hljs-number">78</span>:
+        a[i] = a[i] + <span class="hljs-number">12</span>
+    <span class="hljs-keyword">elif</span> <span class="hljs-number">79</span> &lt;= a[i] &lt;= <span class="hljs-number">90</span>:
+        a[i] = a[i] - <span class="hljs-number">14</span>
+    <span class="hljs-keyword">elif</span> <span class="hljs-number">97</span> &lt;= a[i] &lt;= <span class="hljs-number">114</span>:
+        a[i] = a[i] + <span class="hljs-number">8</span>
+    <span class="hljs-keyword">elif</span> <span class="hljs-number">115</span> &lt;= a[i] &lt;= <span class="hljs-number">122</span>:
+        a[i] = a[i] - <span class="hljs-number">18</span>
+<span class="hljs-built_in">print</span>(a.decode())</code></pre>
 
 <p>最后运行一下脚本得到Cae3ar_th4_Gre@t用flag包裹</p>
 <p><strong>flag{Cae3ar_th4_Gre@t}</strong></p>

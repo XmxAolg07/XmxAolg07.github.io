@@ -167,6 +167,21 @@
         </span>
         
         
+        <span class="tags">
+            <span class="icon">
+                <i class="fa-solid fa-tags fa-fw"></i>
+            </span>
+            
+            
+            <span class="tag">
+                
+                <a href="/tags/%E6%B1%87%E7%BC%96/" style="color: #00a596">
+                    汇编
+                </a>
+            </span>
+            
+        </span>
+        
     </div>
     
     <div class="content" v-pre>
@@ -259,19 +274,270 @@
 <td>无符号小于等于</td>
 </tr>
 </tbody></table>
-<h2 id="jmp无条件跳转"><a href="#jmp无条件跳转" class="headerlink" title="jmp无条件跳转"></a>jmp无条件跳转</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">.intel_syntax noprefix</span><br><span class="line">.global main</span><br><span class="line">.section .text</span><br><span class="line"></span><br><span class="line">main:</span><br><span class="line">    push rbp</span><br><span class="line">    mov rbp, rsp</span><br><span class="line">  </span><br><span class="line">    # 循环计数</span><br><span class="line">    mov ecx, 0          # ecx = 0</span><br><span class="line">  </span><br><span class="line">start_loop:</span><br><span class="line">    cmp ecx, 5          # 比较 ecx 和 5</span><br><span class="line">    jge end_loop        # 如果 ecx &gt;= 5，跳过循环</span><br><span class="line">  </span><br><span class="line">    # 循环体可以在这里添加代码</span><br><span class="line">    # ...</span><br><span class="line">  </span><br><span class="line">    inc ecx             # ecx++</span><br><span class="line">    jmp start_loop      # 无条件跳回循环开始</span><br><span class="line">  </span><br><span class="line">end_loop:</span><br><span class="line">    # 程序结束</span><br><span class="line">    mov eax, 0</span><br><span class="line">    pop rbp</span><br><span class="line">    ret</span><br></pre></td></tr></table></figure>
+<h2 id="jmp无条件跳转"><a href="#jmp无条件跳转" class="headerlink" title="jmp无条件跳转"></a>jmp无条件跳转</h2><pre><code class="hljs assembly">.intel_syntax noprefix
+.global main
+.section .text
 
-<h2 id="je-jz-条件跳转（相等则跳转）"><a href="#je-jz-条件跳转（相等则跳转）" class="headerlink" title="je &#x2F; jz 条件跳转（相等则跳转）"></a>je &#x2F; jz 条件跳转（相等则跳转）</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line">.intel_syntax noprefix</span><br><span class="line">.global main</span><br><span class="line">.section .text</span><br><span class="line"></span><br><span class="line">main:</span><br><span class="line">    push rbp</span><br><span class="line">    mov rbp, rsp</span><br><span class="line">    sub rsp, 16</span><br><span class="line">  </span><br><span class="line">    # 局部变量</span><br><span class="line">    mov dword ptr [rbp-4], 10    # a = 10</span><br><span class="line">    mov dword ptr [rbp-8], 10    # b = 10</span><br><span class="line">    mov dword ptr [rbp-12], 0    # result = 0</span><br><span class="line">  </span><br><span class="line">    # 比较 a 和 b</span><br><span class="line">    mov eax, dword ptr [rbp-4]    # eax = a</span><br><span class="line">    cmp eax, dword ptr [rbp-8]    # 比较 a 和 b</span><br><span class="line">    jne not_equal                  # 不相等则跳转</span><br><span class="line">  </span><br><span class="line">    # 相等的情况</span><br><span class="line">    mov dword ptr [rbp-12], 1     # result = 1</span><br><span class="line">    jmp done                       # 跳过else部分</span><br><span class="line">  </span><br><span class="line">not_equal:</span><br><span class="line">    mov dword ptr [rbp-12], 0     # result = 0</span><br><span class="line">  </span><br><span class="line">done:</span><br><span class="line">    # 打印结果</span><br><span class="line">    # printf(&quot;result: %d\n&quot;, result)</span><br><span class="line">    lea rdi, [rip+fmt]            # 格式化字符串</span><br><span class="line">    mov esi, dword ptr [rbp-12]   # 结果值</span><br><span class="line">    xor eax, eax</span><br><span class="line">    call printf</span><br><span class="line">  </span><br><span class="line">    mov eax, 0</span><br><span class="line">    leave</span><br><span class="line">    ret</span><br><span class="line"></span><br><span class="line">.section .rodata</span><br><span class="line">fmt:</span><br><span class="line">    .string &quot;result: %d\n&quot;</span><br></pre></td></tr></table></figure>
+main:
+    push rbp
+    mov rbp, rsp
+  
+    # 循环计数
+    mov ecx, 0          # ecx = 0
+  
+start_loop:
+    cmp ecx, 5          # 比较 ecx 和 5
+    jge end_loop        # 如果 ecx &gt;= 5，跳过循环
+  
+    # 循环体可以在这里添加代码
+    # ...
+  
+    inc ecx             # ecx++
+    jmp start_loop      # 无条件跳回循环开始
+  
+end_loop:
+    # 程序结束
+    mov eax, 0
+    pop rbp
+    ret</code></pre>
 
-<h2 id="简单循环（while循环）"><a href="#简单循环（while循环）" class="headerlink" title="简单循环（while循环）"></a>简单循环（while循环）</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">.intel_syntax noprefix</span><br><span class="line">.global main</span><br><span class="line">.section .text</span><br><span class="line"></span><br><span class="line">main:</span><br><span class="line">    push rbp</span><br><span class="line">    mov rbp, rsp</span><br><span class="line">  </span><br><span class="line">    xor ecx, ecx          # ecx = 0（计数器）</span><br><span class="line">    xor eax, eax          # eax = 0（累加器）</span><br><span class="line">  </span><br><span class="line">while_loop:</span><br><span class="line">    cmp ecx, 10           # while (ecx &lt; 10)</span><br><span class="line">    jge end_while         # ecx &gt;= 10 则退出</span><br><span class="line">  </span><br><span class="line">    add eax, ecx          # sum += ecx</span><br><span class="line">    inc ecx               # ecx++</span><br><span class="line">    jmp while_loop        # 继续循环</span><br><span class="line">  </span><br><span class="line">end_while:</span><br><span class="line">    # 打印结果（eax中是1+2+...+9=45）</span><br><span class="line">    lea rdi, [rip+fmt]</span><br><span class="line">    mov esi, eax</span><br><span class="line">    xor eax, eax</span><br><span class="line">    call printf</span><br><span class="line">  </span><br><span class="line">    mov eax, 0</span><br><span class="line">    pop rbp</span><br><span class="line">    ret</span><br><span class="line"></span><br><span class="line">.section .rodata</span><br><span class="line">fmt:</span><br><span class="line">    .string &quot;Sum = %d\n&quot;</span><br></pre></td></tr></table></figure>
+<h2 id="je-jz-条件跳转（相等则跳转）"><a href="#je-jz-条件跳转（相等则跳转）" class="headerlink" title="je &#x2F; jz 条件跳转（相等则跳转）"></a>je &#x2F; jz 条件跳转（相等则跳转）</h2><pre><code class="hljs assembly">.intel_syntax noprefix
+.global main
+.section .text
 
-<h2 id="for循环（1到10求和）"><a href="#for循环（1到10求和）" class="headerlink" title="for循环（1到10求和）"></a>for循环（1到10求和）</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line">.intel_syntax noprefix</span><br><span class="line">.global main</span><br><span class="line">.section .text</span><br><span class="line"></span><br><span class="line">main:</span><br><span class="line">    push rbp</span><br><span class="line">    mov rbp, rsp</span><br><span class="line">    sub rsp, 16</span><br><span class="line">  </span><br><span class="line">    # 局部变量</span><br><span class="line">    mov dword ptr [rbp-4], 0      # sum = 0</span><br><span class="line">    mov dword ptr [rbp-8], 0      # i = 0</span><br><span class="line">  </span><br><span class="line">    # for (i = 1; i &lt;= 10; i++)</span><br><span class="line">    mov dword ptr [rbp-8], 1      # i = 1</span><br><span class="line">  </span><br><span class="line">for_loop:</span><br><span class="line">    cmp dword ptr [rbp-8], 10     # i &lt;= 10 ?</span><br><span class="line">    jg end_for                     # i &gt; 10 则退出</span><br><span class="line">  </span><br><span class="line">    # sum += i</span><br><span class="line">    mov eax, dword ptr [rbp-4]    # eax = sum</span><br><span class="line">    add eax, dword ptr [rbp-8]    # eax = sum + i</span><br><span class="line">    mov dword ptr [rbp-4], eax    # sum = eax</span><br><span class="line">  </span><br><span class="line">    # i++</span><br><span class="line">    inc dword ptr [rbp-8]</span><br><span class="line">    jmp for_loop</span><br><span class="line">  </span><br><span class="line">end_for:</span><br><span class="line">    # 打印结果 sum = 55 (1+...+10)</span><br><span class="line">    lea rdi, [rip+fmt]</span><br><span class="line">    mov esi, dword ptr [rbp-4]</span><br><span class="line">    xor eax, eax</span><br><span class="line">    call printf</span><br><span class="line">  </span><br><span class="line">    mov eax, 0</span><br><span class="line">    leave</span><br><span class="line">    ret</span><br><span class="line"></span><br><span class="line">.section .rodata</span><br><span class="line">fmt:</span><br><span class="line">    .string &quot;Sum 1-10 = %d\n&quot;</span><br></pre></td></tr></table></figure>
+main:
+    push rbp
+    mov rbp, rsp
+    sub rsp, 16
+  
+    # 局部变量
+    mov dword ptr [rbp-4], 10    # a = 10
+    mov dword ptr [rbp-8], 10    # b = 10
+    mov dword ptr [rbp-12], 0    # result = 0
+  
+    # 比较 a 和 b
+    mov eax, dword ptr [rbp-4]    # eax = a
+    cmp eax, dword ptr [rbp-8]    # 比较 a 和 b
+    jne not_equal                  # 不相等则跳转
+  
+    # 相等的情况
+    mov dword ptr [rbp-12], 1     # result = 1
+    jmp done                       # 跳过else部分
+  
+not_equal:
+    mov dword ptr [rbp-12], 0     # result = 0
+  
+done:
+    # 打印结果
+    # printf(&quot;result: %d\n&quot;, result)
+    lea rdi, [rip+fmt]            # 格式化字符串
+    mov esi, dword ptr [rbp-12]   # 结果值
+    xor eax, eax
+    call printf
+  
+    mov eax, 0
+    leave
+    ret
 
-<h2 id="do-while循环（先执行后判断）"><a href="#do-while循环（先执行后判断）" class="headerlink" title="do-while循环（先执行后判断）"></a>do-while循环（先执行后判断）</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">.intel_syntax noprefix</span><br><span class="line">.global main</span><br><span class="line">.section .text</span><br><span class="line"></span><br><span class="line">main:</span><br><span class="line">    push rbp</span><br><span class="line">    mov rbp, rsp</span><br><span class="line">  </span><br><span class="line">    xor ecx, ecx          # ecx = 0</span><br><span class="line">    xor eax, eax          # eax = 0</span><br><span class="line">  </span><br><span class="line">do_while_start:</span><br><span class="line">    add eax, ecx          # sum += ecx</span><br><span class="line">    inc ecx               # ecx++</span><br><span class="line">    cmp ecx, 10           # while (ecx &lt; 10)</span><br><span class="line">    jl do_while_start     # ecx &lt; 10 则继续循环</span><br><span class="line">  </span><br><span class="line">    # eax = 0+1+2+...+9 = 45</span><br><span class="line">    lea rdi, [rip+fmt]</span><br><span class="line">    mov esi, eax</span><br><span class="line">    xor eax, eax</span><br><span class="line">    call printf</span><br><span class="line">  </span><br><span class="line">    mov eax, 0</span><br><span class="line">    pop rbp</span><br><span class="line">    ret</span><br><span class="line"></span><br><span class="line">.section .rodata</span><br><span class="line">fmt:</span><br><span class="line">    .string &quot;Sum = %d\n&quot;</span><br></pre></td></tr></table></figure>
+.section .rodata
+fmt:
+    .string &quot;result: %d\n&quot;</code></pre>
 
-<h2 id="多重条件判断（if-else-if-else）"><a href="#多重条件判断（if-else-if-else）" class="headerlink" title="多重条件判断（if-else if-else）"></a>多重条件判断（if-else if-else）</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br></pre></td><td class="code"><pre><span class="line">.intel_syntax noprefix</span><br><span class="line">.global main</span><br><span class="line">.section .text</span><br><span class="line"></span><br><span class="line">main:</span><br><span class="line">    push rbp</span><br><span class="line">    mov rbp, rsp</span><br><span class="line">    sub rsp, 16</span><br><span class="line">  </span><br><span class="line">    mov dword ptr [rbp-4], 75    # score = 75</span><br><span class="line">    mov dword ptr [rbp-8], 0     # grade = 0</span><br><span class="line">  </span><br><span class="line">    # if (score &gt;= 90)</span><br><span class="line">    cmp dword ptr [rbp-4], 90</span><br><span class="line">    jl check_80</span><br><span class="line">    mov dword ptr [rbp-8], &#x27;A&#x27;</span><br><span class="line">    jmp print_grade</span><br><span class="line">  </span><br><span class="line">check_80:</span><br><span class="line">    # else if (score &gt;= 80)</span><br><span class="line">    cmp dword ptr [rbp-4], 80</span><br><span class="line">    jl check_70</span><br><span class="line">    mov dword ptr [rbp-8], &#x27;B&#x27;</span><br><span class="line">    jmp print_grade</span><br><span class="line">  </span><br><span class="line">check_70:</span><br><span class="line">    # else if (score &gt;= 70)</span><br><span class="line">    cmp dword ptr [rbp-4], 70</span><br><span class="line">    jl check_60</span><br><span class="line">    mov dword ptr [rbp-8], &#x27;C&#x27;</span><br><span class="line">    jmp print_grade</span><br><span class="line">  </span><br><span class="line">check_60:</span><br><span class="line">    # else if (score &gt;= 60)</span><br><span class="line">    cmp dword ptr [rbp-4], 60</span><br><span class="line">    jl else_branch</span><br><span class="line">    mov dword ptr [rbp-8], &#x27;D&#x27;</span><br><span class="line">    jmp print_grade</span><br><span class="line">  </span><br><span class="line">else_branch:</span><br><span class="line">    mov dword ptr [rbp-8], &#x27;F&#x27;</span><br><span class="line">  </span><br><span class="line">print_grade:</span><br><span class="line">    lea rdi, [rip+fmt]</span><br><span class="line">    mov esi, dword ptr [rbp-8]</span><br><span class="line">    xor eax, eax</span><br><span class="line">    call printf</span><br><span class="line">  </span><br><span class="line">    mov eax, 0</span><br><span class="line">    leave</span><br><span class="line">    ret</span><br><span class="line"></span><br><span class="line">.section .rodata</span><br><span class="line">fmt:</span><br><span class="line">    .string &quot;Grade: %c\n&quot;</span><br></pre></td></tr></table></figure>
+<h2 id="简单循环（while循环）"><a href="#简单循环（while循环）" class="headerlink" title="简单循环（while循环）"></a>简单循环（while循环）</h2><pre><code class="hljs assembly">.intel_syntax noprefix
+.global main
+.section .text
 
-<h2 id="使用loop指令（ECX作为循环计数器）"><a href="#使用loop指令（ECX作为循环计数器）" class="headerlink" title="使用loop指令（ECX作为循环计数器）"></a>使用loop指令（ECX作为循环计数器）</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">.intel_syntax noprefix</span><br><span class="line">.global main</span><br><span class="line">.section .text</span><br><span class="line"></span><br><span class="line"># loop指令：执行 ecx--，如果ecx != 0则跳转</span><br><span class="line"></span><br><span class="line">main:</span><br><span class="line">    push rbp</span><br><span class="line">    mov rbp, rsp</span><br><span class="line">  </span><br><span class="line">    mov ecx, 10           # 循环10次</span><br><span class="line">    xor eax, eax          # sum = 0</span><br><span class="line">  </span><br><span class="line">loop_start:</span><br><span class="line">    add eax, ecx          # sum += ecx (10+9+...+1)</span><br><span class="line">    loop loop_start       # ecx--, if ecx != 0 goto loop_start</span><br><span class="line">  </span><br><span class="line">    # eax = 55</span><br><span class="line">    lea rdi, [rip+fmt]</span><br><span class="line">    mov esi, eax</span><br><span class="line">    xor eax, eax</span><br><span class="line">    call printf</span><br><span class="line">  </span><br><span class="line">    mov eax, 0</span><br><span class="line">    pop rbp</span><br><span class="line">    ret</span><br><span class="line"></span><br><span class="line">.section .rodata</span><br><span class="line">fmt:</span><br><span class="line">    .string &quot;Sum with LOOP: %d\n&quot;</span><br></pre></td></tr></table></figure>
+main:
+    push rbp
+    mov rbp, rsp
+  
+    xor ecx, ecx          # ecx = 0（计数器）
+    xor eax, eax          # eax = 0（累加器）
+  
+while_loop:
+    cmp ecx, 10           # while (ecx &lt; 10)
+    jge end_while         # ecx &gt;= 10 则退出
+  
+    add eax, ecx          # sum += ecx
+    inc ecx               # ecx++
+    jmp while_loop        # 继续循环
+  
+end_while:
+    # 打印结果（eax中是1+2+...+9=45）
+    lea rdi, [rip+fmt]
+    mov esi, eax
+    xor eax, eax
+    call printf
+  
+    mov eax, 0
+    pop rbp
+    ret
+
+.section .rodata
+fmt:
+    .string &quot;Sum = %d\n&quot;</code></pre>
+
+<h2 id="for循环（1到10求和）"><a href="#for循环（1到10求和）" class="headerlink" title="for循环（1到10求和）"></a>for循环（1到10求和）</h2><pre><code class="hljs assembly">.intel_syntax noprefix
+.global main
+.section .text
+
+main:
+    push rbp
+    mov rbp, rsp
+    sub rsp, 16
+  
+    # 局部变量
+    mov dword ptr [rbp-4], 0      # sum = 0
+    mov dword ptr [rbp-8], 0      # i = 0
+  
+    # for (i = 1; i &lt;= 10; i++)
+    mov dword ptr [rbp-8], 1      # i = 1
+  
+for_loop:
+    cmp dword ptr [rbp-8], 10     # i &lt;= 10 ?
+    jg end_for                     # i &gt; 10 则退出
+  
+    # sum += i
+    mov eax, dword ptr [rbp-4]    # eax = sum
+    add eax, dword ptr [rbp-8]    # eax = sum + i
+    mov dword ptr [rbp-4], eax    # sum = eax
+  
+    # i++
+    inc dword ptr [rbp-8]
+    jmp for_loop
+  
+end_for:
+    # 打印结果 sum = 55 (1+...+10)
+    lea rdi, [rip+fmt]
+    mov esi, dword ptr [rbp-4]
+    xor eax, eax
+    call printf
+  
+    mov eax, 0
+    leave
+    ret
+
+.section .rodata
+fmt:
+    .string &quot;Sum 1-10 = %d\n&quot;</code></pre>
+
+<h2 id="do-while循环（先执行后判断）"><a href="#do-while循环（先执行后判断）" class="headerlink" title="do-while循环（先执行后判断）"></a>do-while循环（先执行后判断）</h2><pre><code class="hljs assembly">.intel_syntax noprefix
+.global main
+.section .text
+
+main:
+    push rbp
+    mov rbp, rsp
+  
+    xor ecx, ecx          # ecx = 0
+    xor eax, eax          # eax = 0
+  
+do_while_start:
+    add eax, ecx          # sum += ecx
+    inc ecx               # ecx++
+    cmp ecx, 10           # while (ecx &lt; 10)
+    jl do_while_start     # ecx &lt; 10 则继续循环
+  
+    # eax = 0+1+2+...+9 = 45
+    lea rdi, [rip+fmt]
+    mov esi, eax
+    xor eax, eax
+    call printf
+  
+    mov eax, 0
+    pop rbp
+    ret
+
+.section .rodata
+fmt:
+    .string &quot;Sum = %d\n&quot;</code></pre>
+
+<h2 id="多重条件判断（if-else-if-else）"><a href="#多重条件判断（if-else-if-else）" class="headerlink" title="多重条件判断（if-else if-else）"></a>多重条件判断（if-else if-else）</h2><pre><code class="hljs assembly">.intel_syntax noprefix
+.global main
+.section .text
+
+main:
+    push rbp
+    mov rbp, rsp
+    sub rsp, 16
+  
+    mov dword ptr [rbp-4], 75    # score = 75
+    mov dword ptr [rbp-8], 0     # grade = 0
+  
+    # if (score &gt;= 90)
+    cmp dword ptr [rbp-4], 90
+    jl check_80
+    mov dword ptr [rbp-8], &#x27;A&#x27;
+    jmp print_grade
+  
+check_80:
+    # else if (score &gt;= 80)
+    cmp dword ptr [rbp-4], 80
+    jl check_70
+    mov dword ptr [rbp-8], &#x27;B&#x27;
+    jmp print_grade
+  
+check_70:
+    # else if (score &gt;= 70)
+    cmp dword ptr [rbp-4], 70
+    jl check_60
+    mov dword ptr [rbp-8], &#x27;C&#x27;
+    jmp print_grade
+  
+check_60:
+    # else if (score &gt;= 60)
+    cmp dword ptr [rbp-4], 60
+    jl else_branch
+    mov dword ptr [rbp-8], &#x27;D&#x27;
+    jmp print_grade
+  
+else_branch:
+    mov dword ptr [rbp-8], &#x27;F&#x27;
+  
+print_grade:
+    lea rdi, [rip+fmt]
+    mov esi, dword ptr [rbp-8]
+    xor eax, eax
+    call printf
+  
+    mov eax, 0
+    leave
+    ret
+
+.section .rodata
+fmt:
+    .string &quot;Grade: %c\n&quot;</code></pre>
+
+<h2 id="使用loop指令（ECX作为循环计数器）"><a href="#使用loop指令（ECX作为循环计数器）" class="headerlink" title="使用loop指令（ECX作为循环计数器）"></a>使用loop指令（ECX作为循环计数器）</h2><pre><code class="hljs assembly">.intel_syntax noprefix
+.global main
+.section .text
+
+# loop指令：执行 ecx--，如果ecx != 0则跳转
+
+main:
+    push rbp
+    mov rbp, rsp
+  
+    mov ecx, 10           # 循环10次
+    xor eax, eax          # sum = 0
+  
+loop_start:
+    add eax, ecx          # sum += ecx (10+9+...+1)
+    loop loop_start       # ecx--, if ecx != 0 goto loop_start
+  
+    # eax = 55
+    lea rdi, [rip+fmt]
+    mov esi, eax
+    xor eax, eax
+    call printf
+  
+    mov eax, 0
+    pop rbp
+    ret
+
+.section .rodata
+fmt:
+    .string &quot;Sum with LOOP: %d\n&quot;</code></pre>
 
     </div>
     

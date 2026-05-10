@@ -167,23 +167,158 @@
         </span>
         
         
+        <span class="tags">
+            <span class="icon">
+                <i class="fa-solid fa-tags fa-fw"></i>
+            </span>
+            
+            
+            <span class="tag">
+                
+                <a href="/tags/C%E8%AF%AD%E8%A8%80/" style="color: #00a596">
+                    C语言
+                </a>
+            </span>
+            
+        </span>
+        
     </div>
     
     <div class="content" v-pre>
         <h1 id="C语言指针学习笔记"><a href="#C语言指针学习笔记" class="headerlink" title="C语言指针学习笔记"></a>C语言指针学习笔记</h1><h2 id="什么是指针"><a href="#什么是指针" class="headerlink" title="什么是指针"></a>什么是指针</h2><p>指针就是存放变量地址的变量。</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span> &#123;</span><br><span class="line">    <span class="type">int</span> num = <span class="number">10</span>;      <span class="comment">// 普通变量</span></span><br><span class="line">    <span class="type">int</span> *p = #     <span class="comment">// 指针变量，存放num的地址</span></span><br><span class="line">  </span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;num的值：%d\n&quot;</span>, num);      <span class="comment">// 10</span></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;num的地址：%p\n&quot;</span>, &amp;num);   <span class="comment">// 地址值</span></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;p的值：%p\n&quot;</span>, p);          <span class="comment">// 和上面一样</span></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;p指向的值：%d\n&quot;</span>, *p);     <span class="comment">// 10（解引用）</span></span><br><span class="line">  </span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre><code class="hljs c"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stdio.h&gt;</span></span>
 
-<h2 id="指针的基本操作"><a href="#指针的基本操作" class="headerlink" title="指针的基本操作"></a>指针的基本操作</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span> &#123;</span><br><span class="line">    <span class="type">int</span> a = <span class="number">5</span>, b = <span class="number">10</span>;</span><br><span class="line">    <span class="type">int</span> *ptr = &amp;a;</span><br><span class="line">  </span><br><span class="line">    <span class="comment">// 通过指针修改变量</span></span><br><span class="line">    *ptr = <span class="number">20</span>;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;a = %d\n&quot;</span>, a);  <span class="comment">// 20</span></span><br><span class="line">  </span><br><span class="line">    <span class="comment">// 改变指针指向</span></span><br><span class="line">    ptr = &amp;b;</span><br><span class="line">    *ptr = <span class="number">99</span>;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;b = %d\n&quot;</span>, b);  <span class="comment">// 99</span></span><br><span class="line">  </span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<span class="hljs-type">int</span> <span class="hljs-title function_">main</span><span class="hljs-params">()</span> &#123;
+    <span class="hljs-type">int</span> num = <span class="hljs-number">10</span>;      <span class="hljs-comment">// 普通变量</span>
+    <span class="hljs-type">int</span> *p = #     <span class="hljs-comment">// 指针变量，存放num的地址</span>
+  
+    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;num的值：%d\n&quot;</span>, num);      <span class="hljs-comment">// 10</span>
+    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;num的地址：%p\n&quot;</span>, &amp;num);   <span class="hljs-comment">// 地址值</span>
+    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;p的值：%p\n&quot;</span>, p);          <span class="hljs-comment">// 和上面一样</span>
+    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;p指向的值：%d\n&quot;</span>, *p);     <span class="hljs-comment">// 10（解引用）</span>
+  
+    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+&#125;</code></pre>
 
-<h2 id="指针与数组"><a href="#指针与数组" class="headerlink" title="指针与数组"></a>指针与数组</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span> &#123;</span><br><span class="line">    <span class="type">int</span> arr[<span class="number">5</span>] = &#123;<span class="number">10</span>, <span class="number">20</span>, <span class="number">30</span>, <span class="number">40</span>, <span class="number">50</span>&#125;;</span><br><span class="line">    <span class="type">int</span> *p = arr;  <span class="comment">// 数组名就是首地址</span></span><br><span class="line">  </span><br><span class="line">    <span class="comment">// 通过指针访问数组</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">0</span>; i &lt; <span class="number">5</span>; i++) &#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;%d &quot;</span>, *(p + i));  <span class="comment">// 10 20 30 40 50</span></span><br><span class="line">    &#125;</span><br><span class="line">  </span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;\n&quot;</span>);</span><br><span class="line">  </span><br><span class="line">    <span class="comment">// 指针移动</span></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;*p = %d\n&quot;</span>, *p);       <span class="comment">// 10</span></span><br><span class="line">    p++;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;*p = %d\n&quot;</span>, *p);       <span class="comment">// 20</span></span><br><span class="line">  </span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="指针的基本操作"><a href="#指针的基本操作" class="headerlink" title="指针的基本操作"></a>指针的基本操作</h2><pre><code class="hljs c"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stdio.h&gt;</span></span>
 
-<h2 id="指针作为函数参数"><a href="#指针作为函数参数" class="headerlink" title="指针作为函数参数"></a>指针作为函数参数</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 交换两个数（值传递不行，必须用指针）</span></span><br><span class="line"><span class="type">void</span> <span class="title function_">swap</span><span class="params">(<span class="type">int</span> *a, <span class="type">int</span> *b)</span> &#123;</span><br><span class="line">    <span class="type">int</span> temp = *a;</span><br><span class="line">    *a = *b;</span><br><span class="line">    *b = temp;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span> &#123;</span><br><span class="line">    <span class="type">int</span> x = <span class="number">5</span>, y = <span class="number">10</span>;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;交换前：x=%d, y=%d\n&quot;</span>, x, y);</span><br><span class="line">  </span><br><span class="line">    swap(&amp;x, &amp;y);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;交换后：x=%d, y=%d\n&quot;</span>, x, y);</span><br><span class="line">  </span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<span class="hljs-type">int</span> <span class="hljs-title function_">main</span><span class="hljs-params">()</span> &#123;
+    <span class="hljs-type">int</span> a = <span class="hljs-number">5</span>, b = <span class="hljs-number">10</span>;
+    <span class="hljs-type">int</span> *ptr = &amp;a;
+  
+    <span class="hljs-comment">// 通过指针修改变量</span>
+    *ptr = <span class="hljs-number">20</span>;
+    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;a = %d\n&quot;</span>, a);  <span class="hljs-comment">// 20</span>
+  
+    <span class="hljs-comment">// 改变指针指向</span>
+    ptr = &amp;b;
+    *ptr = <span class="hljs-number">99</span>;
+    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;b = %d\n&quot;</span>, b);  <span class="hljs-comment">// 99</span>
+  
+    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+&#125;</code></pre>
 
-<h2 id="指针与字符串"><a href="#指针与字符串" class="headerlink" title="指针与字符串"></a>指针与字符串</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span> &#123;</span><br><span class="line">    <span class="type">char</span> str[] = <span class="string">&quot;hello&quot;</span>;</span><br><span class="line">    <span class="type">char</span> *p = str;</span><br><span class="line">  </span><br><span class="line">    <span class="comment">// 用指针遍历字符串</span></span><br><span class="line">    <span class="keyword">while</span>(*p != <span class="string">&#x27;\0&#x27;</span>) &#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;%c &quot;</span>, *p);</span><br><span class="line">        p++;</span><br><span class="line">    &#125;</span><br><span class="line">  </span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h2 id="指针与数组"><a href="#指针与数组" class="headerlink" title="指针与数组"></a>指针与数组</h2><pre><code class="hljs c"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stdio.h&gt;</span></span>
 
-<h2 id="指针数组"><a href="#指针数组" class="headerlink" title="指针数组"></a>指针数组</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span> &#123;</span><br><span class="line">    <span class="type">int</span> arr1[] = &#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>&#125;;</span><br><span class="line">    <span class="type">int</span> arr2[] = &#123;<span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>&#125;;</span><br><span class="line">    <span class="type">int</span> arr3[] = &#123;<span class="number">7</span>, <span class="number">8</span>, <span class="number">9</span>&#125;;</span><br><span class="line">  </span><br><span class="line">    <span class="type">int</span> *parr[<span class="number">3</span>] = &#123;arr1, arr2, arr3&#125;;  <span class="comment">// 指针数组</span></span><br><span class="line">  </span><br><span class="line">    <span class="comment">// 访问第一个数组的第二个元素</span></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;%d\n&quot;</span>, parr[<span class="number">0</span>][<span class="number">1</span>]);  <span class="comment">// 2</span></span><br><span class="line">  </span><br><span class="line">    <span class="comment">// 打印所有</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">0</span>; i &lt; <span class="number">3</span>; i++) &#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> j = <span class="number">0</span>; j &lt; <span class="number">3</span>; j++) &#123;</span><br><span class="line">            <span class="built_in">printf</span>(<span class="string">&quot;%d &quot;</span>, parr[i][j]);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;\n&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">  </span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<span class="hljs-type">int</span> <span class="hljs-title function_">main</span><span class="hljs-params">()</span> &#123;
+    <span class="hljs-type">int</span> arr[<span class="hljs-number">5</span>] = &#123;<span class="hljs-number">10</span>, <span class="hljs-number">20</span>, <span class="hljs-number">30</span>, <span class="hljs-number">40</span>, <span class="hljs-number">50</span>&#125;;
+    <span class="hljs-type">int</span> *p = arr;  <span class="hljs-comment">// 数组名就是首地址</span>
+  
+    <span class="hljs-comment">// 通过指针访问数组</span>
+    <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">5</span>; i++) &#123;
+        <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%d &quot;</span>, *(p + i));  <span class="hljs-comment">// 10 20 30 40 50</span>
+    &#125;
+  
+    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;\n&quot;</span>);
+  
+    <span class="hljs-comment">// 指针移动</span>
+    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;*p = %d\n&quot;</span>, *p);       <span class="hljs-comment">// 10</span>
+    p++;
+    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;*p = %d\n&quot;</span>, *p);       <span class="hljs-comment">// 20</span>
+  
+    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+&#125;</code></pre>
 
-<h2 id="动态内存分配"><a href="#动态内存分配" class="headerlink" title="动态内存分配"></a>动态内存分配</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdlib.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span> &#123;</span><br><span class="line">    <span class="type">int</span> *p = (<span class="type">int</span>*)<span class="built_in">malloc</span>(<span class="number">5</span> * <span class="keyword">sizeof</span>(<span class="type">int</span>));  <span class="comment">// 分配空间</span></span><br><span class="line">  </span><br><span class="line">    <span class="keyword">if</span>(p == <span class="literal">NULL</span>) &#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;分配失败\n&quot;</span>);</span><br><span class="line">        <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">  </span><br><span class="line">    <span class="comment">// 使用指针</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">0</span>; i &lt; <span class="number">5</span>; i++) &#123;</span><br><span class="line">        p[i] = i * <span class="number">10</span>;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;%d &quot;</span>, p[i]);</span><br><span class="line">    &#125;</span><br><span class="line">  </span><br><span class="line">    <span class="built_in">free</span>(p);  <span class="comment">// 释放内存</span></span><br><span class="line">    p = <span class="literal">NULL</span>; <span class="comment">// 避免野指针</span></span><br><span class="line">  </span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="指针作为函数参数"><a href="#指针作为函数参数" class="headerlink" title="指针作为函数参数"></a>指针作为函数参数</h2><pre><code class="hljs c"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stdio.h&gt;</span></span>
+
+<span class="hljs-comment">// 交换两个数（值传递不行，必须用指针）</span>
+<span class="hljs-type">void</span> <span class="hljs-title function_">swap</span><span class="hljs-params">(<span class="hljs-type">int</span> *a, <span class="hljs-type">int</span> *b)</span> &#123;
+    <span class="hljs-type">int</span> temp = *a;
+    *a = *b;
+    *b = temp;
+&#125;
+
+<span class="hljs-type">int</span> <span class="hljs-title function_">main</span><span class="hljs-params">()</span> &#123;
+    <span class="hljs-type">int</span> x = <span class="hljs-number">5</span>, y = <span class="hljs-number">10</span>;
+    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;交换前：x=%d, y=%d\n&quot;</span>, x, y);
+  
+    swap(&amp;x, &amp;y);
+    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;交换后：x=%d, y=%d\n&quot;</span>, x, y);
+  
+    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+&#125;</code></pre>
+
+<h2 id="指针与字符串"><a href="#指针与字符串" class="headerlink" title="指针与字符串"></a>指针与字符串</h2><pre><code class="hljs c"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stdio.h&gt;</span></span>
+
+<span class="hljs-type">int</span> <span class="hljs-title function_">main</span><span class="hljs-params">()</span> &#123;
+    <span class="hljs-type">char</span> str[] = <span class="hljs-string">&quot;hello&quot;</span>;
+    <span class="hljs-type">char</span> *p = str;
+  
+    <span class="hljs-comment">// 用指针遍历字符串</span>
+    <span class="hljs-keyword">while</span>(*p != <span class="hljs-string">&#x27;\0&#x27;</span>) &#123;
+        <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%c &quot;</span>, *p);
+        p++;
+    &#125;
+  
+    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+&#125;
+</code></pre>
+
+<h2 id="指针数组"><a href="#指针数组" class="headerlink" title="指针数组"></a>指针数组</h2><pre><code class="hljs c"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stdio.h&gt;</span></span>
+
+<span class="hljs-type">int</span> <span class="hljs-title function_">main</span><span class="hljs-params">()</span> &#123;
+    <span class="hljs-type">int</span> arr1[] = &#123;<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>&#125;;
+    <span class="hljs-type">int</span> arr2[] = &#123;<span class="hljs-number">4</span>, <span class="hljs-number">5</span>, <span class="hljs-number">6</span>&#125;;
+    <span class="hljs-type">int</span> arr3[] = &#123;<span class="hljs-number">7</span>, <span class="hljs-number">8</span>, <span class="hljs-number">9</span>&#125;;
+  
+    <span class="hljs-type">int</span> *parr[<span class="hljs-number">3</span>] = &#123;arr1, arr2, arr3&#125;;  <span class="hljs-comment">// 指针数组</span>
+  
+    <span class="hljs-comment">// 访问第一个数组的第二个元素</span>
+    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%d\n&quot;</span>, parr[<span class="hljs-number">0</span>][<span class="hljs-number">1</span>]);  <span class="hljs-comment">// 2</span>
+  
+    <span class="hljs-comment">// 打印所有</span>
+    <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">3</span>; i++) &#123;
+        <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> j = <span class="hljs-number">0</span>; j &lt; <span class="hljs-number">3</span>; j++) &#123;
+            <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%d &quot;</span>, parr[i][j]);
+        &#125;
+        <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;\n&quot;</span>);
+    &#125;
+  
+    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+&#125;</code></pre>
+
+<h2 id="动态内存分配"><a href="#动态内存分配" class="headerlink" title="动态内存分配"></a>动态内存分配</h2><pre><code class="hljs c"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stdio.h&gt;</span></span>
+<span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stdlib.h&gt;</span></span>
+
+<span class="hljs-type">int</span> <span class="hljs-title function_">main</span><span class="hljs-params">()</span> &#123;
+    <span class="hljs-type">int</span> *p = (<span class="hljs-type">int</span>*)<span class="hljs-built_in">malloc</span>(<span class="hljs-number">5</span> * <span class="hljs-keyword">sizeof</span>(<span class="hljs-type">int</span>));  <span class="hljs-comment">// 分配空间</span>
+  
+    <span class="hljs-keyword">if</span>(p == <span class="hljs-literal">NULL</span>) &#123;
+        <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;分配失败\n&quot;</span>);
+        <span class="hljs-keyword">return</span> <span class="hljs-number">-1</span>;
+    &#125;
+  
+    <span class="hljs-comment">// 使用指针</span>
+    <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">5</span>; i++) &#123;
+        p[i] = i * <span class="hljs-number">10</span>;
+        <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%d &quot;</span>, p[i]);
+    &#125;
+  
+    <span class="hljs-built_in">free</span>(p);  <span class="hljs-comment">// 释放内存</span>
+    p = <span class="hljs-literal">NULL</span>; <span class="hljs-comment">// 避免野指针</span>
+  
+    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+&#125;</code></pre>
 
 <h2 id="常见指针用法速查"><a href="#常见指针用法速查" class="headerlink" title="常见指针用法速查"></a>常见指针用法速查</h2><table>
 <thead>

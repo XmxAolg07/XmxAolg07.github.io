@@ -167,6 +167,21 @@
         </span>
         
         
+        <span class="tags">
+            <span class="icon">
+                <i class="fa-solid fa-tags fa-fw"></i>
+            </span>
+            
+            
+            <span class="tag">
+                
+                <a href="/tags/%E6%B1%87%E7%BC%96/" style="color: #ff7d73">
+                    汇编
+                </a>
+            </span>
+            
+        </span>
+        
     </div>
     
     <div class="content" v-pre>
@@ -185,7 +200,7 @@
 </tr>
 </tbody></table>
 <p><strong>assembly</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cmp ax, 10      ; AX - 10，结果丢弃，只影响标志位</span><br></pre></td></tr></table></figure>
+<pre><code class="hljs apache"><span class="hljs-attribute">cmp</span> ax, <span class="hljs-number">10</span>      ; AX - <span class="hljs-number">10</span>，结果丢弃，只影响标志位</code></pre>
 
 <h3 id="2-条件跳转指令（Conditional-Jump）"><a href="#2-条件跳转指令（Conditional-Jump）" class="headerlink" title="2. 条件跳转指令（Conditional Jump）"></a>2. 条件跳转指令（Conditional Jump）</h3><table>
 <thead>
@@ -299,7 +314,27 @@
 </tr>
 </tbody></table>
 <h3 id="3-条件判断代码实例"><a href="#3-条件判断代码实例" class="headerlink" title="3. 条件判断代码实例"></a>3. 条件判断代码实例</h3><p><strong>assembly</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">section .text</span><br><span class="line">    global _start</span><br><span class="line"></span><br><span class="line">_start:</span><br><span class="line">    mov ax, 10</span><br><span class="line">    cmp ax, 10</span><br><span class="line"></span><br><span class="line">    je  equal_label      ; 相等则跳转</span><br><span class="line">    jmp not_equal_label  ; 不相等则继续</span><br><span class="line"></span><br><span class="line">equal_label:</span><br><span class="line">    mov rbx, 1           ; 相等时执行</span><br><span class="line">    jmp exit</span><br><span class="line"></span><br><span class="line">not_equal_label:</span><br><span class="line">    mov rbx, 0           ; 不相等时执行</span><br><span class="line"></span><br><span class="line">exit:</span><br><span class="line">    mov rax, 60</span><br><span class="line">    xor rdi, rdi</span><br><span class="line">    syscall</span><br></pre></td></tr></table></figure>
+<pre><code class="hljs awk">section .text
+    global _start
+
+_start:
+    mov ax, <span class="hljs-number">10</span>
+    cmp ax, <span class="hljs-number">10</span>
+
+    je  equal_label      ; 相等则跳转
+    jmp not_equal_label  ; 不相等则继续
+
+equal_label:
+    mov rbx, <span class="hljs-number">1</span>           ; 相等时执行
+    jmp <span class="hljs-keyword">exit</span>
+
+not_equal_label:
+    mov rbx, <span class="hljs-number">0</span>           ; 不相等时执行
+
+<span class="hljs-keyword">exit</span>:
+    mov rax, <span class="hljs-number">60</span>
+    xor rdi, rdi
+    syscall</code></pre>
 
 <h3 id="4-ADC-指令（Add-with-Carry）"><a href="#4-ADC-指令（Add-with-Carry）" class="headerlink" title="4. ADC 指令（Add with Carry）"></a>4. ADC 指令（Add with Carry）</h3><table>
 <thead>
@@ -317,7 +352,14 @@
 </tbody></table>
 <p><strong>应用场景：大数加法（超过寄存器位宽）</strong></p>
 <p><strong>assembly</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">; 计算 0x12345678 + 0x9ABCDEF0（64位无法一次完成时）</span><br><span class="line">mov ax, 0x5678</span><br><span class="line">mov bx, 0xDEF0</span><br><span class="line">add ax, bx          ; 低位相加，可能产生进位</span><br><span class="line">mov cx, 0x1234</span><br><span class="line">mov dx, 0x9ABC</span><br><span class="line">adc cx, dx          ; 高位相加，加上低位的进位</span><br><span class="line">; 结果：CX:AX</span><br></pre></td></tr></table></figure>
+<pre><code class="hljs x86asm"><span class="hljs-comment">; 计算 0x12345678 + 0x9ABCDEF0（64位无法一次完成时）</span>
+<span class="hljs-keyword">mov</span> <span class="hljs-built_in">ax</span>, <span class="hljs-number">0x5678</span>
+<span class="hljs-keyword">mov</span> <span class="hljs-built_in">bx</span>, <span class="hljs-number">0xDEF0</span>
+<span class="hljs-keyword">add</span> <span class="hljs-built_in">ax</span>, <span class="hljs-built_in">bx</span>          <span class="hljs-comment">; 低位相加，可能产生进位</span>
+<span class="hljs-keyword">mov</span> <span class="hljs-built_in">cx</span>, <span class="hljs-number">0x1234</span>
+<span class="hljs-keyword">mov</span> <span class="hljs-built_in">dx</span>, <span class="hljs-number">0x9ABC</span>
+<span class="hljs-keyword">adc</span> <span class="hljs-built_in">cx</span>, <span class="hljs-built_in">dx</span>          <span class="hljs-comment">; 高位相加，加上低位的进位</span>
+<span class="hljs-comment">; 结果：CX:AX</span></code></pre>
 
 <h3 id="5-SBB-指令（Subtract-with-Borrow）"><a href="#5-SBB-指令（Subtract-with-Borrow）" class="headerlink" title="5. SBB 指令（Subtract with Borrow）"></a>5. SBB 指令（Subtract with Borrow）</h3><table>
 <thead>
@@ -334,7 +376,14 @@
 </tr>
 </tbody></table>
 <p><strong>assembly</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">; 大数减法</span><br><span class="line">mov ax, 0x5678</span><br><span class="line">mov bx, 0x1234</span><br><span class="line">sub ax, bx          ; 低位相减</span><br><span class="line">mov cx, 0x1234</span><br><span class="line">mov dx, 0x1000</span><br><span class="line">sbb cx, dx          ; 高位相减，减去借位</span><br><span class="line">; 结果：CX:AX</span><br></pre></td></tr></table></figure>
+<pre><code class="hljs x86asm"><span class="hljs-comment">; 大数减法</span>
+<span class="hljs-keyword">mov</span> <span class="hljs-built_in">ax</span>, <span class="hljs-number">0x5678</span>
+<span class="hljs-keyword">mov</span> <span class="hljs-built_in">bx</span>, <span class="hljs-number">0x1234</span>
+<span class="hljs-keyword">sub</span> <span class="hljs-built_in">ax</span>, <span class="hljs-built_in">bx</span>          <span class="hljs-comment">; 低位相减</span>
+<span class="hljs-keyword">mov</span> <span class="hljs-built_in">cx</span>, <span class="hljs-number">0x1234</span>
+<span class="hljs-keyword">mov</span> <span class="hljs-built_in">dx</span>, <span class="hljs-number">0x1000</span>
+<span class="hljs-keyword">sbb</span> <span class="hljs-built_in">cx</span>, <span class="hljs-built_in">dx</span>          <span class="hljs-comment">; 高位相减，减去借位</span>
+<span class="hljs-comment">; 结果：CX:AX</span></code></pre>
 
 <h2 id="二、循环指令-LOOP"><a href="#二、循环指令-LOOP" class="headerlink" title="二、循环指令 LOOP"></a>二、循环指令 LOOP</h2><h3 id="1-LOOP-指令详解"><a href="#1-LOOP-指令详解" class="headerlink" title="1. LOOP 指令详解"></a>1. LOOP 指令详解</h3><table>
 <thead>
@@ -388,7 +437,26 @@
 </tr>
 </tbody></table>
 <h3 id="3-等差数列求和实例"><a href="#3-等差数列求和实例" class="headerlink" title="3. 等差数列求和实例"></a>3. 等差数列求和实例</h3><p><strong>assembly</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">; 计算 1 + 2 + 3 + ... + 100 的和</span><br><span class="line">section .text</span><br><span class="line">    global _start</span><br><span class="line"></span><br><span class="line">_start:</span><br><span class="line">    mov rcx, 100        ; 循环次数（计数器）</span><br><span class="line">    xor rax, rax        ; 累加和清零</span><br><span class="line">    mov rbx, 1          ; 当前项数值</span><br><span class="line"></span><br><span class="line">sum_loop:</span><br><span class="line">    add rax, rbx        ; 累加：sum = sum + i</span><br><span class="line">    inc rbx             ; 下一项：i = i + 1</span><br><span class="line">    loop sum_loop       ; RCX--，若不为0则跳转</span><br><span class="line"></span><br><span class="line">    ; 此时 RAX = 5050（1+2+...+100）</span><br><span class="line"></span><br><span class="line">exit:</span><br><span class="line">    mov rax, 60</span><br><span class="line">    xor rdi, rdi</span><br><span class="line">    syscall</span><br></pre></td></tr></table></figure>
+<pre><code class="hljs x86asm"><span class="hljs-comment">; 计算 1 + 2 + 3 + ... + 100 的和</span>
+<span class="hljs-meta">section</span> .text
+    <span class="hljs-meta">global</span> _start
+<span class="hljs-symbol"></span>
+<span class="hljs-symbol">_start:</span>
+    <span class="hljs-keyword">mov</span> <span class="hljs-built_in">rcx</span>, <span class="hljs-number">100</span>        <span class="hljs-comment">; 循环次数（计数器）</span>
+    <span class="hljs-keyword">xor</span> <span class="hljs-built_in">rax</span>, <span class="hljs-built_in">rax</span>        <span class="hljs-comment">; 累加和清零</span>
+    <span class="hljs-keyword">mov</span> <span class="hljs-built_in">rbx</span>, <span class="hljs-number">1</span>          <span class="hljs-comment">; 当前项数值</span>
+<span class="hljs-symbol"></span>
+<span class="hljs-symbol">sum_loop:</span>
+    <span class="hljs-keyword">add</span> <span class="hljs-built_in">rax</span>, <span class="hljs-built_in">rbx</span>        <span class="hljs-comment">; 累加：sum = sum + i</span>
+    <span class="hljs-keyword">inc</span> <span class="hljs-built_in">rbx</span>             <span class="hljs-comment">; 下一项：i = i + 1</span>
+    <span class="hljs-keyword">loop</span> sum_loop       <span class="hljs-comment">; RCX--，若不为0则跳转</span>
+
+    <span class="hljs-comment">; 此时 RAX = 5050（1+2+...+100）</span>
+<span class="hljs-symbol"></span>
+<span class="hljs-symbol">exit:</span>
+    <span class="hljs-keyword">mov</span> <span class="hljs-built_in">rax</span>, <span class="hljs-number">60</span>
+    <span class="hljs-keyword">xor</span> <span class="hljs-built_in">rdi</span>, <span class="hljs-built_in">rdi</span>
+    <span class="hljs-keyword">syscall</span></code></pre>
 
 <h2 id="三、函数调用指令-CALL-与-RET"><a href="#三、函数调用指令-CALL-与-RET" class="headerlink" title="三、函数调用指令 CALL 与 RET"></a>三、函数调用指令 CALL 与 RET</h2><h3 id="1-CALL-指令"><a href="#1-CALL-指令" class="headerlink" title="1. CALL 指令"></a>1. CALL 指令</h3><table>
 <thead>
@@ -444,13 +512,51 @@
 </tr>
 </tbody></table>
 <h3 id="3-栈在-CALL-RET-中的作用"><a href="#3-栈在-CALL-RET-中的作用" class="headerlink" title="3. 栈在 CALL&#x2F;RET 中的作用"></a>3. 栈在 CALL&#x2F;RET 中的作用</h3><p><strong>text</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">调用前：</span><br><span class="line">SP → [ 栈顶空闲 ]</span><br><span class="line">----------------</span><br><span class="line">执行 call near proc 后：</span><br><span class="line">SP → [ 返回地址 (IP) ]  ← 自动压入</span><br><span class="line">     [ 之前的数据... ]</span><br><span class="line">----------------</span><br><span class="line">执行 ret 后：</span><br><span class="line">SP → [ 之前的数据... ]  ← 返回地址被弹出</span><br></pre></td></tr></table></figure>
+<pre><code class="hljs asciidoc">调用前：
+SP → [ 栈顶空闲 ]
+<span class="hljs-code">----------------</span>
+<span class="hljs-code">执行 call near proc 后：</span>
+<span class="hljs-code">SP → [ 返回地址 (IP) ]  ← 自动压入</span>
+<span class="hljs-code">     [ 之前的数据... ]</span>
+<span class="hljs-code">----------------</span>
+执行 ret 后：
+SP → [ 之前的数据... ]  ← 返回地址被弹出</code></pre>
 
 <h3 id="4-函数调用完整实例"><a href="#4-函数调用完整实例" class="headerlink" title="4. 函数调用完整实例"></a>4. 函数调用完整实例</h3><p><strong>assembly</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">section .text</span><br><span class="line">    global _start</span><br><span class="line"></span><br><span class="line">_start:</span><br><span class="line">    mov rax, 5</span><br><span class="line">    mov rbx, 3</span><br><span class="line"></span><br><span class="line">    call add_numbers    ; 调用函数</span><br><span class="line"></span><br><span class="line">    ; 结果在 RAX 中（应为 8）</span><br><span class="line"></span><br><span class="line">    mov rax, 60</span><br><span class="line">    xor rdi, rdi</span><br><span class="line">    syscall</span><br><span class="line"></span><br><span class="line">; ------------------------------------------------------------</span><br><span class="line">; 函数：add_numbers</span><br><span class="line">; 输入：RAX, RBX</span><br><span class="line">; 输出：RAX = RAX + RBX</span><br><span class="line">; ------------------------------------------------------------</span><br><span class="line">add_numbers:</span><br><span class="line">    add rax, rbx</span><br><span class="line">    ret                 ; 返回调用处</span><br></pre></td></tr></table></figure>
+<pre><code class="hljs x86asm"><span class="hljs-meta">section</span> .text
+    <span class="hljs-meta">global</span> _start
+<span class="hljs-symbol"></span>
+<span class="hljs-symbol">_start:</span>
+    <span class="hljs-keyword">mov</span> <span class="hljs-built_in">rax</span>, <span class="hljs-number">5</span>
+    <span class="hljs-keyword">mov</span> <span class="hljs-built_in">rbx</span>, <span class="hljs-number">3</span>
+
+    <span class="hljs-keyword">call</span> add_numbers    <span class="hljs-comment">; 调用函数</span>
+
+    <span class="hljs-comment">; 结果在 RAX 中（应为 8）</span>
+
+    <span class="hljs-keyword">mov</span> <span class="hljs-built_in">rax</span>, <span class="hljs-number">60</span>
+    <span class="hljs-keyword">xor</span> <span class="hljs-built_in">rdi</span>, <span class="hljs-built_in">rdi</span>
+    <span class="hljs-keyword">syscall</span>
+
+<span class="hljs-comment">; ------------------------------------------------------------</span>
+<span class="hljs-comment">; 函数：add_numbers</span>
+<span class="hljs-comment">; 输入：RAX, RBX</span>
+<span class="hljs-comment">; 输出：RAX = RAX + RBX</span>
+<span class="hljs-comment">; ------------------------------------------------------------</span>
+<span class="hljs-symbol">add_numbers:</span>
+    <span class="hljs-keyword">add</span> <span class="hljs-built_in">rax</span>, <span class="hljs-built_in">rbx</span>
+    <span class="hljs-keyword">ret</span>                 <span class="hljs-comment">; 返回调用处</span></code></pre>
 
 <h3 id="5-CALL-FAR-PTR-示例（实模式）"><a href="#5-CALL-FAR-PTR-示例（实模式）" class="headerlink" title="5. CALL FAR PTR 示例（实模式）"></a>5. CALL FAR PTR 示例（实模式）</h3><p><strong>assembly</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">; 实模式下的远调用</span><br><span class="line">call far ptr 0x1000:0x0000   ; 调用另一段的代码</span><br><span class="line"></span><br><span class="line">; 等效操作（手动模拟）</span><br><span class="line">push cs          ; 先压入当前代码段</span><br><span class="line">push offset next ; 再压入返回地址</span><br><span class="line">jmp 0x1000:0x0000</span><br><span class="line">next:</span><br><span class="line">    ; 返回后继续执行</span><br></pre></td></tr></table></figure>
+<pre><code class="hljs llvm"><span class="hljs-comment">; 实模式下的远调用</span>
+<span class="hljs-keyword">call</span> far <span class="hljs-type">ptr</span> <span class="hljs-number">0x1000</span>:<span class="hljs-number">0x0000</span>   <span class="hljs-comment">; 调用另一段的代码</span>
+
+<span class="hljs-comment">; 等效操作（手动模拟）</span>
+push cs          <span class="hljs-comment">; 先压入当前代码段</span>
+push offset next <span class="hljs-comment">; 再压入返回地址</span>
+jmp <span class="hljs-number">0x1000</span>:<span class="hljs-number">0x0000</span>
+<span class="hljs-symbol">next:</span>
+    <span class="hljs-comment">; 返回后继续执行</span></code></pre>
 
 <h2 id="四、段定义与-DUP-指令"><a href="#四、段定义与-DUP-指令" class="headerlink" title="四、段定义与 DUP 指令"></a>四、段定义与 DUP 指令</h2><h3 id="1-三个核心段"><a href="#1-三个核心段" class="headerlink" title="1. 三个核心段"></a>1. 三个核心段</h3><table>
 <thead>
@@ -481,7 +587,19 @@
 </tr>
 </tbody></table>
 <h3 id="2-段定义语法"><a href="#2-段定义语法" class="headerlink" title="2. 段定义语法"></a>2. 段定义语法</h3><p><strong>assembly</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">section .text                    ; 代码段</span><br><span class="line">    global _start</span><br><span class="line">_start:</span><br><span class="line">    ; 指令代码</span><br><span class="line"></span><br><span class="line">section .data                    ; 数据段（已初始化）</span><br><span class="line">    msg db &#x27;Hello&#x27;, 0xA</span><br><span class="line">    array dw 1, 2, 3, 4, 5</span><br><span class="line">    value dq 0x12345678</span><br><span class="line"></span><br><span class="line">section .bss                     ; 数据段（未初始化）</span><br><span class="line">    buffer resb 64               ; 保留 64 字节</span><br><span class="line">    big_array resd 100           ; 保留 100 个双字</span><br></pre></td></tr></table></figure>
+<pre><code class="hljs mipsasm">section <span class="hljs-meta">.text</span>                    <span class="hljs-comment">; 代码段</span>
+    global _start
+<span class="hljs-symbol">_start:</span>
+    <span class="hljs-comment">; 指令代码</span>
+
+section <span class="hljs-meta">.data</span>                    <span class="hljs-comment">; 数据段（已初始化）</span>
+    msg db <span class="hljs-string">&#x27;Hello&#x27;</span>, <span class="hljs-number">0xA</span>
+    array dw <span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>, <span class="hljs-number">5</span>
+    value dq <span class="hljs-number">0x12345678</span>
+
+section .<span class="hljs-keyword">bss </span>                    <span class="hljs-comment">; 数据段（未初始化）</span>
+    <span class="hljs-keyword">buffer </span>resb <span class="hljs-number">64</span>               <span class="hljs-comment">; 保留 64 字节</span>
+    <span class="hljs-keyword">big_array </span>resd <span class="hljs-number">100</span>           <span class="hljs-comment">; 保留 100 个双字</span></code></pre>
 
 <h3 id="3-DUP-指令（重复定义）"><a href="#3-DUP-指令（重复定义）" class="headerlink" title="3. DUP 指令（重复定义）"></a>3. DUP 指令（重复定义）</h3><p>DUP 用于批量定义相同数据，MASM&#x2F;TASM 语法中常用。</p>
 <table>
@@ -510,15 +628,72 @@
 </tbody></table>
 <p><strong>MASM&#x2F;TASM 语法示例：</strong></p>
 <p><strong>assembly</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">; 定义 100 个字节，全部为 0</span><br><span class="line">buffer db 100 DUP(0)</span><br><span class="line"></span><br><span class="line">; 定义 50 个字，未初始化</span><br><span class="line">array dw 50 DUP(?)</span><br><span class="line"></span><br><span class="line">; 定义字符串模板（10 个星号）</span><br><span class="line">stars db 10 DUP(&#x27;*&#x27;)</span><br><span class="line"></span><br><span class="line">; 嵌套：定义 3 组，每组是 1, 0, 0</span><br><span class="line">; 结果：1,0,0, 1,0,0, 1,0,0</span><br><span class="line">pattern db 3 DUP(1, 2 DUP(0))</span><br></pre></td></tr></table></figure>
+<pre><code class="hljs smali">; 定义 100 个字节，全部为 0
+buffer db 100 DUP(0)
+
+; 定义 50 个字，未初始化<span class="hljs-built_in"></span>
+<span class="hljs-built_in">array </span>dw 50 DUP(?)
+
+; 定义字符串模板（10 个星号）
+stars db 10 DUP(&#x27;*&#x27;)
+
+; 嵌套：定义 3 组，每组是 1, 0, 0
+; 结果：1,0,0, 1,0,0, 1,0,0
+pattern db 3 DUP(1, 2 DUP(0))</code></pre>
 
 <p><strong>NASM 等效写法：</strong></p>
 <p>NASM 不使用 <code>DUP</code>，使用 <code>times</code> 指令：</p>
 <p><strong>assembly</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">buffer times 100 db 0</span><br><span class="line">array  times 50  dw 0</span><br><span class="line">stars  times 10  db &#x27;*&#x27;</span><br></pre></td></tr></table></figure>
+<pre><code class="hljs smali">buffer times 100 db 0<span class="hljs-built_in"></span>
+<span class="hljs-built_in">array </span> times 50  dw 0
+stars  times 10  db &#x27;*&#x27;</code></pre>
 
 <h2 id="五、综合示例：完整程序框架"><a href="#五、综合示例：完整程序框架" class="headerlink" title="五、综合示例：完整程序框架"></a>五、综合示例：完整程序框架</h2><p><strong>assembly</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line">; ============================================================</span><br><span class="line">; 综合示例：展示段定义、循环、条件判断、函数调用</span><br><span class="line">; ============================================================</span><br><span class="line"></span><br><span class="line">section .data</span><br><span class="line">    msg     db &#x27;Sum: &#x27;, 0</span><br><span class="line">    newline db 0xA, 0</span><br><span class="line">    arr     times 10 dw 1    ; 10 个元素，每个初始化为 1</span><br><span class="line"></span><br><span class="line">section .bss</span><br><span class="line">    sum     resq 1           ; 保留 8 字节存结果</span><br><span class="line"></span><br><span class="line">section .text</span><br><span class="line">    global _start</span><br><span class="line"></span><br><span class="line">_start:</span><br><span class="line">    ; 计算数组元素和</span><br><span class="line">    mov rcx, 10              ; 循环 10 次</span><br><span class="line">    xor rax, rax             ; 累加和清零</span><br><span class="line">    mov rbx, arr             ; 数组首地址</span><br><span class="line"></span><br><span class="line">sum_loop:</span><br><span class="line">    add ax, word [rbx]       ; 累加</span><br><span class="line">    add rbx, 2               ; 指向下一个元素（word=2字节）</span><br><span class="line">    loop sum_loop</span><br><span class="line"></span><br><span class="line">    mov [sum], rax           ; 保存结果</span><br><span class="line"></span><br><span class="line">    ; 判断结果是否大于 10</span><br><span class="line">    cmp rax, 10</span><br><span class="line">    ja  above_10</span><br><span class="line">    jmp exit</span><br><span class="line"></span><br><span class="line">above_10:</span><br><span class="line">    ; 结果大于 10 的处理</span><br><span class="line">    call do_something</span><br><span class="line"></span><br><span class="line">exit:</span><br><span class="line">    mov rax, 60</span><br><span class="line">    xor rdi, rdi</span><br><span class="line">    syscall</span><br><span class="line"></span><br><span class="line">do_something:</span><br><span class="line">    ; 函数体</span><br><span class="line">    ret</span><br></pre></td></tr></table></figure>
+<pre><code class="hljs x86asm"><span class="hljs-comment">; ============================================================</span>
+<span class="hljs-comment">; 综合示例：展示段定义、循环、条件判断、函数调用</span>
+<span class="hljs-comment">; ============================================================</span>
+
+<span class="hljs-meta">section</span> .data
+    msg     <span class="hljs-built_in">db</span> <span class="hljs-string">&#x27;Sum: &#x27;</span>, <span class="hljs-number">0</span>
+    newline <span class="hljs-built_in">db</span> <span class="hljs-number">0xA</span>, <span class="hljs-number">0</span>
+    arr     <span class="hljs-built_in">times</span> <span class="hljs-number">10</span> <span class="hljs-built_in">dw</span> <span class="hljs-number">1</span>    <span class="hljs-comment">; 10 个元素，每个初始化为 1</span>
+
+<span class="hljs-meta">section</span> .bss
+    sum     <span class="hljs-built_in">resq</span> <span class="hljs-number">1</span>           <span class="hljs-comment">; 保留 8 字节存结果</span>
+
+<span class="hljs-meta">section</span> .text
+    <span class="hljs-meta">global</span> _start
+<span class="hljs-symbol"></span>
+<span class="hljs-symbol">_start:</span>
+    <span class="hljs-comment">; 计算数组元素和</span>
+    <span class="hljs-keyword">mov</span> <span class="hljs-built_in">rcx</span>, <span class="hljs-number">10</span>              <span class="hljs-comment">; 循环 10 次</span>
+    <span class="hljs-keyword">xor</span> <span class="hljs-built_in">rax</span>, <span class="hljs-built_in">rax</span>             <span class="hljs-comment">; 累加和清零</span>
+    <span class="hljs-keyword">mov</span> <span class="hljs-built_in">rbx</span>, arr             <span class="hljs-comment">; 数组首地址</span>
+<span class="hljs-symbol"></span>
+<span class="hljs-symbol">sum_loop:</span>
+    <span class="hljs-keyword">add</span> <span class="hljs-built_in">ax</span>, <span class="hljs-built_in">word</span> [<span class="hljs-built_in">rbx</span>]       <span class="hljs-comment">; 累加</span>
+    <span class="hljs-keyword">add</span> <span class="hljs-built_in">rbx</span>, <span class="hljs-number">2</span>               <span class="hljs-comment">; 指向下一个元素（word=2字节）</span>
+    <span class="hljs-keyword">loop</span> sum_loop
+
+    <span class="hljs-keyword">mov</span> [sum], <span class="hljs-built_in">rax</span>           <span class="hljs-comment">; 保存结果</span>
+
+    <span class="hljs-comment">; 判断结果是否大于 10</span>
+    <span class="hljs-keyword">cmp</span> <span class="hljs-built_in">rax</span>, <span class="hljs-number">10</span>
+    <span class="hljs-keyword">ja</span>  above_10
+    <span class="hljs-keyword">jmp</span> exit
+<span class="hljs-symbol"></span>
+<span class="hljs-symbol">above_10:</span>
+    <span class="hljs-comment">; 结果大于 10 的处理</span>
+    <span class="hljs-keyword">call</span> do_something
+<span class="hljs-symbol"></span>
+<span class="hljs-symbol">exit:</span>
+    <span class="hljs-keyword">mov</span> <span class="hljs-built_in">rax</span>, <span class="hljs-number">60</span>
+    <span class="hljs-keyword">xor</span> <span class="hljs-built_in">rdi</span>, <span class="hljs-built_in">rdi</span>
+    <span class="hljs-keyword">syscall</span>
+<span class="hljs-symbol"></span>
+<span class="hljs-symbol">do_something:</span>
+    <span class="hljs-comment">; 函数体</span>
+    <span class="hljs-keyword">ret</span></code></pre>
 
     </div>
     

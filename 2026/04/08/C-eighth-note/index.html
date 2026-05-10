@@ -167,21 +167,107 @@
         </span>
         
         
+        <span class="tags">
+            <span class="icon">
+                <i class="fa-solid fa-tags fa-fw"></i>
+            </span>
+            
+            
+            <span class="tag">
+                
+                <a href="/tags/C%E8%AF%AD%E8%A8%80%E8%A7%A3%E9%A2%98/" style="color: #ffa2c4">
+                    C语言解题
+                </a>
+            </span>
+            
+        </span>
+        
     </div>
     
     <div class="content" v-pre>
-        <h1 id="菜鸟教程编程题解析2"><a href="#菜鸟教程编程题解析2" class="headerlink" title="菜鸟教程编程题解析2"></a>菜鸟教程编程题解析2</h1><h2 id="题目：用-号输出字母C的图案"><a href="#题目：用-号输出字母C的图案" class="headerlink" title="题目：用*号输出字母C的图案"></a>题目：用*号输出字母C的图案</h2><h2 id="解答"><a href="#解答" class="headerlink" title="解答"></a>解答</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">(<span class="type">void</span>)</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="comment">//使用空格和换行符打印</span></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;    ******    \n&quot;</span>);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;   *      *\n&quot;</span>);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;  *\n&quot;</span>);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot; *\n&quot;</span>);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot; *\n&quot;</span>);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot; *\n&quot;</span>);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot; *\n&quot;</span>);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot; *\n&quot;</span>);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;  *\n&quot;</span>);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;   *      *\n&quot;</span>);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;    ******    \n&quot;</span>);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="提名：输出特殊图案，请在c环境中运行，看一看，Very-Beautiful"><a href="#提名：输出特殊图案，请在c环境中运行，看一看，Very-Beautiful" class="headerlink" title="提名：输出特殊图案，请在c环境中运行，看一看，Very Beautiful!"></a>提名：输出特殊图案，请在c环境中运行，看一看，Very Beautiful!</h2><h2 id="解答-1"><a href="#解答-1" class="headerlink" title="解答"></a>解答</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">(<span class="type">void</span>)</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="comment">//使用特殊符号表示</span></span><br><span class="line">    <span class="type">char</span> a=<span class="number">176</span>,b=<span class="number">219</span>;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;%c%c%c%c%c\n&quot;</span>,b,a,a,a,b);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;%c%c%c%c%c\n&quot;</span>,a,b,a,b,a);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;%c%c%c%c%c\n&quot;</span>,a,a,b,a,a);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;%c%c%c%c%c\n&quot;</span>,a,b,a,b,a);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;%c%c%c%c%c\n&quot;</span>,b,a,a,a,b);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+        <h1 id="菜鸟教程编程题解析2"><a href="#菜鸟教程编程题解析2" class="headerlink" title="菜鸟教程编程题解析2"></a>菜鸟教程编程题解析2</h1><h2 id="题目：用-号输出字母C的图案"><a href="#题目：用-号输出字母C的图案" class="headerlink" title="题目：用*号输出字母C的图案"></a>题目：用*号输出字母C的图案</h2><h2 id="解答"><a href="#解答" class="headerlink" title="解答"></a>解答</h2><pre><code class="hljs c"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stdio.h&gt;</span></span>
+
+<span class="hljs-type">int</span> <span class="hljs-title function_">main</span><span class="hljs-params">(<span class="hljs-type">void</span>)</span>
+&#123;
+    <span class="hljs-comment">//使用空格和换行符打印</span>
+    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;    ******    \n&quot;</span>);
+    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;   *      *\n&quot;</span>);
+    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;  *\n&quot;</span>);
+    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot; *\n&quot;</span>);
+    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot; *\n&quot;</span>);
+    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot; *\n&quot;</span>);
+    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot; *\n&quot;</span>);
+    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot; *\n&quot;</span>);
+    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;  *\n&quot;</span>);
+    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;   *      *\n&quot;</span>);
+    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;    ******    \n&quot;</span>);
+    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+&#125;</code></pre>
+<h2 id="提名：输出特殊图案，请在c环境中运行，看一看，Very-Beautiful"><a href="#提名：输出特殊图案，请在c环境中运行，看一看，Very-Beautiful" class="headerlink" title="提名：输出特殊图案，请在c环境中运行，看一看，Very Beautiful!"></a>提名：输出特殊图案，请在c环境中运行，看一看，Very Beautiful!</h2><h2 id="解答-1"><a href="#解答-1" class="headerlink" title="解答"></a>解答</h2><pre><code class="hljs c"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stdio.h&gt;</span></span>
+
+<span class="hljs-type">int</span> <span class="hljs-title function_">main</span><span class="hljs-params">(<span class="hljs-type">void</span>)</span>
+&#123;
+    <span class="hljs-comment">//使用特殊符号表示</span>
+    <span class="hljs-type">char</span> a=<span class="hljs-number">176</span>,b=<span class="hljs-number">219</span>;
+    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%c%c%c%c%c\n&quot;</span>,b,a,a,a,b);
+    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%c%c%c%c%c\n&quot;</span>,a,b,a,b,a);
+    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%c%c%c%c%c\n&quot;</span>,a,a,b,a,a);
+    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%c%c%c%c%c\n&quot;</span>,a,b,a,b,a);
+    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%c%c%c%c%c\n&quot;</span>,b,a,a,a,b);
+    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+&#125;</code></pre>
 <p>注意：如果输出为乱码把扩展的ASCLL编码改为437 OEM美国就好，具体操作如下</p>
 <ol>
 <li>点击运行界面左上角标题栏图标【c:\】，选择默认值一项</li>
 <li>修改默认代码页，936（ANSI&#x2F;OEM-简体中文GBK）为437 OEM-美国</li>
 <li>关闭后重新运行一下即可</li>
 </ol>
-<h2 id="题目：输出-9-9-口诀"><a href="#题目：输出-9-9-口诀" class="headerlink" title="题目：输出 9*9 口诀"></a>题目：输出 9*9 口诀</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">(<span class="type">void</span>)</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="comment">//定义三个函数</span></span><br><span class="line">    <span class="type">int</span> i,j,k;</span><br><span class="line">    <span class="comment">//利用for循环打印</span></span><br><span class="line">    <span class="keyword">for</span>(i=<span class="number">1</span>;i&lt;<span class="number">10</span>;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">for</span>(j=<span class="number">1</span>;j&lt;=i;j++)</span><br><span class="line">        &#123;</span><br><span class="line">            k = i * j;</span><br><span class="line">            <span class="built_in">printf</span>(<span class="string">&quot;%d * %d = %d   &quot;</span>,i,j,k);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//每一行一换行</span></span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;\n&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="题目：要求输出国际象棋棋盘"><a href="#题目：要求输出国际象棋棋盘" class="headerlink" title="题目：要求输出国际象棋棋盘"></a>题目：要求输出国际象棋棋盘</h2><h2 id="解答-2"><a href="#解答-2" class="headerlink" title="解答"></a>解答</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="type">int</span> i,j;</span><br><span class="line">    <span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;<span class="number">8</span>;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">for</span>(j=<span class="number">0</span>;j&lt;<span class="number">8</span>;j++)</span><br><span class="line">            <span class="keyword">if</span>((i+j)%<span class="number">2</span>==<span class="number">0</span>)</span><br><span class="line">                <span class="built_in">printf</span>(<span class="string">&quot;%c%c&quot;</span>,<span class="number">219</span>,<span class="number">219</span>);</span><br><span class="line">            <span class="keyword">else</span> <span class="built_in">printf</span>(<span class="string">&quot;  &quot;</span>);</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;\n&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="题目：输出-9-9-口诀"><a href="#题目：输出-9-9-口诀" class="headerlink" title="题目：输出 9*9 口诀"></a>题目：输出 9*9 口诀</h2><pre><code class="hljs c"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stdio.h&gt;</span></span>
+
+<span class="hljs-type">int</span> <span class="hljs-title function_">main</span><span class="hljs-params">(<span class="hljs-type">void</span>)</span>
+&#123;
+    <span class="hljs-comment">//定义三个函数</span>
+    <span class="hljs-type">int</span> i,j,k;
+    <span class="hljs-comment">//利用for循环打印</span>
+    <span class="hljs-keyword">for</span>(i=<span class="hljs-number">1</span>;i&lt;<span class="hljs-number">10</span>;i++)
+    &#123;
+        <span class="hljs-keyword">for</span>(j=<span class="hljs-number">1</span>;j&lt;=i;j++)
+        &#123;
+            k = i * j;
+            <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%d * %d = %d   &quot;</span>,i,j,k);
+        &#125;
+        <span class="hljs-comment">//每一行一换行</span>
+        <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;\n&quot;</span>);
+    &#125;
+    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+&#125;</code></pre>
+<h2 id="题目：要求输出国际象棋棋盘"><a href="#题目：要求输出国际象棋棋盘" class="headerlink" title="题目：要求输出国际象棋棋盘"></a>题目：要求输出国际象棋棋盘</h2><h2 id="解答-2"><a href="#解答-2" class="headerlink" title="解答"></a>解答</h2><pre><code class="hljs c"><span class="hljs-type">int</span> <span class="hljs-title function_">main</span><span class="hljs-params">()</span>
+&#123;
+    <span class="hljs-type">int</span> i,j;
+    <span class="hljs-keyword">for</span>(i=<span class="hljs-number">0</span>;i&lt;<span class="hljs-number">8</span>;i++)
+    &#123;
+        <span class="hljs-keyword">for</span>(j=<span class="hljs-number">0</span>;j&lt;<span class="hljs-number">8</span>;j++)
+            <span class="hljs-keyword">if</span>((i+j)%<span class="hljs-number">2</span>==<span class="hljs-number">0</span>)
+                <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%c%c&quot;</span>,<span class="hljs-number">219</span>,<span class="hljs-number">219</span>);
+            <span class="hljs-keyword">else</span> <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;  &quot;</span>);
+        <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;\n&quot;</span>);
+    &#125;
+    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+&#125;</code></pre>
 <p>注意：如果输出乱码解决方法和第七题一样</p>
-<h2 id="题目：打印楼梯，同时在楼梯上方打印两个笑脸。"><a href="#题目：打印楼梯，同时在楼梯上方打印两个笑脸。" class="headerlink" title="题目：打印楼梯，同时在楼梯上方打印两个笑脸。"></a>题目：打印楼梯，同时在楼梯上方打印两个笑脸。</h2><h2 id="解答-3"><a href="#解答-3" class="headerlink" title="解答"></a>解答</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"> </span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="type">int</span> i,j;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;\1\1\n&quot;</span>);</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">for</span>(j=<span class="number">1</span>;j&lt;=i;j++)</span><br><span class="line">            <span class="built_in">printf</span>(<span class="string">&quot;%c%c&quot;</span>,<span class="number">219</span>,<span class="number">219</span>);</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;\n&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="题目：打印楼梯，同时在楼梯上方打印两个笑脸。"><a href="#题目：打印楼梯，同时在楼梯上方打印两个笑脸。" class="headerlink" title="题目：打印楼梯，同时在楼梯上方打印两个笑脸。"></a>题目：打印楼梯，同时在楼梯上方打印两个笑脸。</h2><h2 id="解答-3"><a href="#解答-3" class="headerlink" title="解答"></a>解答</h2><pre><code class="hljs c"><span class="hljs-meta">#<span class="hljs-keyword">include</span><span class="hljs-string">&lt;stdio.h&gt;</span></span>
+ 
+<span class="hljs-type">int</span> <span class="hljs-title function_">main</span><span class="hljs-params">()</span>
+&#123;
+    <span class="hljs-type">int</span> i,j;
+    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;\1\1\n&quot;</span>);
+    &#123;
+        <span class="hljs-keyword">for</span>(j=<span class="hljs-number">1</span>;j&lt;=i;j++)
+            <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%c%c&quot;</span>,<span class="hljs-number">219</span>,<span class="hljs-number">219</span>);
+        <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;\n&quot;</span>);
+    &#125;
+    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+&#125;</code></pre>
 <p>注意：输出乱码解决方法同第七题</p>
 
     </div>
