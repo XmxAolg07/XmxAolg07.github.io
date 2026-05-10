@@ -18,7 +18,7 @@
         
     </title>
 
-    <link rel="canonical" href="http://example.com/">
+    <link rel="canonical" href="http://example.com/page/3/">
 
     <!-- Bootstrap Core CSS -->
 
@@ -268,9 +268,9 @@
 
 
 <div class="w3-row-padding">
-	<a href="/2026/05/10/week7wp/">
+	<a href="/2026/03/17/linux/">
         <h2 class="post-title">
-            Untitled
+            linux基本命令
         </h2>
         <h3 class="post-subtitle">
             
@@ -279,17 +279,19 @@
 
 <div>
 
-    <a href="/2026/05/10/week7wp/">
+    <a href="/2026/03/17/linux/">
 
         <div class="post-content-preview">
-            ezelf解题过程首先我们把文件用IDA打开，然后进入main函数
-123456789101112131415161718192021222324252627282930313233343536373839404142434445464748if ( n31 == 31 )&#123;  v19 = *v9;  v20 = v19;  if ( byte_40A050[v19] == .........
+            Linuxls -l 的命令展示的内容详情1ls -l
+
+touch 命令怎么创造文件管道符的使用touch的使用12touch file.txt #创造单个文件touch file1.txt file2.txt #创造多个文件
+管道符的使用12cat /var/log/syslog | grep error # 查看日志文件，找出error行cat config.conf | nl .........
         </div>
     </a>
     
         <p class="post-meta">
             Posted by John Doe on
-            2026-05-10
+            2026-03-17
         </p>
     
 
@@ -299,9 +301,9 @@
 
 
 <div class="w3-row-padding">
-	<a href="/2026/05/08/buuctf-wp1/">
+	<a href="/2026/03/12/hello-world/">
         <h2 class="post-title">
-            buuctf_wp1
+            Hello World
         </h2>
         <h3 class="post-subtitle">
             
@@ -310,375 +312,16 @@
 
 <div>
 
-    <a href="/2026/05/08/buuctf-wp1/">
+    <a href="/2026/03/12/hello-world/">
 
         <div class="post-content-preview">
-            BUUCTF 解题过程简单注册器我们把文件下载好之后拿到一个apk文件，下载jadx-gui来打开它
-在com.example.flag里面的MainActivty我们找的如下代码
-12345678910111213141516if (flag == 1) &#123;                    char[] x = &quot;dd2940c04462b4dd7c4505.........
+            Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub..........
         </div>
     </a>
     
         <p class="post-meta">
             Posted by John Doe on
-            2026-05-08
-        </p>
-    
-
-</div>
-</div>
-<hr>
-
-
-<div class="w3-row-padding">
-	<a href="/2026/04/23/assembly-5/">
-        <h2 class="post-title">
-            汇编-5
-        </h2>
-        <h3 class="post-subtitle">
-            
-        </h3>
-	</a>
-
-<div>
-
-    <a href="/2026/04/23/assembly-5/">
-
-        <div class="post-content-preview">
-            汇编笔记5条件标志位跳转指令根据标志位决定是否跳转
-
-
-
-标志位
-含义
-
-
-
-ZF
-零标志（结果为0时置1）
-
-
-CF
-进位标志
-
-
-SF
-符号标志
-
-
-OF
-溢出标志
-
-
-常用跳转指令
-
-
-指令
-条件
-含义
-
-
-
-jmp
-无条件
-无条件跳转
-
-
-je 或 jz
-ZF &#x3D; 1
-相等&#x2F;为零则跳转
-
-
-jne 或 jnz
-ZF &#x3D; 0
-不相等&#x2F;不为零.........
-        </div>
-    </a>
-    
-        <p class="post-meta">
-            Posted by John Doe on
-            2026-04-23
-        </p>
-    
-
-</div>
-</div>
-<hr>
-
-
-<div class="w3-row-padding">
-	<a href="/2026/04/19/assembly-4/">
-        <h2 class="post-title">
-            汇编4
-        </h2>
-        <h3 class="post-subtitle">
-            
-        </h3>
-	</a>
-
-<div>
-
-    <a href="/2026/04/19/assembly-4/">
-
-        <div class="post-content-preview">
-            GDB调试学习笔记什么是GDBGDB（GNU Debugger）是Linux下的C&#x2F;C++调试工具，可以让你一步步运行程序，查看变量值，查看汇编指令，找出bug。
-准备工作：编译时加调试信息12345678# 必须加 -g 选项，否则无法调试gcc -g -o program program.c# 查看汇编代码需要加 -S 或使用objdumpgcc -S -o progra.........
-        </div>
-    </a>
-    
-        <p class="post-meta">
-            Posted by John Doe on
-            2026-04-19
-        </p>
-    
-
-</div>
-</div>
-<hr>
-
-
-<div class="w3-row-padding">
-	<a href="/2026/04/15/assembly-3/">
-        <h2 class="post-title">
-            汇编笔记3
-        </h2>
-        <h3 class="post-subtitle">
-            
-        </h3>
-	</a>
-
-<div>
-
-    <a href="/2026/04/15/assembly-3/">
-
-        <div class="post-content-preview">
-            汇编进阶3一、条件判断指令1. CMP 指令（Compare）
-
-
-指令
-作用
-对标志位的影响
-
-
-
-cmp dest, src
-计算 dest - src， 不保存结果 ，仅影响标志位
-ZF, CF, OF, SF, AF, PF
-
-
-assembly
-1cmp ax, 10      ; AX - 10，结果丢弃，只影响标志位
-
-2. 条件跳转指令（Conditional Jump.........
-        </div>
-    </a>
-    
-        <p class="post-meta">
-            Posted by John Doe on
-            2026-04-15
-        </p>
-    
-
-</div>
-</div>
-<hr>
-
-
-<div class="w3-row-padding">
-	<a href="/2026/04/13/assembly-2/">
-        <h2 class="post-title">
-            汇编笔记-2
-        </h2>
-        <h3 class="post-subtitle">
-            
-        </h3>
-	</a>
-
-<div>
-
-    <a href="/2026/04/13/assembly-2/">
-
-        <div class="post-content-preview">
-            汇编笔记-2一、核心概念：物理地址的计算在实模式下，CPU 通过 段地址 和 偏移地址 组合生成 20 位的 物理地址。
-
-
-
-术语
-英文
-作用
-计算规则
-
-
-
-DS
-Data Segment
-数据段寄存器，指向数据存放的内存段基址
-物理地址 &#x3D; DS × 16 + 偏移地址
-
-
-CS
-Code Segment
-代码段寄存器，指向指令存放的内存段基址
-物理地址 &#x3D; .........
-        </div>
-    </a>
-    
-        <p class="post-meta">
-            Posted by John Doe on
-            2026-04-13
-        </p>
-    
-
-</div>
-</div>
-<hr>
-
-
-<div class="w3-row-padding">
-	<a href="/2026/04/12/assembly-1/">
-        <h2 class="post-title">
-            汇编笔记-1
-        </h2>
-        <h3 class="post-subtitle">
-            
-        </h3>
-	</a>
-
-<div>
-
-    <a href="/2026/04/12/assembly-1/">
-
-        <div class="post-content-preview">
-            汇编笔记-1一、6 种常用Debug指令
-
-
-指令
-全称
-作用说明
-GDB 示例
-
-
-
-int 3
-Interrupt 3
-软件断点。程序执行到此会触发调试器暂停。常用于手动插入断点。
-无需输入，CPU遇到即停。
-
-
-nop
-No Operation
-空操作。占用一个字节 (0x90)，什么都不做。常用于对齐代码或预留补丁位置。
-x/10i $rip (查看后续指令)
-
-
-ud2
-Un.........
-        </div>
-    </a>
-    
-        <p class="post-meta">
-            Posted by John Doe on
-            2026-04-12
-        </p>
-    
-
-</div>
-</div>
-<hr>
-
-
-<div class="w3-row-padding">
-	<a href="/2026/04/11/test-week4/">
-        <h2 class="post-title">
-            考核第四周题目解析
-        </h2>
-        <h3 class="post-subtitle">
-            
-        </h3>
-	</a>
-
-<div>
-
-    <a href="/2026/04/11/test-week4/">
-
-        <div class="post-content-preview">
-            题目1.现在有一个256字节大小的数组，这个数组满足一种神秘的规则
-现在我想让你实现一个逆S盒，要求命名为Inv_SBOX
-逆S盒定义如下:
-
-初始化S-box，使第xx行第yy列的元素为{xyxy}
-
-123456789101112131415161718unsigned char SBOX[256]=&#123;0x63, 0x7C, 0x77, 0x7B, 0xF2, 0x6B,.........
-        </div>
-    </a>
-    
-        <p class="post-meta">
-            Posted by John Doe on
-            2026-04-11
-        </p>
-    
-
-</div>
-</div>
-<hr>
-
-
-<div class="w3-row-padding">
-	<a href="/2026/04/11/C-tenth-note/">
-        <h2 class="post-title">
-            C语言笔记7
-        </h2>
-        <h3 class="post-subtitle">
-            
-        </h3>
-	</a>
-
-<div>
-
-    <a href="/2026/04/11/C-tenth-note/">
-
-        <div class="post-content-preview">
-            C语言文件读写学习笔记文件操作基本步骤
-打开文件 → 2. 读写文件 → 3. 关闭文件
-
-1234567891011#include &lt;stdio.h&gt;int main() &#123;    FILE *fp = fopen(&quot;test.txt&quot;, &quot;w&quot;);  // 打开文件    if (fp == NULL) &#123; .........
-        </div>
-    </a>
-    
-        <p class="post-meta">
-            Posted by John Doe on
-            2026-04-11
-        </p>
-    
-
-</div>
-</div>
-<hr>
-
-
-<div class="w3-row-padding">
-	<a href="/2026/04/09/C-ninth-note/">
-        <h2 class="post-title">
-            C语言编程题5题3
-        </h2>
-        <h3 class="post-subtitle">
-            
-        </h3>
-	</a>
-
-<div>
-
-    <a href="/2026/04/09/C-ninth-note/">
-
-        <div class="post-content-preview">
-            菜鸟教程编程题五题详解3问题古典问题（兔子生崽）：有一对兔子，从出生后第3个月起每个月都生一对兔子，小兔子长到第三个月后每个月又生一对兔子，假如兔子都不死，问每个月的兔子总数为多少？（输出前40个月即可）这题就是斐波那契数列的原定义很经典的题目
-解答1234567891011121314151617181920212223#include &lt;stdio.h&gt;int main.........
-        </div>
-    </a>
-    
-        <p class="post-meta">
-            Posted by John Doe on
-            2026-04-09
+            2026-03-12
         </p>
     
 
@@ -692,10 +335,10 @@ Un.........
 
 <ul class="pager">
     
-    
-        <li class="next">
-            <a href="/page/2/">Older Posts &rarr;</a>
+        <li class="previous">
+            <a href="/page/2/">&larr; Newer Posts</a>
         </li>
+    
     
 </ul>
 
@@ -942,7 +585,7 @@ Un.........
 <script>
     // only load tagcloud.js in tag.html
     if($('#tag_cloud').length !== 0){
-        async("http://example.com/index.html/js/jquery.tagcloud.js",function(){
+        async("http://example.com/page/3/index.html/js/jquery.tagcloud.js",function(){
             $.fn.tagcloud.defaults = {
                 //size: {start: 1, end: 1, unit: 'em'},
                 color: {start: '#bbbbee', end: '#0085a1'},
