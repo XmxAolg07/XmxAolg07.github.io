@@ -177,7 +177,7 @@
                             
                                 <span class="tag">
                                     
-                                        <a href="/tags/%E8%80%83%E6%A0%B8/" style="color: #00a596">
+                                        <a href="/tags/%E8%80%83%E6%A0%B8/" style="color: #ff7d73">
                                             考核
                                         </a>
                                 </span>
@@ -218,7 +218,7 @@ input<span class="hljs-comment">[i]</span> = Inv_sbox<span class="hljs-comment">
 
 <p>3.现在提供一个二进制文件，读取这个二进制文件然后将每一个字节进行逆字节替换，逆字节替换函数命名为Inv_SubBytes,然后再吧处理后的字节填充成一个后缀为.png的文件</p>
 <ul>
-<li>考核文件为secret.png.hacked</li>
+<li>考核文件为&#x2F;assets&#x2F;secret.png.hacked</li>
 <li>其中用到的sbox也是上面的sbox</li>
 </ul>
 <h1 id="解答"><a href="#解答" class="headerlink" title="解答"></a>解答</h1><pre><code class="hljs c"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stdio.h&gt;</span></span>
@@ -295,8 +295,8 @@ input<span class="hljs-comment">[i]</span> = Inv_sbox<span class="hljs-comment">
 <span class="hljs-type">int</span> <span class="hljs-title function_">main</span><span class="hljs-params">(<span class="hljs-type">void</span>)</span>
 &#123;
     <span class="hljs-comment">// 文件路径定义</span>
-    <span class="hljs-type">const</span> <span class="hljs-type">char</span> *src_path = <span class="hljs-string">&quot;secret.png.hacked&quot;</span>;  <span class="hljs-comment">// 加密的源文件</span>
-    <span class="hljs-type">const</span> <span class="hljs-type">char</span> *dst_path = <span class="hljs-string">&quot;secret.png&quot;</span>;         <span class="hljs-comment">// 解密后的目标文件</span>
+    <span class="hljs-type">const</span> <span class="hljs-type">char</span> *src_path = <span class="hljs-string">&quot;/assets/secret.png.hacked&quot;</span>;  <span class="hljs-comment">// 加密的源文件</span>
+    <span class="hljs-type">const</span> <span class="hljs-type">char</span> *dst_path = <span class="hljs-string">&quot;/assets/secret.png&quot;</span>;         <span class="hljs-comment">// 解密后的目标文件</span>
 
     FILE *fin, *fout;        <span class="hljs-comment">// 文件指针</span>
     <span class="hljs-type">unsigned</span> <span class="hljs-type">char</span> *buf;      <span class="hljs-comment">// 数据缓冲区</span>
@@ -353,7 +353,7 @@ input<span class="hljs-comment">[i]</span> = Inv_sbox<span class="hljs-comment">
 &#125;</code></pre>
 
 <p>解码后图片</p>
-<p><img src="/secret.png" alt="alt text"></p>
+<p><img src="/assets/secret.png" alt="alt text"></p>
 
                 </div>
                 
