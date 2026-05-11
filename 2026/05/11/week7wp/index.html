@@ -1,0 +1,624 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8" />
+    <title> | Xmx_Aolg07</title>
+    <meta name="author" content="Xmx_Aolg07" />
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"
+    />
+    <link rel="icon" href="/images/avatar.jpg" />
+    <link rel="preconnect" href="https://s4.zstatic.net" />
+<script src="https://s4.zstatic.net/ajax/libs/vue/3.3.7/vue.global.prod.min.js"></script>
+<link rel="stylesheet" href="https://s4.zstatic.net/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
+<link rel="preconnect" href="https://fonts.googleapis.cn" />
+<link rel="preconnect" href="https://fonts.gstatic.cn" crossorigin />
+<link
+    rel="stylesheet"
+    href="https://fonts.googleapis.cn/css2?family=Fira+Code:wght@400;500;600;700&family=Lexend:wght@400;500;600;700;800;900&family=Noto+Sans+SC:wght@400;500;600;700;800;900&display=swap"
+/>
+<script> const mixins = {}; </script>
+
+<script src="https://polyfill.alicdn.com/v3/polyfill.min.js?features=default"></script>
+
+
+<script src="https://s4.zstatic.net/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+<script src="https://s4.zstatic.net/ajax/libs/highlightjs-line-numbers.js/2.8.0/highlightjs-line-numbers.min.js"></script>
+<link
+    rel="stylesheet"
+    href="https://s4.zstatic.net/ajax/libs/highlight.js/11.9.0/styles/github.min.css"
+/>
+<script src="/js/lib/highlight.js"></script>
+
+
+
+<script src="/js/lib/preview.js"></script>
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/css/main.css" />
+
+<meta name="generator" content="Hexo 8.1.1"></head>
+<body>
+    <div id="layout">
+        <transition name="fade">
+            <div id="loading" v-show="loading">
+                <div id="loading-circle">
+                    <h2>LOADING</h2>
+                    <p>加载过慢请开启缓存 浏览器默认开启</p>
+                    <img src="/images/loading.gif" />
+                </div>
+            </div>
+        </transition>
+        <div id="menu" :class="{ hidden: hiddenMenu, 'menu-color': menuColor}">
+    <nav id="desktop-menu">
+        <a class="title" href="/">
+            <span>XMX_AOLG07</span>
+        </a>
+        
+        <a href="/">
+            <i class="fa-solid fa-house fa-fw"></i>
+            <span>&ensp;Home</span>
+        </a>
+        
+        <a href="/about">
+            <i class="fa-solid fa-id-card fa-fw"></i>
+            <span>&ensp;About</span>
+        </a>
+        
+        <a href="/archives">
+            <i class="fa-solid fa-box-archive fa-fw"></i>
+            <span>&ensp;Archives</span>
+        </a>
+        
+        <a href="/categories">
+            <i class="fa-solid fa-bookmark fa-fw"></i>
+            <span>&ensp;Categories</span>
+        </a>
+        
+        <a href="/tags">
+            <i class="fa-solid fa-tags fa-fw"></i>
+            <span>&ensp;Tags</span>
+        </a>
+        
+    </nav>
+    <nav id="mobile-menu">
+        <div class="title" @click="showMenuItems = !showMenuItems">
+            <i class="fa-solid fa-bars fa-fw"></i>
+            <span>&emsp;XMX_AOLG07</span>
+        </div>
+        <transition name="slide">
+            <div class="items" v-show="showMenuItems">
+                
+                <a href="/">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-house fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Home</div>
+                    </div>
+                </a>
+                
+                <a href="/about">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-id-card fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">About</div>
+                    </div>
+                </a>
+                
+                <a href="/archives">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-box-archive fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Archives</div>
+                    </div>
+                </a>
+                
+                <a href="/categories">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-bookmark fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Categories</div>
+                    </div>
+                </a>
+                
+                <a href="/tags">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-tags fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Tags</div>
+                    </div>
+                </a>
+                
+            </div>
+        </transition>
+    </nav>
+</div>
+<transition name="fade">
+    <div id="menu-curtain" @click="showMenuItems = !showMenuItems" v-show="showMenuItems"></div>
+</transition>
+
+        <div id="main" :class="loading ? 'into-enter-from': 'into-enter-active'">
+            <div class="article">
+    <div>
+        <h1>
+            
+        </h1>
+    </div>
+    <div class="info">
+        <span class="date">
+            <span class="icon">
+                <i class="fa-solid fa-calendar fa-fw"></i>
+            </span>
+            2026/5/11
+        </span>
+        
+                
+    </div>
+    
+                <div class="content" v-pre>
+                    <h1 id="ezelf"><a href="#ezelf" class="headerlink" title="ezelf"></a>ezelf</h1><h2 id="解题过程"><a href="#解题过程" class="headerlink" title="解题过程"></a>解题过程</h2><p>首先我们把文件用IDA打开，然后进入main函数</p>
+<pre><code class="hljs c"><span class="hljs-keyword">if</span> ( n31 == <span class="hljs-number">31</span> )
+&#123;
+  v19 = *v9;
+  v20 = v19;
+  <span class="hljs-keyword">if</span> ( byte_40A050[v19] == *(<span class="hljs-type">char</span> *)(v7 + *v9) )
+  &#123;
+    v5[<span class="hljs-number">4</span>] = <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;RIght!Continue...&quot;</span>);
+    v5[<span class="hljs-number">3</span>] = <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;Please input the final flag:&quot;</span>);
+    v3 = __isoc99_scanf(<span class="hljs-string">&quot;%s&quot;</span>, v8);
+    *v10 = <span class="hljs-number">0</span>;
+    v5[<span class="hljs-number">2</span>] = v3;
+    <span class="hljs-keyword">while</span> ( <span class="hljs-number">1</span> )
+    &#123;
+      n7 = *v10;
+      v22 = n7 &lt; <span class="hljs-number">7</span>;
+      <span class="hljs-keyword">if</span> ( n7 &gt;= <span class="hljs-number">7</span> )
+        <span class="hljs-keyword">break</span>;
+      v23 = &amp;v8[*v10];
+      v24 = v8;
+      v25 = *v10;
+      v26 = v25;
+      sub_403A90(v23, &amp;v8[v25 + <span class="hljs-number">1</span>]);
+      v27 = *v10;
+      v28 = v27 + <span class="hljs-number">2</span>;
+      *v10 = v27 + <span class="hljs-number">2</span>;
+    &#125;
+    <span class="hljs-keyword">for</span> ( *v11 = <span class="hljs-number">0</span>; ; *v11 = v38 )
+    &#123;
+      n32_1 = *v11;
+      v30 = n32_1 &lt; <span class="hljs-number">32</span>;
+      <span class="hljs-keyword">if</span> ( n32_1 &gt;= <span class="hljs-number">32</span> )
+        <span class="hljs-keyword">break</span>;
+      v31 = *((_BYTE *)v8 + *v11);
+      v32 = v31;
+      <span class="hljs-keyword">if</span> ( v31 != byte_40A070[*v11] )
+      &#123;
+        v5[<span class="hljs-number">1</span>] = <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;What a pity!That&#x27;s wrong!&quot;</span>);
+        <span class="hljs-keyword">break</span>;
+      &#125;
+      n31_1 = *v11;
+      v34 = n31_1 == <span class="hljs-number">31</span>;
+      <span class="hljs-keyword">if</span> ( n31_1 == <span class="hljs-number">31</span> )
+      &#123;
+        v35 = *((<span class="hljs-type">char</span> *)v8 + *v11);
+        v36 = *v11;
+        v37 = &amp;byte_40A070[v36];
+        <span class="hljs-keyword">if</span> ( v35 == *v37 )
+          v5[<span class="hljs-number">0</span>] = <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;Congratulations!You finally solve it!!!&quot;</span>);</code></pre>
+
+<p>我们可以看出这个程序经过两次验证也就是有两层flag，接着分析main函数</p>
+<p>我们发现了如下汇编代码</p>
+<pre><code class="hljs c">sub_4022D0(v7, <span class="hljs-number">32</span>); <span class="hljs-comment">//初始化函数</span>
+sub_4035B0(v7, (__int64)&amp;dword_40A090); <span class="hljs-comment">//加密函数sub_4035B0</span></code></pre>
+
+<pre><code class="hljs c"><span class="hljs-keyword">for</span> ( *v9 = <span class="hljs-number">0</span>; ; *v9 = v39 )
+  &#123;
+    n32 = *v9;
+    v13 = n32 &lt; <span class="hljs-number">32</span>;
+    <span class="hljs-keyword">if</span> ( n32 &gt;= <span class="hljs-number">32</span> )
+      <span class="hljs-keyword">break</span>;
+    v14 = *(<span class="hljs-type">char</span> *)(v7 + *v9);
+    v15 = *v9;
+    v16 = byte_40A050[v15];<span class="hljs-comment">//加密后结果</span></code></pre>
+
+<p>在发现了加密后我们转到sub_4035B0中看如何加密</p>
+<pre><code class="hljs c">n289739776 = <span class="hljs-number">289739776</span>;
+v11 += n289739776;<span class="hljs-comment">//累加</span></code></pre>
+
+<pre><code class="hljs c">n16 = <span class="hljs-number">16</span>;
+<span class="hljs-keyword">while</span> (<span class="hljs-number">1</span>)
+&#123;
+    n16_2 = n16;
+    v20 = --n16;       <span class="hljs-comment">// 递减</span>
+    v21 = n16_2 != <span class="hljs-number">0</span>;
+    <span class="hljs-keyword">if</span> (!n16_2) <span class="hljs-keyword">break</span>; <span class="hljs-comment">// 16 次后退出</span></code></pre>
+
+<p>这里进行了16轮的循环</p>
+<pre><code class="hljs c"><span class="hljs-keyword">for</span> (i = <span class="hljs-number">0</span>; ; ++i)
+&#123;
+    v24 = i &lt; <span class="hljs-number">8</span>;
+    <span class="hljs-keyword">if</span> (i &gt;= <span class="hljs-number">8</span>) <span class="hljs-keyword">break</span>;</code></pre>
+
+<p>在循环内处理32字节</p>
+<pre><code class="hljs c">v13 = *(_DWORD *)(v15 + <span class="hljs-number">4LL</span> * (((_BYTE)i + <span class="hljs-number">1</span>) &amp; <span class="hljs-number">7</span>));</code></pre>
+
+<pre><code class="hljs c">*(_DWORD *)(v15 + <span class="hljs-number">4LL</span> * (((_BYTE)i + <span class="hljs-number">7</span>) &amp; <span class="hljs-number">7</span>))</code></pre>
+
+<p>v15 是 DWORD 数组的基址。(i+1) &amp; 7 实现了环形访问——当 i&#x3D;7 时，(7+1)&amp;7 &#x3D; 0，回绕到数组开头取下一个数组。</p>
+<p>(i+7) &amp; 7 &#x3D; (i-1) &amp; 7取上一个元素</p>
+<p>处理宏，展开</p>
+<pre><code class="hljs c">v25 = (<span class="hljs-number">4</span> * v13) ^ (*(_DWORD *)(v15 + <span class="hljs-number">4LL</span> * (((_BYTE)i + <span class="hljs-number">7</span>) &amp; <span class="hljs-number">7</span>)) &gt;&gt; <span class="hljs-number">5</span>);
+<span class="hljs-comment">// v25 = (y &lt;&lt; 2) ^ (z &gt;&gt; 5)</span>
+
+v26 = v13 &gt;&gt; <span class="hljs-number">3</span>;
+<span class="hljs-comment">// v26 = y &gt;&gt; 3</span>
+
+v3 = *(_DWORD *)(v15 + <span class="hljs-number">4LL</span> * i)   <span class="hljs-comment">// v[i]，即 z</span>
+   + (
+       (
+           (*(_DWORD *)(v15 + <span class="hljs-number">4LL</span> * (((_BYTE)i + <span class="hljs-number">7</span>) &amp; <span class="hljs-number">7</span>))  <span class="hljs-comment">// z</span>
+               ^ *(_DWORD *)(*(_QWORD *)v17 + <span class="hljs-number">4LL</span> * (((<span class="hljs-type">unsigned</span> __int8)v9 ^ (<span class="hljs-type">unsigned</span> __int8)i) &amp; <span class="hljs-number">3</span>)))
+               <span class="hljs-comment">// z ^ key[(e ^ i) &amp; 3]</span>
+           + (v13 ^ v11)
+           <span class="hljs-comment">// + (y ^ sum)</span>
+       )
+       ^ (
+           ((<span class="hljs-number">16</span> * *(_DWORD *)(v15 + <span class="hljs-number">4LL</span> * (((_BYTE)i + <span class="hljs-number">7</span>) &amp; <span class="hljs-number">7</span>))) ^ (v13 &gt;&gt; <span class="hljs-number">3</span>))
+           <span class="hljs-comment">// (z &lt;&lt; 4) ^ (y &gt;&gt; 3)</span>
+           + v25
+           <span class="hljs-comment">// + ((y &lt;&lt; 2) ^ (z &gt;&gt; 5))</span>
+       )
+   );</code></pre>
+
+<p>把宏重组</p>
+<pre><code class="hljs c">v[i] += ((z ^ key[(e^i)&amp;<span class="hljs-number">3</span>]) + (y ^ sum)) ^ (((z&lt;&lt;<span class="hljs-number">4</span>)^(y&gt;&gt;<span class="hljs-number">3</span>)) + ((y&lt;&lt;<span class="hljs-number">2</span>)^(z&gt;&gt;<span class="hljs-number">5</span>)))</code></pre>
+
+<pre><code class="hljs c">*(_QWORD *)v17 + <span class="hljs-number">4LL</span> * (((<span class="hljs-type">unsigned</span> __int8)v9 ^ (<span class="hljs-type">unsigned</span> __int8)i) &amp; <span class="hljs-number">3</span>)</code></pre>
+
+<ul>
+<li><p>v17 指向密钥（dword_40A090）</p>
+</li>
+<li><p>v9 &#x3D; (sum &gt;&gt; 2) &amp; 3，即 e</p>
+</li>
+<li><p>i 即 p</p>
+</li>
+<li><p>(e ^ p) &amp; 3 选择 4 个密钥中的哪一个</p>
+<p>随后我们回答main函数</p>
+</li>
+</ul>
+<pre><code class="hljs c">sub_4035B0(v7, (__int64)&amp;dword_40A090);</code></pre>
+
+<p>密钥通过第二个参数传入，我们进入vm虚拟机使用gdb调试查看密钥地址40A090的参数</p>
+<pre><code class="hljs bash">gdb ./ezelf</code></pre>
+
+<p>使用指令进入gdb调试阶段</p>
+<pre><code class="hljs bash">(gdb) <span class="hljs-built_in">break</span> *0x401030
+<span class="hljs-comment"># 断点下在print@ptl处</span>
+<span class="hljs-comment"># 到断点sub_4022D0已经初始化完毕，dword_40A090已经写入</span>
+(gdb) run
+<span class="hljs-comment"># 在输入阶段输入32个a</span>
+(gdb) x/4wx 0x40A090
+<span class="hljs-comment">#查看dword_40A090</span></code></pre>
+
+<p><img src="/assets/QQ_1778382046974.png" alt="Q_177838204697"></p>
+<p>输出：0x0B, 0x2D, 0x0E, 0x0309 → {11, 45, 14, 777}</p>
+<p>然后我们在断点命中后提取数组byte_40A050</p>
+<pre><code class="hljs bash">(gdb) x/32xb 0x40A050</code></pre>
+
+<p><img src="/assets/4f576ba78ac19a8276cce7727b374447.png" alt="f576ba78ac19a8276cce7727b37444"></p>
+<p>输出：</p>
+<pre><code class="hljs apache"><span class="hljs-attribute">b4</span> b5 <span class="hljs-number">5</span>a <span class="hljs-number">42</span> a6 <span class="hljs-number">79</span> <span class="hljs-number">0</span>b ac
+<span class="hljs-attribute">0e</span> <span class="hljs-number">23</span> <span class="hljs-number">78</span> de e1 <span class="hljs-number">2</span>d c6 <span class="hljs-number">1</span>d
+<span class="hljs-attribute">bb</span> <span class="hljs-number">29</span> <span class="hljs-number">8</span>c e2 <span class="hljs-number">94</span> fe <span class="hljs-number">14</span> d9
+<span class="hljs-attribute">aa</span> <span class="hljs-number">03</span> e3 <span class="hljs-number">8</span>a <span class="hljs-number">14</span> <span class="hljs-number">92</span> <span class="hljs-number">1</span>c <span class="hljs-number">64</span></code></pre>
+
+<p>至此我们拿到了解密要用的东西</p>
+<ul>
+<li><p>DELTA &#x3D; 0x11451400</p>
+</li>
+<li><p>轮数 &#x3D; 16</p>
+</li>
+<li><p>密钥 &#x3D; {11, 45, 14, 777}</p>
+<p>接下来写出解密代码</p>
+<pre><code class="hljs python"><span class="hljs-keyword">import</span> struct
+
+DELTA = <span class="hljs-number">0x11451400</span> <span class="hljs-comment"># DELTA常量</span>
+<span class="hljs-comment"># 目标数据</span>
+enc_hex = <span class="hljs-string">&quot;b4 b5 5a 42 a6 79 0b ac 0e 23 78 de e1 2d c6 1d bb 29 8c e2 94 fe 14 d9 aa 03 e3 8a 14 92 1c 64&quot;</span>
+enc_bytes = <span class="hljs-built_in">bytes</span>.fromhex(enc_hex.replace(<span class="hljs-string">&quot; &quot;</span>, <span class="hljs-string">&quot;&quot;</span>))
+<span class="hljs-comment"># 32 字节 → 8 个 DWORD（小端序，每个 DWORD 4 字节）</span>
+v = <span class="hljs-built_in">list</span>(struct.unpack(<span class="hljs-string">&#x27;&lt;8I&#x27;</span>, enc_bytes))
+<span class="hljs-comment"># 密钥 从gdb调试中的 dword_40A090提取的</span>
+key = [<span class="hljs-number">11</span>, <span class="hljs-number">45</span>, <span class="hljs-number">14</span>, <span class="hljs-number">777</span>]
+
+<span class="hljs-keyword">def</span> <span class="hljs-title function_">btea_decrypt</span>(<span class="hljs-params">v, key</span>):
+    n = <span class="hljs-built_in">len</span>(v) <span class="hljs-comment"># DWORD 8个</span>
+    rounds = <span class="hljs-number">16</span> <span class="hljs-comment">#16轮</span>
+    sum_val = (rounds * DELTA) &amp; <span class="hljs-number">0xFFFFFFFF</span>
+    y = v[<span class="hljs-number">0</span>]
+    <span class="hljs-comment">#外循环</span>
+    <span class="hljs-keyword">for</span> _ <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(rounds):
+        e = (sum_val &gt;&gt; <span class="hljs-number">2</span>) &amp; <span class="hljs-number">3</span>
+        <span class="hljs-comment"># 内循环</span>
+        <span class="hljs-keyword">for</span> p <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(n - <span class="hljs-number">1</span>, <span class="hljs-number">0</span>, -<span class="hljs-number">1</span>):
+            z = v[p - <span class="hljs-number">1</span>]
+            <span class="hljs-comment"># 核心运算</span>
+            mx = (((z &gt;&gt; <span class="hljs-number">5</span>) ^ (y &lt;&lt; <span class="hljs-number">2</span>)) + ((y &gt;&gt; <span class="hljs-number">3</span>) ^ (z &lt;&lt; <span class="hljs-number">4</span>))) ^ ((sum_val ^ y) + (key[(p &amp; <span class="hljs-number">3</span>) ^ e] ^ z))
+            v[p] = (v[p] - mx) &amp; <span class="hljs-number">0xFFFFFFFF</span>
+            y = v[p]
+        z = v[n - <span class="hljs-number">1</span>]
+        mx = (((z &gt;&gt; <span class="hljs-number">5</span>) ^ (y &lt;&lt; <span class="hljs-number">2</span>)) + ((y &gt;&gt; <span class="hljs-number">3</span>) ^ (z &lt;&lt; <span class="hljs-number">4</span>))) ^ ((sum_val ^ y) + (key[(<span class="hljs-number">0</span> &amp; <span class="hljs-number">3</span>) ^ e] ^ z))
+        v[<span class="hljs-number">0</span>] = (v[<span class="hljs-number">0</span>] - mx) &amp; <span class="hljs-number">0xFFFFFFFF</span>
+        y = v[<span class="hljs-number">0</span>]
+        sum_val = (sum_val - DELTA) &amp; <span class="hljs-number">0xFFFFFFFF</span>
+    <span class="hljs-keyword">return</span> v
+<span class="hljs-comment">#执行解密</span>
+v = btea_decrypt(v, key)
+result = <span class="hljs-string">b&#x27;&#x27;</span>
+<span class="hljs-keyword">for</span> val <span class="hljs-keyword">in</span> v:
+    result += struct.pack(<span class="hljs-string">&#x27;&lt;I&#x27;</span>, val)
+<span class="hljs-comment">#输出解密结果</span>
+<span class="hljs-built_in">print</span>(result.decode(<span class="hljs-string">&#x27;utf-8&#x27;</span>))</code></pre>
+
+<p>然后我们拿了第一段flag</p>
+<p><strong>DASCTF{dr1nk_te@_4nd_cont1nu3..}</strong></p>
+<p>此时第一段通过，我们来到第二段</p>
+<pre><code class="hljs c">v5[<span class="hljs-number">4</span>] = <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;RIght!Continue...&quot;</span>);
+v5[<span class="hljs-number">3</span>] = <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;Please input the final flag:&quot;</span>);
+v3 = __isoc99_scanf(<span class="hljs-string">&quot;%s&quot;</span>, v8);   <span class="hljs-comment">// v8 是第二段输入</span>
+*v10 = <span class="hljs-number">0</span>;
+
+<span class="hljs-keyword">while</span> (<span class="hljs-number">1</span>)
+&#123;
+    n7 = *v10;
+    v22 = n7 &lt; <span class="hljs-number">7</span>;      <span class="hljs-comment">// 条件：*v10 &lt; 7</span>
+    <span class="hljs-keyword">if</span> (n7 &gt;= <span class="hljs-number">7</span>) <span class="hljs-keyword">break</span>;
+    v23 = &amp;v8[*v10];   <span class="hljs-comment">// 每次取 v8 的第 *v10 个 DWORD</span>
+    sub_403A90(v23, &amp;v8[*v10 + <span class="hljs-number">1</span>]);  <span class="hljs-comment">// 加密相邻两个 DWORD</span>
+    *v10 += <span class="hljs-number">2</span>;         <span class="hljs-comment">// 下标 += 2</span>
+&#125;</code></pre>
+
+<ul>
+<li>一共四次循环，*v10取值 0 2 4 6</li>
+<li>每次加密v8[i]和v8[i+1]两个DWORD</li>
+<li>一共处理32字节</li>
+<li>当 <code>*v10 = 6</code> 时满足条件，加密 v8[6] 和 v8[7]；下一次 <code>*v10 = 8</code> 不满足，退出循环。</li>
+</ul>
+</li>
+</ul>
+<p>提取目标数组</p>
+<pre><code class="hljs c">v31 = *((_BYTE *)v8 + *v11);
+<span class="hljs-keyword">if</span> (v31 != byte_40A070[*v11])
+    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;What a pity!That&#x27;s wrong!&quot;</span>);</code></pre>
+
+<p>加密后的 32 字节与 byte_40A070 比较</p>
+<p>在gdb中提取</p>
+<pre><code class="hljs bash">(gdb) <span class="hljs-built_in">break</span> *0x401030
+(gdb) run
+<span class="hljs-comment"># 输入第一段: DASCTF&#123;dr1nk_te@_4nd_cont1nu3..&#125;</span>
+<span class="hljs-comment"># 第一段通过，继续</span>
+(gdb) <span class="hljs-built_in">continue</span>
+<span class="hljs-comment"># 输入32a，触发比较失败后停在 printf</span>
+(gdb) x/8wx 0x40A070
+<span class="hljs-comment"># 按 DWORD 查看，小端序</span></code></pre>
+
+<p><img src="/assets/001d50b7c29992eef9e6cdb1d11a02a8.png" alt="01d50b7c29992eef9e6cdb1d11a02a"></p>
+<p>我们进入sub_403A90分析加密逻辑</p>
+<pre><code class="hljs c">*v4 ^= dword_40A0A0[<span class="hljs-number">0</span>];</code></pre>
+
+<p>初始异或</p>
+<p>v4是第一个DWORD，先和dword_40A0A0 的第一个元素异或</p>
+<p>dword_40A0A0 是在 sub_4022D0（init）中由第一段 flag 生成的轮密钥数组</p>
+<pre><code class="hljs c"><span class="hljs-keyword">for</span> (*v7 = <span class="hljs-number">1</span>; ; *v7 = v15)
+&#123;
+    n16 = *v7;
+    v9 = n16 &lt;= <span class="hljs-number">16</span>;
+    <span class="hljs-keyword">if</span> (n16 &gt; <span class="hljs-number">16</span>) <span class="hljs-keyword">break</span>;  <span class="hljs-comment">// 循环 16 次</span></code></pre>
+
+<pre><code class="hljs c">v12 = dword_40A500[BYTE2(*v6)] + dword_40A100[HIBYTE(*v6)];
+v13 = dword_40A900[BYTE1(*v6)];
+v14 = (_DWORD *)((<span class="hljs-type">char</span> *)&amp;unk_40AD00 + <span class="hljs-number">4</span> * (<span class="hljs-type">unsigned</span> __int8)*v6);</code></pre>
+
+<table>
+<thead>
+<tr>
+<th>变量</th>
+<th>地址</th>
+<th>索引字节</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>dword_40A500</td>
+<td>0x40A500</td>
+<td>BYTE2</td>
+<td>对应DWORD第一个字节</td>
+</tr>
+<tr>
+<td>dword_40A100</td>
+<td>0x40A100</td>
+<td>HIBYTE</td>
+<td>对应DWORD第二个字节</td>
+</tr>
+<tr>
+<td>dword_40A900</td>
+<td>0x40A900</td>
+<td>BYTE1</td>
+<td>对应DWORD第三个字节</td>
+</tr>
+<tr>
+<td>dword_40AD00</td>
+<td>0x40Ad00</td>
+<td>BYTE0</td>
+<td>对应DWORD第四个字节</td>
+</tr>
+</tbody></table>
+<pre><code class="hljs c">*v4 = (*v14 + v13) ^ v12 ^ v11;
+   **v5 = *v6;</code></pre>
+
+<pre><code class="hljs c">**v5 ^= dword_40A0E4;
+ *v6 = *v4;
+ v17 = *v5;
+ *v4 = *v17;
+ result = *v5;
+ **v5 = *v6;
+ <span class="hljs-keyword">return</span> result;</code></pre>
+
+<p>最终处理</p>
+<p>四个 Box 在 sub_4022D0 初始化后才有数据。 必须在第一段 flag 通过后的断点处 dump才能提取数据</p>
+<pre><code class="hljs bash">(gdb) <span class="hljs-built_in">break</span> *0x401030
+(gdb) run
+<span class="hljs-comment"># 输入: DASCTF&#123;dr1nk_te@_4nd_cont1nu3..&#125;</span>
+<span class="hljs-comment"># 断点命中</span>
+<span class="hljs-comment"># 此时 init() 已完成，Box 已生成</span>
+
+(gdb) dump memory box1.bin 0x40A500 0x40A900 
+(gdb) dump memory box2.bin 0x40A100 0x40A500 
+(gdb) dump memory box3.bin 0x40A900 0x40AD00 
+(gdb) dump memory box4.bin 0x40AD00 0x40B100 
+
+(gdb) x/1wx 0x40A0E4   <span class="hljs-comment"># 最终异或常量</span>
+(gdb) x/4wx 0x40A0A0   <span class="hljs-comment"># 初始轮密钥</span></code></pre>
+
+<p><img src="/assets/e87848d9c19758cec94ef3302f1495e6.png" alt="87848d9c19758cec94ef3302f1495e"></p>
+<p><img src="/assets/a3736c941de4fad95ce249b4f78310fb-1778385371629.png" alt="3736c941de4fad95ce249b4f78310f"></p>
+<ul>
+<li>dword_40A0E4 &#x3D; 0x243F6BA8</li>
+<li>dword_40A0A0[0] &#x3D; 0x00000125</li>
+</ul>
+<p>完整加密流程</p>
+<pre><code class="hljs stylus">输入：两个 DWORD (<span class="hljs-selector-tag">a</span>, b)
+
+<span class="hljs-number">1</span>. <span class="hljs-selector-tag">a</span> ^= <span class="hljs-number">0</span>x125                    <span class="hljs-comment">// 初始轮密钥加</span>
+
+<span class="hljs-number">2</span>. 循环 <span class="hljs-number">16</span> 轮：
+   temp = <span class="hljs-selector-tag">a</span>
+   t0 = T0<span class="hljs-selector-attr">[a.byte2]</span> + T1<span class="hljs-selector-attr">[a.byte3]</span>
+   t1 = T2<span class="hljs-selector-attr">[a.byte1]</span>
+   t2 = T3<span class="hljs-selector-attr">[a.byte0]</span>
+   <span class="hljs-selector-tag">a</span> = (t2 + t1) ^ t0 ^ <span class="hljs-selector-tag">b</span>       <span class="hljs-comment">// 查表 + 异或</span>
+   <span class="hljs-selector-tag">b</span> = temp                       <span class="hljs-comment">// 轮间交换</span>
+
+<span class="hljs-number">3</span>. <span class="hljs-selector-tag">b</span> ^= <span class="hljs-number">0</span>x243F6BA8               <span class="hljs-comment">// 最终异或</span>
+
+<span class="hljs-number">4</span>. <span class="hljs-built_in">swap</span>(<span class="hljs-selector-tag">a</span>, b)                    <span class="hljs-comment">// 输出交换</span></code></pre>
+
+<p>解密思路</p>
+<pre><code class="hljs stylus">输入：加密后的 (<span class="hljs-selector-tag">a</span>, b)
+
+<span class="hljs-number">1</span>. <span class="hljs-built_in">swap</span>(<span class="hljs-selector-tag">a</span>, b)                    <span class="hljs-comment">// 逆交换</span>
+<span class="hljs-number">2</span>. <span class="hljs-selector-tag">b</span> ^= <span class="hljs-number">0</span>x243F6BA8               <span class="hljs-comment">// 逆最终异或</span>
+<span class="hljs-number">3</span>. 循环 <span class="hljs-number">16</span> 轮（逆序）：
+   temp = <span class="hljs-selector-tag">b</span>
+   <span class="hljs-selector-tag">b</span> = <span class="hljs-selector-tag">a</span>
+   <span class="hljs-selector-tag">a</span> = temp ^ (T3<span class="hljs-selector-attr">[b.byte0]</span> + T2<span class="hljs-selector-attr">[b.byte1]</span>) ^ (T0<span class="hljs-selector-attr">[b.byte2]</span> + T1<span class="hljs-selector-attr">[b.byte3]</span>)
+<span class="hljs-number">4</span>. <span class="hljs-selector-tag">a</span> ^= <span class="hljs-number">0</span>x125                    <span class="hljs-comment">// 逆初始异或</span>
+
+输出：原始 (<span class="hljs-selector-tag">a</span>, b)</code></pre>
+
+<p>解密脚本</p>
+<pre><code class="hljs python"><span class="hljs-keyword">import</span> struct
+<span class="hljs-comment"># 目标数据：从 GDB dump 的 byte_40A070（8 个 DWORD）</span>
+<span class="hljs-comment"># 小端序读取</span>
+enc = [<span class="hljs-number">0x8DF0B770</span>, <span class="hljs-number">0x4B1EB28E</span>, <span class="hljs-number">0x73C65C1C</span>, <span class="hljs-number">0x53DE48FD</span>,
+       <span class="hljs-number">0x982EDF34</span>, <span class="hljs-number">0xD8229123</span>, <span class="hljs-number">0x90271182</span>, <span class="hljs-number">0x1F4271E7</span>]
+
+<span class="hljs-keyword">def</span> <span class="hljs-title function_">read_box</span>(<span class="hljs-params">filename</span>):
+    <span class="hljs-keyword">with</span> <span class="hljs-built_in">open</span>(filename, <span class="hljs-string">&#x27;rb&#x27;</span>) <span class="hljs-keyword">as</span> f:
+        data = f.read()
+    <span class="hljs-keyword">return</span> [struct.unpack(<span class="hljs-string">&#x27;&lt;I&#x27;</span>, data[i:i+<span class="hljs-number">4</span>])[<span class="hljs-number">0</span>] <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">0</span>, <span class="hljs-built_in">len</span>(data), <span class="hljs-number">4</span>)]
+
+box_BYTE2 = read_box(<span class="hljs-string">&#x27;box1.bin&#x27;</span>)  <span class="hljs-comment"># 0x40A500</span>
+box_BYTE3 = read_box(<span class="hljs-string">&#x27;box2.bin&#x27;</span>)  <span class="hljs-comment"># 0x40A100</span>
+box_BYTE1 = read_box(<span class="hljs-string">&#x27;box3.bin&#x27;</span>)  <span class="hljs-comment"># 0x40A900</span>
+box_BYTE0 = read_box(<span class="hljs-string">&#x27;box4.bin&#x27;</span>)  <span class="hljs-comment"># 0x40AD00</span>
+<span class="hljs-comment"># 解密：4 对 DWORD，每对独立解密</span>
+<span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">0</span>, <span class="hljs-number">8</span>, <span class="hljs-number">2</span>):
+    <span class="hljs-comment"># 逆swap：加密最后做了交换，这里换回来</span>
+    enc[i], enc[i+<span class="hljs-number">1</span>] = enc[i+<span class="hljs-number">1</span>], enc[i]
+    <span class="hljs-comment"># 逆最终异或：加密最后 b ^= 0x243F6BA8</span>
+    enc[i+<span class="hljs-number">1</span>] ^= <span class="hljs-number">0x243F6BA8</span>
+    <span class="hljs-comment"># 逆 16 轮：加密是正向 16 轮，解密逆序 16 轮</span>
+    <span class="hljs-keyword">for</span> _ <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">16</span>):
+        tmp = enc[i]
+        enc[i] = enc[i+<span class="hljs-number">1</span>]
+        enc[i+<span class="hljs-number">1</span>] = ((box_BYTE0[enc[i] &amp; <span class="hljs-number">0xFF</span>] + box_BYTE1[(enc[i] &gt;&gt; <span class="hljs-number">8</span>) &amp; <span class="hljs-number">0xFF</span>]) ^
+                    (box_BYTE2[(enc[i] &gt;&gt; <span class="hljs-number">16</span>) &amp; <span class="hljs-number">0xFF</span>] + box_BYTE3[enc[i] &gt;&gt; <span class="hljs-number">24</span>]) ^ tmp) &amp; <span class="hljs-number">0xFFFFFFFF</span>
+        <span class="hljs-comment"># 逆初始异或：加密最开始时 a ^= 0x125</span>
+    enc[i] ^= <span class="hljs-number">0x125</span>
+
+result = <span class="hljs-string">b&#x27;&#x27;</span>
+<span class="hljs-keyword">for</span> val <span class="hljs-keyword">in</span> enc:
+    result += struct.pack(<span class="hljs-string">&#x27;&lt;I&#x27;</span>, val)
+<span class="hljs-keyword">try</span>:
+    <span class="hljs-built_in">print</span>(result.decode(<span class="hljs-string">&#x27;utf-8&#x27;</span>))
+<span class="hljs-keyword">except</span>:
+    <span class="hljs-built_in">print</span>(result.decode(<span class="hljs-string">&#x27;latin-1&#x27;</span>))</code></pre>
+
+<p>输出结果</p>
+<p><strong>DASCTF{Y0u_fin@l1y_f1nd_@nswer!}</strong></p>
+<p>最终结果</p>
+<p><strong>DASCTF{dr1nk_te@<em>4nd_cont1nu3..Y0u_fin@l1y_f1nd</em>@nswer!}</strong></p>
+
+                </div>
+                
+                    
+                        
+                                
+                                        
+                                                
+                                                        
+</div>
+            <footer id="footer">
+    <div id="footer-wrap">
+        <div>
+            &copy;
+            2022 - 2026 Xmx_Aolg07
+            <span id="footer-icon">
+                <i class="fa-solid fa-font-awesome fa-fw"></i>
+            </span>
+            &commat;Xmx_Aolg07
+        </div>
+        <div>
+            Based on the <a target="_blank" rel="noopener" href="https://hexo.io">Hexo Engine</a> &amp;
+            <a target="_blank" rel="noopener" href="https://github.com/theme-particlex/hexo-theme-particlex">ParticleX Theme</a>
+        </div>
+        
+    </div>
+</footer>
+
+        </div>
+        
+        <transition name="fade">
+            <div id="preview" ref="preview" v-show="previewShow">
+                <img id="preview-content" ref="previewContent" />
+            </div>
+        </transition>
+        
+    </div>
+    <script src="/js/main.js"></script>
+    
+    
+
+
+
+
+    
+</body>
+</html>
