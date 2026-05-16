@@ -177,7 +177,7 @@
                             
                                 <span class="tag">
                                     
-                                        <a href="/tags/%E7%AE%97%E6%B3%95/" style="color: #00a596">
+                                        <a href="/tags/%E7%AE%97%E6%B3%95/" style="color: #ff7d73">
                                             算法
                                         </a>
                                 </span>
@@ -686,8 +686,9 @@ Hello World!</code></pre>
 
 结果：$aP(&quot;</code></pre>
 
-<h3 id="python代码演示-2"><a href="#python代码演示-2" class="headerlink" title="python代码演示"></a>python代码演示</h3><pre><code class="hljs python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">encode_base85</span>(<span class="hljs-params">data</span>):
-    alphabet = <span class="hljs-string">&quot;!\&quot;#$%&amp;&#x27;()*+,-./0123456789:;&lt;=&gt;?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_`abcdefghijklmnopqrstu&quot;</span>
+<h3 id="python代码演示-2"><a href="#python代码演示-2" class="headerlink" title="python代码演示"></a>python代码演示</h3><pre><code class="hljs python"><span class="hljs-comment"># -*- coding: utf-8 -*-</span>
+<span class="hljs-keyword">def</span> <span class="hljs-title function_">encode_base85</span>(<span class="hljs-params">data</span>):
+    alphabet = <span class="hljs-string">&quot;!\&quot;#$%&amp;&#x27;()*+,-./0123456789:;&lt;=&gt;?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\\]^_`abcdefghijklmnopqrstu&quot;</span>
     result = <span class="hljs-string">&quot;&quot;</span>
     i = <span class="hljs-number">0</span>
     data_len = <span class="hljs-built_in">len</span>(data)
@@ -706,11 +707,12 @@ Hello World!</code></pre>
         <span class="hljs-keyword">if</span> chunk_len &lt; <span class="hljs-number">4</span>:
             <span class="hljs-comment"># 计算需要的字符数</span>
             chars_needed = chunk_len + <span class="hljs-number">1</span>
+            encoded_chars = []
             <span class="hljs-keyword">for</span> j <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(chars_needed):
-                result += alphabet[value % <span class="hljs-number">85</span>]
+                encoded_chars.append(alphabet[value % <span class="hljs-number">85</span>])
                 value //= <span class="hljs-number">85</span>
             <span class="hljs-comment"># 反转得到正确顺序</span>
-            result = result[:-chars_needed] + result[-chars_needed:][::-<span class="hljs-number">1</span>]
+            result += <span class="hljs-string">&#x27;&#x27;</span>.join(<span class="hljs-built_in">reversed</span>(encoded_chars))
             <span class="hljs-keyword">break</span>
         
         <span class="hljs-comment"># 正常编码4字节为5字符</span>
@@ -725,7 +727,7 @@ Hello World!</code></pre>
     <span class="hljs-keyword">return</span> result
 
 <span class="hljs-keyword">def</span> <span class="hljs-title function_">decode_base85</span>(<span class="hljs-params">encoded</span>):
-    alphabet = <span class="hljs-string">&quot;!\&quot;#$%&amp;&#x27;()*+,-./0123456789:;&lt;=&gt;?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_`abcdefghijklmnopqrstu&quot;</span>
+    alphabet = <span class="hljs-string">&quot;!\&quot;#$%&amp;&#x27;()*+,-./0123456789:;&lt;=&gt;?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\\]^_`abcdefghijklmnopqrstu&quot;</span>
     result = <span class="hljs-built_in">bytearray</span>()
     value = <span class="hljs-number">0</span>
     count = <span class="hljs-number">0</span>
@@ -780,7 +782,7 @@ Hello World!</code></pre>
 
 <span class="hljs-type">void</span> <span class="hljs-title function_">encode_base85</span><span class="hljs-params">(<span class="hljs-type">unsigned</span> <span class="hljs-type">char</span> *data, <span class="hljs-type">int</span> data_len, <span class="hljs-type">char</span> *output)</span>
 &#123;
-    <span class="hljs-type">char</span> alphabet[] = <span class="hljs-string">&quot;!\&quot;#$%&amp;&#x27;()*+,-./0123456789:;&lt;=&gt;?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_`abcdefghijklmnopqrstu&quot;</span>;
+    <span class="hljs-type">char</span> alphabet[] = <span class="hljs-string">&quot;!\&quot;#$%&amp;&#x27;()*+,-./0123456789:;&lt;=&gt;?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\\]^_`abcdefghijklmnopqrstu&quot;</span>;
     <span class="hljs-type">int</span> i, j, k = <span class="hljs-number">0</span>;
     <span class="hljs-type">unsigned</span> <span class="hljs-type">long</span> value;
     
@@ -819,7 +821,7 @@ Hello World!</code></pre>
 
 <span class="hljs-type">void</span> <span class="hljs-title function_">decode_base85</span><span class="hljs-params">(<span class="hljs-type">char</span> *encoded, <span class="hljs-type">unsigned</span> <span class="hljs-type">char</span> *output, <span class="hljs-type">int</span> *output_len)</span>
 &#123;
-    <span class="hljs-type">char</span> alphabet[] = <span class="hljs-string">&quot;!\&quot;#$%&amp;&#x27;()*+,-./0123456789:;&lt;=&gt;?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_`abcdefghijklmnopqrstu&quot;</span>;
+    <span class="hljs-type">char</span> alphabet[] = <span class="hljs-string">&quot;!\&quot;#$%&amp;&#x27;()*+,-./0123456789:;&lt;=&gt;?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\\]^_`abcdefghijklmnopqrstu&quot;</span>;
     <span class="hljs-type">int</span> i, j, k = <span class="hljs-number">0</span>;
     <span class="hljs-type">unsigned</span> <span class="hljs-type">long</span> value = <span class="hljs-number">0</span>;
     <span class="hljs-type">int</span> count = <span class="hljs-number">0</span>;
