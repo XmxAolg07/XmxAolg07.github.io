@@ -1,0 +1,953 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8" />
+    <title>Base系列算法原理 | Xmx_Aolg07</title>
+    <meta name="author" content="Xmx_Aolg07" />
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"
+    />
+    <link rel="icon" href="/images/avatar.jpg" />
+    <link rel="preconnect" href="https://s4.zstatic.net" />
+<script src="https://s4.zstatic.net/ajax/libs/vue/3.3.7/vue.global.prod.min.js"></script>
+<link rel="stylesheet" href="https://s4.zstatic.net/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
+<link rel="preconnect" href="https://fonts.googleapis.cn" />
+<link rel="preconnect" href="https://fonts.gstatic.cn" crossorigin />
+<link
+    rel="stylesheet"
+    href="https://fonts.googleapis.cn/css2?family=Fira+Code:wght@400;500;600;700&family=Lexend:wght@400;500;600;700;800;900&family=Noto+Sans+SC:wght@400;500;600;700;800;900&display=swap"
+/>
+<script> const mixins = {}; </script>
+
+<script src="https://polyfill.alicdn.com/v3/polyfill.min.js?features=default"></script>
+
+
+<script src="https://s4.zstatic.net/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+<script src="https://s4.zstatic.net/ajax/libs/highlightjs-line-numbers.js/2.8.0/highlightjs-line-numbers.min.js"></script>
+<link
+    rel="stylesheet"
+    href="https://s4.zstatic.net/ajax/libs/highlight.js/11.9.0/styles/github.min.css"
+/>
+<script src="/js/lib/highlight.js"></script>
+
+
+
+<script src="/js/lib/preview.js"></script>
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/css/main.css" />
+
+<meta name="generator" content="Hexo 8.1.1"></head>
+<body>
+    <div id="layout">
+        <transition name="fade">
+            <div id="loading" v-show="loading">
+                <div id="loading-circle">
+                    <h2>LOADING</h2>
+                    <p>加载过慢请开启缓存 浏览器默认开启</p>
+                    <img src="/images/loading.gif" />
+                </div>
+            </div>
+        </transition>
+        <div id="menu" :class="{ hidden: hiddenMenu, 'menu-color': menuColor}">
+    <nav id="desktop-menu">
+        <a class="title" href="/">
+            <span>XMX_AOLG07</span>
+        </a>
+        
+        <a href="/">
+            <i class="fa-solid fa-house fa-fw"></i>
+            <span>&ensp;Home</span>
+        </a>
+        
+        <a href="/about">
+            <i class="fa-solid fa-id-card fa-fw"></i>
+            <span>&ensp;About</span>
+        </a>
+        
+        <a href="/archives">
+            <i class="fa-solid fa-box-archive fa-fw"></i>
+            <span>&ensp;Archives</span>
+        </a>
+        
+        <a href="/categories">
+            <i class="fa-solid fa-bookmark fa-fw"></i>
+            <span>&ensp;Categories</span>
+        </a>
+        
+        <a href="/tags">
+            <i class="fa-solid fa-tags fa-fw"></i>
+            <span>&ensp;Tags</span>
+        </a>
+        
+    </nav>
+    <nav id="mobile-menu">
+        <div class="title" @click="showMenuItems = !showMenuItems">
+            <i class="fa-solid fa-bars fa-fw"></i>
+            <span>&emsp;XMX_AOLG07</span>
+        </div>
+        <transition name="slide">
+            <div class="items" v-show="showMenuItems">
+                
+                <a href="/">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-house fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Home</div>
+                    </div>
+                </a>
+                
+                <a href="/about">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-id-card fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">About</div>
+                    </div>
+                </a>
+                
+                <a href="/archives">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-box-archive fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Archives</div>
+                    </div>
+                </a>
+                
+                <a href="/categories">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-bookmark fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Categories</div>
+                    </div>
+                </a>
+                
+                <a href="/tags">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-tags fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Tags</div>
+                    </div>
+                </a>
+                
+            </div>
+        </transition>
+    </nav>
+</div>
+<transition name="fade">
+    <div id="menu-curtain" @click="showMenuItems = !showMenuItems" v-show="showMenuItems"></div>
+</transition>
+
+        <div id="main" :class="loading ? 'into-enter-from': 'into-enter-active'">
+            <div class="article">
+    <div>
+        <h1>
+            Base系列算法原理
+        </h1>
+    </div>
+    <div class="info">
+        <span class="date">
+            <span class="icon">
+                <i class="fa-solid fa-calendar fa-fw"></i>
+            </span>
+            2026/5/16
+        </span>
+        
+                
+                    <span class="tags">
+                        <span class="icon">
+                            <i class="fa-solid fa-tags fa-fw"></i>
+                        </span>
+                        
+                            
+                                <span class="tag">
+                                    
+                                        <a href="/tags/%E7%AE%97%E6%B3%95/" style="color: #00a596">
+                                            算法
+                                        </a>
+                                </span>
+                                
+                    </span>
+                    
+    </div>
+    
+                <div class="content" v-pre>
+                    <h1 id="Base系列编码原理"><a href="#Base系列编码原理" class="headerlink" title="Base系列编码原理"></a>Base系列编码原理</h1><h2 id="2-n-次方系列（Base16-Base32-Base64"><a href="#2-n-次方系列（Base16-Base32-Base64" class="headerlink" title="2^n 次方系列（Base16 Base32 Base64)"></a>2^n 次方系列（Base16 Base32 Base64)</h2><p>这个系列主要通过位运算来实现编码</p>
+<p>以下是常见是Base编码</p>
+<table>
+<thead>
+<tr>
+<th>编码</th>
+<th>基数</th>
+<th>位数</th>
+<th>分组规则</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Base16</td>
+<td>16(2^4)</td>
+<td>4</td>
+<td>1字节 -&gt; 2字符</td>
+</tr>
+<tr>
+<td>Base32</td>
+<td>32(2^5)</td>
+<td>5</td>
+<td>5字节 -&gt; 8字符</td>
+</tr>
+<tr>
+<td>Base64</td>
+<td>64(2^6)</td>
+<td>6</td>
+<td>3字节 -&gt; 4字符</td>
+</tr>
+</tbody></table>
+<h3 id="编码原理"><a href="#编码原理" class="headerlink" title="编码原理"></a>编码原理</h3><p>以每个字符对应的ASCII码的二进制为一组，取位数个，和对应编码表字符对应</p>
+<p>字符串Hello World!对应的ASCII码二进制为</p>
+<p>01001000 01100101 01101100 01101100 01101111 00100000 01010111 01101111 01110010 01101100 01100100 00100001</p>
+<table>
+<thead>
+<tr>
+<th>编码方式</th>
+<th>二进制取位</th>
+<th>加密后效果</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Base16</td>
+<td>0100 1000 0110 0101 0110 1100 0110 1100 0110 1111 0010 0000 0101 0111 0110 1111 0111 0010 0110 1100 0110 0100 0010 0001</td>
+<td>48656C6C6F20576F726C6421</td>
+</tr>
+<tr>
+<td>Base32</td>
+<td>01001 00001 10010 10110 11000 11011 00011 01111 00100 00001 01011 10110 11110 11100 10011 01100 01100 10000 10000 10000 &#x3D;&#x3D;&#x3D;&#x3D;</td>
+<td>JBSWY3DPEBLW64TMMQQQ&#x3D;&#x3D;&#x3D;&#x3D;</td>
+</tr>
+<tr>
+<td>Base64</td>
+<td>010010 000110 010101 101100 011011 000110 111100 100000 010101 110110 111101 110010 011011 000110 010000 100001</td>
+<td>SGVsbG8gV29ybGQh</td>
+</tr>
+</tbody></table>
+<h3 id="非8的因数编码提醒特别提示"><a href="#非8的因数编码提醒特别提示" class="headerlink" title="非8的因数编码提醒特别提示"></a>非8的因数编码提醒特别提示</h3><p>如果出现编码后不够指定位数的例如</p>
+<p>xxxxx xxxyy yyyyy y0000 &#x3D;&#x3D;&#x3D;&#x3D;</p>
+<p>xxxxxx xxyy yyyy00 &#x3D;&#x3D;&#x3D;&#x3D;</p>
+<p>在后面补0凑够6位然后补&#x3D;直到够八位</p>
+<h3 id="python代码演示"><a href="#python代码演示" class="headerlink" title="python代码演示"></a>python代码演示</h3><p>以最常见的base64作为代码演示</p>
+<pre><code class="hljs python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">encode_base64</span>(<span class="hljs-params">data</span>):
+    <span class="hljs-comment"># 标准Base64码表</span>
+    alphabet = <span class="hljs-string">&quot;ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/&quot;</span>
+    <span class="hljs-comment"># 储存编码字符</span>
+    result = <span class="hljs-string">&quot;&quot;</span>
+    bits = <span class="hljs-number">0</span>
+    bits_count = <span class="hljs-number">0</span>
+	<span class="hljs-comment"># 遍历输入数据的每个字节</span>
+    <span class="hljs-keyword">for</span> byte <span class="hljs-keyword">in</span> data:
+        <span class="hljs-comment"># 把字节放入缓冲取</span>
+        bits = (bits &lt;&lt; <span class="hljs-number">8</span>) | byte
+        bits_count += <span class="hljs-number">8</span>
+        <span class="hljs-comment"># 当缓冲区至少有6位时取出6位与00111111进行与运算</span>
+        <span class="hljs-keyword">while</span> bits_count &gt;= <span class="hljs-number">6</span>:
+            bits_count -= <span class="hljs-number">6</span>
+            index = (bits &gt;&gt; bits_count) &amp; <span class="hljs-number">0x3f</span>
+            <span class="hljs-comment"># 查表得到Base64字符</span>
+            result += alphabet[index]
+    
+    <span class="hljs-keyword">if</span> bits_count &gt; <span class="hljs-number">0</span>:
+        <span class="hljs-comment"># 剩余位置左移补足不足6位的数据</span>
+        index = (bits &lt;&lt; (<span class="hljs-number">6</span> - bits_count)) &amp; <span class="hljs-number">0x3f</span>
+        result += alphabet[index]
+
+    padding = (<span class="hljs-number">4</span> - <span class="hljs-built_in">len</span>(result) % <span class="hljs-number">4</span>) % <span class="hljs-number">4</span>
+    result += <span class="hljs-string">&quot;=&quot;</span> * padding
+
+    <span class="hljs-keyword">return</span> result
+<span class="hljs-keyword">def</span> <span class="hljs-title function_">decode_base64</span>(<span class="hljs-params">encoded</span>):
+    <span class="hljs-comment"># Base64表</span>
+    alphabet = <span class="hljs-string">&quot;ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/&quot;</span>
+    result = <span class="hljs-built_in">bytearray</span>()
+    bits = <span class="hljs-number">0</span>
+    bits_count = <span class="hljs-number">0</span>
+    <span class="hljs-keyword">for</span> char <span class="hljs-keyword">in</span> encoded:
+        <span class="hljs-comment"># 遇到填充字符停止编码</span>
+        <span class="hljs-keyword">if</span> char == <span class="hljs-string">&#x27;=&#x27;</span>:
+            <span class="hljs-keyword">break</span>
+        <span class="hljs-comment"># 把Base64字符转化为对应数值</span>
+        <span class="hljs-keyword">if</span> <span class="hljs-string">&#x27;A&#x27;</span> &lt;= char &lt;= <span class="hljs-string">&#x27;Z&#x27;</span>:
+            val = <span class="hljs-built_in">ord</span>(char) - <span class="hljs-number">65</span>
+        <span class="hljs-keyword">elif</span> <span class="hljs-string">&#x27;a&#x27;</span> &lt;= char &lt;= <span class="hljs-string">&#x27;z&#x27;</span>:
+            val = <span class="hljs-built_in">ord</span>(char) - <span class="hljs-number">71</span>
+        <span class="hljs-keyword">elif</span> <span class="hljs-string">&#x27;0&#x27;</span> &lt;= char &lt;= <span class="hljs-string">&#x27;9&#x27;</span>:
+            val = <span class="hljs-built_in">ord</span>(char) + <span class="hljs-number">4</span>
+        <span class="hljs-keyword">elif</span> char == <span class="hljs-string">&#x27;+&#x27;</span>:
+            val = <span class="hljs-number">62</span>
+        <span class="hljs-keyword">elif</span> char == <span class="hljs-string">&#x27;/&#x27;</span>:
+            val = <span class="hljs-number">63</span>
+        <span class="hljs-keyword">else</span>:
+            <span class="hljs-comment">#遇到非法字符不处理</span>
+            <span class="hljs-keyword">continue</span>
+        <span class="hljs-comment"># 把解码的六位放入缓冲区</span>
+        bits = (bits &lt;&lt; <span class="hljs-number">6</span>) | val
+        bits_count += <span class="hljs-number">6</span>
+        <span class="hljs-comment"># 当缓冲区有8位时取出</span>
+        <span class="hljs-keyword">if</span> bits_count &gt;= <span class="hljs-number">8</span>:
+            bits_count -= <span class="hljs-number">8</span>  <span class="hljs-comment"># 为完整字节</span>
+            result.append((bits &gt;&gt; bits_count &amp; <span class="hljs-number">0xff</span>))
+    <span class="hljs-comment"># 把bytearray转换为不可变的bytes返回</span>
+    <span class="hljs-keyword">return</span> <span class="hljs-built_in">bytes</span>(result)
+<span class="hljs-keyword">if</span> __name__ == <span class="hljs-string">&quot;__main__&quot;</span>:
+    <span class="hljs-comment"># 测试加密</span>
+    text =<span class="hljs-string">&quot;Hello World!&quot;</span>
+    data = text.encode(<span class="hljs-string">&#x27;utf-8&#x27;</span>)
+    <span class="hljs-comment"># 编码</span>
+    encoded = encode_base64(data)
+    <span class="hljs-built_in">print</span>(encoded)
+    <span class="hljs-comment"># 解码</span>
+    decoded = decode_base64(encoded)
+    <span class="hljs-built_in">print</span>(decoded.decode(<span class="hljs-string">&#x27;utf-8&#x27;</span>))</code></pre>
+
+<p>运行后结果</p>
+<pre><code class="hljs erlang-repl">SGVsbG8gV29ybGQh
+Hello World!</code></pre>
+
+
+
+<h3 id="c代码演示"><a href="#c代码演示" class="headerlink" title="c代码演示"></a>c代码演示</h3><pre><code class="hljs c"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stdio.h&gt;</span></span>
+<span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;string.h&gt;</span></span>
+<span class="hljs-comment">// 建立base64解码函数</span>
+<span class="hljs-type">void</span> <span class="hljs-title function_">encode_base64</span><span class="hljs-params">(<span class="hljs-type">unsigned</span> <span class="hljs-type">char</span> *data, <span class="hljs-type">int</span> data_len, <span class="hljs-type">char</span> *output)</span>
+&#123;
+    <span class="hljs-comment">// base64码表</span>
+    <span class="hljs-type">char</span> alphabat[] =<span class="hljs-string">&quot;ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/&quot;</span>;
+    <span class="hljs-type">int</span> i,j;
+    <span class="hljs-type">int</span> bits = <span class="hljs-number">0</span>;
+    <span class="hljs-type">int</span> bits_count = <span class="hljs-number">0</span>;
+	<span class="hljs-comment">// 初始化输出位置</span>
+    j = <span class="hljs-number">0</span>;
+	<span class="hljs-comment">// 遍历每一字节</span>
+    <span class="hljs-keyword">for</span>(i = <span class="hljs-number">0</span>;i &lt; data_len;i++)
+    &#123;
+        <span class="hljs-comment">// 先腾出八位空间然后再用位操作写入新的字节</span>
+        bits = (bits &lt;&lt; <span class="hljs-number">8</span>) | data[i];
+        bits_count += <span class="hljs-number">8</span>;
+        <span class="hljs-comment">// 如果写出字节数大于六取出6位与00111111进行与运算</span>
+        <span class="hljs-keyword">while</span> (bits_count &gt;= <span class="hljs-number">6</span>)
+        &#123;
+            bits_count -= <span class="hljs-number">6</span>;
+            output[j] = alphabat[(bits &gt;&gt; bits_count) &amp; <span class="hljs-number">0x3f</span>];
+            j++;
+        &#125;
+    <span class="hljs-comment">// 处理不足六位时的数据</span>
+    &#125;
+    <span class="hljs-keyword">if</span>(bits_count &gt; <span class="hljs-number">0</span>)
+    &#123;
+        <span class="hljs-comment">// 剩余位左移补足六位</span>
+        output[j] = alphabat[(bits &lt;&lt; (<span class="hljs-number">6</span> - bits_count)) &amp; <span class="hljs-number">0x3f</span>];
+        j++;
+    &#125;
+    <span class="hljs-comment">// 填充字符</span>
+    <span class="hljs-keyword">while</span> (j % <span class="hljs-number">4</span> != <span class="hljs-number">0</span>)
+    &#123;
+        output[j] = <span class="hljs-string">&#x27;=&#x27;</span>;
+        j++;
+    &#125;
+    <span class="hljs-comment">// 添加\0结束符</span>
+    output[j] = <span class="hljs-string">&#x27;\0&#x27;</span>;
+&#125;
+<span class="hljs-comment">// 建立解密函数</span>
+<span class="hljs-type">void</span> <span class="hljs-title function_">decode_base64</span><span class="hljs-params">(<span class="hljs-type">char</span> *encoded, <span class="hljs-type">unsigned</span> <span class="hljs-type">char</span> *output, <span class="hljs-type">int</span> *output_len)</span>
+&#123;
+    <span class="hljs-comment">// Base64表</span>
+    <span class="hljs-type">char</span> alphabat[] =<span class="hljs-string">&quot;ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/&quot;</span>;
+    <span class="hljs-type">int</span> i,j;
+    <span class="hljs-type">int</span> bits = <span class="hljs-number">0</span>;
+    <span class="hljs-type">int</span> bits_count = <span class="hljs-number">0</span>;
+    <span class="hljs-comment">// 初始化输出位置</span>
+    j = <span class="hljs-number">0</span>;
+    <span class="hljs-comment">// 遍历字符串到\0或者=时停止</span>
+    <span class="hljs-keyword">for</span> ( i = <span class="hljs-number">0</span>; encoded[i] != <span class="hljs-string">&#x27;\0&#x27;</span> &amp;&amp; encoded[i] != <span class="hljs-string">&#x27;=&#x27;</span>; i++)
+    &#123;
+        <span class="hljs-type">unsigned</span> <span class="hljs-type">char</span> val;
+		<span class="hljs-comment">// 对应Base64的编码表</span>
+        <span class="hljs-keyword">if</span> (encoded[i] &gt;= <span class="hljs-string">&#x27;A&#x27;</span> &amp;&amp; encoded[i] &lt;= <span class="hljs-string">&#x27;Z&#x27;</span>)
+            val = encoded[i] - <span class="hljs-string">&#x27;A&#x27;</span>;
+        <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (encoded[i] &gt;= <span class="hljs-string">&#x27;a&#x27;</span> &amp;&amp; encoded[i] &lt;= <span class="hljs-string">&#x27;z&#x27;</span>)
+            val = encoded[i] - <span class="hljs-string">&#x27;a&#x27;</span> + <span class="hljs-number">26</span>;
+        <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (encoded[i] &gt;= <span class="hljs-string">&#x27;0&#x27;</span> &amp;&amp; encoded[i] &lt;= <span class="hljs-string">&#x27;9&#x27;</span>)
+            val = encoded[i] - <span class="hljs-string">&#x27;0&#x27;</span> + <span class="hljs-number">52</span>;
+        <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (encoded[i] == <span class="hljs-string">&#x27;+&#x27;</span>)
+            val = <span class="hljs-number">62</span>;
+        <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (encoded[i] == <span class="hljs-string">&#x27;/&#x27;</span>)        
+            val = <span class="hljs-number">63</span>;
+        <span class="hljs-keyword">else</span>
+            <span class="hljs-comment">// 遇到非法字符跳过不处理</span>
+            <span class="hljs-keyword">continue</span>;
+        <span class="hljs-comment">// 腾出六位空间放新的数据</span>
+        bits = (bits &lt;&lt; <span class="hljs-number">6</span>) | val;
+        bits_count += <span class="hljs-number">6</span>;
+        <span class="hljs-comment">// 当缓冲区有八位时，提取出一个字节</span>
+        <span class="hljs-keyword">if</span> (bits_count &gt;= <span class="hljs-number">8</span>)
+        &#123;
+            bits_count -= <span class="hljs-number">8</span>;
+            output[j] = (bits &gt;&gt; bits_count) &amp; <span class="hljs-number">0xff</span>;
+            j++;
+        &#125;
+    &#125;
+    <span class="hljs-comment">// 将解码数据返回</span>
+    *output_len = j;
+&#125;
+
+<span class="hljs-type">int</span> <span class="hljs-title function_">main</span><span class="hljs-params">(<span class="hljs-type">void</span>)</span>
+&#123;
+    <span class="hljs-type">char</span> *text = <span class="hljs-string">&quot;Hello World!&quot;</span>;
+    <span class="hljs-type">int</span> data_len = <span class="hljs-built_in">strlen</span>(text);
+    <span class="hljs-comment">// 储存编码字符串</span>
+    <span class="hljs-type">char</span> encoded[<span class="hljs-number">256</span>];
+    <span class="hljs-comment">// 储存解码字符串</span>
+    <span class="hljs-type">unsigned</span> <span class="hljs-type">char</span> decoded[<span class="hljs-number">256</span>];
+    <span class="hljs-type">int</span> decoded_len;
+    <span class="hljs-type">int</span> i;
+	<span class="hljs-comment">// 调用编码函数</span>
+    encode_base64((<span class="hljs-type">unsigned</span> <span class="hljs-type">char</span> *)text, data_len, encoded);
+    <span class="hljs-comment">// 输出编码结果</span>
+    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%s\n&quot;</span>, encoded);
+    <span class="hljs-comment">// 调用解码函数</span>
+    decode_base64(encoded, decoded, &amp;decoded_len);
+    <span class="hljs-comment">// 输出解码结果</span>
+    <span class="hljs-keyword">for</span> ( i = <span class="hljs-number">0</span>; i &lt; decoded_len; i++)
+    &#123;
+        <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%c&quot;</span>, decoded[i]);
+    &#125;
+    <span class="hljs-comment">// 换行符</span>
+    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;\n&quot;</span>);</code></pre>
+
+<p>运行后结果</p>
+<pre><code class="hljs erlang-repl">SGVsbG8gV29ybGQh
+Hello World!</code></pre>
+
+<h2 id="非2-n-系列"><a href="#非2-n-系列" class="headerlink" title="非2^n 系列"></a>非2^n 系列</h2><h3 id="编码原理-1"><a href="#编码原理-1" class="headerlink" title="编码原理"></a>编码原理</h3><p>把一个原始数据视为一个十进制大整数不断除以编码数然后</p>
+<p>以下以Base58为例</p>
+<pre><code class="hljs tap">编码 &quot;Hello&quot; (48656c6c6f 十六进制 =<span class="hljs-number"> 310939249775 </span>十进制)
+
+310939249775 ÷<span class="hljs-number"> 58 </span>=<span class="hljs-number"> 5361021547 </span>余<span class="hljs-number"> 41 </span>→ &#x27;n&#x27;
+5361021547 ÷<span class="hljs-number"> 58 </span>=<span class="hljs-number"> 92431405 </span>余<span class="hljs-number"> 49 </span>→ &#x27;x&#x27;  
+92431405 ÷<span class="hljs-number"> 58 </span>=<span class="hljs-number"> 1593644 </span>余<span class="hljs-number"> 53 </span>→ &#x27;y&#x27;
+1593644 ÷<span class="hljs-number"> 58 </span>=<span class="hljs-number"> 27476 </span>余<span class="hljs-number"> 12 </span>→ &#x27;E&#x27;
+27476 ÷<span class="hljs-number"> 58 </span>=<span class="hljs-number"> 473 </span>余<span class="hljs-number"> 42 </span>→ &#x27;o&#x27;
+473 ÷<span class="hljs-number"> 58 </span>=<span class="hljs-number"> 8 </span>余<span class="hljs-number"> 9 </span>→ &#x27;A&#x27;
+8 ÷<span class="hljs-number"> 58 </span>=<span class="hljs-number"> 0 </span>余<span class="hljs-number"> 8 </span>→ &#x27;9&#x27;
+
+结果：9Aonyxn</code></pre>
+
+<p>直到不能继续除为止</p>
+<h3 id="python代码演示-1"><a href="#python代码演示-1" class="headerlink" title="python代码演示"></a>python代码演示</h3><pre><code class="hljs python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">encode_base58</span>(<span class="hljs-params">data</span>):
+    <span class="hljs-comment"># Base58编码表</span>
+    alphabet = <span class="hljs-string">&quot;123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz&quot;</span>
+    <span class="hljs-comment"># 每个字节视为 256 进制的一位，从高位到低位累积</span>
+    num = <span class="hljs-number">0</span>
+    <span class="hljs-comment"># 把数值左移八位</span>
+    <span class="hljs-keyword">for</span> byte <span class="hljs-keyword">in</span> data:
+        num = num * <span class="hljs-number">256</span> + byte
+	<span class="hljs-comment"># </span>
+    result = <span class="hljs-string">&quot;&quot;</span>
+    <span class="hljs-keyword">while</span> num &gt; <span class="hljs-number">0</span>:
+        num, rem = <span class="hljs-built_in">divmod</span>(num, <span class="hljs-number">58</span>)
+        <span class="hljs-comment"># 返回余数和商</span>
+        result = alphabet[rem] + result
+
+    <span class="hljs-keyword">for</span> byte <span class="hljs-keyword">in</span> data:
+        <span class="hljs-keyword">if</span> byte == <span class="hljs-number">0</span>:
+            <span class="hljs-comment"># 在结果前面添加一个1</span>
+            result = <span class="hljs-string">&#x27;1&#x27;</span> + result
+        <span class="hljs-keyword">else</span>:
+            <span class="hljs-comment"># 遇到非零字符停止</span>
+            <span class="hljs-keyword">break</span>
+    <span class="hljs-comment"># 返回结果值</span>
+    <span class="hljs-keyword">return</span> result
+
+<span class="hljs-keyword">def</span> <span class="hljs-title function_">decode_base58</span>(<span class="hljs-params">encoded</span>):
+    <span class="hljs-comment"># Base58表</span>
+    alphabet = <span class="hljs-string">&quot;123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz&quot;</span>
+    num = <span class="hljs-number">0</span>
+    
+    <span class="hljs-keyword">for</span> char <span class="hljs-keyword">in</span> encoded:
+        <span class="hljs-comment"># 查找字符在编码表的位置，并且在编码表左移一位</span>
+        num = num * <span class="hljs-number">58</span> + alphabet.index(char)
+    <span class="hljs-comment"># 每次除256取余，得到一个字节</span>
+    result = <span class="hljs-built_in">bytearray</span>()
+    <span class="hljs-keyword">while</span> num &gt; <span class="hljs-number">0</span>:
+        num, rem = <span class="hljs-built_in">divmod</span>(num, <span class="hljs-number">256</span>)
+        result.insert(<span class="hljs-number">0</span>, rem)
+
+    <span class="hljs-keyword">for</span> char <span class="hljs-keyword">in</span> encoded:
+        <span class="hljs-keyword">if</span> char == <span class="hljs-string">&#x27;1&#x27;</span>:
+            <span class="hljs-comment"># 在结果前面插入0x00字节</span>
+            result.insert(<span class="hljs-number">0</span>, <span class="hljs-number">0</span>)
+        <span class="hljs-keyword">else</span>:
+            <span class="hljs-comment"># 遇到第一个非零值返回</span>
+            <span class="hljs-keyword">break</span>
+
+    <span class="hljs-keyword">return</span> <span class="hljs-built_in">bytes</span>(result)
+    
+<span class="hljs-keyword">if</span> __name__ == <span class="hljs-string">&#x27;__main__&#x27;</span>:
+    <span class="hljs-comment"># 测试</span>
+    text = <span class="hljs-string">&quot;Hello World!&quot;</span>
+    data = text.encode(<span class="hljs-string">&#x27;utf-8&#x27;</span>)
+    <span class="hljs-comment"># Base58编码</span>
+    encoded = encode_base58(data)
+    <span class="hljs-built_in">print</span>(encoded)
+    <span class="hljs-comment"># Base58解码</span>
+    decoded = decode_base58(encoded)
+    <span class="hljs-built_in">print</span>(decoded.decode(<span class="hljs-string">&#x27;utf-8&#x27;</span>))</code></pre>
+
+<p>运行后结果</p>
+<pre><code class="hljs erlang-repl"><span class="hljs-number">2</span>NEpo7TZRRrLZSi2U
+Hello World!</code></pre>
+
+<h3 id="c代码演示-1"><a href="#c代码演示-1" class="headerlink" title="c代码演示"></a>c代码演示</h3><pre><code class="hljs c"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stdio.h&gt;</span></span>
+<span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;string.h&gt;</span></span>
+
+<span class="hljs-type">void</span> <span class="hljs-title function_">encode_base58</span><span class="hljs-params">(<span class="hljs-type">unsigned</span> <span class="hljs-type">char</span> *data, <span class="hljs-type">int</span> data_len, <span class="hljs-type">char</span> *output)</span>
+&#123;
+    <span class="hljs-type">char</span> alphabet[] = <span class="hljs-string">&quot;123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz&quot;</span>;
+    <span class="hljs-type">int</span> i, j, k;
+    <span class="hljs-type">int</span> carry;
+    <span class="hljs-type">int</span> digits[<span class="hljs-number">256</span>] = &#123;<span class="hljs-number">0</span>&#125;;
+    <span class="hljs-type">int</span> digits_len = <span class="hljs-number">1</span>;
+
+    <span class="hljs-keyword">for</span> ( i = <span class="hljs-number">0</span>; i &lt; data_len; i++)
+    &#123;
+        carry = data[i];
+        <span class="hljs-keyword">for</span> ( j = <span class="hljs-number">0</span>; j &lt; digits_len; j++)
+        &#123;
+            carry += digits[j] * <span class="hljs-number">256</span>;
+            digits[j] = carry % <span class="hljs-number">58</span>;
+            carry /= <span class="hljs-number">58</span>;
+        &#125;
+        <span class="hljs-keyword">while</span> (carry &gt; <span class="hljs-number">0</span>)
+        &#123;
+            digits[digits_len] = carry % <span class="hljs-number">58</span>;
+            digits_len++;
+            carry /= <span class="hljs-number">58</span>;
+        &#125;
+        
+    &#125;
+    k = <span class="hljs-number">0</span>;
+    <span class="hljs-keyword">for</span> ( i = <span class="hljs-number">0</span>; i &lt; data_len &amp;&amp; data[i] == <span class="hljs-number">0</span>; i++)
+    &#123;
+        output[k] = <span class="hljs-string">&#x27;1&#x27;</span>;
+        k++;
+    &#125;
+    j = digits_len - <span class="hljs-number">1</span>;
+    <span class="hljs-keyword">while</span> (j &gt;= <span class="hljs-number">0</span>)
+    &#123;
+        output[k] = alphabet[digits[j]];
+        k++;
+        j--;
+    &#125;
+    output[k] = <span class="hljs-string">&#x27;\0&#x27;</span>;
+    
+&#125;
+
+<span class="hljs-type">void</span> <span class="hljs-title function_">decode_base58</span><span class="hljs-params">(<span class="hljs-type">char</span> *encoded, <span class="hljs-type">unsigned</span> <span class="hljs-type">char</span> *output, <span class="hljs-type">int</span> *output_len)</span>
+&#123;
+    <span class="hljs-type">char</span> alphabet[] = <span class="hljs-string">&quot;123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz&quot;</span>;
+    <span class="hljs-type">int</span> i, j, k;
+    <span class="hljs-type">int</span> carry;
+    <span class="hljs-type">int</span> bytes[<span class="hljs-number">256</span>] = &#123;<span class="hljs-number">0</span>&#125;;
+    <span class="hljs-type">int</span> bytes_len = <span class="hljs-number">1</span>;
+    <span class="hljs-type">int</span> encoded_len = <span class="hljs-built_in">strlen</span>(encoded);
+
+    <span class="hljs-keyword">for</span> ( i = <span class="hljs-number">0</span>; i &lt; encoded_len; i++)
+    &#123;
+        <span class="hljs-type">int</span> val = <span class="hljs-number">0</span>;
+        <span class="hljs-keyword">for</span> ( j = <span class="hljs-number">0</span>; j &lt; <span class="hljs-number">58</span>; j++)
+        &#123;
+            <span class="hljs-keyword">if</span> (encoded[i] == alphabet[j])
+            &#123;
+                val = j;
+                <span class="hljs-keyword">break</span>;
+            &#125;
+            
+        &#125;
+        carry = val;
+        <span class="hljs-keyword">for</span> ( j = <span class="hljs-number">0</span>; j &lt; bytes_len; j++)
+        &#123;
+            carry += bytes[j] * <span class="hljs-number">58</span>;
+            bytes[j] = carry %<span class="hljs-number">256</span>;
+            carry /= <span class="hljs-number">256</span>;
+        &#125;
+        <span class="hljs-keyword">while</span> (carry &gt; <span class="hljs-number">0</span>)
+        &#123;
+            bytes[bytes_len] = carry % <span class="hljs-number">256</span>;
+            bytes_len++;
+            carry /= <span class="hljs-number">256</span>;
+        &#125;
+        
+    &#125;
+    k = <span class="hljs-number">0</span>;
+    <span class="hljs-keyword">for</span> ( i = <span class="hljs-number">0</span>; i &lt; encoded_len &amp;&amp; encoded[i] == <span class="hljs-string">&#x27;1&#x27;</span>; i++)
+    &#123;
+        output[k] = <span class="hljs-number">0</span>;
+        k++;
+    &#125;
+    j = bytes_len - <span class="hljs-number">1</span>;
+    <span class="hljs-keyword">while</span> (j &gt;= <span class="hljs-number">0</span>)
+    &#123;
+        output[k] = bytes[j];
+        k++;
+        j--;
+    &#125;
+    *output_len = k;
+&#125;
+
+<span class="hljs-type">int</span> <span class="hljs-title function_">main</span><span class="hljs-params">(<span class="hljs-type">void</span>)</span>
+&#123;
+    <span class="hljs-type">char</span> *text = <span class="hljs-string">&quot;Hello World!&quot;</span>;
+    <span class="hljs-type">int</span> data_len = <span class="hljs-built_in">strlen</span>(text);
+    <span class="hljs-type">char</span> encoded[<span class="hljs-number">256</span>];
+    <span class="hljs-type">unsigned</span> <span class="hljs-type">char</span> decoded[<span class="hljs-number">256</span>];
+    <span class="hljs-type">int</span> decoded_len;
+    <span class="hljs-type">int</span> i;
+
+    encode_base58((<span class="hljs-type">unsigned</span> <span class="hljs-type">char</span> *)text, data_len, encoded);
+    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%s\n&quot;</span>, encoded);
+
+    decode_base58(encoded, decoded, &amp;decoded_len);
+    <span class="hljs-keyword">for</span> ( i = <span class="hljs-number">0</span>; i &lt; decoded_len; i++)
+    &#123;
+        <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%c&quot;</span>, decoded[i]);
+    &#125;
+    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;\n&quot;</span>);
+
+    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+&#125;</code></pre>
+
+<p>运行后结果</p>
+<pre><code class="hljs erlang-repl"><span class="hljs-number">2</span>NEpo7TZRRrLZSi2U
+Hello World!</code></pre>
+
+<h2 id="混合编码"><a href="#混合编码" class="headerlink" title="混合编码"></a>混合编码</h2><h3 id="编码原理-2"><a href="#编码原理-2" class="headerlink" title="编码原理"></a>编码原理</h3><p>通过混合的编码，来实现更高的效率。这里以Base85（Ascii85）为例，它是一种将4字节数据编码为5个可打印ASCII字符的高效编码方式。</p>
+<table>
+<thead>
+<tr>
+<th>编码</th>
+<th>基数</th>
+<th>字节分组</th>
+<th>编码后字符数</th>
+<th>效率</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Base64</td>
+<td>64</td>
+<td>3字节</td>
+<td>4字符</td>
+<td>75%</td>
+</tr>
+<tr>
+<td>Base85</td>
+<td>85</td>
+<td>4字节</td>
+<td>5字符</td>
+<td>80%</td>
+</tr>
+</tbody></table>
+<p>Base85的编码过程：</p>
+<ol>
+<li>将4字节数据视为一个32位无符号整数</li>
+<li>用这个整数不断除以85，得到5个余数</li>
+<li>每个余数加上33（ASCII ‘!’）得到编码字符</li>
+</ol>
+<p>以下以字符串”Test”为例：</p>
+<pre><code class="hljs tap">&quot;Test&quot; 的ASCII码：84<span class="hljs-number"> 101 </span>115 116
+视为32位整数：84*256^3 + 101*256^2 + 115*256 +<span class="hljs-number"> 116 </span>= 1413829428
+
+1413829428 ÷<span class="hljs-number"> 85 </span>=<span class="hljs-number"> 16633287 </span>余<span class="hljs-number"> 3 </span>→ &#x27;!&#x27; +<span class="hljs-number"> 3 </span>= &#x27;$&#x27;
+16633287 ÷<span class="hljs-number"> 85 </span>=<span class="hljs-number"> 195685 </span>余<span class="hljs-number"> 62 </span>→ &#x27;!&#x27; +<span class="hljs-number"> 62 </span>= &#x27;a&#x27;
+195685 ÷<span class="hljs-number"> 85 </span>=<span class="hljs-number"> 2302 </span>余<span class="hljs-number"> 15 </span>→ &#x27;!&#x27; +<span class="hljs-number"> 15 </span>= &#x27;P&#x27;
+2302 ÷<span class="hljs-number"> 85 </span>=<span class="hljs-number"> 27 </span>余<span class="hljs-number"> 7 </span>→ &#x27;!&#x27; +<span class="hljs-number"> 7 </span>= &#x27;(&#x27;
+27 ÷<span class="hljs-number"> 85 </span>=<span class="hljs-number"> 0 </span>余<span class="hljs-number"> 27 </span>→ &#x27;!&#x27; +<span class="hljs-number"> 27 </span>= &#x27;&quot;&#x27;
+
+结果：$aP(&quot;</code></pre>
+
+<h3 id="python代码演示-2"><a href="#python代码演示-2" class="headerlink" title="python代码演示"></a>python代码演示</h3><pre><code class="hljs python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">encode_base85</span>(<span class="hljs-params">data</span>):
+    alphabet = <span class="hljs-string">&quot;!\&quot;#$%&amp;&#x27;()*+,-./0123456789:;&lt;=&gt;?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_`abcdefghijklmnopqrstu&quot;</span>
+    result = <span class="hljs-string">&quot;&quot;</span>
+    i = <span class="hljs-number">0</span>
+    data_len = <span class="hljs-built_in">len</span>(data)
+    
+    <span class="hljs-keyword">while</span> i &lt; data_len:
+        <span class="hljs-comment"># 每次处理4字节</span>
+        chunk = data[i:i+<span class="hljs-number">4</span>]
+        chunk_len = <span class="hljs-built_in">len</span>(chunk)
+        
+        <span class="hljs-comment"># 将4字节打包为一个32位整数</span>
+        value = <span class="hljs-number">0</span>
+        <span class="hljs-keyword">for</span> j <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(chunk_len):
+            value = (value &lt;&lt; <span class="hljs-number">8</span>) | chunk[j]
+        
+        <span class="hljs-comment"># 如果是最后一个块且不足4字节，特殊处理</span>
+        <span class="hljs-keyword">if</span> chunk_len &lt; <span class="hljs-number">4</span>:
+            <span class="hljs-comment"># 计算需要的字符数</span>
+            chars_needed = chunk_len + <span class="hljs-number">1</span>
+            <span class="hljs-keyword">for</span> j <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(chars_needed):
+                result += alphabet[value % <span class="hljs-number">85</span>]
+                value //= <span class="hljs-number">85</span>
+            <span class="hljs-comment"># 反转得到正确顺序</span>
+            result = result[:-chars_needed] + result[-chars_needed:][::-<span class="hljs-number">1</span>]
+            <span class="hljs-keyword">break</span>
+        
+        <span class="hljs-comment"># 正常编码4字节为5字符</span>
+        temp = []
+        <span class="hljs-keyword">for</span> j <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">5</span>):
+            temp.append(alphabet[value % <span class="hljs-number">85</span>])
+            value //= <span class="hljs-number">85</span>
+        <span class="hljs-comment"># 反转得到正确顺序</span>
+        result += <span class="hljs-string">&#x27;&#x27;</span>.join(<span class="hljs-built_in">reversed</span>(temp))
+        i += <span class="hljs-number">4</span>
+    
+    <span class="hljs-keyword">return</span> result
+
+<span class="hljs-keyword">def</span> <span class="hljs-title function_">decode_base85</span>(<span class="hljs-params">encoded</span>):
+    alphabet = <span class="hljs-string">&quot;!\&quot;#$%&amp;&#x27;()*+,-./0123456789:;&lt;=&gt;?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_`abcdefghijklmnopqrstu&quot;</span>
+    result = <span class="hljs-built_in">bytearray</span>()
+    value = <span class="hljs-number">0</span>
+    count = <span class="hljs-number">0</span>
+    
+    <span class="hljs-keyword">for</span> char <span class="hljs-keyword">in</span> encoded:
+        <span class="hljs-keyword">if</span> char == <span class="hljs-string">&#x27;z&#x27;</span>:
+            <span class="hljs-comment"># 特殊字符z表示4个0字节</span>
+            result.extend([<span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>])
+            <span class="hljs-keyword">continue</span>
+        
+        idx = alphabet.index(char)
+        value = value * <span class="hljs-number">85</span> + idx
+        count += <span class="hljs-number">1</span>
+        
+        <span class="hljs-keyword">if</span> count == <span class="hljs-number">5</span>:
+            <span class="hljs-comment"># 5个字符解码为4字节</span>
+            <span class="hljs-keyword">for</span> j <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">3</span>, -<span class="hljs-number">1</span>, -<span class="hljs-number">1</span>):
+                result.append((value &gt;&gt; (<span class="hljs-number">8</span> * j)) &amp; <span class="hljs-number">0xff</span>)
+            value = <span class="hljs-number">0</span>
+            count = <span class="hljs-number">0</span>
+    
+    <span class="hljs-comment"># 处理最后不足5个字符的情况</span>
+    <span class="hljs-keyword">if</span> count &gt; <span class="hljs-number">0</span>:
+        <span class="hljs-comment"># 补零使最后一个块完整</span>
+        <span class="hljs-keyword">for</span> j <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(count, <span class="hljs-number">5</span>):
+            value = value * <span class="hljs-number">85</span> + <span class="hljs-number">84</span>  <span class="hljs-comment"># &#x27;u&#x27; 对应84</span>
+        
+        <span class="hljs-comment"># 根据原始长度确定输出字节数</span>
+        <span class="hljs-keyword">for</span> j <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(count - <span class="hljs-number">1</span>):
+            result.append((value &gt;&gt; (<span class="hljs-number">8</span> * (<span class="hljs-number">3</span> - j))) &amp; <span class="hljs-number">0xff</span>)
+    
+    <span class="hljs-keyword">return</span> <span class="hljs-built_in">bytes</span>(result)
+
+<span class="hljs-keyword">if</span> __name__ == <span class="hljs-string">&#x27;__main__&#x27;</span>:
+    <span class="hljs-comment"># 测试</span>
+    text = <span class="hljs-string">&quot;Hello World!&quot;</span>
+    data = text.encode(<span class="hljs-string">&#x27;utf-8&#x27;</span>)
+    <span class="hljs-comment"># Base85编码</span>
+    encoded = encode_base85(data)
+    <span class="hljs-built_in">print</span>(encoded)
+    <span class="hljs-comment"># Base85解码</span>
+    decoded = decode_base85(encoded)
+    <span class="hljs-built_in">print</span>(decoded.decode(<span class="hljs-string">&#x27;utf-8&#x27;</span>))</code></pre>
+
+<p>运行后结果</p>
+<pre><code class="hljs 1c"><span class="hljs-number">87</span>cURD]i<span class="hljs-punctuation">,</span><span class="hljs-string">&quot;Ebo7</span>
+Hello World!</code></pre>
+
+<h3 id="c代码演示-2"><a href="#c代码演示-2" class="headerlink" title="c代码演示"></a>c代码演示</h3><pre><code class="hljs c"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stdio.h&gt;</span></span>
+<span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;string.h&gt;</span></span>
+<span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stdlib.h&gt;</span></span>
+
+<span class="hljs-type">void</span> <span class="hljs-title function_">encode_base85</span><span class="hljs-params">(<span class="hljs-type">unsigned</span> <span class="hljs-type">char</span> *data, <span class="hljs-type">int</span> data_len, <span class="hljs-type">char</span> *output)</span>
+&#123;
+    <span class="hljs-type">char</span> alphabet[] = <span class="hljs-string">&quot;!\&quot;#$%&amp;&#x27;()*+,-./0123456789:;&lt;=&gt;?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_`abcdefghijklmnopqrstu&quot;</span>;
+    <span class="hljs-type">int</span> i, j, k = <span class="hljs-number">0</span>;
+    <span class="hljs-type">unsigned</span> <span class="hljs-type">long</span> value;
+    
+    <span class="hljs-keyword">for</span> (i = <span class="hljs-number">0</span>; i &lt; data_len; i += <span class="hljs-number">4</span>)
+    &#123;
+        value = <span class="hljs-number">0</span>;
+        <span class="hljs-type">int</span> bytes_used = (data_len - i &lt; <span class="hljs-number">4</span>) ? (data_len - i) : <span class="hljs-number">4</span>;
+        
+        <span class="hljs-keyword">for</span> (j = <span class="hljs-number">0</span>; j &lt; bytes_used; j++)
+        &#123;
+            value = (value &lt;&lt; <span class="hljs-number">8</span>) | data[i + j];
+        &#125;
+        
+        <span class="hljs-keyword">if</span> (bytes_used &lt; <span class="hljs-number">4</span>)
+        &#123;
+            <span class="hljs-comment">// 处理最后不足4字节的块</span>
+            <span class="hljs-keyword">for</span> (j = <span class="hljs-number">0</span>; j &lt; bytes_used + <span class="hljs-number">1</span>; j++)
+            &#123;
+                output[k + bytes_used - j] = alphabet[value % <span class="hljs-number">85</span>];
+                value /= <span class="hljs-number">85</span>;
+            &#125;
+            k += bytes_used + <span class="hljs-number">1</span>;
+            <span class="hljs-keyword">break</span>;
+        &#125;
+        
+        <span class="hljs-comment">// 正常编码4字节为5字符</span>
+        <span class="hljs-keyword">for</span> (j = <span class="hljs-number">4</span>; j &gt;= <span class="hljs-number">0</span>; j--)
+        &#123;
+            output[k + j] = alphabet[value % <span class="hljs-number">85</span>];
+            value /= <span class="hljs-number">85</span>;
+        &#125;
+        k += <span class="hljs-number">5</span>;
+    &#125;
+    output[k] = <span class="hljs-string">&#x27;\0&#x27;</span>;
+&#125;
+
+<span class="hljs-type">void</span> <span class="hljs-title function_">decode_base85</span><span class="hljs-params">(<span class="hljs-type">char</span> *encoded, <span class="hljs-type">unsigned</span> <span class="hljs-type">char</span> *output, <span class="hljs-type">int</span> *output_len)</span>
+&#123;
+    <span class="hljs-type">char</span> alphabet[] = <span class="hljs-string">&quot;!\&quot;#$%&amp;&#x27;()*+,-./0123456789:;&lt;=&gt;?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_`abcdefghijklmnopqrstu&quot;</span>;
+    <span class="hljs-type">int</span> i, j, k = <span class="hljs-number">0</span>;
+    <span class="hljs-type">unsigned</span> <span class="hljs-type">long</span> value = <span class="hljs-number">0</span>;
+    <span class="hljs-type">int</span> count = <span class="hljs-number">0</span>;
+    <span class="hljs-type">int</span> encoded_len = <span class="hljs-built_in">strlen</span>(encoded);
+    
+    <span class="hljs-keyword">for</span> (i = <span class="hljs-number">0</span>; i &lt; encoded_len; i++)
+    &#123;
+        <span class="hljs-keyword">if</span> (encoded[i] == <span class="hljs-string">&#x27;z&#x27;</span>)
+        &#123;
+            <span class="hljs-comment">// 特殊字符z表示4个0字节</span>
+            output[k++] = <span class="hljs-number">0</span>;
+            output[k++] = <span class="hljs-number">0</span>;
+            output[k++] = <span class="hljs-number">0</span>;
+            output[k++] = <span class="hljs-number">0</span>;
+            <span class="hljs-keyword">continue</span>;
+        &#125;
+        
+        <span class="hljs-comment">// 查找字符在编码表中的位置</span>
+        <span class="hljs-type">int</span> idx = <span class="hljs-number">-1</span>;
+        <span class="hljs-keyword">for</span> (j = <span class="hljs-number">0</span>; j &lt; <span class="hljs-number">85</span>; j++)
+        &#123;
+            <span class="hljs-keyword">if</span> (alphabet[j] == encoded[i])
+            &#123;
+                idx = j;
+                <span class="hljs-keyword">break</span>;
+            &#125;
+        &#125;
+        <span class="hljs-keyword">if</span> (idx == <span class="hljs-number">-1</span>) <span class="hljs-keyword">continue</span>;
+        
+        value = value * <span class="hljs-number">85</span> + idx;
+        count++;
+        
+        <span class="hljs-keyword">if</span> (count == <span class="hljs-number">5</span>)
+        &#123;
+            <span class="hljs-comment">// 5个字符解码为4字节</span>
+            <span class="hljs-keyword">for</span> (j = <span class="hljs-number">3</span>; j &gt;= <span class="hljs-number">0</span>; j--)
+            &#123;
+                output[k++] = (value &gt;&gt; (<span class="hljs-number">8</span> * j)) &amp; <span class="hljs-number">0xff</span>;
+            &#125;
+            value = <span class="hljs-number">0</span>;
+            count = <span class="hljs-number">0</span>;
+        &#125;
+    &#125;
+    
+    <span class="hljs-comment">// 处理最后不足5个字符的情况</span>
+    <span class="hljs-keyword">if</span> (count &gt; <span class="hljs-number">0</span>)
+    &#123;
+        <span class="hljs-keyword">for</span> (j = count; j &lt; <span class="hljs-number">5</span>; j++)
+        &#123;
+            value = value * <span class="hljs-number">85</span> + <span class="hljs-number">84</span>;  <span class="hljs-comment">// &#x27;u&#x27; 对应84</span>
+        &#125;
+        <span class="hljs-keyword">for</span> (j = <span class="hljs-number">0</span>; j &lt; count - <span class="hljs-number">1</span>; j++)
+        &#123;
+            output[k++] = (value &gt;&gt; (<span class="hljs-number">8</span> * (<span class="hljs-number">3</span> - j))) &amp; <span class="hljs-number">0xff</span>;
+        &#125;
+    &#125;
+    
+    *output_len = k;
+&#125;
+
+<span class="hljs-type">int</span> <span class="hljs-title function_">main</span><span class="hljs-params">(<span class="hljs-type">void</span>)</span>
+&#123;
+    <span class="hljs-type">char</span> *text = <span class="hljs-string">&quot;Hello World!&quot;</span>;
+    <span class="hljs-type">int</span> data_len = <span class="hljs-built_in">strlen</span>(text);
+    <span class="hljs-type">char</span> encoded[<span class="hljs-number">256</span>];
+    <span class="hljs-type">unsigned</span> <span class="hljs-type">char</span> decoded[<span class="hljs-number">256</span>];
+    <span class="hljs-type">int</span> decoded_len;
+    <span class="hljs-type">int</span> i;
+
+    encode_base85((<span class="hljs-type">unsigned</span> <span class="hljs-type">char</span> *)text, data_len, encoded);
+    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%s\n&quot;</span>, encoded);
+
+    decode_base85(encoded, decoded, &amp;decoded_len);
+    <span class="hljs-keyword">for</span> (i = <span class="hljs-number">0</span>; i &lt; decoded_len; i++)
+    &#123;
+        <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%c&quot;</span>, decoded[i]);
+    &#125;
+    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;\n&quot;</span>);
+
+    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+&#125;</code></pre>
+
+<p>运行后结果</p>
+<pre><code class="hljs 1c"><span class="hljs-number">87</span>cURD]i<span class="hljs-punctuation">,</span><span class="hljs-string">&quot;Ebo7</span>
+Hello World!</code></pre>
+                </div>
+                
+                    
+                        
+                                
+                                        
+                                                
+                                                        
+</div>
+            <footer id="footer">
+    <div id="footer-wrap">
+        <div>
+            &copy;
+            2022 - 2026 Xmx_Aolg07
+            <span id="footer-icon">
+                <i class="fa-solid fa-font-awesome fa-fw"></i>
+            </span>
+            &commat;Xmx_Aolg07
+        </div>
+        <div>
+            Based on the <a target="_blank" rel="noopener" href="https://hexo.io">Hexo Engine</a> &amp;
+            <a target="_blank" rel="noopener" href="https://github.com/theme-particlex/hexo-theme-particlex">ParticleX Theme</a>
+        </div>
+        
+    </div>
+</footer>
+
+        </div>
+        
+        <transition name="fade">
+            <div id="preview" ref="preview" v-show="previewShow">
+                <img id="preview-content" ref="previewContent" />
+            </div>
+        </transition>
+        
+    </div>
+    <script src="/js/main.js"></script>
+    
+    
+
+
+
+
+    
+</body>
+</html>
