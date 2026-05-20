@@ -1,0 +1,1327 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8" />
+    <title>rc4算法原理和魔改 | Xmx_Aolg07</title>
+    <meta name="author" content="Xmx_Aolg07" />
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"
+    />
+    <link rel="icon" href="/images/avatar.jpg" />
+    <link rel="preconnect" href="https://s4.zstatic.net" />
+<script src="https://s4.zstatic.net/ajax/libs/vue/3.3.7/vue.global.prod.min.js"></script>
+<link rel="stylesheet" href="https://s4.zstatic.net/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
+<link rel="preconnect" href="https://fonts.googleapis.cn" />
+<link rel="preconnect" href="https://fonts.gstatic.cn" crossorigin />
+<link
+    rel="stylesheet"
+    href="https://fonts.googleapis.cn/css2?family=Fira+Code:wght@400;500;600;700&family=Lexend:wght@400;500;600;700;800;900&family=Noto+Sans+SC:wght@400;500;600;700;800;900&display=swap"
+/>
+<script> const mixins = {}; </script>
+
+<script src="https://polyfill.alicdn.com/v3/polyfill.min.js?features=default"></script>
+
+
+<script src="https://s4.zstatic.net/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+<script src="https://s4.zstatic.net/ajax/libs/highlightjs-line-numbers.js/2.8.0/highlightjs-line-numbers.min.js"></script>
+<link
+    rel="stylesheet"
+    href="https://s4.zstatic.net/ajax/libs/highlight.js/11.9.0/styles/github.min.css"
+/>
+<script src="/js/lib/highlight.js"></script>
+
+
+
+<script src="/js/lib/preview.js"></script>
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/css/main.css" />
+
+<meta name="generator" content="Hexo 8.1.1"></head>
+<body>
+    <div id="layout">
+        <transition name="fade">
+            <div id="loading" v-show="loading">
+                <div id="loading-circle">
+                    <h2>LOADING</h2>
+                    <p>加载过慢请开启缓存 浏览器默认开启</p>
+                    <img src="/images/loading.gif" />
+                </div>
+            </div>
+        </transition>
+        <div id="menu" :class="{ hidden: hiddenMenu, 'menu-color': menuColor}">
+    <nav id="desktop-menu">
+        <a class="title" href="/">
+            <span>XMX_AOLG07</span>
+        </a>
+        
+        <a href="/">
+            <i class="fa-solid fa-house fa-fw"></i>
+            <span>&ensp;Home</span>
+        </a>
+        
+        <a href="/about">
+            <i class="fa-solid fa-id-card fa-fw"></i>
+            <span>&ensp;About</span>
+        </a>
+        
+        <a href="/archives">
+            <i class="fa-solid fa-box-archive fa-fw"></i>
+            <span>&ensp;Archives</span>
+        </a>
+        
+        <a href="/categories">
+            <i class="fa-solid fa-bookmark fa-fw"></i>
+            <span>&ensp;Categories</span>
+        </a>
+        
+        <a href="/tags">
+            <i class="fa-solid fa-tags fa-fw"></i>
+            <span>&ensp;Tags</span>
+        </a>
+        
+    </nav>
+    <nav id="mobile-menu">
+        <div class="title" @click="showMenuItems = !showMenuItems">
+            <i class="fa-solid fa-bars fa-fw"></i>
+            <span>&emsp;XMX_AOLG07</span>
+        </div>
+        <transition name="slide">
+            <div class="items" v-show="showMenuItems">
+                
+                <a href="/">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-house fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Home</div>
+                    </div>
+                </a>
+                
+                <a href="/about">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-id-card fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">About</div>
+                    </div>
+                </a>
+                
+                <a href="/archives">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-box-archive fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Archives</div>
+                    </div>
+                </a>
+                
+                <a href="/categories">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-bookmark fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Categories</div>
+                    </div>
+                </a>
+                
+                <a href="/tags">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-tags fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Tags</div>
+                    </div>
+                </a>
+                
+            </div>
+        </transition>
+    </nav>
+</div>
+<transition name="fade">
+    <div id="menu-curtain" @click="showMenuItems = !showMenuItems" v-show="showMenuItems"></div>
+</transition>
+
+        <div id="main" :class="loading ? 'into-enter-from': 'into-enter-active'">
+            <div class="article">
+    <div>
+        <h1>
+            rc4算法原理和魔改
+        </h1>
+    </div>
+    <div class="info">
+        <span class="date">
+            <span class="icon">
+                <i class="fa-solid fa-calendar fa-fw"></i>
+            </span>
+            2026/5/19
+        </span>
+        
+                
+                    <span class="tags">
+                        <span class="icon">
+                            <i class="fa-solid fa-tags fa-fw"></i>
+                        </span>
+                        
+                            
+                                <span class="tag">
+                                    
+                                        <a href="/tags/CTF%E8%A7%A3%E9%A2%98/" style="color: #ffa2c4">
+                                            CTF解题
+                                        </a>
+                                </span>
+                                
+                                <span class="tag">
+                                    
+                                        <a href="/tags/%E7%AE%97%E6%B3%95/" style="color: #03a9f4">
+                                            算法
+                                        </a>
+                                </span>
+                                
+                    </span>
+                    
+    </div>
+    
+                <div class="content" v-pre>
+                    <h1 id="rc4算法原理和魔改"><a href="#rc4算法原理和魔改" class="headerlink" title="rc4算法原理和魔改"></a>rc4算法原理和魔改</h1><h2 id="rc4原理"><a href="#rc4原理" class="headerlink" title="rc4原理"></a>rc4原理</h2><h3 id="第一步"><a href="#第一步" class="headerlink" title="第一步"></a>第一步</h3><p>准备一个包含256个字节的数组 S，并按照 S[0]&#x3D;0, S[1]&#x3D;1, …, S[255]&#x3D;255 的顺序填充，初始化S盒</p>
+<p>设置一个密钥key把S盒打乱，最后256次后获得一个和密钥相关但是看起来毫无规律的排序</p>
+<h3 id="第二步"><a href="#第二步" class="headerlink" title="第二步"></a>第二步</h3><p>算法会不断更新两个索引 i 和 j，并交换 S[i] 和 S[j] 的值。然后，从 S 盒的某个位置 t（t &#x3D; S[i] + S[j]）取出一个字节 S[t]就是当前这一步生成的密钥流字节</p>
+<p>这个寻找、交换、输出的过程会不断重复，直到生成的密钥流长度与待加密的明文长度相等为止。S 盒的状态也在每一次循环中被动态更新</p>
+<h3 id="第三步"><a href="#第三步" class="headerlink" title="第三步"></a>第三步</h3><p>把生成好的密钥流与明文数据每个字节进行异或运算，得到密文</p>
+<h3 id="简单流程"><a href="#简单流程" class="headerlink" title="简单流程"></a>简单流程</h3><p>加密过程：</p>
+<p>明文 xor 密钥流 &#x3D; 密文</p>
+<p>解密过程</p>
+<p>密文 xor 密钥流 &#x3D; 明文</p>
+<h2 id="关键变量"><a href="#关键变量" class="headerlink" title="关键变量"></a>关键变量</h2><h3 id="密钥流"><a href="#密钥流" class="headerlink" title="密钥流"></a>密钥流</h3><p>密钥流的长度和明文的长度是相应的，从不断变化的S盒生成，计算出一个字节就输出一共字节</p>
+<h3 id="密钥"><a href="#密钥" class="headerlink" title="密钥"></a>密钥</h3><p>一个长度为1-256的数组，决定S盒的初始状态</p>
+<h3 id="状态向量"><a href="#状态向量" class="headerlink" title="状态向量"></a>状态向量</h3><p>一个长度为256的数，经过密钥的变化，变成了一个看似乱序的排序（0-255各出现一次，顺序打乱）</p>
+<h3 id="暂时向量"><a href="#暂时向量" class="headerlink" title="暂时向量"></a>暂时向量</h3><p>一个256字节的数组，把密钥反复填满256字节，在 KSA 阶段使用，PRGA 开始后就不再需要</p>
+<h3 id="图表演示"><a href="#图表演示" class="headerlink" title="图表演示"></a>图表演示</h3><pre><code class="hljs scss">┌─────────────┐    <span class="hljs-built_in">KSA</span>(密钥)    ┌─────────────┐
+│   密钥 K     │ ──────────────▶ │  状态向量 S  │
+│ (你输入的密码) │               │ (<span class="hljs-number">256</span>字节数组) │
+└─────────────┘                 └──────┬──────┘
+                                       │
+                                 PRGA  │  循环更新
+                                       ▼
+┌─────────────┐                 ┌─────────────┐
+│   暂时向量 T  │ ◀── 从 K 扩展 ──│  状态向量 S  │
+│ (临时变量)   │                 │  (不断变化)  │
+└─────────────┘                 └──────┬──────┘
+                                       │
+                                 每次输出一个字节
+                                       ▼
+                               ┌─────────────┐
+                               │   密钥流     │
+                               │ (伪随机序列) │
+                               └──────┬──────┘
+                                      │
+                                 XOR  │  逐字节
+                                      ▼
+                          明文 ───────────▶ 密文</code></pre>
+
+
+
+<h2 id="实际演示"><a href="#实际演示" class="headerlink" title="实际演示"></a>实际演示</h2><h3 id="python脚本"><a href="#python脚本" class="headerlink" title="python脚本"></a>python脚本</h3><pre><code class="hljs python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">rc4_init</span>(<span class="hljs-params">key</span>):
+    key_length = <span class="hljs-built_in">len</span>(key)
+    <span class="hljs-comment"># 状态向量S</span>
+    S = <span class="hljs-built_in">list</span>(<span class="hljs-built_in">range</span>(<span class="hljs-number">256</span>))
+    <span class="hljs-comment"># 索引值</span>
+    j = <span class="hljs-number">0</span>
+    <span class="hljs-comment"># 遍历S盒每一个位置</span>
+    <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">256</span>):
+        <span class="hljs-comment"># 当i超过密钥长度时循环使用密钥</span>
+        j = (j + S[i] + key[i % key_length]) % <span class="hljs-number">256</span>
+        <span class="hljs-comment"># 打乱S盒的顺序</span>
+        S[i], S[j] = S[j], S[i]
+        <span class="hljs-comment"># 返回被打乱的S盒</span>
+    <span class="hljs-keyword">return</span> S
+
+<span class="hljs-keyword">def</span> <span class="hljs-title function_">rc4_crypt</span>(<span class="hljs-params">S, data</span>):
+    <span class="hljs-comment"># 索引值i，j</span>
+    i = <span class="hljs-number">0</span>
+    j = <span class="hljs-number">0</span>
+    <span class="hljs-comment"># 存放结果（明文或者密文）</span>
+    result = <span class="hljs-built_in">bytearray</span>()
+    <span class="hljs-comment"># 逐字节处理数据</span>
+    <span class="hljs-keyword">for</span> byte <span class="hljs-keyword">in</span> data:
+        <span class="hljs-comment"># 生成密钥流</span>
+        i = (i + <span class="hljs-number">1</span>) % <span class="hljs-number">256</span>
+        j = (j + S[i]) % <span class="hljs-number">256</span>
+        <span class="hljs-comment"># 继续打乱S盒</span>
+        S[i], S[j] = S[j], S[i]
+        <span class="hljs-comment"># k就是密钥流字节</span>
+        k = S[(S[i] + S[j]) % <span class="hljs-number">256</span>]
+        <span class="hljs-comment"># 加密/解密</span>
+        result.append(byte ^ k)
+    <span class="hljs-keyword">return</span> <span class="hljs-built_in">bytes</span>(result)
+
+<span class="hljs-keyword">if</span> __name__ == <span class="hljs-string">&#x27;__main__&#x27;</span>:
+    <span class="hljs-comment"># 密钥K</span>
+    key = <span class="hljs-string">b&#x27;secret_key&#x27;</span>
+    <span class="hljs-comment"># 明文</span>
+    plaintext = <span class="hljs-string">b&#x27;Hello World!&#x27;</span>
+    <span class="hljs-comment"># 用密钥初始S盒</span>
+    S = rc4_init(key)
+    <span class="hljs-comment"># PRGA + XOR，加密</span>
+    ciphertext = rc4_crypt(S, plaintext)
+    <span class="hljs-comment"># 输出密文</span>
+    <span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;start&#x27;</span>, ciphertext.<span class="hljs-built_in">hex</span>())
+    <span class="hljs-comment"># 用同样的密钥初始S盒</span>
+    S = rc4_init(key)
+    <span class="hljs-comment"># PRGA + XOR，解密</span>
+    decrypted = rc4_crypt(S, ciphertext)
+    <span class="hljs-comment"># 输出解密后的密文</span>
+    <span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;end&#x27;</span>,decrypted.decode() )</code></pre>
+
+<p>运行结果</p>
+<pre><code class="hljs livecodeserver"><span class="hljs-built_in">start</span> <span class="hljs-number">0</span>b5af7cdaf75bc493b8cd04a
+<span class="hljs-function"><span class="hljs-keyword">end</span> <span class="hljs-title">Hello</span> <span class="hljs-title">World</span>!</span></code></pre>
+
+<h3 id="c脚本"><a href="#c脚本" class="headerlink" title="c脚本"></a>c脚本</h3><pre><code class="hljs c"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stdio.h&gt;</span></span>
+<span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stdlib.h&gt;</span></span>
+<span class="hljs-comment">// 交换函数</span>
+<span class="hljs-type">void</span> <span class="hljs-title function_">swap</span><span class="hljs-params">(<span class="hljs-type">unsigned</span> <span class="hljs-type">char</span>* a, <span class="hljs-type">unsigned</span> <span class="hljs-type">char</span>* b)</span>
+&#123;
+    <span class="hljs-type">unsigned</span> <span class="hljs-type">char</span> temp = *a;
+    *a = *b;
+    *b = temp;
+&#125;
+<span class="hljs-comment">// 加密/解密函数</span>
+<span class="hljs-type">void</span> <span class="hljs-title function_">RC4_enc</span><span class="hljs-params">(<span class="hljs-type">unsigned</span> <span class="hljs-type">char</span>* plaintext, <span class="hljs-type">int</span> length, <span class="hljs-type">const</span> <span class="hljs-type">char</span>* key)</span>
+&#123;
+    <span class="hljs-type">int</span> i, j;
+    <span class="hljs-comment">// 状态向量</span>
+    <span class="hljs-type">unsigned</span> <span class="hljs-type">char</span>* S;
+    <span class="hljs-comment">// 暂时向量</span>
+    <span class="hljs-type">unsigned</span> <span class="hljs-type">char</span> k[<span class="hljs-number">256</span>];
+    <span class="hljs-type">int</span> keylen = <span class="hljs-number">0</span>;
+	<span class="hljs-comment">// 遍历字符串直到遇到&quot;\0&quot;</span>
+    <span class="hljs-keyword">while</span> (key[keylen] != <span class="hljs-string">&#x27;\0&#x27;</span>)
+    &#123;
+        keylen++;
+    &#125;
+    <span class="hljs-comment">// 构建暂时向量k</span>
+    <span class="hljs-keyword">for</span> ( i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">256</span>; i++)
+    &#123;
+        k[i] = key[i % keylen];
+    &#125;
+    <span class="hljs-comment">// 分配256字节内存</span>
+    S = (<span class="hljs-type">unsigned</span> <span class="hljs-type">char</span>*)<span class="hljs-built_in">malloc</span>(<span class="hljs-number">256</span> * <span class="hljs-keyword">sizeof</span>(<span class="hljs-type">unsigned</span> <span class="hljs-type">char</span>));
+    <span class="hljs-keyword">for</span> ( i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">256</span>; i++)
+    &#123;
+        S[i] = i;
+    &#125;
+    <span class="hljs-comment">// 乱序S盒</span>
+    j = <span class="hljs-number">0</span>;
+    <span class="hljs-keyword">for</span> ( i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">256</span>; i++)
+    &#123;
+        j = (j + S[i] + k[i]) % <span class="hljs-number">256</span>;
+        swap(&amp;S[i], &amp;S[j]);
+    &#125;
+    <span class="hljs-comment">// 伪随机生成算法</span>
+    i = <span class="hljs-number">0</span>;
+    j = <span class="hljs-number">0</span>;
+    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> n = <span class="hljs-number">0</span>; n &lt; length; n++)
+    &#123;
+        i = (i + <span class="hljs-number">1</span>) % <span class="hljs-number">256</span>;
+        j = (j + S[i]) % <span class="hljs-number">256</span>;
+        swap(&amp;S[i], &amp;S[j]);
+        <span class="hljs-type">int</span> t = (S[i] + S[j]) % <span class="hljs-number">256</span>;
+        <span class="hljs-comment">// 异或加密</span>
+        plaintext[n] ^= S[t];
+    &#125;
+    <span class="hljs-comment">// 释放动态分配的内存</span>
+    <span class="hljs-built_in">free</span>(S);
+&#125;
+<span class="hljs-comment">// 主函数</span>
+<span class="hljs-type">int</span> <span class="hljs-title function_">main</span><span class="hljs-params">(<span class="hljs-type">void</span>)</span>
+&#123;
+    <span class="hljs-comment">// 明文</span>
+    <span class="hljs-type">unsigned</span> <span class="hljs-type">char</span> plaintext[]=
+    &#123;
+        <span class="hljs-number">0x11</span>,<span class="hljs-number">0x45</span>,<span class="hljs-number">0x14</span>
+    &#125;;
+    <span class="hljs-comment">// 密钥key</span>
+    <span class="hljs-type">const</span> <span class="hljs-type">char</span> key[] = <span class="hljs-string">&quot;key&quot;</span>;
+    <span class="hljs-comment">// 调用rc4加密</span>
+    RC4_enc(plaintext, <span class="hljs-keyword">sizeof</span>(plaintext), key);
+	<span class="hljs-comment">// 输出加密后的密文</span>
+    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-keyword">sizeof</span>(plaintext); i++)
+        <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%02X&quot;</span>, plaintext[i]);
+    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;\n&quot;</span>);
+    
+    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+&#125;</code></pre>
+
+<p>输出结果</p>
+<pre><code class="hljs">1A2920</code></pre>
+
+<h2 id="rc4魔改"><a href="#rc4魔改" class="headerlink" title="rc4魔改"></a>rc4魔改</h2><p>rc4在ctf的题目中往往不是使用标准的rc4，而是使用了魔改，并且魔改通常不是单独使用，而且混合使用，多种魔改一起使用</p>
+<h3 id="改常量"><a href="#改常量" class="headerlink" title="改常量"></a>改常量</h3><p>标准的rc4的部分常量是死的，出题人会把常量改掉，让加密逻辑变得完全不同</p>
+<p>常见的改变点：</p>
+<table>
+<thead>
+<tr>
+<th>改动位置</th>
+<th>标准值</th>
+<th>实例</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>S 盒大小</td>
+<td>256</td>
+<td>改成 128、64、甚至 50</td>
+</tr>
+<tr>
+<td>PRGA 中 i 的步进</td>
+<td>i &#x3D; （i + 1) % 256</td>
+<td>改成 i &#x3D; (i + 3) % 256 或 i &#x3D; (i + 7) % 128</td>
+</tr>
+<tr>
+<td>j 的更新公式</td>
+<td>j &#x3D; (j + S[i]) % 256</td>
+<td>改成 j &#x3D; (j + S[i] + 1) % 256 或 j &#x3D; (j + S[i] * 2) % 128</td>
+</tr>
+<tr>
+<td>密钥流取值位置</td>
+<td>S[(S[i] + S[j]) % 256]</td>
+<td>改成 S[(S[i] ^ S[j]) % 256] 或 S[(S[i] + S[j] + 1) % 128]</td>
+</tr>
+</tbody></table>
+<p>常量的改动不破坏算法的对称性，只要加密和解密用同一套常量，密钥流就完全一致</p>
+<h4 id="实际代码演示"><a href="#实际代码演示" class="headerlink" title="实际代码演示"></a>实际代码演示</h4><pre><code class="hljs python"><span class="hljs-comment"># 带常量修改的RC4初始化函数</span>
+<span class="hljs-keyword">def</span> <span class="hljs-title function_">rc4_init_constant</span>(<span class="hljs-params">key, constant</span>):
+    <span class="hljs-comment"># 获取密钥长度</span>
+    key_length = <span class="hljs-built_in">len</span>(key)
+    <span class="hljs-comment"># 初始化状态向量S为0-255</span>
+    S = <span class="hljs-built_in">list</span>(<span class="hljs-built_in">range</span>(<span class="hljs-number">256</span>))
+    <span class="hljs-comment"># 索引值j</span>
+    j = <span class="hljs-number">0</span>
+    <span class="hljs-comment"># KSA阶段：用密钥和常量共同打乱S盒</span>
+    <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">256</span>):
+        <span class="hljs-comment"># 在标准RC4基础上增加了constant常量</span>
+        j = (j + S[i] + key[i % key_length] + constant) % <span class="hljs-number">256</span>
+        <span class="hljs-comment"># 交换S[i]和S[j]</span>
+        S[i], S[j] = S[j], S[i]
+    <span class="hljs-comment"># 返回被打乱的S盒</span>
+    <span class="hljs-keyword">return</span> S
+
+<span class="hljs-comment"># 带常量修改的RC4加密/解密函数</span>
+<span class="hljs-keyword">def</span> <span class="hljs-title function_">rc4_crypt_constant</span>(<span class="hljs-params">S, data, constant</span>):
+    <span class="hljs-comment"># 索引值i，j</span>
+    i = <span class="hljs-number">0</span>
+    j = <span class="hljs-number">0</span>
+    <span class="hljs-comment"># 存放结果（明文或者密文）</span>
+    result = <span class="hljs-built_in">bytearray</span>()
+    <span class="hljs-comment"># 逐字节处理数据</span>
+    <span class="hljs-keyword">for</span> byte <span class="hljs-keyword">in</span> data:
+        <span class="hljs-comment"># i的步进改为constant（标准RC4是i = (i + 1) % 256）</span>
+        i = (i + constant) % <span class="hljs-number">256</span>
+        <span class="hljs-comment"># j的更新增加了constant常量</span>
+        j = (j + S[i] + constant) % <span class="hljs-number">256</span>
+        <span class="hljs-comment"># 继续打乱S盒</span>
+        S[i], S[j] = S[j], S[i]
+        <span class="hljs-comment"># 密钥流取值位置也增加了constant常量</span>
+        k = S[(S[i] + S[j] + constant) % <span class="hljs-number">256</span>]
+        <span class="hljs-comment"># 加密/解密：异或运算</span>
+        result.append(byte ^ k)
+    <span class="hljs-keyword">return</span> <span class="hljs-built_in">bytes</span>(result)
+
+<span class="hljs-keyword">if</span> __name__ == <span class="hljs-string">&#x27;__main__&#x27;</span>:
+    <span class="hljs-comment"># 密钥K</span>
+    key = <span class="hljs-string">b&#x27;secret_key&#x27;</span>
+    <span class="hljs-comment"># 明文</span>
+    plaintext = <span class="hljs-string">b&#x27;Hello World!&#x27;</span>
+    <span class="hljs-comment"># 修改的常量值</span>
+    constant = <span class="hljs-number">73</span>
+
+    <span class="hljs-comment"># 用密钥和常量初始化S盒</span>
+    S = rc4_init_constant(key, constant)
+    <span class="hljs-comment"># PRGA + XOR，加密</span>
+    ciphertext = rc4_crypt_constant(S, plaintext, constant)
+    <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;secret:&quot;</span>, ciphertext.<span class="hljs-built_in">hex</span>())
+
+    <span class="hljs-comment"># 用同样的密钥和常量初始化S盒</span>
+    S = rc4_init_constant(key, constant)
+    <span class="hljs-comment"># PRGA + XOR，解密</span>
+    decrypted = rc4_crypt_constant(S, ciphertext, constant)
+    <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;public:&quot;</span>, decrypted.decode())</code></pre>
+
+<pre><code class="hljs c"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stdio.h&gt;</span></span>
+<span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;string.h&gt;</span></span>
+<span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stdlib.h&gt;</span></span>
+
+<span class="hljs-comment">// 带常量修改的RC4初始化函数</span>
+<span class="hljs-type">void</span> <span class="hljs-title function_">rc4_init_constant</span><span class="hljs-params">(<span class="hljs-type">unsigned</span> <span class="hljs-type">char</span> *S, <span class="hljs-type">const</span> <span class="hljs-type">unsigned</span> <span class="hljs-type">char</span> *key, <span class="hljs-type">int</span> key_length, <span class="hljs-type">unsigned</span> <span class="hljs-type">char</span> constant)</span>
+&#123;
+    <span class="hljs-type">int</span> i, j = <span class="hljs-number">0</span>;
+
+    <span class="hljs-comment">// 初始化状态向量S为0-255</span>
+    <span class="hljs-keyword">for</span> ( i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">256</span>; i++)
+    &#123;
+        S[i] = i;
+    &#125;
+    
+    <span class="hljs-comment">// KSA阶段：用密钥和常量共同打乱S盒</span>
+    <span class="hljs-keyword">for</span> ( i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">256</span>; i++)
+    &#123;
+        <span class="hljs-comment">// 在标准RC4基础上增加了constant常量</span>
+        j =(j + S[i] + key[i % key_length] + constant) % <span class="hljs-number">256</span>;
+        <span class="hljs-comment">// 交换S[i]和S[j]</span>
+        <span class="hljs-type">unsigned</span> <span class="hljs-type">char</span> temp = S[i];
+        S[i] = S[j];
+        S[j] = temp;
+    &#125;
+    
+&#125;
+
+<span class="hljs-comment">// 带常量修改的RC4加密/解密函数</span>
+<span class="hljs-type">void</span> <span class="hljs-title function_">rc4_crtpt_constant</span><span class="hljs-params">(<span class="hljs-type">unsigned</span> <span class="hljs-type">char</span> *S, <span class="hljs-type">const</span> <span class="hljs-type">unsigned</span> <span class="hljs-type">char</span> *data, <span class="hljs-type">unsigned</span> <span class="hljs-type">char</span> * result, <span class="hljs-type">int</span> data_lengrh, <span class="hljs-type">unsigned</span> <span class="hljs-type">char</span> constant)</span>
+&#123;
+    <span class="hljs-comment">// 索引值i，j</span>
+    <span class="hljs-type">int</span> i = <span class="hljs-number">0</span>, j = <span class="hljs-number">0</span>;
+
+    <span class="hljs-comment">// 逐字节处理数据</span>
+    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> n = <span class="hljs-number">0</span>; n &lt; data_lengrh; n++)
+    &#123;
+        <span class="hljs-comment">// i的步进改为constant（标准RC4是i = (i + 1) % 256）</span>
+        i = (i + constant) % <span class="hljs-number">256</span>;
+        <span class="hljs-comment">// j的更新增加了constant常量</span>
+        j = (j + S[i] + constant) % <span class="hljs-number">256</span>;
+
+        <span class="hljs-comment">// 交换S[i]和S[j]，继续打乱S盒</span>
+        <span class="hljs-type">unsigned</span> <span class="hljs-type">char</span> temp = S[i];
+        S[i] = S[j];
+        S[j] = temp;
+
+        <span class="hljs-comment">// 密钥流取值位置也增加了constant常量</span>
+        <span class="hljs-type">unsigned</span> <span class="hljs-type">char</span> k = S[(S[i] + S[j] + constant) % <span class="hljs-number">256</span>];
+        <span class="hljs-comment">// 加密/解密：异或运算</span>
+        result[n] = data[n] ^ k;
+    &#125;
+    
+&#125;
+
+<span class="hljs-comment">// 打印十六进制数据</span>
+<span class="hljs-type">void</span> <span class="hljs-title function_">print_hex</span><span class="hljs-params">(<span class="hljs-type">const</span> <span class="hljs-type">unsigned</span> <span class="hljs-type">char</span> *data, <span class="hljs-type">int</span> length)</span>
+&#123;
+    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">0</span>; i &lt; length; i++)
+    &#123;
+        <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%02x&quot;</span>, data[i]);
+    &#125;
+    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;\n&quot;</span>);
+&#125;
+
+<span class="hljs-type">int</span> <span class="hljs-title function_">main</span><span class="hljs-params">(<span class="hljs-type">void</span>)</span>
+&#123;
+    <span class="hljs-comment">// 密钥</span>
+    <span class="hljs-type">const</span> <span class="hljs-type">unsigned</span> <span class="hljs-type">char</span> key[] = <span class="hljs-string">&quot;secret_key&quot;</span>;
+    <span class="hljs-comment">// 明文</span>
+    <span class="hljs-type">const</span> <span class="hljs-type">unsigned</span> <span class="hljs-type">char</span> plaintext[] = <span class="hljs-string">&quot;Hello World!&quot;</span>;
+    <span class="hljs-comment">// 修改的常量值</span>
+    <span class="hljs-type">unsigned</span> <span class="hljs-type">char</span> constant = <span class="hljs-number">73</span>;
+
+    <span class="hljs-type">int</span> key_length = <span class="hljs-built_in">strlen</span>((<span class="hljs-type">const</span> <span class="hljs-type">char</span> *)key);
+    <span class="hljs-type">int</span> text_length = <span class="hljs-built_in">strlen</span>((<span class="hljs-type">const</span> <span class="hljs-type">char</span> *)plaintext);
+
+    <span class="hljs-comment">// 状态向量S</span>
+    <span class="hljs-type">unsigned</span> <span class="hljs-type">char</span> S[<span class="hljs-number">256</span>];
+
+    <span class="hljs-comment">// 加密</span>
+    <span class="hljs-type">unsigned</span> <span class="hljs-type">char</span> ciphertext[<span class="hljs-number">256</span>];
+    rc4_init_constant(S, key, key_length, constant);
+    rc4_crtpt_constant(S, plaintext, ciphertext, text_length, constant);
+
+    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;ciphertext:&quot;</span>);
+    print_hex(ciphertext, text_length);
+
+    <span class="hljs-comment">// 解密</span>
+    <span class="hljs-type">unsigned</span> <span class="hljs-type">char</span> decrypted[<span class="hljs-number">256</span>];
+    rc4_init_constant(S, key, key_length, constant);
+    rc4_crtpt_constant(S, ciphertext, decrypted, text_length, constant);
+    decrypted[text_length] = <span class="hljs-string">&#x27;\0&#x27;</span>;
+
+    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;decryted: %s\n&quot;</span>, decrypted);
+
+    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+&#125;</code></pre>
+
+<p>输出结果</p>
+<pre><code class="hljs avrasm"><span class="hljs-symbol">secret:</span> baadb8398fcdd1503e17668a
+<span class="hljs-symbol">public:</span> Hello World!</code></pre>
+
+
+
+<h3 id="换S盒"><a href="#换S盒" class="headerlink" title="换S盒"></a>换S盒</h3><p>标准 RC4 的 S 盒初始值是 [0, 1, 2, …, 255]，我们可以把S盒换成自定义的字节数组</p>
+<p>例如，改变顺序，减小S盒等等</p>
+<p>但是不管初始 S 盒长什么样，KSA 会把它进一步打乱， 但不同的起点会导致完全不同的 S 盒演化路径，最终产生的密钥流也完全不同</p>
+<h4 id="实际代码演示-1"><a href="#实际代码演示-1" class="headerlink" title="实际代码演示"></a>实际代码演示</h4><pre><code class="hljs python"><span class="hljs-comment"># 根据种子生成自定义S盒</span>
+<span class="hljs-keyword">def</span> <span class="hljs-title function_">generate_custom_sbox</span>(<span class="hljs-params">seed</span>):
+    <span class="hljs-comment"># 初始化为0-255</span>
+    S = <span class="hljs-built_in">list</span>(<span class="hljs-built_in">range</span>(<span class="hljs-number">256</span>))
+    <span class="hljs-comment"># 使用种子打乱S盒顺序</span>
+    <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">256</span>):
+        j = (i + seed + S[i]) % <span class="hljs-number">256</span>
+        S[i], S[j] = S[j], S[i]
+    <span class="hljs-keyword">return</span> S
+
+<span class="hljs-comment"># 使用自定义S盒的RC4初始化函数</span>
+<span class="hljs-keyword">def</span> <span class="hljs-title function_">rc4_init_custom_sbox</span>(<span class="hljs-params">key, seed</span>):
+    <span class="hljs-comment"># 获取密钥长度</span>
+    key_length = <span class="hljs-built_in">len</span>(key)
+    <span class="hljs-comment"># 先用种子生成自定义初始S盒</span>
+    S = generate_custom_sbox(seed)
+    <span class="hljs-comment"># 索引值j</span>
+    j = <span class="hljs-number">0</span>
+    <span class="hljs-comment"># KSA阶段：用密钥进一步打乱自定义S盒</span>
+    <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">256</span>):
+        j = (j + S[i] + key [i % key_length]) % <span class="hljs-number">256</span>
+        S[i], S[j] = S[j], S[i]
+    <span class="hljs-keyword">return</span> S
+
+<span class="hljs-comment"># 标准RC4加密/解密函数（PRGA阶段）</span>
+<span class="hljs-keyword">def</span> <span class="hljs-title function_">rc4_crypt</span>(<span class="hljs-params">S, data</span>):
+    <span class="hljs-comment"># 索引值i，j</span>
+    i = <span class="hljs-number">0</span>
+    j = <span class="hljs-number">0</span>
+    <span class="hljs-comment"># 存放结果（明文或者密文）</span>
+    result = <span class="hljs-built_in">bytearray</span>()
+    <span class="hljs-comment"># 逐字节处理数据</span>
+    <span class="hljs-keyword">for</span> byte <span class="hljs-keyword">in</span> data:
+        i = (i +<span class="hljs-number">1</span>) % <span class="hljs-number">256</span>
+        j = (j + S[i]) % <span class="hljs-number">256</span>
+        S[i], S[j] = S[j], S[i]
+        <span class="hljs-comment"># k就是密钥流字节</span>
+        k = S[(S[i] + S[j]) % <span class="hljs-number">256</span>]
+        <span class="hljs-comment"># 加密/解密：异或运算</span>
+        result.append(byte ^ k)
+    <span class="hljs-keyword">return</span> <span class="hljs-built_in">bytes</span>(result)
+
+<span class="hljs-keyword">if</span> __name__ == <span class="hljs-string">&#x27;__main__&#x27;</span>:
+    <span class="hljs-comment"># 密钥K</span>
+    key = <span class="hljs-string">b&#x27;secret_key&#x27;</span>
+    <span class="hljs-comment"># 明文</span>
+    plaintext = <span class="hljs-string">b&#x27;Hello World!&#x27;</span>
+    <span class="hljs-comment"># 生成自定义S盒的种子</span>
+    seed = <span class="hljs-number">12345</span>
+
+    <span class="hljs-comment"># 用密钥和种子初始化自定义S盒</span>
+    S = rc4_init_custom_sbox(key, seed)
+    <span class="hljs-comment"># PRGA + XOR，加密</span>
+    ciphertext = rc4_crypt(S, plaintext)
+    <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;another Sbox: &quot;</span>, ciphertext.<span class="hljs-built_in">hex</span>())
+
+    <span class="hljs-comment"># 用同样的密钥和种子初始化自定义S盒</span>
+    S = rc4_init_custom_sbox(key, seed)
+    <span class="hljs-comment"># PRGA + XOR，解密</span>
+    decrypted = rc4_crypt(S, ciphertext)
+    <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;public: &quot;</span>, decrypted.decode())</code></pre>
+
+<pre><code class="hljs c"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stdio.h&gt;</span></span>
+<span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;string.h&gt;</span></span>
+<span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stdlib.h&gt;</span></span>
+
+<span class="hljs-comment">// 根据种子生成自定义S盒</span>
+<span class="hljs-type">void</span> <span class="hljs-title function_">generate_custom_sbox</span><span class="hljs-params">(<span class="hljs-type">unsigned</span> <span class="hljs-type">char</span> *S, <span class="hljs-type">int</span> seed)</span>
+&#123;
+    <span class="hljs-type">int</span> i, j;
+
+    <span class="hljs-comment">// 初始化为0-255</span>
+    <span class="hljs-keyword">for</span> (i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">256</span>; i++)
+    &#123;
+        S[i] = i;
+    &#125;
+    
+    <span class="hljs-comment">// 使用种子打乱S盒顺序</span>
+    <span class="hljs-keyword">for</span> (i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">256</span>; i++)
+    &#123;
+        j = (i + seed + S[i]) % <span class="hljs-number">256</span>;
+
+        <span class="hljs-type">unsigned</span> <span class="hljs-type">char</span> temp = S[i];
+        S[i] = S[j];
+        S[j] = temp;
+    &#125;
+&#125;
+
+<span class="hljs-comment">// 使用自定义S盒的RC4初始化函数</span>
+<span class="hljs-type">void</span> <span class="hljs-title function_">rc4_init_custom_sbox</span><span class="hljs-params">(<span class="hljs-type">unsigned</span> <span class="hljs-type">char</span> *S, <span class="hljs-type">const</span> <span class="hljs-type">unsigned</span> <span class="hljs-type">char</span> *key, <span class="hljs-type">int</span> key_length, <span class="hljs-type">int</span> seed)</span>
+&#123;
+    <span class="hljs-type">int</span> i, j = <span class="hljs-number">0</span>;
+
+    <span class="hljs-comment">// 先用种子生成自定义初始S盒</span>
+    generate_custom_sbox(S, seed);
+    
+    <span class="hljs-comment">// KSA阶段：用密钥进一步打乱自定义S盒</span>
+    <span class="hljs-keyword">for</span> (i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">256</span>; i++)
+    &#123;
+        j = (j + S[i] + key[i % key_length]) % <span class="hljs-number">256</span>;
+
+        <span class="hljs-type">unsigned</span> <span class="hljs-type">char</span> temp = S[i];
+        S[i] = S[j];
+        S[j] = temp;
+    &#125;
+&#125;
+
+<span class="hljs-comment">// 标准RC4加密/解密函数（PRGA阶段）</span>
+<span class="hljs-type">void</span> <span class="hljs-title function_">rc4_crypt</span><span class="hljs-params">(<span class="hljs-type">unsigned</span> <span class="hljs-type">char</span> *S, <span class="hljs-type">const</span> <span class="hljs-type">unsigned</span> <span class="hljs-type">char</span> *data, <span class="hljs-type">unsigned</span> <span class="hljs-type">char</span> *result, <span class="hljs-type">int</span> data_length)</span>
+&#123;
+    <span class="hljs-comment">// 索引值i，j</span>
+    <span class="hljs-type">int</span> i = <span class="hljs-number">0</span>, j = <span class="hljs-number">0</span>;
+
+    <span class="hljs-comment">// 逐字节处理数据</span>
+    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> n = <span class="hljs-number">0</span>; n &lt; data_length; n++)
+    &#123;
+        i = (i + <span class="hljs-number">1</span>) % <span class="hljs-number">256</span>;
+        j = (j + S[i]) % <span class="hljs-number">256</span>;
+
+        <span class="hljs-comment">// 交换S[i]和S[j]，继续打乱S盒</span>
+        <span class="hljs-type">unsigned</span> <span class="hljs-type">char</span> temp = S[i];
+        S[i] = S[j];
+        S[j] = temp;
+
+        <span class="hljs-comment">// k就是密钥流字节</span>
+        <span class="hljs-type">unsigned</span> <span class="hljs-type">char</span> k = S[(S[i] + S[j]) % <span class="hljs-number">256</span>];
+
+        <span class="hljs-comment">// 加密/解密：异或运算</span>
+        result[n] = data[n] ^ k;
+    &#125;
+&#125;
+
+<span class="hljs-comment">// 打印十六进制数据</span>
+<span class="hljs-type">void</span> <span class="hljs-title function_">print_hex</span><span class="hljs-params">(<span class="hljs-type">const</span> <span class="hljs-type">unsigned</span> <span class="hljs-type">char</span> *data, <span class="hljs-type">int</span> length)</span>
+&#123;
+    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">0</span>; i &lt; length; i++)
+    &#123;
+        <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%02x&quot;</span>, data[i]);
+    &#125;
+    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;\n&quot;</span>);
+&#125;
+
+<span class="hljs-type">int</span> <span class="hljs-title function_">main</span><span class="hljs-params">(<span class="hljs-type">void</span>)</span>
+&#123;
+    <span class="hljs-comment">// 密钥</span>
+    <span class="hljs-type">const</span> <span class="hljs-type">unsigned</span> <span class="hljs-type">char</span> key[] = <span class="hljs-string">&quot;secret_key&quot;</span>;
+    <span class="hljs-type">int</span> key_length = <span class="hljs-built_in">strlen</span>((<span class="hljs-type">const</span> <span class="hljs-type">char</span> *)key);
+
+    <span class="hljs-comment">// 明文</span>
+    <span class="hljs-type">const</span> <span class="hljs-type">unsigned</span> <span class="hljs-type">char</span> plaintext[] = <span class="hljs-string">&quot;Hello World!&quot;</span>;
+    <span class="hljs-type">int</span> plaintext_length = <span class="hljs-built_in">strlen</span>((<span class="hljs-type">const</span> <span class="hljs-type">char</span> *)plaintext);
+
+    <span class="hljs-comment">// 状态向量S</span>
+    <span class="hljs-type">unsigned</span> <span class="hljs-type">char</span> S[<span class="hljs-number">256</span>];
+    <span class="hljs-type">unsigned</span> <span class="hljs-type">char</span> ciphertext[<span class="hljs-number">256</span>];
+    <span class="hljs-type">unsigned</span> <span class="hljs-type">char</span> decrypted[<span class="hljs-number">256</span>];
+    <span class="hljs-comment">// 生成自定义S盒的种子</span>
+    <span class="hljs-type">int</span> seed = <span class="hljs-number">12345</span>;
+
+    <span class="hljs-comment">// 加密</span>
+    rc4_init_custom_sbox(S, key, key_length, seed);
+    rc4_crypt(S, plaintext, ciphertext, plaintext_length);
+
+    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;Ciphertext: &quot;</span>);
+    print_hex(ciphertext, plaintext_length);
+
+    <span class="hljs-comment">// 解密</span>
+    rc4_init_custom_sbox(S, key, key_length, seed);
+    rc4_crypt(S, ciphertext, decrypted, plaintext_length);
+    
+    decrypted[plaintext_length] = <span class="hljs-string">&#x27;\0&#x27;</span>;
+    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;Decrypted: %s\n&quot;</span>, decrypted);
+
+    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+&#125;</code></pre>
+
+<p>输出结果</p>
+<pre><code class="hljs mipsasm">another <span class="hljs-keyword">Sbox: </span> <span class="hljs-keyword">b4f8979889192126fc130d62</span>
+<span class="hljs-keyword"></span><span class="hljs-symbol">public:</span>  Hello World!</code></pre>
+
+
+
+<h3 id="加可逆变换"><a href="#加可逆变换" class="headerlink" title="加可逆变换"></a>加可逆变换</h3><p>标准 RC4 把从 S 盒取出的字节直接作为密钥流与明文异或。出题人在这个环节额外加了一层数学运算，让密钥流字节经过”二次加工”</p>
+<p>这个运算必须是可逆的，否则出题人自己也没法解密</p>
+<p>常见可逆变换</p>
+<table>
+<thead>
+<tr>
+<th>变换类型</th>
+<th>示例</th>
+<th>可逆原因</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>额外异或</td>
+<td>k &#x3D; S[t] ^ 0x55</td>
+<td>再异或一次 0x55 就还原</td>
+</tr>
+<tr>
+<td>字节循环移位</td>
+<td>k &#x3D; S[t] ^ 0x55</td>
+<td>反向移位就还原</td>
+</tr>
+<tr>
+<td>固定表替换</td>
+<td>k &#x3D; lut[S[t]]</td>
+<td>只要 LUT 是双射（一对一映射），就能建逆表还原</td>
+</tr>
+<tr>
+<td>加减常量</td>
+<td>k &#x3D; (S[t] + 0x37) % 256</td>
+<td>减回去就还原</td>
+</tr>
+<tr>
+<td>与S盒其他元素运算</td>
+<td>k &#x3D; S[t] ^ S[(t+1)%256]</td>
+<td>结合 S 盒状态可逆推</td>
+</tr>
+</tbody></table>
+<p>解密时，只要用同样的 f 函数处理同样的 S 盒状态，就能生成同样的密钥流，异或回去就还原明文，对称性由 f 的可逆性保证</p>
+<h4 id="实际代码演示-2"><a href="#实际代码演示-2" class="headerlink" title="实际代码演示"></a>实际代码演示</h4><pre><code class="hljs python"><span class="hljs-comment"># 可逆变换函数：对字节进行加密方向或解密方向的变换</span>
+<span class="hljs-keyword">def</span> <span class="hljs-title function_">reversible_transform</span>(<span class="hljs-params">byte, forward</span>):
+    <span class="hljs-keyword">if</span> forward:
+        <span class="hljs-comment"># 加密方向变换：加37 → 循环左移3位 → 异或0xA5 → 循环左移7位 → 减19</span>
+        byte = (byte + <span class="hljs-number">37</span>) &amp; <span class="hljs-number">0xFF</span>
+        byte = ((byte &lt;&lt; <span class="hljs-number">3</span>) | (byte &gt;&gt; <span class="hljs-number">5</span>)) &amp; <span class="hljs-number">0xFF</span>
+        byte = byte ^ <span class="hljs-number">0xA5</span>
+        byte = ((byte &lt;&lt; <span class="hljs-number">7</span>) | (byte &gt;&gt; <span class="hljs-number">1</span>)) &amp; <span class="hljs-number">0xFF</span>
+        byte = (byte - <span class="hljs-number">19</span>) &amp; <span class="hljs-number">0xFF</span>
+    <span class="hljs-keyword">else</span>:
+        <span class="hljs-comment"># 解密方向变换：反向操作，与加密顺序相反</span>
+        byte = (byte + <span class="hljs-number">19</span>) &amp; <span class="hljs-number">0xFF</span>
+        byte = ((byte &gt;&gt; <span class="hljs-number">7</span>) | (byte &lt;&lt; <span class="hljs-number">1</span>)) &amp; <span class="hljs-number">0xFF</span>
+        byte = byte ^ <span class="hljs-number">0xA5</span>
+        byte = ((byte &gt;&gt; <span class="hljs-number">3</span>) | (byte &lt;&lt; <span class="hljs-number">5</span>)) &amp; <span class="hljs-number">0xFF</span>
+        byte = (byte - <span class="hljs-number">37</span>) &amp; <span class="hljs-number">0xFF</span>   
+    <span class="hljs-keyword">return</span> byte
+
+<span class="hljs-comment"># 标准RC4初始化函数（KSA阶段）</span>
+<span class="hljs-keyword">def</span> <span class="hljs-title function_">rc4_init</span>(<span class="hljs-params">key</span>):
+    key_length = <span class="hljs-built_in">len</span>(key)
+    <span class="hljs-comment"># 初始化状态向量S为0-255</span>
+    S = <span class="hljs-built_in">list</span>(<span class="hljs-built_in">range</span>(<span class="hljs-number">256</span>))
+    j = <span class="hljs-number">0</span>
+    <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">256</span>):
+        j = (j + S[i] + key[i % key_length]) % <span class="hljs-number">256</span>
+        S[i], S[j] = S[j], S[i]
+    <span class="hljs-keyword">return</span> S
+
+<span class="hljs-comment"># 带可逆变换的RC4加密函数</span>
+<span class="hljs-keyword">def</span> <span class="hljs-title function_">rc4_crypt_transform</span>(<span class="hljs-params">S, data</span>):
+    <span class="hljs-comment"># 索引值i，j</span>
+    i = <span class="hljs-number">0</span>
+    j = <span class="hljs-number">0</span>
+    <span class="hljs-comment"># 存放结果（密文）</span>
+    result = <span class="hljs-built_in">bytearray</span>()
+    <span class="hljs-comment"># 逐字节处理数据</span>
+    <span class="hljs-keyword">for</span> byte <span class="hljs-keyword">in</span> data:
+        i = (i + <span class="hljs-number">1</span>) % <span class="hljs-number">256</span>
+        j = (j + S[i]) % <span class="hljs-number">256</span>
+        S[i], S[j] = S[j], S[i]
+        <span class="hljs-comment"># k就是密钥流字节</span>
+        k = S[(S[i] + S[j]) % <span class="hljs-number">256</span>]
+        <span class="hljs-comment"># 先对明文进行可逆变换，再与密钥流异或</span>
+        transformed = reversible_transform(byte, <span class="hljs-literal">True</span>)
+        result.append(transformed ^ k)
+    <span class="hljs-keyword">return</span> <span class="hljs-built_in">bytes</span>(result)
+
+<span class="hljs-comment"># 带可逆变换的RC4解密函数</span>
+<span class="hljs-keyword">def</span> <span class="hljs-title function_">rc4_decrypt_transform</span>(<span class="hljs-params">S, data</span>):
+    <span class="hljs-comment"># 索引值i，j</span>
+    i = <span class="hljs-number">0</span>
+    j = <span class="hljs-number">0</span>
+    <span class="hljs-comment"># 存放结果（明文）</span>
+    result = <span class="hljs-built_in">bytearray</span>()
+    <span class="hljs-comment"># 逐字节处理数据</span>
+    <span class="hljs-keyword">for</span> byte <span class="hljs-keyword">in</span> data:
+        i = (i + <span class="hljs-number">1</span>) % <span class="hljs-number">256</span>
+        j = (j + S[i]) % <span class="hljs-number">256</span>
+        S[i], S[j] = S[j], S[i]
+        <span class="hljs-comment"># k就是密钥流字节</span>
+        k = S[(S[i] + S[j]) % <span class="hljs-number">256</span>]
+        <span class="hljs-comment"># 先与密钥流异或，再进行逆向可逆变换</span>
+        decrypted = byte ^ k
+        result.append(reversible_transform(decrypted, <span class="hljs-literal">False</span>))
+    <span class="hljs-keyword">return</span> <span class="hljs-built_in">bytes</span>(result)
+
+<span class="hljs-keyword">if</span> __name__ == <span class="hljs-string">&#x27;__main__&#x27;</span>:
+    <span class="hljs-comment"># 密钥K</span>
+    key = <span class="hljs-string">b&#x27;secret_key&#x27;</span>
+    <span class="hljs-comment"># 明文</span>
+    plaintext = <span class="hljs-string">b&#x27;Hello World!&#x27;</span>
+
+    <span class="hljs-comment"># 用密钥初始化S盒</span>
+    S = rc4_init(key)
+    <span class="hljs-comment"># 加密</span>
+    ciphertext = rc4_crypt_transform(S, plaintext)
+    <span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;secret: &#x27;</span>, ciphertext.<span class="hljs-built_in">hex</span>())
+
+    <span class="hljs-comment"># 用同样的密钥初始化S盒</span>
+    S = rc4_init(key)
+    <span class="hljs-comment"># 解密</span>
+    decrypted = rc4_decrypt_transform(S, ciphertext)
+    <span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;public: &#x27;</span>, decrypted.decode())</code></pre>
+
+<pre><code class="hljs c"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stdio.h&gt;</span></span>
+<span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;string.h&gt;</span></span>
+<span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stdlib.h&gt;</span></span>
+
+<span class="hljs-comment">// 可逆变换函数：对字节进行加密方向或解密方向的变换</span>
+<span class="hljs-type">unsigned</span> <span class="hljs-type">char</span> <span class="hljs-title function_">reversible_transform</span><span class="hljs-params">(<span class="hljs-type">unsigned</span> <span class="hljs-type">char</span> byte, <span class="hljs-type">int</span> forword)</span>
+&#123;
+    <span class="hljs-keyword">if</span> (forword)
+    &#123;
+        <span class="hljs-comment">// 加密方向变换：加37 → 循环左移3位 → 异或0xA5 → 循环左移7位 → 减19</span>
+        byte = (byte + <span class="hljs-number">37</span>) &amp; <span class="hljs-number">0xFF</span>;
+        byte = ((byte &lt;&lt; <span class="hljs-number">3</span>) | (byte &gt;&gt; <span class="hljs-number">5</span>)) &amp; <span class="hljs-number">0xFF</span>;
+        byte = byte ^ <span class="hljs-number">0xA5</span>;
+        byte = ((byte &lt;&lt; <span class="hljs-number">7</span>) | (byte &gt;&gt; <span class="hljs-number">1</span>)) &amp; <span class="hljs-number">0xFF</span>;
+        byte = (byte - <span class="hljs-number">19</span>) &amp; <span class="hljs-number">0xFF</span>;
+    &#125;
+    <span class="hljs-keyword">else</span>
+    &#123;
+        <span class="hljs-comment">// 解密方向变换：反向操作，与加密顺序相反</span>
+        byte = (byte + <span class="hljs-number">19</span>) &amp; <span class="hljs-number">0xFF</span>;
+        byte = ((byte &gt;&gt; <span class="hljs-number">7</span>) | (byte &lt;&lt; <span class="hljs-number">1</span>)) &amp; <span class="hljs-number">0xFF</span>;
+        byte = byte ^ <span class="hljs-number">0xA5</span>;
+        byte = ((byte &gt;&gt; <span class="hljs-number">3</span>) | (byte &lt;&lt; <span class="hljs-number">5</span>)) &amp; <span class="hljs-number">0xFF</span>;
+        byte = (byte - <span class="hljs-number">37</span>) &amp; <span class="hljs-number">0xFF</span>;
+    &#125;
+    <span class="hljs-keyword">return</span> byte;
+
+&#125;
+
+<span class="hljs-comment">// 标准RC4初始化函数（KSA阶段）</span>
+<span class="hljs-type">void</span> <span class="hljs-title function_">rc4_init</span><span class="hljs-params">(<span class="hljs-type">unsigned</span> <span class="hljs-type">char</span>  *S, <span class="hljs-type">const</span> <span class="hljs-type">unsigned</span> <span class="hljs-type">char</span> * key, <span class="hljs-type">int</span> key_length)</span>
+&#123;
+    <span class="hljs-type">int</span> i, j = <span class="hljs-number">0</span>;
+
+    <span class="hljs-comment">// 初始化状态向量S为0-255</span>
+    <span class="hljs-keyword">for</span> ( i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">256</span>; i++)
+    &#123;
+        S[i] = i;
+    &#125;
+    
+    <span class="hljs-comment">// KSA阶段：用密钥打乱S盒</span>
+    <span class="hljs-keyword">for</span> ( i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">256</span>; i++)
+    &#123;
+        j = (j + S[i] + key[i % key_length]) % <span class="hljs-number">256</span>;
+
+        <span class="hljs-comment">// 交换S[i]和S[j]</span>
+        <span class="hljs-type">unsigned</span> <span class="hljs-type">char</span> temp = S[i];
+        S[i] = S[j];
+        S[j] = temp;
+    &#125;
+    
+
+&#125;
+
+<span class="hljs-comment">// 带可逆变换的RC4加密函数</span>
+<span class="hljs-type">void</span> <span class="hljs-title function_">rc4_crypt_transform</span><span class="hljs-params">(<span class="hljs-type">unsigned</span> <span class="hljs-type">char</span> *S, <span class="hljs-type">const</span> <span class="hljs-type">unsigned</span> <span class="hljs-type">char</span> *data, <span class="hljs-type">unsigned</span> <span class="hljs-type">char</span> * result, <span class="hljs-type">int</span> data_length)</span>
+&#123;
+    <span class="hljs-comment">// 索引值i，j</span>
+    <span class="hljs-type">int</span> i = <span class="hljs-number">0</span>, j = <span class="hljs-number">0</span>;
+
+    <span class="hljs-comment">// 逐字节处理数据</span>
+    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> n = <span class="hljs-number">0</span>; n &lt; data_length; n++)
+    &#123;
+        i = (i + <span class="hljs-number">1</span>) % <span class="hljs-number">256</span>;
+        j = (j + S[i]) % <span class="hljs-number">256</span>;
+    
+        <span class="hljs-comment">// 交换S[i]和S[j]，继续打乱S盒</span>
+        <span class="hljs-type">unsigned</span> <span class="hljs-type">char</span> temp = S[i];
+        S[i] = S[j];
+        S[j] = temp;
+
+        <span class="hljs-comment">// k就是密钥流字节</span>
+        <span class="hljs-type">unsigned</span> <span class="hljs-type">char</span> k = S[(S[i] + S[j]) % <span class="hljs-number">256</span>];
+
+        <span class="hljs-comment">// 先对明文进行可逆变换，再与密钥流异或</span>
+        <span class="hljs-type">unsigned</span> <span class="hljs-type">char</span> transformed = reversible_transform(data[n], <span class="hljs-number">1</span>);
+        result[n] = transformed ^ k;
+    &#125;
+&#125;
+
+<span class="hljs-comment">// 带可逆变换的RC4解密函数</span>
+<span class="hljs-type">void</span> <span class="hljs-title function_">rc4_decrypt_transform</span><span class="hljs-params">(<span class="hljs-type">unsigned</span> <span class="hljs-type">char</span> *S, <span class="hljs-type">const</span> <span class="hljs-type">unsigned</span> <span class="hljs-type">char</span> *data, <span class="hljs-type">unsigned</span> <span class="hljs-type">char</span> *result, <span class="hljs-type">int</span> len)</span>
+&#123;
+    <span class="hljs-comment">// 索引值i，j</span>
+    <span class="hljs-type">int</span> i = <span class="hljs-number">0</span>, j = <span class="hljs-number">0</span>;
+    <span class="hljs-comment">// 逐字节处理数据</span>
+    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> n = <span class="hljs-number">0</span>; n &lt; len; n++)
+    &#123;
+        i = (i + <span class="hljs-number">1</span>) % <span class="hljs-number">256</span>;
+        j = (j + S[i]) % <span class="hljs-number">256</span>;
+
+        <span class="hljs-comment">// 交换S[i]和S[j]，继续打乱S盒</span>
+        <span class="hljs-type">unsigned</span> <span class="hljs-type">char</span> temp = S[i];
+        S[i] = S[j];
+        S[j] = temp;
+
+        <span class="hljs-comment">// k就是密钥流字节</span>
+        <span class="hljs-type">unsigned</span> <span class="hljs-type">char</span> k =S[(S[i] + S[j]) % <span class="hljs-number">256</span>];
+
+        <span class="hljs-comment">// 先与密钥流异或，再进行逆向可逆变换</span>
+        result[n] = reversible_transform(data[n] ^ k, <span class="hljs-number">0</span>);
+    &#125;
+    
+&#125;
+
+<span class="hljs-comment">// 打印十六进制数据</span>
+<span class="hljs-type">void</span> <span class="hljs-title function_">print_hex</span><span class="hljs-params">(<span class="hljs-type">const</span> <span class="hljs-type">unsigned</span> <span class="hljs-type">char</span> *data, <span class="hljs-type">int</span> length)</span>
+&#123;
+    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">0</span>; i &lt; length; i++)
+    &#123;
+        <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%02x&quot;</span>, data[i]);
+    &#125;
+    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;\n&quot;</span>);
+&#125;
+
+<span class="hljs-type">int</span> <span class="hljs-title function_">main</span><span class="hljs-params">(<span class="hljs-type">void</span>)</span>
+&#123;
+    <span class="hljs-comment">// 密钥</span>
+    <span class="hljs-type">const</span> <span class="hljs-type">unsigned</span> <span class="hljs-type">char</span> key[] = <span class="hljs-string">&quot;secret_key&quot;</span>;
+    <span class="hljs-comment">// 明文</span>
+    <span class="hljs-type">const</span> <span class="hljs-type">unsigned</span> <span class="hljs-type">char</span> plaintext[] = <span class="hljs-string">&quot;Hello World!&quot;</span>;
+    <span class="hljs-type">int</span> key_len = <span class="hljs-built_in">strlen</span>((<span class="hljs-type">const</span> <span class="hljs-type">char</span> *)key);
+    <span class="hljs-type">int</span> text_len = <span class="hljs-built_in">strlen</span>((<span class="hljs-type">const</span> <span class="hljs-type">char</span> *)plaintext);
+
+    <span class="hljs-comment">// 状态向量S</span>
+    <span class="hljs-type">unsigned</span> <span class="hljs-type">char</span> S[<span class="hljs-number">256</span>];
+    <span class="hljs-type">unsigned</span> <span class="hljs-type">char</span> ciphertext[<span class="hljs-number">256</span>];
+    <span class="hljs-type">unsigned</span> <span class="hljs-type">char</span> decrypted[<span class="hljs-number">256</span>];
+
+    <span class="hljs-comment">// 加密</span>
+    rc4_init(S, key, key_len);
+    rc4_crypt_transform(S, plaintext, ciphertext, text_len);
+    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;secret: &quot;</span>);
+    print_hex(ciphertext, text_len);
+
+    <span class="hljs-comment">// 解密</span>
+    rc4_init(S, key, key_len);
+    rc4_decrypt_transform(S, ciphertext, decrypted, text_len);
+    decrypted[text_len] = <span class="hljs-string">&#x27;\0&#x27;</span>;
+    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;public: %s\n&quot;</span>,decrypted);
+    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+&#125;</code></pre>
+
+<p>输出结果</p>
+<pre><code class="hljs avrasm"><span class="hljs-symbol">secret:</span>  <span class="hljs-number">17</span>da1a20ade1fb4b306155d3
+<span class="hljs-symbol">public:</span>  Hello World!</code></pre>
+
+<h2 id="rc4魔改综合代码演示"><a href="#rc4魔改综合代码演示" class="headerlink" title="rc4魔改综合代码演示"></a>rc4魔改综合代码演示</h2><h3 id="python脚本-1"><a href="#python脚本-1" class="headerlink" title="python脚本"></a>python脚本</h3><pre><code class="hljs python"><span class="hljs-keyword">import</span> random
+
+<span class="hljs-comment"># 根据种子生成自定义S盒</span>
+<span class="hljs-keyword">def</span> <span class="hljs-title function_">generate_custom_sbox</span>(<span class="hljs-params">seed</span>):
+    S = <span class="hljs-built_in">list</span>(<span class="hljs-built_in">range</span>(<span class="hljs-number">256</span>))
+    <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">256</span>):
+        j = (i + seed + S[i]) % <span class="hljs-number">256</span>
+        S[i], S[j] = S[j], S[i]
+    <span class="hljs-keyword">return</span> S
+
+<span class="hljs-comment"># 可逆变换函数：对字节进行加密方向或解密方向的变换</span>
+<span class="hljs-keyword">def</span> <span class="hljs-title function_">reversible_transform</span>(<span class="hljs-params">byte, forward</span>):
+    <span class="hljs-keyword">if</span> forward:
+        <span class="hljs-comment"># 加密方向变换：加37 → 循环左移3位 → 异或0xA5 → 循环左移7位 → 减19</span>
+        byte = (byte + <span class="hljs-number">37</span>) &amp; <span class="hljs-number">0xFF</span>
+        byte = ((byte &lt;&lt; <span class="hljs-number">3</span>) | (byte &gt;&gt; <span class="hljs-number">5</span>)) &amp; <span class="hljs-number">0xFF</span>
+        byte = byte ^ <span class="hljs-number">0xA5</span>
+        byte = ((byte &lt;&lt; <span class="hljs-number">7</span>) | (byte &gt;&gt; <span class="hljs-number">1</span>)) &amp; <span class="hljs-number">0xFF</span>
+        byte = (byte - <span class="hljs-number">19</span>) &amp; <span class="hljs-number">0xFF</span>
+    <span class="hljs-keyword">else</span>:
+        <span class="hljs-comment"># 解密方向变换：反向操作，与加密顺序相反</span>
+        byte = (byte + <span class="hljs-number">19</span>) &amp; <span class="hljs-number">0xFF</span>
+        byte = ((byte &gt;&gt; <span class="hljs-number">7</span>) | (byte &lt;&lt; <span class="hljs-number">1</span>)) &amp; <span class="hljs-number">0xFF</span>
+        byte = byte ^ <span class="hljs-number">0xA5</span>
+        byte = ((byte &gt;&gt; <span class="hljs-number">3</span>) | (byte &lt;&lt; <span class="hljs-number">5</span>)) &amp; <span class="hljs-number">0xFF</span>
+        byte = (byte - <span class="hljs-number">37</span>) &amp; <span class="hljs-number">0xFF</span>
+    <span class="hljs-keyword">return</span> byte
+
+<span class="hljs-comment"># 混合魔改RC4初始化函数（自定义S盒 + 常量修改）</span>
+<span class="hljs-keyword">def</span> <span class="hljs-title function_">rc4_init_mixed</span>(<span class="hljs-params">key, seed, constant</span>):
+    key_length = <span class="hljs-built_in">len</span>(key)
+    <span class="hljs-comment"># 先用种子生成自定义初始S盒</span>
+    S = generate_custom_sbox(seed)
+    j = <span class="hljs-number">0</span>
+    <span class="hljs-comment"># KSA阶段：用密钥和常量共同打乱S盒</span>
+    <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">256</span>):
+        j = (j + S[i] + key[i % key_length] + constant) % <span class="hljs-number">256</span>
+        S[i], S[j] = S[j], S[i]
+    <span class="hljs-keyword">return</span> S
+
+<span class="hljs-comment"># 混合魔改RC4加密函数（常量修改 + 可逆变换）</span>
+<span class="hljs-keyword">def</span> <span class="hljs-title function_">rc4_crypt_mixed</span>(<span class="hljs-params">S, data, constant</span>):
+    <span class="hljs-comment"># 索引值i，j</span>
+    i = <span class="hljs-number">0</span>
+    j = <span class="hljs-number">0</span>
+    <span class="hljs-comment"># 存放结果（密文）</span>
+    result = <span class="hljs-built_in">bytearray</span>()
+    <span class="hljs-comment"># 逐字节处理数据</span>
+    <span class="hljs-keyword">for</span> byte <span class="hljs-keyword">in</span> data:
+        <span class="hljs-comment"># i的步进改为constant</span>
+        i = (i + constant) % <span class="hljs-number">256</span>
+        <span class="hljs-comment"># j的更新增加了constant常量</span>
+        j = (j + S[i] + constant) % <span class="hljs-number">256</span>
+        <span class="hljs-comment"># 交换S[i]和S[j]，继续打乱S盒</span>
+        S[i], S[j] = S[j], S[i]
+        <span class="hljs-comment"># 密钥流取值位置也增加了constant常量</span>
+        k = S[(S[i] + S[j] + constant) % <span class="hljs-number">256</span>]
+        <span class="hljs-comment"># 先对明文进行可逆变换，再与密钥流异或</span>
+        transformed = reversible_transform(byte, <span class="hljs-literal">True</span>)
+        result.append(transformed ^ k)
+    <span class="hljs-keyword">return</span> <span class="hljs-built_in">bytes</span>(result)
+
+<span class="hljs-comment"># 混合魔改RC4解密函数（常量修改 + 可逆变换）</span>
+<span class="hljs-keyword">def</span> <span class="hljs-title function_">rc4_decrypt_mixed</span>(<span class="hljs-params">S, data, constant</span>):
+    <span class="hljs-comment"># 索引值i，j</span>
+    i = <span class="hljs-number">0</span>
+    j = <span class="hljs-number">0</span>
+    <span class="hljs-comment"># 存放结果（明文）</span>
+    result = <span class="hljs-built_in">bytearray</span>()
+    <span class="hljs-comment"># 逐字节处理数据</span>
+    <span class="hljs-keyword">for</span> byte <span class="hljs-keyword">in</span> data:
+        <span class="hljs-comment"># i的步进改为constant</span>
+        i = (i + constant) % <span class="hljs-number">256</span>
+        <span class="hljs-comment"># j的更新增加了constant常量</span>
+        j = (j + S[i] + constant) % <span class="hljs-number">256</span>
+        <span class="hljs-comment"># 交换S[i]和S[j]，继续打乱S盒</span>
+        S[i], S[j] = S[j], S[i]
+        <span class="hljs-comment"># 密钥流取值位置也增加了constant常量</span>
+        k = S[(S[i] + S[j] + constant) % <span class="hljs-number">256</span>]
+        <span class="hljs-comment"># 先与密钥流异或，再进行逆向可逆变换</span>
+        decrypted = byte ^ k
+        result.append(reversible_transform(decrypted, <span class="hljs-literal">False</span>))
+    <span class="hljs-keyword">return</span> <span class="hljs-built_in">bytes</span>(result)
+
+<span class="hljs-keyword">if</span> __name__ == <span class="hljs-string">&quot;__main__&quot;</span>:
+    <span class="hljs-comment"># 密钥K</span>
+    key = <span class="hljs-string">b&quot;secret_key&quot;</span>
+    <span class="hljs-comment"># 明文</span>
+    plaintext = <span class="hljs-string">b&quot;Hello World!&quot;</span>
+    <span class="hljs-comment"># 生成自定义S盒的种子</span>
+    seed = <span class="hljs-number">12345</span>
+    <span class="hljs-comment"># 修改的常量值</span>
+    constant = <span class="hljs-number">73</span>
+
+    <span class="hljs-comment"># 用密钥、种子和常量初始化S盒</span>
+    S = rc4_init_mixed(key, seed, constant)
+    <span class="hljs-comment"># 加密</span>
+    ciphertext = rc4_crypt_mixed(S, plaintext, constant)
+    <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;secret:&quot;</span>, ciphertext.<span class="hljs-built_in">hex</span>())
+
+    <span class="hljs-comment"># 用同样的密钥、种子和常量初始化S盒</span>
+    S = rc4_init_mixed(key, seed, constant)
+    <span class="hljs-comment"># 解密</span>
+    decrypted = rc4_decrypt_mixed(S, ciphertext, constant)
+    <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;public:&quot;</span>, decrypted.decode())</code></pre>
+
+<p>输出结果</p>
+<pre><code class="hljs avrasm"><span class="hljs-symbol">secret:</span> <span class="hljs-number">5</span>bbe63a447c95eb2b5f078ba
+<span class="hljs-symbol">public:</span> Hello World!</code></pre>
+
+<h3 id="c脚本-1"><a href="#c脚本-1" class="headerlink" title="c脚本"></a>c脚本</h3><pre><code class="hljs c"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stdio.h&gt;</span></span>
+<span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stdlib.h&gt;</span></span>
+<span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;string.h&gt;</span></span>
+
+<span class="hljs-comment">// 根据种子生成自定义S盒</span>
+<span class="hljs-type">void</span> <span class="hljs-title function_">generate_custom_sbox</span><span class="hljs-params">(<span class="hljs-type">unsigned</span> <span class="hljs-type">char</span>* S, <span class="hljs-type">int</span> seed)</span>
+&#123;
+    <span class="hljs-type">int</span> j;
+    <span class="hljs-comment">// 初始化为0-255</span>
+    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">256</span>; i++)
+    &#123;
+        S[i] = i;
+    &#125;
+    <span class="hljs-comment">// 使用种子打乱S盒顺序</span>
+    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">256</span>; i++)
+    &#123;
+        j = (i + seed + S[i]) % <span class="hljs-number">256</span>;
+        <span class="hljs-type">unsigned</span> <span class="hljs-type">char</span> temp = S[i];
+        S[i] = S[j];
+        S[j] = temp;
+    &#125;
+&#125;
+
+<span class="hljs-comment">// 可逆变换函数：对字节进行加密方向或解密方向的变换</span>
+<span class="hljs-type">unsigned</span> <span class="hljs-type">char</span> <span class="hljs-title function_">reversible_transform</span><span class="hljs-params">(<span class="hljs-type">unsigned</span> <span class="hljs-type">char</span> byte, <span class="hljs-type">int</span> forward)</span>
+&#123;
+    <span class="hljs-keyword">if</span> (forward)
+    &#123;
+        <span class="hljs-comment">// 加密方向变换：加37 → 循环左移3位 → 异或0xA5 → 循环左移7位 → 减19</span>
+        byte = (byte + <span class="hljs-number">37</span>) &amp; <span class="hljs-number">0xFF</span>;
+        byte = ((byte &lt;&lt; <span class="hljs-number">3</span>) | (byte &gt;&gt; <span class="hljs-number">5</span>)) &amp; <span class="hljs-number">0xFF</span>;
+        byte = byte ^ <span class="hljs-number">0xA5</span>;
+        byte = ((byte &lt;&lt; <span class="hljs-number">7</span>) | (byte &gt;&gt; <span class="hljs-number">1</span>)) &amp; <span class="hljs-number">0xFF</span>;
+        byte = (byte - <span class="hljs-number">19</span>) &amp; <span class="hljs-number">0xFF</span>;
+    &#125;
+    <span class="hljs-keyword">else</span>
+    &#123;
+        <span class="hljs-comment">// 解密方向变换：反向操作，与加密顺序相反</span>
+        byte = (byte + <span class="hljs-number">19</span>) &amp; <span class="hljs-number">0xFF</span>;
+        byte = ((byte &gt;&gt; <span class="hljs-number">7</span>) | (byte &lt;&lt; <span class="hljs-number">1</span>)) &amp; <span class="hljs-number">0xFF</span>;
+        byte = byte ^ <span class="hljs-number">0xA5</span>;
+        byte = ((byte &gt;&gt; <span class="hljs-number">3</span>) | (byte &lt;&lt; <span class="hljs-number">5</span>)) &amp; <span class="hljs-number">0xFF</span>;
+        byte = (byte - <span class="hljs-number">37</span>) &amp; <span class="hljs-number">0xFF</span>;
+    &#125;
+    <span class="hljs-keyword">return</span> byte;
+&#125;
+
+<span class="hljs-comment">// 混合魔改RC4初始化函数（自定义S盒 + 常量修改）</span>
+<span class="hljs-type">void</span> <span class="hljs-title function_">rc4_init_mixed</span><span class="hljs-params">(<span class="hljs-type">unsigned</span> <span class="hljs-type">char</span>* S, <span class="hljs-type">const</span> <span class="hljs-type">unsigned</span> <span class="hljs-type">char</span>* key, <span class="hljs-type">int</span> keylen, <span class="hljs-type">int</span> seed, <span class="hljs-type">int</span> constant)</span>
+&#123;
+    <span class="hljs-comment">// 先用种子生成自定义初始S盒</span>
+    generate_custom_sbox(S, seed);
+    <span class="hljs-type">int</span> j = <span class="hljs-number">0</span>;
+    <span class="hljs-comment">// KSA阶段：用密钥和常量共同打乱S盒</span>
+    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">256</span>; i++)
+    &#123;
+        j = (j + S[i] + key[i % keylen] + constant) % <span class="hljs-number">256</span>;
+        <span class="hljs-type">unsigned</span> <span class="hljs-type">char</span> temp = S[i];
+        S[i] = S[j];
+        S[j] = temp;
+    &#125;
+&#125;
+
+<span class="hljs-comment">// 混合魔改RC4加密函数（常量修改 + 可逆变换）</span>
+<span class="hljs-type">void</span> <span class="hljs-title function_">rc4_crypt_mixed</span><span class="hljs-params">(<span class="hljs-type">unsigned</span> <span class="hljs-type">char</span>* S, <span class="hljs-type">unsigned</span> <span class="hljs-type">char</span>* data, <span class="hljs-type">int</span> length, <span class="hljs-type">int</span> constant)</span>
+&#123;
+    <span class="hljs-comment">// 索引值i，j</span>
+    <span class="hljs-type">int</span> i = <span class="hljs-number">0</span>, j = <span class="hljs-number">0</span>;
+    <span class="hljs-comment">// 逐字节处理数据</span>
+    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> n = <span class="hljs-number">0</span>; n &lt; length; n++)
+    &#123;
+        <span class="hljs-comment">// i的步进改为constant</span>
+        i = (i + constant) % <span class="hljs-number">256</span>;
+        <span class="hljs-comment">// j的更新增加了constant常量</span>
+        j = (j + S[i] + constant) % <span class="hljs-number">256</span>;
+        <span class="hljs-comment">// 交换S[i]和S[j]，继续打乱S盒</span>
+        <span class="hljs-type">unsigned</span> <span class="hljs-type">char</span> temp = S[i];
+        S[i] = S[j];
+        S[j] = temp;
+        <span class="hljs-comment">// 密钥流取值位置也增加了constant常量</span>
+        <span class="hljs-type">unsigned</span> <span class="hljs-type">char</span> k = S[(S[i] + S[j] + constant) % <span class="hljs-number">256</span>];
+        <span class="hljs-comment">// 先对明文进行可逆变换，再与密钥流异或</span>
+        <span class="hljs-type">unsigned</span> <span class="hljs-type">char</span> transformed = reversible_transform(data[n], <span class="hljs-number">1</span>);
+        data[n] = transformed ^ k;
+    &#125;
+&#125;
+
+<span class="hljs-comment">// 混合魔改RC4解密函数（常量修改 + 可逆变换）</span>
+<span class="hljs-type">void</span> <span class="hljs-title function_">rc4_decrypt_mixed</span><span class="hljs-params">(<span class="hljs-type">unsigned</span> <span class="hljs-type">char</span>* S, <span class="hljs-type">unsigned</span> <span class="hljs-type">char</span>* data, <span class="hljs-type">int</span> length, <span class="hljs-type">int</span> constant)</span>
+&#123;
+    <span class="hljs-comment">// 索引值i，j</span>
+    <span class="hljs-type">int</span> i = <span class="hljs-number">0</span>, j = <span class="hljs-number">0</span>;
+    <span class="hljs-comment">// 逐字节处理数据</span>
+    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> n = <span class="hljs-number">0</span>; n &lt; length; n++)
+    &#123;
+        <span class="hljs-comment">// i的步进改为constant</span>
+        i = (i + constant) % <span class="hljs-number">256</span>;
+        <span class="hljs-comment">// j的更新增加了constant常量</span>
+        j = (j + S[i] + constant) % <span class="hljs-number">256</span>;
+        <span class="hljs-comment">// 交换S[i]和S[j]，继续打乱S盒</span>
+        <span class="hljs-type">unsigned</span> <span class="hljs-type">char</span> temp = S[i];
+        S[i] = S[j];
+        S[j] = temp;
+        <span class="hljs-comment">// 密钥流取值位置也增加了constant常量</span>
+        <span class="hljs-type">unsigned</span> <span class="hljs-type">char</span> k = S[(S[i] + S[j] + constant) % <span class="hljs-number">256</span>];
+        <span class="hljs-comment">// 先与密钥流异或，再进行逆向可逆变换</span>
+        <span class="hljs-type">unsigned</span> <span class="hljs-type">char</span> decrypted = data[n] ^ k;
+        data[n] = reversible_transform(decrypted, <span class="hljs-number">0</span>);
+    &#125;
+&#125;
+
+<span class="hljs-type">int</span> <span class="hljs-title function_">main</span><span class="hljs-params">(<span class="hljs-type">void</span>)</span>
+&#123;
+    <span class="hljs-comment">// 密钥</span>
+    <span class="hljs-type">const</span> <span class="hljs-type">unsigned</span> <span class="hljs-type">char</span> key[] = <span class="hljs-string">&quot;secret_key&quot;</span>;
+    <span class="hljs-type">int</span> keylen = <span class="hljs-built_in">strlen</span>((<span class="hljs-type">const</span> <span class="hljs-type">char</span>*)key);
+    <span class="hljs-comment">// 明文</span>
+    <span class="hljs-type">unsigned</span> <span class="hljs-type">char</span> plaintext[] = <span class="hljs-string">&quot;Hello World!&quot;</span>;
+    <span class="hljs-type">int</span> length = <span class="hljs-built_in">strlen</span>((<span class="hljs-type">const</span> <span class="hljs-type">char</span>*)plaintext);
+    <span class="hljs-comment">// 生成自定义S盒的种子</span>
+    <span class="hljs-type">int</span> seed = <span class="hljs-number">12345</span>;
+    <span class="hljs-comment">// 修改的常量值</span>
+    <span class="hljs-type">int</span> constant = <span class="hljs-number">73</span>;
+
+    <span class="hljs-comment">// 加密</span>
+    <span class="hljs-type">unsigned</span> <span class="hljs-type">char</span> S_enc[<span class="hljs-number">256</span>];
+    rc4_init_mixed(S_enc, key, keylen, seed, constant);
+    rc4_crypt_mixed(S_enc, plaintext, length, constant);
+    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;secret: &quot;</span>);
+    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">0</span>; i &lt; length; i++)
+        <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%02X&quot;</span>, plaintext[i]);
+    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;\n&quot;</span>);
+
+    <span class="hljs-comment">// 解密</span>
+    <span class="hljs-type">unsigned</span> <span class="hljs-type">char</span> ciphertext[<span class="hljs-number">12</span>];
+    <span class="hljs-built_in">memcpy</span>(ciphertext, plaintext, length);
+    <span class="hljs-type">unsigned</span> <span class="hljs-type">char</span> S_dec[<span class="hljs-number">256</span>];
+    rc4_init_mixed(S_dec, key, keylen, seed, constant);
+    rc4_decrypt_mixed(S_dec, ciphertext, length, constant);
+    ciphertext[length] = <span class="hljs-string">&#x27;\0&#x27;</span>;
+    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;public: %s\n&quot;</span>, ciphertext);
+
+    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+&#125;</code></pre>
+
+<p>输出结果</p>
+<pre><code class="hljs avrasm"><span class="hljs-symbol">secret:</span> <span class="hljs-number">5</span>BBE63A447C95EB2B5F078BA
+<span class="hljs-symbol">public:</span> Hello World!</code></pre>
+
+<h2 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h2><p>无论rc4如果魔改和变化，记住一下一点，rc4的加密和解密是一样的，只要找出改了哪里，然后把算法原样丢到脚本里面，密文扔进去，明文就出来了</p>
+
+                </div>
+                
+                    
+                        
+                                
+                                        
+                                                
+                                                        
+</div>
+            <footer id="footer">
+    <div id="footer-wrap">
+        <div>
+            &copy;
+            2022 - 2026 Xmx_Aolg07
+            <span id="footer-icon">
+                <i class="fa-solid fa-font-awesome fa-fw"></i>
+            </span>
+            &commat;Xmx_Aolg07
+        </div>
+        <div>
+            Based on the <a target="_blank" rel="noopener" href="https://hexo.io">Hexo Engine</a> &amp;
+            <a target="_blank" rel="noopener" href="https://github.com/theme-particlex/hexo-theme-particlex">ParticleX Theme</a>
+        </div>
+        
+    </div>
+</footer>
+
+        </div>
+        
+        <transition name="fade">
+            <div id="preview" ref="preview" v-show="previewShow">
+                <img id="preview-content" ref="previewContent" />
+            </div>
+        </transition>
+        
+    </div>
+    <script src="/js/main.js"></script>
+    
+    
+
+
+
+
+    
+</body>
+</html>

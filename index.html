@@ -179,6 +179,54 @@
         
 
 <div class="post">
+    <a href="/2026/05/19/rc4/">
+        <h2 class="post-title">rc4算法原理和魔改</h2>
+    </a>
+    <div class="category-and-date">
+        
+        <span class="date">
+            <span class="icon">
+                <i class="fa-solid fa-calendar fa-fw"></i>
+            </span>
+            2026/5/19
+        </span>
+        
+        
+    </div>
+    <div class="description">
+        <div class="content" v-pre>
+            
+            <hr>
+<h2 id="title-rc4算法原理和魔改date-2026-05-19-20-28-27tags-算法-CTF解题"><a href="#title-rc4算法原理和魔改date-2026-05-19-20-28-27tags-算法-CTF解题" class="headerlink" title="title: rc4算法原理和魔改date: 2026-05-19 20:28:27tags:  - 算法  - CTF解题"></a>title: rc4算法原理和魔改<br>date: 2026-05-19 20:28:27<br>tags:<br>  - 算法<br>  - CTF解题</h2><h1 id="rc4算法原理和魔改"><a href="#rc4算法原理和魔改" class="headerlink" title="rc4算法原理和魔改"></a>rc4算法原理和魔改</h1><h2 id="rc4原理"><a href="#rc4原理" class="headerlink" title="rc4原理"></a>rc4原理</h2><h3 id="第一步"><a href="#第一步" class="headerlink" title="第一步"></a>第一步</h3><p>准备一个包含256个字节的数组 S，并按照 S[0]&#x3D;0, S[1]&#x3D;1, …, S[255]&#x3D;255 的顺序填充，初始化S盒</p>
+<p>设置一个密钥key把S盒打乱，最后256次后获得一个和密钥相关但是看起来毫无规律的排序</p>
+<h3 id="第二步"><a href="#第二步" class="headerlink" title="第二步"></a>第二步</h3><p>算法会不断更新两个索引 i 和 j，并交换 S[i] 和 S[j] 的值。然后，从 S 盒的某个位置 t（t &#x3D; S[i] + S[j]）取</p>
+...
+            
+        </div>
+    </div>
+    <div class="post-tags">
+        
+        <span class="icon">
+            <i class="fa-solid fa-tags fa-fw"></i>
+        </span>
+        
+        
+        
+        <span class="tag">
+            
+            <a href="/tags/CTF%E8%A7%A3%E9%A2%98/" style="color: #03a9f4">CTF解题</a>
+        </span>
+        
+        <span class="tag">
+            
+            <a href="/tags/%E7%AE%97%E6%B3%95/" style="color: #00bcd4">算法</a>
+        </span>
+        
+    </div>
+    <a href="/2026/05/19/rc4/" class="go-post">阅读全文</a>
+</div>
+
+<div class="post">
     <a href="/2026/05/17/trybase/">
         <h2 class="post-title">base变表和实战</h2>
     </a>
@@ -219,12 +267,12 @@
         
         <span class="tag">
             
-            <a href="/tags/CTF%E8%A7%A3%E9%A2%98/" style="color: #00a596">CTF解题</a>
+            <a href="/tags/CTF%E8%A7%A3%E9%A2%98/" style="color: #00bcd4">CTF解题</a>
         </span>
         
         <span class="tag">
             
-            <a href="/tags/%E7%AE%97%E6%B3%95/" style="color: #ffa2c4">算法</a>
+            <a href="/tags/%E7%AE%97%E6%B3%95/" style="color: #03a9f4">算法</a>
         </span>
         
     </div>
@@ -288,7 +336,7 @@
         
         <span class="tag">
             
-            <a href="/tags/%E7%AE%97%E6%B3%95/" style="color: #03a9f4">算法</a>
+            <a href="/tags/%E7%AE%97%E6%B3%95/" style="color: #00a596">算法</a>
         </span>
         
     </div>
@@ -338,7 +386,7 @@
         
         <span class="tag">
             
-            <a href="/tags/CTF%E8%A7%A3%E9%A2%98/" style="color: #ff7d73">CTF解题</a>
+            <a href="/tags/CTF%E8%A7%A3%E9%A2%98/" style="color: #00a596">CTF解题</a>
         </span>
         
     </div>
@@ -384,7 +432,7 @@
         
         <span class="tag">
             
-            <a href="/tags/CTF%E8%A7%A3%E9%A2%98/" style="color: #ffa2c4">CTF解题</a>
+            <a href="/tags/CTF%E8%A7%A3%E9%A2%98/" style="color: #ff7d73">CTF解题</a>
         </span>
         
     </div>
@@ -499,7 +547,7 @@ gcc -S -o program.s program.c  # 生成汇编文件
         
         <span class="tag">
             
-            <a href="/tags/%E6%B1%87%E7%BC%96/" style="color: #ff7d73">汇编</a>
+            <a href="/tags/%E6%B1%87%E7%BC%96/" style="color: #00a596">汇编</a>
         </span>
         
     </div>
@@ -548,7 +596,7 @@ gcc -S -o program.s program.c  # 生成汇编文件
         
         <span class="tag">
             
-            <a href="/tags/%E6%B1%87%E7%BC%96/" style="color: #ffa2c4">汇编</a>
+            <a href="/tags/%E6%B1%87%E7%BC%96/" style="color: #ff7d73">汇编</a>
         </span>
         
     </div>
@@ -590,7 +638,7 @@ gcc -S -o program.s program.c  # 生成汇编文件
         
         <span class="tag">
             
-            <a href="/tags/%E6%B1%87%E7%BC%96/" style="color: #ff7d73">汇编</a>
+            <a href="/tags/%E6%B1%87%E7%BC%96/" style="color: #03a9f4">汇编</a>
         </span>
         
     </div>
@@ -631,60 +679,11 @@ gcc -S -o program.s program.c  # 生成汇编文件
         
         <span class="tag">
             
-            <a href="/tags/%E6%B1%87%E7%BC%96/" style="color: #00a596">汇编</a>
+            <a href="/tags/%E6%B1%87%E7%BC%96/" style="color: #ffa2c4">汇编</a>
         </span>
         
     </div>
     <a href="/2026/04/12/assembly-1/" class="go-post">阅读全文</a>
-</div>
-
-<div class="post">
-    <a href="/2026/04/11/test-week4/">
-        <h2 class="post-title">考核第四周题目解析</h2>
-    </a>
-    <div class="category-and-date">
-        
-        <span class="date">
-            <span class="icon">
-                <i class="fa-solid fa-calendar fa-fw"></i>
-            </span>
-            2026/4/11
-        </span>
-        
-        
-    </div>
-    <div class="description">
-        <div class="content" v-pre>
-            
-            <hr>
-<h2 id="title-考核第四周题目解析date-2026-04-11-15-50-18tags-考核"><a href="#title-考核第四周题目解析date-2026-04-11-15-50-18tags-考核" class="headerlink" title="title: 考核第四周题目解析date: 2026-04-11 15:50:18tags:  - 考核"></a>title: 考核第四周题目解析<br>date: 2026-04-11 15:50:18<br>tags:<br>  - 考核</h2><h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p><strong>1.现在有一个256字节大小的数组，这个数组满足一种神秘的规则</strong></p>
-<p>现在我想让你实现一个逆S盒，要求命名为Inv_SBOX</p>
-<p>逆S盒定义如下:</p>
-<ul>
-<li>初始化S-box，使第xx行第yy列的元素为{xyxy}</li>
-</ul>
-<pre><code>unsigned char SBOX[256]={
-0x63, 0x7C, 0x77, 0x7B, 0xF2, 0x6B, 0x6F, 0xC5, 0x30, 0x01, 0x67, 0x2B, 0xFE, 0xD7, 0xAB, 0x
-</code></pre>
-...
-            
-        </div>
-    </div>
-    <div class="post-tags">
-        
-        <span class="icon">
-            <i class="fa-solid fa-tags fa-fw"></i>
-        </span>
-        
-        
-        
-        <span class="tag">
-            
-            <a href="/tags/%E8%80%83%E6%A0%B8/" style="color: #ffa2c4">考核</a>
-        </span>
-        
-    </div>
-    <a href="/2026/04/11/test-week4/" class="go-post">阅读全文</a>
 </div>
 
 
