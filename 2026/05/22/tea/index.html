@@ -1,0 +1,1756 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8" />
+    <title>TEA系列算法及其魔改 | Xmx_Aolg07</title>
+    <meta name="author" content="Xmx_Aolg07" />
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"
+    />
+    <link rel="icon" href="/images/avatar.jpg" />
+    <link rel="preconnect" href="https://s4.zstatic.net" />
+<script src="https://s4.zstatic.net/ajax/libs/vue/3.3.7/vue.global.prod.min.js"></script>
+<link rel="stylesheet" href="https://s4.zstatic.net/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
+<link rel="preconnect" href="https://fonts.googleapis.cn" />
+<link rel="preconnect" href="https://fonts.gstatic.cn" crossorigin />
+<link
+    rel="stylesheet"
+    href="https://fonts.googleapis.cn/css2?family=Fira+Code:wght@400;500;600;700&family=Lexend:wght@400;500;600;700;800;900&family=Noto+Sans+SC:wght@400;500;600;700;800;900&display=swap"
+/>
+<script> const mixins = {}; </script>
+
+<script src="https://polyfill.alicdn.com/v3/polyfill.min.js?features=default"></script>
+
+
+<script src="https://s4.zstatic.net/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+<script src="https://s4.zstatic.net/ajax/libs/highlightjs-line-numbers.js/2.8.0/highlightjs-line-numbers.min.js"></script>
+<link
+    rel="stylesheet"
+    href="https://s4.zstatic.net/ajax/libs/highlight.js/11.9.0/styles/github.min.css"
+/>
+<script src="/js/lib/highlight.js"></script>
+
+
+
+<script src="/js/lib/preview.js"></script>
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/css/main.css" />
+
+<meta name="generator" content="Hexo 8.1.1"></head>
+<body>
+    <div id="layout">
+        <transition name="fade">
+            <div id="loading" v-show="loading">
+                <div id="loading-circle">
+                    <h2>LOADING</h2>
+                    <p>加载过慢请开启缓存 浏览器默认开启</p>
+                    <img src="/images/loading.gif" />
+                </div>
+            </div>
+        </transition>
+        <div id="menu" :class="{ hidden: hiddenMenu, 'menu-color': menuColor}">
+    <nav id="desktop-menu">
+        <a class="title" href="/">
+            <span>XMX_AOLG07</span>
+        </a>
+        
+        <a href="/">
+            <i class="fa-solid fa-house fa-fw"></i>
+            <span>&ensp;Home</span>
+        </a>
+        
+        <a href="/about">
+            <i class="fa-solid fa-id-card fa-fw"></i>
+            <span>&ensp;About</span>
+        </a>
+        
+        <a href="/archives">
+            <i class="fa-solid fa-box-archive fa-fw"></i>
+            <span>&ensp;Archives</span>
+        </a>
+        
+        <a href="/categories">
+            <i class="fa-solid fa-bookmark fa-fw"></i>
+            <span>&ensp;Categories</span>
+        </a>
+        
+        <a href="/tags">
+            <i class="fa-solid fa-tags fa-fw"></i>
+            <span>&ensp;Tags</span>
+        </a>
+        
+    </nav>
+    <nav id="mobile-menu">
+        <div class="title" @click="showMenuItems = !showMenuItems">
+            <i class="fa-solid fa-bars fa-fw"></i>
+            <span>&emsp;XMX_AOLG07</span>
+        </div>
+        <transition name="slide">
+            <div class="items" v-show="showMenuItems">
+                
+                <a href="/">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-house fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Home</div>
+                    </div>
+                </a>
+                
+                <a href="/about">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-id-card fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">About</div>
+                    </div>
+                </a>
+                
+                <a href="/archives">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-box-archive fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Archives</div>
+                    </div>
+                </a>
+                
+                <a href="/categories">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-bookmark fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Categories</div>
+                    </div>
+                </a>
+                
+                <a href="/tags">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-tags fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Tags</div>
+                    </div>
+                </a>
+                
+            </div>
+        </transition>
+    </nav>
+</div>
+<transition name="fade">
+    <div id="menu-curtain" @click="showMenuItems = !showMenuItems" v-show="showMenuItems"></div>
+</transition>
+
+        <div id="main" :class="loading ? 'into-enter-from': 'into-enter-active'">
+            <div class="article">
+    <div>
+        <h1>
+            TEA系列算法及其魔改
+        </h1>
+    </div>
+    <div class="info">
+        <span class="date">
+            <span class="icon">
+                <i class="fa-solid fa-calendar fa-fw"></i>
+            </span>
+            2026/5/22
+        </span>
+        
+                
+                    <span class="tags">
+                        <span class="icon">
+                            <i class="fa-solid fa-tags fa-fw"></i>
+                        </span>
+                        
+                            
+                                <span class="tag">
+                                    
+                                        <a href="/tags/CTF%E8%A7%A3%E9%A2%98/" style="color: #03a9f4">
+                                            CTF解题
+                                        </a>
+                                </span>
+                                
+                                <span class="tag">
+                                    
+                                        <a href="/tags/%E7%AE%97%E6%B3%95/" style="color: #ff7d73">
+                                            算法
+                                        </a>
+                                </span>
+                                
+                    </span>
+                    
+    </div>
+    
+                <div class="content" v-pre>
+                    <h1 id="TEA算法和魔改"><a href="#TEA算法和魔改" class="headerlink" title="TEA算法和魔改"></a>TEA算法和魔改</h1><h2 id="TEA算法原理"><a href="#TEA算法原理" class="headerlink" title="TEA算法原理"></a>TEA算法原理</h2><h3 id="TEA核心参数和原理"><a href="#TEA核心参数和原理" class="headerlink" title="TEA核心参数和原理"></a>TEA核心参数和原理</h3><p>TEA的算法主要依靠一下几个核心参数</p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>算法类型</td>
+<td>对称分组加密算法</td>
+</tr>
+<tr>
+<td>明文长度</td>
+<td>64位</td>
+</tr>
+<tr>
+<td>密钥长度</td>
+<td>128位</td>
+</tr>
+<tr>
+<td>迭代轮数</td>
+<td>32，64，轮数越多越安全</td>
+</tr>
+<tr>
+<td>核心操作</td>
+<td>异或（xor）移位（shift)模2^32加法</td>
+</tr>
+<tr>
+<td>算法重构</td>
+<td>feistel结构</td>
+</tr>
+</tbody></table>
+<p>128位密钥被等分为4个32位子密钥K[0],K[1],K[2],K[3]</p>
+<p>64位明文被分为左右两个32位块</p>
+<p>算法定义一个特殊的常数<br>δ&#x3D;0x9E3779B9</p>
+<p>选择该常数是为了让每轮运算使用不同的累加值，打破轮与轮之间的对称性，从而抵抗差分密码分析</p>
+<h3 id="加密-解密过程"><a href="#加密-解密过程" class="headerlink" title="加密&#x2F;解密过程"></a>加密&#x2F;解密过程</h3><h4 id="加密"><a href="#加密" class="headerlink" title="加密"></a>加密</h4><p>加密循环执行32轮（或64轮），每轮操作如下：</p>
+<p>设当前累加和为S（初始S&#x3D;），每轮执行：</p>
+<ol>
+<li>更新累加和：S&#x3D;S+δ</li>
+<li>更新左半部：V0&#x3D;V0+(((V1≪4)+K[0])⊕(V1+S)⊕((V1≫5)+K[1]))</li>
+<li>更新右半部：V1&#x3D;V1+(((V0≪4)+K[2])⊕(V0+S)⊕((V0≫5)+K[3]))</li>
+</ol>
+<p>轮函数的设计思路在于非线性混淆：</p>
+<ul>
+<li>左移4位与右移5位的非对称移位，使得数据的高低比特位充分混合</li>
+<li>三个分支分别引入子密钥和累加和，形成三路异或结构</li>
+<li>累加和SS逐轮递增，确保每轮变换均不相同</li>
+</ul>
+<p>其结构可形式化表示为Feistel结构的变体：</p>
+<p>F(x,S,Ka,Kb)&#x3D;((x≪4)+Ka)⊕(x+S)⊕((x≫5)+Kb)</p>
+<h4 id="解密"><a href="#解密" class="headerlink" title="解密"></a>解密</h4><p>解密是加密的严格逆过程。累加和初始化为S&#x3D;δ×rounds，每轮执行：</p>
+<ol>
+<li>V1&#x3D;V1−(((V0≪4)+K[2])⊕(V0+S)⊕((V0≫5)+K[3]))</li>
+<li>V0&#x3D;V0−(((V1≪4)+K[0])⊕(V1+S)⊕((V1≫5)+K[1]))</li>
+<li>S&#x3D;S−δ</li>
+</ol>
+<p>注意解密时更新顺序与加密相反，先恢复V1再恢复V0。</p>
+<h3 id="python代码演示"><a href="#python代码演示" class="headerlink" title="python代码演示"></a>python代码演示</h3><pre><code class="hljs python"><span class="hljs-comment"># TEA加密算法实现</span>
+<span class="hljs-comment"># 64位分组，128位密钥，32轮Feistel结构</span>
+
+<span class="hljs-keyword">def</span> <span class="hljs-title function_">tea_encrypt</span>(<span class="hljs-params">v, k</span>):
+    <span class="hljs-comment"># 拆分明文为左右两个32位块</span>
+    v0 = v[<span class="hljs-number">0</span>]
+    v1 = v[<span class="hljs-number">1</span>]
+    <span class="hljs-comment"># 黄金分割常数，确保每轮变换不同</span>
+    delta = <span class="hljs-number">0x9E3779B9</span>
+    <span class="hljs-comment"># 累加和初始为0</span>
+    sum_val = <span class="hljs-number">0</span>
+
+    <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">32</span>):
+        <span class="hljs-comment"># 累加和逐轮递增</span>
+        sum_val = (sum_val + delta) &amp; <span class="hljs-number">0xFFFFFFFF</span>
+        <span class="hljs-comment"># 左半部更新：三路异或结构</span>
+        v0 = (v0 + (((v1 &lt;&lt; <span class="hljs-number">4</span>) + k[<span class="hljs-number">0</span>]) ^ (v1 + sum_val) ^ ((v1 &gt;&gt; <span class="hljs-number">5</span>) + k[<span class="hljs-number">1</span>]))) &amp; <span class="hljs-number">0xFFFFFFFF</span>
+        <span class="hljs-comment"># 右半部更新：使用不同的子密钥</span>
+        v1 = (v1 + (((v0 &lt;&lt; <span class="hljs-number">4</span>) + k[<span class="hljs-number">2</span>]) ^ (v0 + sum_val) ^ ((v0 &gt;&gt; <span class="hljs-number">5</span>) + k[<span class="hljs-number">3</span>]))) &amp; <span class="hljs-number">0xFFFFFFFF</span>
+
+    <span class="hljs-keyword">return</span> [v0, v1]
+
+<span class="hljs-keyword">def</span> <span class="hljs-title function_">tea_decrypt</span>(<span class="hljs-params">v, k</span>):
+    v0 = v[<span class="hljs-number">0</span>]
+    v1 = v[<span class="hljs-number">1</span>]
+    delta = <span class="hljs-number">0x9E3779B9</span>
+    <span class="hljs-comment"># 解密时累加和从最大值开始递减</span>
+    sum_val = (delta * <span class="hljs-number">32</span>) &amp; <span class="hljs-number">0xFFFFFFFF</span>
+
+    <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">32</span>):
+        <span class="hljs-comment"># 先恢复右半部，与加密顺序相反</span>
+        v1 = (v1 - (((v0 &lt;&lt; <span class="hljs-number">4</span>) + k[<span class="hljs-number">2</span>]) ^ (v0 + sum_val) ^ ((v0 &gt;&gt; <span class="hljs-number">5</span>) + k[<span class="hljs-number">3</span>]))) &amp; <span class="hljs-number">0xFFFFFFFF</span>
+        <span class="hljs-comment"># 再恢复左半部</span>
+        v0 = (v0 - (((v1 &lt;&lt; <span class="hljs-number">4</span>) + k[<span class="hljs-number">0</span>]) ^ (v1 + sum_val) ^ ((v1 &gt;&gt; <span class="hljs-number">5</span>) + k[<span class="hljs-number">1</span>]))) &amp; <span class="hljs-number">0xFFFFFFFF</span>
+        <span class="hljs-comment"># 累加和递减</span>
+        sum_val = (sum_val - delta) &amp; <span class="hljs-number">0xFFFFFFFF</span>
+
+    <span class="hljs-keyword">return</span> [v0, v1]
+
+<span class="hljs-keyword">def</span> <span class="hljs-title function_">tea_encrypt_string</span>(<span class="hljs-params">data, key</span>):
+    <span class="hljs-comment"># 将16字节密钥拆分为4个32位整数（小端序）</span>
+    key_ints = []
+    <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">0</span>, <span class="hljs-number">16</span>, <span class="hljs-number">4</span>):
+        key_ints.append(<span class="hljs-built_in">int</span>.from_bytes(key[i:i+<span class="hljs-number">4</span>], <span class="hljs-string">&#x27;little&#x27;</span>))
+
+    <span class="hljs-comment"># 零填充至8字节对齐</span>
+    data = <span class="hljs-built_in">bytearray</span>(data)
+    <span class="hljs-keyword">while</span> <span class="hljs-built_in">len</span>(data) % <span class="hljs-number">8</span> != <span class="hljs-number">0</span>:
+        data.append(<span class="hljs-number">0</span>)
+
+    <span class="hljs-comment"># 逐分组加密（ECB模式）</span>
+    result = <span class="hljs-built_in">bytearray</span>()
+    <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">0</span>, <span class="hljs-built_in">len</span>(data), <span class="hljs-number">8</span>):
+        <span class="hljs-comment"># 将8字节分为左右两个32位字</span>
+        v0 = <span class="hljs-built_in">int</span>.from_bytes(data[i:i+<span class="hljs-number">4</span>], <span class="hljs-string">&#x27;little&#x27;</span>)
+        v1 = <span class="hljs-built_in">int</span>.from_bytes(data[i+<span class="hljs-number">4</span>:i+<span class="hljs-number">8</span>], <span class="hljs-string">&#x27;little&#x27;</span>)
+        enc = tea_encrypt([v0, v1], key_ints)
+        <span class="hljs-comment"># 拼接密文（小端序）</span>
+        result.extend(enc[<span class="hljs-number">0</span>].to_bytes(<span class="hljs-number">4</span>, <span class="hljs-string">&#x27;little&#x27;</span>))
+        result.extend(enc[<span class="hljs-number">1</span>].to_bytes(<span class="hljs-number">4</span>, <span class="hljs-string">&#x27;little&#x27;</span>))
+
+    <span class="hljs-keyword">return</span> <span class="hljs-built_in">bytes</span>(result)
+
+<span class="hljs-keyword">def</span> <span class="hljs-title function_">tea_decrypt_string</span>(<span class="hljs-params">data, key</span>):
+    <span class="hljs-comment"># 密钥处理同加密</span>
+    key_ints = []
+    <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">0</span>, <span class="hljs-number">16</span>, <span class="hljs-number">4</span>):
+        key_ints.append(<span class="hljs-built_in">int</span>.from_bytes(key[i:i+<span class="hljs-number">4</span>], <span class="hljs-string">&#x27;little&#x27;</span>))
+
+    <span class="hljs-comment"># 逐分分解密</span>
+    result = <span class="hljs-built_in">bytearray</span>()
+    <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">0</span>, <span class="hljs-built_in">len</span>(data), <span class="hljs-number">8</span>):
+        v0 = <span class="hljs-built_in">int</span>.from_bytes(data[i:i+<span class="hljs-number">4</span>], <span class="hljs-string">&#x27;little&#x27;</span>)
+        v1 = <span class="hljs-built_in">int</span>.from_bytes(data[i+<span class="hljs-number">4</span>:i+<span class="hljs-number">8</span>], <span class="hljs-string">&#x27;little&#x27;</span>)
+        dec = tea_decrypt([v0, v1], key_ints)
+        result.extend(dec[<span class="hljs-number">0</span>].to_bytes(<span class="hljs-number">4</span>, <span class="hljs-string">&#x27;little&#x27;</span>))
+        result.extend(dec[<span class="hljs-number">1</span>].to_bytes(<span class="hljs-number">4</span>, <span class="hljs-string">&#x27;little&#x27;</span>))
+
+    <span class="hljs-comment"># 去除填充的零字节</span>
+    <span class="hljs-keyword">return</span> <span class="hljs-built_in">bytes</span>(result).rstrip(<span class="hljs-string">b&#x27;\x00&#x27;</span>)
+
+<span class="hljs-keyword">if</span> __name__ == <span class="hljs-string">&#x27;__main__&#x27;</span>:
+    <span class="hljs-comment"># 128位密钥（16字节）</span>
+    key = <span class="hljs-string">b&#x27;0123456789abcdef&#x27;</span>
+    plaintext = <span class="hljs-string">b&#x27;Hello World!&#x27;</span>
+
+    ciphertext = tea_encrypt_string(plaintext, key)
+    <span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;secret: &#x27;</span>, ciphertext.<span class="hljs-built_in">hex</span>())
+
+    decrypted = tea_decrypt_string(ciphertext, key)
+    <span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;public: &#x27;</span>, decrypted.decode())</code></pre>
+
+<p>输出结果</p>
+<pre><code class="hljs avrasm"><span class="hljs-symbol">secret:</span>  a509b3c24e8a96dc82ed9bb9cb722c2f
+<span class="hljs-symbol">public:</span>  Hello World</code></pre>
+
+<h3 id="c代码演示"><a href="#c代码演示" class="headerlink" title="c代码演示"></a>c代码演示</h3><pre><code class="hljs c"><span class="hljs-comment">// TEA加密算法C语言实现</span>
+<span class="hljs-comment">// 64位分组，128位密钥，32轮Feistel结构</span>
+<span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stdio.h&gt;</span></span>
+<span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;string.h&gt;</span></span>
+<span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stdint.h&gt;</span></span>
+
+<span class="hljs-comment">// 核心加密函数：对64位数据块进行32轮加密</span>
+<span class="hljs-type">void</span> <span class="hljs-title function_">tea_encrypt</span><span class="hljs-params">(<span class="hljs-type">uint32_t</span> v[<span class="hljs-number">2</span>], <span class="hljs-type">uint32_t</span> k[<span class="hljs-number">4</span>])</span>
+&#123;
+    <span class="hljs-comment">// 拆分明文为左右两个32位块</span>
+    <span class="hljs-type">uint32_t</span> v0 = v[<span class="hljs-number">0</span>];
+    <span class="hljs-type">uint32_t</span> v1 = v[<span class="hljs-number">1</span>];
+    <span class="hljs-comment">// 黄金分割常数</span>
+    <span class="hljs-type">uint32_t</span> delta = <span class="hljs-number">0x9e3779b9</span>;
+    <span class="hljs-comment">// 累加和初始为0</span>
+    <span class="hljs-type">uint32_t</span> sum = <span class="hljs-number">0</span>;
+    <span class="hljs-type">int</span> i;
+
+    <span class="hljs-keyword">for</span> ( i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">32</span>; i++)
+    &#123;
+        <span class="hljs-comment">// 累加和逐轮递增</span>
+        sum += delta;
+        <span class="hljs-comment">// 左半部更新：三路异或结构 (左移4位 + k0) ^ (原值 + sum) ^ (右移5位 + k1)</span>
+        v0 += ((v1 &lt;&lt; <span class="hljs-number">4</span>) + k[<span class="hljs-number">0</span>]) ^ (v1 + sum) ^ ((v1 &gt;&gt; <span class="hljs-number">5</span>) + k[<span class="hljs-number">1</span>]);
+        <span class="hljs-comment">// 右半部更新：使用不同的子密钥k2、k3</span>
+        v1 += ((v0 &lt;&lt; <span class="hljs-number">4</span>) + k[<span class="hljs-number">2</span>]) ^ (v0 + sum) ^ ((v0 &gt;&gt; <span class="hljs-number">5</span>) + k[<span class="hljs-number">3</span>]);
+    &#125;
+    
+    <span class="hljs-comment">// 写回加密结果</span>
+    v[<span class="hljs-number">0</span>] = v0;
+    v[<span class="hljs-number">1</span>] = v1;
+&#125;
+
+<span class="hljs-comment">// 核心解密函数：加密的严格逆运算</span>
+<span class="hljs-type">void</span> <span class="hljs-title function_">tea_decrypt</span><span class="hljs-params">(<span class="hljs-type">uint32_t</span> v[<span class="hljs-number">2</span>], <span class="hljs-type">uint32_t</span> k[<span class="hljs-number">4</span>])</span>
+&#123;
+    <span class="hljs-type">uint32_t</span> v0 = v[<span class="hljs-number">0</span>];
+    <span class="hljs-type">uint32_t</span> v1 = v[<span class="hljs-number">1</span>];
+    <span class="hljs-type">uint32_t</span> delta = <span class="hljs-number">0x9e3779b9</span>;
+    <span class="hljs-comment">// 解密时累加和从最大值开始递减</span>
+    <span class="hljs-type">uint32_t</span> sum = delta * <span class="hljs-number">32</span>;
+    <span class="hljs-type">int</span> i;
+
+    <span class="hljs-keyword">for</span> ( i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">32</span>; i++)
+    &#123;
+        <span class="hljs-comment">// 先恢复右半部，与加密顺序相反</span>
+        v1 -= ((v0 &lt;&lt; <span class="hljs-number">4</span>) + k[<span class="hljs-number">2</span>]) ^ (v0 + sum) ^ ((v0 &gt;&gt; <span class="hljs-number">5</span>) + k[<span class="hljs-number">3</span>]);
+        <span class="hljs-comment">// 再恢复左半部</span>
+        v0 -= ((v1 &lt;&lt; <span class="hljs-number">4</span>) + k[<span class="hljs-number">0</span>]) ^ (v1 + sum) ^ ((v1 &gt;&gt; <span class="hljs-number">5</span>) + k[<span class="hljs-number">1</span>]);
+        <span class="hljs-comment">// 累加和递减</span>
+        sum -= delta;
+    &#125;
+    
+    v[<span class="hljs-number">0</span>] = v0;
+    v[<span class="hljs-number">1</span>] = v1;
+&#125;
+
+<span class="hljs-comment">// 批量加密函数：处理任意长度数据</span>
+<span class="hljs-type">void</span> <span class="hljs-title function_">tea_encrypt_data</span><span class="hljs-params">(<span class="hljs-type">unsigned</span> <span class="hljs-type">char</span> *data, <span class="hljs-type">int</span> data_len, <span class="hljs-type">unsigned</span> <span class="hljs-type">char</span> *key, <span class="hljs-type">unsigned</span> <span class="hljs-type">char</span> *output)</span>
+&#123;
+    <span class="hljs-type">uint32_t</span> k[<span class="hljs-number">4</span>];
+    <span class="hljs-type">int</span> i;
+
+    <span class="hljs-comment">// 将16字节密钥转换为4个32位整数（小端序）</span>
+    <span class="hljs-keyword">for</span> ( i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">4</span>; i++)
+    &#123;
+        k[i] = ((<span class="hljs-type">uint32_t</span>)key[i*<span class="hljs-number">4</span>]) |
+               ((<span class="hljs-type">uint32_t</span>)key[i*<span class="hljs-number">4</span>+<span class="hljs-number">1</span>] &lt;&lt; <span class="hljs-number">8</span>) |
+               ((<span class="hljs-type">uint32_t</span>)key[i*<span class="hljs-number">4</span>+<span class="hljs-number">2</span>] &lt;&lt; <span class="hljs-number">16</span>) |
+               ((<span class="hljs-type">uint32_t</span>)key[i*<span class="hljs-number">4</span>+<span class="hljs-number">3</span>] &lt;&lt; <span class="hljs-number">24</span>);
+    &#125;
+    
+    <span class="hljs-comment">// 逐8字节分组加密（ECB模式）</span>
+    <span class="hljs-keyword">for</span> ( i = <span class="hljs-number">0</span>; i &lt; data_len; i += <span class="hljs-number">8</span>)
+    &#123;
+        <span class="hljs-type">uint32_t</span> v[<span class="hljs-number">2</span>];
+        <span class="hljs-comment">// 将8字节组装为两个32位字（小端序）</span>
+        v[<span class="hljs-number">0</span>] = ((<span class="hljs-type">uint32_t</span>)data[i]) |
+               ((<span class="hljs-type">uint32_t</span>)data[i+<span class="hljs-number">1</span>] &lt;&lt; <span class="hljs-number">8</span>) |
+               ((<span class="hljs-type">uint32_t</span>)data[i+<span class="hljs-number">2</span>] &lt;&lt; <span class="hljs-number">16</span>) |
+               ((<span class="hljs-type">uint32_t</span>)data[i+<span class="hljs-number">3</span>] &lt;&lt; <span class="hljs-number">24</span>);
+        v[<span class="hljs-number">1</span>] = ((<span class="hljs-type">uint32_t</span>)data[i+<span class="hljs-number">4</span>]) |
+               ((<span class="hljs-type">uint32_t</span>)data[i+<span class="hljs-number">5</span>] &lt;&lt; <span class="hljs-number">8</span>) |
+               ((<span class="hljs-type">uint32_t</span>)data[i+<span class="hljs-number">6</span>] &lt;&lt; <span class="hljs-number">16</span>) |
+               ((<span class="hljs-type">uint32_t</span>)data[i+<span class="hljs-number">7</span>] &lt;&lt; <span class="hljs-number">24</span>);
+
+        <span class="hljs-comment">// 调用核心加密</span>
+        tea_encrypt(v, k);
+        
+        <span class="hljs-comment">// 将加密结果拆回字节数组（小端序）</span>
+        output[i] = v[<span class="hljs-number">0</span>] &amp; <span class="hljs-number">0xFF</span>;
+        output[i+<span class="hljs-number">1</span>] = (v[<span class="hljs-number">0</span>] &gt;&gt; <span class="hljs-number">8</span>) &amp; <span class="hljs-number">0xFF</span>;
+        output[i+<span class="hljs-number">2</span>] = (v[<span class="hljs-number">0</span>] &gt;&gt; <span class="hljs-number">16</span>) &amp; <span class="hljs-number">0xFF</span>;
+        output[i+<span class="hljs-number">3</span>] = (v[<span class="hljs-number">0</span>] &gt;&gt; <span class="hljs-number">24</span>) &amp; <span class="hljs-number">0xFF</span>;
+        output[i+<span class="hljs-number">4</span>] = v[<span class="hljs-number">1</span>] &amp; <span class="hljs-number">0xFF</span>;
+        output[i+<span class="hljs-number">5</span>] = (v[<span class="hljs-number">1</span>] &gt;&gt; <span class="hljs-number">8</span>) &amp; <span class="hljs-number">0xFF</span>;
+        output[i+<span class="hljs-number">6</span>] = (v[<span class="hljs-number">1</span>] &gt;&gt; <span class="hljs-number">16</span>) &amp; <span class="hljs-number">0xFF</span>;
+        output[i+<span class="hljs-number">7</span>] = (v[<span class="hljs-number">1</span>] &gt;&gt; <span class="hljs-number">24</span>) &amp; <span class="hljs-number">0xFF</span>;
+    &#125;
+&#125;
+
+<span class="hljs-comment">// 批量解密函数</span>
+<span class="hljs-type">void</span> <span class="hljs-title function_">tea_decrypt_data</span><span class="hljs-params">(<span class="hljs-type">unsigned</span> <span class="hljs-type">char</span> *data, <span class="hljs-type">int</span> data_len, <span class="hljs-type">unsigned</span> <span class="hljs-type">char</span> *key, <span class="hljs-type">unsigned</span> <span class="hljs-type">char</span> *output)</span>
+&#123;
+    <span class="hljs-type">uint32_t</span> k[<span class="hljs-number">4</span>];
+    <span class="hljs-type">int</span> i;
+    
+    <span class="hljs-comment">// 密钥转换同加密</span>
+    <span class="hljs-keyword">for</span> (i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">4</span>; i++)
+    &#123;
+        k[i] = ((<span class="hljs-type">uint32_t</span>)key[i*<span class="hljs-number">4</span>]) |
+               ((<span class="hljs-type">uint32_t</span>)key[i*<span class="hljs-number">4</span>+<span class="hljs-number">1</span>] &lt;&lt; <span class="hljs-number">8</span>) |
+               ((<span class="hljs-type">uint32_t</span>)key[i*<span class="hljs-number">4</span>+<span class="hljs-number">2</span>] &lt;&lt; <span class="hljs-number">16</span>) |
+               ((<span class="hljs-type">uint32_t</span>)key[i*<span class="hljs-number">4</span>+<span class="hljs-number">3</span>] &lt;&lt; <span class="hljs-number">24</span>);
+    &#125;
+    
+    <span class="hljs-comment">// 逐分组解密</span>
+    <span class="hljs-keyword">for</span> (i = <span class="hljs-number">0</span>; i &lt; data_len; i += <span class="hljs-number">8</span>)
+    &#123;
+        <span class="hljs-type">uint32_t</span> v[<span class="hljs-number">2</span>];
+        <span class="hljs-comment">// 字节转字（小端序）</span>
+        v[<span class="hljs-number">0</span>] = ((<span class="hljs-type">uint32_t</span>)data[i]) |
+               ((<span class="hljs-type">uint32_t</span>)data[i+<span class="hljs-number">1</span>] &lt;&lt; <span class="hljs-number">8</span>) |
+               ((<span class="hljs-type">uint32_t</span>)data[i+<span class="hljs-number">2</span>] &lt;&lt; <span class="hljs-number">16</span>) |
+               ((<span class="hljs-type">uint32_t</span>)data[i+<span class="hljs-number">3</span>] &lt;&lt; <span class="hljs-number">24</span>);
+        v[<span class="hljs-number">1</span>] = ((<span class="hljs-type">uint32_t</span>)data[i+<span class="hljs-number">4</span>]) |
+               ((<span class="hljs-type">uint32_t</span>)data[i+<span class="hljs-number">5</span>] &lt;&lt; <span class="hljs-number">8</span>) |
+               ((<span class="hljs-type">uint32_t</span>)data[i+<span class="hljs-number">6</span>] &lt;&lt; <span class="hljs-number">16</span>) |
+               ((<span class="hljs-type">uint32_t</span>)data[i+<span class="hljs-number">7</span>] &lt;&lt; <span class="hljs-number">24</span>);
+        
+        <span class="hljs-comment">// 调用核心解密</span>
+        tea_decrypt(v, k);
+        
+        <span class="hljs-comment">// 写回字节数组</span>
+        output[i] = v[<span class="hljs-number">0</span>] &amp; <span class="hljs-number">0xFF</span>;
+        output[i+<span class="hljs-number">1</span>] = (v[<span class="hljs-number">0</span>] &gt;&gt; <span class="hljs-number">8</span>) &amp; <span class="hljs-number">0xFF</span>;
+        output[i+<span class="hljs-number">2</span>] = (v[<span class="hljs-number">0</span>] &gt;&gt; <span class="hljs-number">16</span>) &amp; <span class="hljs-number">0xFF</span>;
+        output[i+<span class="hljs-number">3</span>] = (v[<span class="hljs-number">0</span>] &gt;&gt; <span class="hljs-number">24</span>) &amp; <span class="hljs-number">0xFF</span>;
+        output[i+<span class="hljs-number">4</span>] = v[<span class="hljs-number">1</span>] &amp; <span class="hljs-number">0xFF</span>;
+        output[i+<span class="hljs-number">5</span>] = (v[<span class="hljs-number">1</span>] &gt;&gt; <span class="hljs-number">8</span>) &amp; <span class="hljs-number">0xFF</span>;
+        output[i+<span class="hljs-number">6</span>] = (v[<span class="hljs-number">1</span>] &gt;&gt; <span class="hljs-number">16</span>) &amp; <span class="hljs-number">0xFF</span>;
+        output[i+<span class="hljs-number">7</span>] = (v[<span class="hljs-number">1</span>] &gt;&gt; <span class="hljs-number">24</span>) &amp; <span class="hljs-number">0xFF</span>;
+    &#125;
+&#125;
+
+<span class="hljs-type">int</span> <span class="hljs-title function_">main</span><span class="hljs-params">(<span class="hljs-type">void</span>)</span>
+&#123;
+    <span class="hljs-comment">// 128位密钥（16字节）</span>
+    <span class="hljs-type">unsigned</span> <span class="hljs-type">char</span> key[<span class="hljs-number">16</span>] = <span class="hljs-string">&quot;0123456789abcdef&quot;</span>;
+    <span class="hljs-type">unsigned</span> <span class="hljs-type">char</span> plaintext[] = <span class="hljs-string">&quot;Hello World!&quot;</span>;
+    <span class="hljs-type">int</span> data_len = <span class="hljs-built_in">strlen</span>((<span class="hljs-type">char</span>*)plaintext);
+
+    <span class="hljs-comment">// 零填充至8字节对齐</span>
+    <span class="hljs-keyword">while</span> (data_len % <span class="hljs-number">8</span> != <span class="hljs-number">0</span>)
+        data_len++;
+    
+    <span class="hljs-type">unsigned</span> <span class="hljs-type">char</span> ciphertext[<span class="hljs-number">256</span>];
+    <span class="hljs-type">unsigned</span> <span class="hljs-type">char</span> decrypted[<span class="hljs-number">256</span>];
+    <span class="hljs-type">int</span> i;
+    
+    <span class="hljs-built_in">memset</span>(ciphertext, <span class="hljs-number">0</span>, <span class="hljs-keyword">sizeof</span>(ciphertext));
+    <span class="hljs-built_in">memset</span>(decrypted, <span class="hljs-number">0</span>, <span class="hljs-keyword">sizeof</span>(decrypted));
+    <span class="hljs-built_in">memcpy</span>(ciphertext, plaintext, <span class="hljs-built_in">strlen</span>((<span class="hljs-type">char</span>*)plaintext));
+
+    <span class="hljs-comment">// 加密</span>
+    tea_encrypt_data(ciphertext, data_len, key, ciphertext);
+
+    <span class="hljs-comment">// 输出密文（十六进制）</span>
+    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;secret: &quot;</span>);
+    <span class="hljs-keyword">for</span> ( i = <span class="hljs-number">0</span>; i &lt; data_len; i++)
+        <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%02x&quot;</span>, ciphertext[i]);
+    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;\n&quot;</span>);
+    
+    <span class="hljs-comment">// 解密</span>
+    tea_decrypt_data(ciphertext, data_len, key, decrypted);
+
+    <span class="hljs-comment">// 输出解密结果</span>
+    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;public: %s\n&quot;</span>, decrypted);
+
+    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+&#125;</code></pre>
+
+<p>输出结果</p>
+<pre><code class="hljs avrasm"><span class="hljs-symbol">secret:</span> a509b3c24e8a96dc82ed9bb9cb722c2f
+<span class="hljs-symbol">public:</span> Hello World!</code></pre>
+
+<h2 id="XTEA算法原理"><a href="#XTEA算法原理" class="headerlink" title="XTEA算法原理"></a>XTEA算法原理</h2><h3 id="改进"><a href="#改进" class="headerlink" title="改进"></a>改进</h3><ol>
+<li>V0&#x3D;V0+((((V1≪4)⊕(V1≫5))+V1)⊕(S+K[S mod 4]))</li>
+<li>S&#x3D;S+δ</li>
+<li>V1&#x3D;V1+((((V0≪4)⊕(V0≫5))+V0)⊕(S+K[(S≫11) mod 4]))</li>
+</ol>
+<p>与原版TEA的关键区别：</p>
+<ul>
+<li><strong>移位结果先异或后加原值</strong>：((x≪4)⊕(x≫5))+x，代替原来的((x≪4)+Ka)⊕⋯结构。这种设计使得非线性特性更强，且不再依赖子密钥参与该部分运算</li>
+<li><strong>动态密钥索引</strong>：V0的更新使用K[S mod 4]，V1V1的更新使用K[(S≫11) mod 4]。子密钥的选择随SS的递增而变化，使得每轮使用的子密钥组合不可预测，彻底消除了等效密钥</li>
+<li><strong>累加和更新时机</strong>：S在V0更新之后、V1更新之前递增，使得左右两半的更新使用不同的S值（V0用旧S，V1用新S），增加了轮内不对称性</li>
+</ul>
+<h3 id="python代码演示-1"><a href="#python代码演示-1" class="headerlink" title="python代码演示"></a>python代码演示</h3><pre><code class="hljs python"><span class="hljs-comment"># XTEA加密算法实现</span>
+<span class="hljs-comment"># 修复TEA等效密钥问题，采用动态密钥索引和嵌套轮函数</span>
+
+<span class="hljs-keyword">def</span> <span class="hljs-title function_">xtea_encrypt</span>(<span class="hljs-params">v, k</span>):
+    <span class="hljs-comment"># 拆分明文为左右两个32位块</span>
+    v0 = v[<span class="hljs-number">0</span>]
+    v1 = v[<span class="hljs-number">1</span>]
+    <span class="hljs-comment"># 黄金分割常数</span>
+    delta = <span class="hljs-number">0x9e3779b9</span>
+    <span class="hljs-comment"># 累加和初始为0</span>
+    sum_val = <span class="hljs-number">0</span>
+
+    <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">32</span>):
+        <span class="hljs-comment"># 先更新左半部：嵌套移位结构 + 动态密钥索引k[sum_val &amp; 3]</span>
+        v0 = (v0 + ((((v1 &lt;&lt; <span class="hljs-number">4</span>) ^ (v1 &gt;&gt; <span class="hljs-number">5</span>)) + v1) ^ (sum_val + k[sum_val &amp; <span class="hljs-number">3</span>]))) &amp; <span class="hljs-number">0xffffffff</span>
+        <span class="hljs-comment"># 累加和在左右更新之间递增</span>
+        sum_val = (sum_val + delta) &amp; <span class="hljs-number">0xffffffff</span>
+        <span class="hljs-comment"># 再更新右半部：使用sum高位动态选择密钥k[(sum_val &gt;&gt; 11) &amp; 3]</span>
+        v1 = (v1 + ((((v0 &lt;&lt; <span class="hljs-number">4</span>) ^ (v0 &gt;&gt; <span class="hljs-number">5</span>)) + v0) ^ (sum_val + k[(sum_val &gt;&gt; <span class="hljs-number">11</span>) &amp; <span class="hljs-number">3</span>]))) &amp; <span class="hljs-number">0xffffffff</span>
+    
+    <span class="hljs-keyword">return</span> [v0, v1]
+
+<span class="hljs-keyword">def</span> <span class="hljs-title function_">xtea_decrypt</span>(<span class="hljs-params">v, k</span>):
+    v0 = v[<span class="hljs-number">0</span>]
+    v1 = v[<span class="hljs-number">1</span>]
+    delta = <span class="hljs-number">0x9e3779b9</span>
+    <span class="hljs-comment"># 解密时累加和从最大值开始递减</span>
+    sum_val = (delta * <span class="hljs-number">32</span>) &amp; <span class="hljs-number">0xffffffff</span>
+
+    <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">32</span>):
+        <span class="hljs-comment"># 先恢复右半部，与加密顺序相反</span>
+        v1 = (v1 - ((((v0 &lt;&lt; <span class="hljs-number">4</span>) ^ (v0 &gt;&gt; <span class="hljs-number">5</span>)) + v0) ^ (sum_val + k[(sum_val &gt;&gt; <span class="hljs-number">11</span>) &amp; <span class="hljs-number">3</span>]))) &amp; <span class="hljs-number">0xffffffff</span>
+        <span class="hljs-comment"># 再恢复左半部</span>
+        v0 = (v0 - ((((v1 &lt;&lt; <span class="hljs-number">4</span>) ^ (v1 &gt;&gt; <span class="hljs-number">5</span>)) + v1) ^ (sum_val + k[sum_val &amp; <span class="hljs-number">3</span>]))) &amp; <span class="hljs-number">0xffffffff</span>
+        <span class="hljs-comment"># 累加和递减</span>
+        sum_val = (sum_val - delta) &amp; <span class="hljs-number">0xffffffff</span>
+
+    <span class="hljs-keyword">return</span> [v0, v1]
+
+<span class="hljs-keyword">def</span> <span class="hljs-title function_">xtea_encrypt_string</span>(<span class="hljs-params">data, key</span>):
+    <span class="hljs-comment"># 将16字节密钥拆分为4个32位整数（小端序）</span>
+    key_ints = []
+    <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">0</span>, <span class="hljs-number">16</span>, <span class="hljs-number">4</span>):
+        key_ints.append(<span class="hljs-built_in">int</span>.from_bytes(key[i:i+<span class="hljs-number">4</span>], <span class="hljs-string">&#x27;little&#x27;</span>))
+
+    <span class="hljs-comment"># 零填充至8字节对齐</span>
+    data = <span class="hljs-built_in">bytearray</span>(data)
+    <span class="hljs-keyword">while</span> <span class="hljs-built_in">len</span>(data) % <span class="hljs-number">8</span> != <span class="hljs-number">0</span>:
+        data.append(<span class="hljs-number">0</span>)
+
+    <span class="hljs-comment"># 逐分组加密（ECB模式）</span>
+    result = <span class="hljs-built_in">bytearray</span>()
+    <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">0</span>, <span class="hljs-built_in">len</span>(data), <span class="hljs-number">8</span>):
+        <span class="hljs-comment"># 将8字节分为左右两个32位字</span>
+        v0 = <span class="hljs-built_in">int</span>.from_bytes(data[i:i+<span class="hljs-number">4</span>], <span class="hljs-string">&#x27;little&#x27;</span>)
+        v1 = <span class="hljs-built_in">int</span>.from_bytes(data[i+<span class="hljs-number">4</span>:i+<span class="hljs-number">8</span>], <span class="hljs-string">&#x27;little&#x27;</span>)
+        enc = xtea_encrypt([v0, v1], key_ints)
+        <span class="hljs-comment"># 拼接密文（小端序）</span>
+        result.extend(enc[<span class="hljs-number">0</span>].to_bytes(<span class="hljs-number">4</span>, <span class="hljs-string">&#x27;little&#x27;</span>))
+        result.extend(enc[<span class="hljs-number">1</span>].to_bytes(<span class="hljs-number">4</span>, <span class="hljs-string">&#x27;little&#x27;</span>))
+
+    <span class="hljs-keyword">return</span> <span class="hljs-built_in">bytes</span>(result)
+
+<span class="hljs-keyword">def</span> <span class="hljs-title function_">xtea_decrypt_string</span>(<span class="hljs-params">data, key</span>):
+    <span class="hljs-comment"># 密钥处理同加密</span>
+    key_ints = []
+    <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">0</span>, <span class="hljs-number">16</span>, <span class="hljs-number">4</span>):
+        key_ints.append(<span class="hljs-built_in">int</span>.from_bytes(key[i:i+<span class="hljs-number">4</span>], <span class="hljs-string">&#x27;little&#x27;</span>))
+
+    <span class="hljs-comment"># 逐分分解密</span>
+    result = <span class="hljs-built_in">bytearray</span>()
+    <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">0</span>, <span class="hljs-built_in">len</span>(data), <span class="hljs-number">8</span>):
+        v0 = <span class="hljs-built_in">int</span>.from_bytes(data[i:i+<span class="hljs-number">4</span>], <span class="hljs-string">&#x27;little&#x27;</span>)
+        v1 = <span class="hljs-built_in">int</span>.from_bytes(data[i+<span class="hljs-number">4</span>:i+<span class="hljs-number">8</span>], <span class="hljs-string">&#x27;little&#x27;</span>)
+        dec = xtea_decrypt([v0, v1], key_ints)
+        result.extend(dec[<span class="hljs-number">0</span>].to_bytes(<span class="hljs-number">4</span>, <span class="hljs-string">&#x27;little&#x27;</span>))
+        result.extend(dec[<span class="hljs-number">1</span>].to_bytes(<span class="hljs-number">4</span>, <span class="hljs-string">&#x27;little&#x27;</span>))
+
+    <span class="hljs-comment"># 去除填充的零字节</span>
+    <span class="hljs-keyword">return</span> <span class="hljs-built_in">bytes</span>(result).rstrip(<span class="hljs-string">b&#x27;\x00&#x27;</span>)
+
+<span class="hljs-keyword">if</span> __name__ == <span class="hljs-string">&#x27;__main__&#x27;</span>:
+    <span class="hljs-comment"># 128位密钥（16字节）</span>
+    key = <span class="hljs-string">b&#x27;0123456789abcdef&#x27;</span>
+    plaintext = <span class="hljs-string">b&#x27;Hello World!&#x27;</span>
+
+    ciphertext = xtea_encrypt_string(plaintext, key)
+    <span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;secret: &#x27;</span>, ciphertext.<span class="hljs-built_in">hex</span>())
+
+    decrypted = xtea_decrypt_string(ciphertext, key)
+    <span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;public: &#x27;</span>, decrypted.decode())</code></pre>
+
+<p>输出结果</p>
+<pre><code class="hljs avrasm"><span class="hljs-symbol">secret:</span>  <span class="hljs-number">0</span>f196bfc0e44e1b201847fc986fc5a4a
+<span class="hljs-symbol">public:</span>  Hello World!</code></pre>
+
+
+
+<h3 id="c代码演示-1"><a href="#c代码演示-1" class="headerlink" title="c代码演示"></a>c代码演示</h3><pre><code class="hljs c"><span class="hljs-comment">// XTEA加密算法C语言实现</span>
+<span class="hljs-comment">// 修复TEA等效密钥问题，采用动态密钥索引和嵌套轮函数</span>
+
+<span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stdio.h&gt;</span></span>
+<span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;string.h&gt;</span></span>
+<span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stdint.h&gt;</span></span>
+
+<span class="hljs-comment">// 核心加密函数：动态密钥索引，消除等效密钥</span>
+<span class="hljs-type">void</span> <span class="hljs-title function_">xtea_encrypt</span><span class="hljs-params">(<span class="hljs-type">uint32_t</span> v[<span class="hljs-number">2</span>], <span class="hljs-type">uint32_t</span> k[<span class="hljs-number">4</span>])</span>
+&#123;
+    <span class="hljs-comment">// 拆分明文为左右两个32位块</span>
+    <span class="hljs-type">uint32_t</span> v0 = v[<span class="hljs-number">0</span>];
+    <span class="hljs-type">uint32_t</span> v1 = v[<span class="hljs-number">1</span>];
+    <span class="hljs-comment">// 黄金分割常数</span>
+    <span class="hljs-type">uint32_t</span> delta = <span class="hljs-number">0x9E3779B9</span>;
+    <span class="hljs-comment">// 累加和初始为0</span>
+    <span class="hljs-type">uint32_t</span> sum = <span class="hljs-number">0</span>;
+    <span class="hljs-type">int</span> i;
+
+    <span class="hljs-keyword">for</span> (i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">32</span>; i++)
+    &#123;
+        <span class="hljs-comment">// 左半部更新：嵌套移位结构 + 动态密钥索引k[sum &amp; 3]</span>
+        v0 += (((v1 &lt;&lt; <span class="hljs-number">4</span>) ^ (v1 &gt;&gt; <span class="hljs-number">5</span>)) + v1) ^ (sum + k[sum &amp; <span class="hljs-number">3</span>]);
+        <span class="hljs-comment">// 累加和在左右更新之间递增</span>
+        sum += delta;
+        <span class="hljs-comment">// 右半部更新：使用sum高位动态选择密钥k[(sum &gt;&gt; 11) &amp; 3]</span>
+        v1 += (((v0 &lt;&lt; <span class="hljs-number">4</span>) ^ (v0 &gt;&gt; <span class="hljs-number">5</span>)) + v0) ^ (sum + k[(sum &gt;&gt; <span class="hljs-number">11</span>) &amp; <span class="hljs-number">3</span>]);
+    &#125;
+
+    <span class="hljs-comment">// 写回加密结果</span>
+    v[<span class="hljs-number">0</span>] = v0;
+    v[<span class="hljs-number">1</span>] = v1;
+&#125;
+
+<span class="hljs-comment">// 核心解密函数：加密的严格逆运算</span>
+<span class="hljs-type">void</span> <span class="hljs-title function_">xtea_decrypt</span><span class="hljs-params">(<span class="hljs-type">uint32_t</span> v[<span class="hljs-number">2</span>], <span class="hljs-type">uint32_t</span> k[<span class="hljs-number">4</span>])</span>
+&#123;
+    <span class="hljs-type">uint32_t</span> v0 = v[<span class="hljs-number">0</span>];
+    <span class="hljs-type">uint32_t</span> v1 = v[<span class="hljs-number">1</span>];
+    <span class="hljs-type">uint32_t</span> delta = <span class="hljs-number">0x9E3779B9</span>;
+    <span class="hljs-comment">// 解密时累加和从最大值开始递减</span>
+    <span class="hljs-type">uint32_t</span> sum = delta * <span class="hljs-number">32</span>;
+    <span class="hljs-type">int</span> i;
+
+    <span class="hljs-keyword">for</span> (i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">32</span>; i++)
+    &#123;
+        <span class="hljs-comment">// 先恢复右半部，与加密顺序相反</span>
+        v1 -= (((v0 &lt;&lt; <span class="hljs-number">4</span>) ^ (v0 &gt;&gt; <span class="hljs-number">5</span>)) + v0) ^ (sum + k[(sum &gt;&gt; <span class="hljs-number">11</span>) &amp; <span class="hljs-number">3</span>]);
+        <span class="hljs-comment">// 再恢复左半部</span>
+        v0 -= (((v1 &lt;&lt; <span class="hljs-number">4</span>) ^ (v1 &gt;&gt; <span class="hljs-number">5</span>)) + v1) ^ (sum + k[sum &amp; <span class="hljs-number">3</span>]);
+        <span class="hljs-comment">// 累加和递减</span>
+        sum -= delta;
+    &#125;
+
+    v[<span class="hljs-number">0</span>] = v0;
+    v[<span class="hljs-number">1</span>] = v1;
+&#125;
+
+<span class="hljs-comment">// 批量加密函数：处理任意长度数据</span>
+<span class="hljs-type">void</span> <span class="hljs-title function_">xtea_encrypt_data</span><span class="hljs-params">(<span class="hljs-type">unsigned</span> <span class="hljs-type">char</span> *data, <span class="hljs-type">int</span> data_len, <span class="hljs-type">unsigned</span> <span class="hljs-type">char</span> *key, <span class="hljs-type">unsigned</span> <span class="hljs-type">char</span> *output)</span>
+&#123;
+    <span class="hljs-type">uint32_t</span> k[<span class="hljs-number">4</span>];
+    <span class="hljs-type">int</span> i;
+
+    <span class="hljs-comment">// 将16字节密钥转换为4个32位整数（小端序）</span>
+    <span class="hljs-keyword">for</span> (i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">4</span>; i++)
+    &#123;
+        k[i] = ((<span class="hljs-type">uint32_t</span>)key[i*<span class="hljs-number">4</span>]) |
+               ((<span class="hljs-type">uint32_t</span>)key[i*<span class="hljs-number">4</span>+<span class="hljs-number">1</span>] &lt;&lt; <span class="hljs-number">8</span>) |
+               ((<span class="hljs-type">uint32_t</span>)key[i*<span class="hljs-number">4</span>+<span class="hljs-number">2</span>] &lt;&lt; <span class="hljs-number">16</span>) |
+               ((<span class="hljs-type">uint32_t</span>)key[i*<span class="hljs-number">4</span>+<span class="hljs-number">3</span>] &lt;&lt; <span class="hljs-number">24</span>);
+    &#125;
+
+    <span class="hljs-comment">// 逐8字节分组加密（ECB模式）</span>
+    <span class="hljs-keyword">for</span> (i = <span class="hljs-number">0</span>; i &lt; data_len; i += <span class="hljs-number">8</span>)
+    &#123;
+        <span class="hljs-type">uint32_t</span> v[<span class="hljs-number">2</span>];
+        <span class="hljs-comment">// 将8字节组装为两个32位字（小端序）</span>
+        v[<span class="hljs-number">0</span>] = ((<span class="hljs-type">uint32_t</span>)data[i]) |
+               ((<span class="hljs-type">uint32_t</span>)data[i+<span class="hljs-number">1</span>] &lt;&lt; <span class="hljs-number">8</span>) |
+               ((<span class="hljs-type">uint32_t</span>)data[i+<span class="hljs-number">2</span>] &lt;&lt; <span class="hljs-number">16</span>) |
+               ((<span class="hljs-type">uint32_t</span>)data[i+<span class="hljs-number">3</span>] &lt;&lt; <span class="hljs-number">24</span>);
+        v[<span class="hljs-number">1</span>] = ((<span class="hljs-type">uint32_t</span>)data[i+<span class="hljs-number">4</span>]) |
+               ((<span class="hljs-type">uint32_t</span>)data[i+<span class="hljs-number">5</span>] &lt;&lt; <span class="hljs-number">8</span>) |
+               ((<span class="hljs-type">uint32_t</span>)data[i+<span class="hljs-number">6</span>] &lt;&lt; <span class="hljs-number">16</span>) |
+               ((<span class="hljs-type">uint32_t</span>)data[i+<span class="hljs-number">7</span>] &lt;&lt; <span class="hljs-number">24</span>);
+
+        <span class="hljs-comment">// 调用核心加密</span>
+        xtea_encrypt(v, k);
+
+        <span class="hljs-comment">// 将加密结果拆回字节数组（小端序）</span>
+        output[i] = v[<span class="hljs-number">0</span>] &amp; <span class="hljs-number">0xFF</span>;
+        output[i+<span class="hljs-number">1</span>] = (v[<span class="hljs-number">0</span>] &gt;&gt; <span class="hljs-number">8</span>) &amp; <span class="hljs-number">0xFF</span>;
+        output[i+<span class="hljs-number">2</span>] = (v[<span class="hljs-number">0</span>] &gt;&gt; <span class="hljs-number">16</span>) &amp; <span class="hljs-number">0xFF</span>;
+        output[i+<span class="hljs-number">3</span>] = (v[<span class="hljs-number">0</span>] &gt;&gt; <span class="hljs-number">24</span>) &amp; <span class="hljs-number">0xFF</span>;
+        output[i+<span class="hljs-number">4</span>] = v[<span class="hljs-number">1</span>] &amp; <span class="hljs-number">0xFF</span>;
+        output[i+<span class="hljs-number">5</span>] = (v[<span class="hljs-number">1</span>] &gt;&gt; <span class="hljs-number">8</span>) &amp; <span class="hljs-number">0xFF</span>;
+        output[i+<span class="hljs-number">6</span>] = (v[<span class="hljs-number">1</span>] &gt;&gt; <span class="hljs-number">16</span>) &amp; <span class="hljs-number">0xFF</span>;
+        output[i+<span class="hljs-number">7</span>] = (v[<span class="hljs-number">1</span>] &gt;&gt; <span class="hljs-number">24</span>) &amp; <span class="hljs-number">0xFF</span>;
+    &#125;
+&#125;
+
+<span class="hljs-comment">// 批量解密函数</span>
+<span class="hljs-type">void</span> <span class="hljs-title function_">xtea_decrypt_data</span><span class="hljs-params">(<span class="hljs-type">unsigned</span> <span class="hljs-type">char</span> *data, <span class="hljs-type">int</span> data_len, <span class="hljs-type">unsigned</span> <span class="hljs-type">char</span> *key, <span class="hljs-type">unsigned</span> <span class="hljs-type">char</span> *output)</span>
+&#123;
+    <span class="hljs-type">uint32_t</span> k[<span class="hljs-number">4</span>];
+    <span class="hljs-type">int</span> i;
+
+    <span class="hljs-comment">// 密钥转换同加密</span>
+    <span class="hljs-keyword">for</span> (i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">4</span>; i++)
+    &#123;
+        k[i] = ((<span class="hljs-type">uint32_t</span>)key[i*<span class="hljs-number">4</span>]) |
+               ((<span class="hljs-type">uint32_t</span>)key[i*<span class="hljs-number">4</span>+<span class="hljs-number">1</span>] &lt;&lt; <span class="hljs-number">8</span>) |
+               ((<span class="hljs-type">uint32_t</span>)key[i*<span class="hljs-number">4</span>+<span class="hljs-number">2</span>] &lt;&lt; <span class="hljs-number">16</span>) |
+               ((<span class="hljs-type">uint32_t</span>)key[i*<span class="hljs-number">4</span>+<span class="hljs-number">3</span>] &lt;&lt; <span class="hljs-number">24</span>);
+    &#125;
+
+    <span class="hljs-comment">// 逐分组解密</span>
+    <span class="hljs-keyword">for</span> (i = <span class="hljs-number">0</span>; i &lt; data_len; i += <span class="hljs-number">8</span>)
+    &#123;
+        <span class="hljs-type">uint32_t</span> v[<span class="hljs-number">2</span>];
+        <span class="hljs-comment">// 字节转字（小端序）</span>
+        v[<span class="hljs-number">0</span>] = ((<span class="hljs-type">uint32_t</span>)data[i]) |
+               ((<span class="hljs-type">uint32_t</span>)data[i+<span class="hljs-number">1</span>] &lt;&lt; <span class="hljs-number">8</span>) |
+               ((<span class="hljs-type">uint32_t</span>)data[i+<span class="hljs-number">2</span>] &lt;&lt; <span class="hljs-number">16</span>) |
+               ((<span class="hljs-type">uint32_t</span>)data[i+<span class="hljs-number">3</span>] &lt;&lt; <span class="hljs-number">24</span>);
+        v[<span class="hljs-number">1</span>] = ((<span class="hljs-type">uint32_t</span>)data[i+<span class="hljs-number">4</span>]) |
+               ((<span class="hljs-type">uint32_t</span>)data[i+<span class="hljs-number">5</span>] &lt;&lt; <span class="hljs-number">8</span>) |
+               ((<span class="hljs-type">uint32_t</span>)data[i+<span class="hljs-number">6</span>] &lt;&lt; <span class="hljs-number">16</span>) |
+               ((<span class="hljs-type">uint32_t</span>)data[i+<span class="hljs-number">7</span>] &lt;&lt; <span class="hljs-number">24</span>);
+
+        <span class="hljs-comment">// 调用核心解密</span>
+        xtea_decrypt(v, k);
+
+        <span class="hljs-comment">// 写回字节数组</span>
+        output[i] = v[<span class="hljs-number">0</span>] &amp; <span class="hljs-number">0xFF</span>;
+        output[i+<span class="hljs-number">1</span>] = (v[<span class="hljs-number">0</span>] &gt;&gt; <span class="hljs-number">8</span>) &amp; <span class="hljs-number">0xFF</span>;
+        output[i+<span class="hljs-number">2</span>] = (v[<span class="hljs-number">0</span>] &gt;&gt; <span class="hljs-number">16</span>) &amp; <span class="hljs-number">0xFF</span>;
+        output[i+<span class="hljs-number">3</span>] = (v[<span class="hljs-number">0</span>] &gt;&gt; <span class="hljs-number">24</span>) &amp; <span class="hljs-number">0xFF</span>;
+        output[i+<span class="hljs-number">4</span>] = v[<span class="hljs-number">1</span>] &amp; <span class="hljs-number">0xFF</span>;
+        output[i+<span class="hljs-number">5</span>] = (v[<span class="hljs-number">1</span>] &gt;&gt; <span class="hljs-number">8</span>) &amp; <span class="hljs-number">0xFF</span>;
+        output[i+<span class="hljs-number">6</span>] = (v[<span class="hljs-number">1</span>] &gt;&gt; <span class="hljs-number">16</span>) &amp; <span class="hljs-number">0xFF</span>;
+        output[i+<span class="hljs-number">7</span>] = (v[<span class="hljs-number">1</span>] &gt;&gt; <span class="hljs-number">24</span>) &amp; <span class="hljs-number">0xFF</span>;
+    &#125;
+&#125;
+
+<span class="hljs-type">int</span> <span class="hljs-title function_">main</span><span class="hljs-params">(<span class="hljs-type">void</span>)</span>
+&#123;
+    <span class="hljs-comment">// 128位密钥（16字节）</span>
+    <span class="hljs-type">unsigned</span> <span class="hljs-type">char</span> key[<span class="hljs-number">16</span>] = <span class="hljs-string">&quot;0123456789abcdef&quot;</span>;
+    <span class="hljs-type">unsigned</span> <span class="hljs-type">char</span> plaintext[] = <span class="hljs-string">&quot;Hello World!&quot;</span>;
+    <span class="hljs-type">int</span> data_len = <span class="hljs-built_in">strlen</span>((<span class="hljs-type">char</span>*)plaintext);
+    <span class="hljs-type">int</span> padded_len = data_len;
+    <span class="hljs-type">unsigned</span> <span class="hljs-type">char</span> ciphertext[<span class="hljs-number">256</span>];
+    <span class="hljs-type">unsigned</span> <span class="hljs-type">char</span> decrypted[<span class="hljs-number">256</span>];
+    <span class="hljs-type">int</span> i;
+
+    <span class="hljs-comment">// 零填充至8字节对齐</span>
+    <span class="hljs-keyword">while</span> (padded_len % <span class="hljs-number">8</span> != <span class="hljs-number">0</span>)
+        padded_len++;
+
+    <span class="hljs-built_in">memset</span>(ciphertext, <span class="hljs-number">0</span>, <span class="hljs-keyword">sizeof</span>(ciphertext));
+    <span class="hljs-built_in">memset</span>(decrypted, <span class="hljs-number">0</span>, <span class="hljs-keyword">sizeof</span>(decrypted));
+    <span class="hljs-built_in">memcpy</span>(ciphertext, plaintext, data_len);
+
+    <span class="hljs-comment">// 加密</span>
+    xtea_encrypt_data(ciphertext, padded_len, key, ciphertext);
+
+    <span class="hljs-comment">// 输出密文（十六进制）</span>
+    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;secret: &quot;</span>);
+    <span class="hljs-keyword">for</span> (i = <span class="hljs-number">0</span>; i &lt; padded_len; i++)
+        <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%02x&quot;</span>, ciphertext[i]);
+    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;\n&quot;</span>);
+
+    <span class="hljs-comment">// 解密</span>
+    xtea_decrypt_data(ciphertext, padded_len, key, decrypted);
+
+    <span class="hljs-comment">// 输出解密结果</span>
+    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;public: %s\n&quot;</span>, decrypted);
+
+    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+&#125;</code></pre>
+
+<p>输出结果</p>
+<pre><code class="hljs avrasm"><span class="hljs-symbol">secret:</span> <span class="hljs-number">0</span>f196bfc0e44e1b201847fc986fc5a4a
+<span class="hljs-symbol">public:</span> Hello World!</code></pre>
+
+<h2 id="XXTEA算法原理"><a href="#XXTEA算法原理" class="headerlink" title="XXTEA算法原理"></a>XXTEA算法原理</h2><h3 id="改进-1"><a href="#改进-1" class="headerlink" title="改进"></a>改进</h3><p>XXTEA的加密轮数不再固定，而是根据数据长度nn动态调整：</p>
+<p>R&#x3D;6+⌊52n⌋</p>
+<p>该公式的设计逻辑在于：当nn较小时（如n&#x3D;2，仅64位数据），轮数自动增加至6+26&#x3D;32轮，以弥补短数据混淆不充分的弱点；当nn较大时，轮数相应减少，因为长数据本身的字间扩散已经提供了足够的混淆效果。这种自适应机制在安全性与效率之间取得了平衡。</p>
+<p>XXTEA定义了一个名为MX的混合函数</p>
+<pre><code class="hljs python">mx(sum_val, y, z, p, e, k, round_num):
+        shift1 = (z &gt;&gt; <span class="hljs-number">7</span>) ^ (y &lt;&lt; <span class="hljs-number">1</span>)
+        shift2 = (y &gt;&gt; <span class="hljs-number">5</span>) ^ (z &lt;&lt; <span class="hljs-number">3</span>)
+        mixed = (shift1 + shift2) ^ ((sum_val + y) ^ (k[((p &amp; <span class="hljs-number">3</span>) ^ e + round_num) &amp; <span class="hljs-number">3</span>] | z))
+        <span class="hljs-keyword">return</span> mixed ^ round_const[round_num &amp; <span class="hljs-number">7</span>]</code></pre>
+
+<h3 id="python代码演示-2"><a href="#python代码演示-2" class="headerlink" title="python代码演示"></a>python代码演示</h3><pre><code class="hljs python"><span class="hljs-comment"># XXTEA加密算法实现</span>
+<span class="hljs-comment"># 支持变长数据块，自适应轮数，TEA系列最终版本</span>
+
+<span class="hljs-keyword">def</span> <span class="hljs-title function_">xxtea_encrypt</span>(<span class="hljs-params">data, key</span>):
+    <span class="hljs-comment"># 核心混合函数MX：融合前后相邻字、累加和与子密钥</span>
+    <span class="hljs-keyword">def</span> <span class="hljs-title function_">mx</span>(<span class="hljs-params">sum_val, y, z, p, e, k</span>):
+        <span class="hljs-comment"># 前一部分：z和y的移位交叉组合</span>
+        <span class="hljs-comment"># 后一部分：累加和与子密钥的异或混合</span>
+        <span class="hljs-keyword">return</span> (((z &gt;&gt; <span class="hljs-number">5</span>) ^ (y &lt;&lt; <span class="hljs-number">2</span>)) + ((y &gt;&gt; <span class="hljs-number">3</span>) ^ (z &lt;&lt; <span class="hljs-number">4</span>))) ^ ((sum_val ^ y) + (k[(p &amp; <span class="hljs-number">3</span>) ^ e] ^ z))
+    
+    <span class="hljs-comment"># 零填充至4字节对齐</span>
+    data = <span class="hljs-built_in">bytearray</span>(data)
+    <span class="hljs-keyword">while</span> <span class="hljs-built_in">len</span>(data) % <span class="hljs-number">4</span> != <span class="hljs-number">0</span>:
+        data.append(<span class="hljs-number">0</span>)
+
+    <span class="hljs-comment"># 将数据转换为32位字数组</span>
+    n = <span class="hljs-built_in">len</span>(data) // <span class="hljs-number">4</span>
+    v = []
+    <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(n):
+        v.append(<span class="hljs-built_in">int</span>.from_bytes(data[i*<span class="hljs-number">4</span>:(i+<span class="hljs-number">1</span>)*<span class="hljs-number">4</span>], <span class="hljs-string">&#x27;little&#x27;</span>))
+
+    <span class="hljs-comment"># 密钥填充至16字节后拆分为4个32位整数</span>
+    key = <span class="hljs-built_in">bytearray</span>(key)
+    <span class="hljs-keyword">while</span> <span class="hljs-built_in">len</span>(key) &lt; <span class="hljs-number">16</span>:
+        key.append(<span class="hljs-number">0</span>)
+
+    k = []
+    <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">0</span>, <span class="hljs-number">16</span>, <span class="hljs-number">4</span>):
+        k.append(<span class="hljs-built_in">int</span>.from_bytes(key[i:i+<span class="hljs-number">4</span>], <span class="hljs-string">&#x27;little&#x27;</span>))
+
+    <span class="hljs-comment"># 数据不足2个字时直接返回</span>
+    <span class="hljs-keyword">if</span> n &lt; <span class="hljs-number">2</span>:
+        <span class="hljs-keyword">return</span> data
+    
+    <span class="hljs-comment"># 自适应轮数：数据越短轮数越多</span>
+    q = <span class="hljs-number">6</span> + <span class="hljs-number">52</span> // n
+    sum_val = <span class="hljs-number">0</span>
+    z = v[n - <span class="hljs-number">1</span>]
+
+    <span class="hljs-comment"># 外层循环：共q轮</span>
+    <span class="hljs-keyword">while</span> q &gt; <span class="hljs-number">0</span>:
+        <span class="hljs-comment"># 累加和递增</span>
+        sum_val = (sum_val + <span class="hljs-number">0x9e3779b9</span>) &amp; <span class="hljs-number">0xffffffff</span>
+        <span class="hljs-comment"># 密钥索引偏移</span>
+        e = (sum_val &gt;&gt; <span class="hljs-number">2</span>) &amp; <span class="hljs-number">3</span>
+
+        <span class="hljs-comment"># 内层循环：遍历前n-1个字</span>
+        <span class="hljs-keyword">for</span> p <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(n - <span class="hljs-number">1</span>):
+            y = v[p + <span class="hljs-number">1</span>]
+            v[p] = (v[p] + mx(sum_val, y, z, p, e, k)) &amp; <span class="hljs-number">0xffffffff</span>
+            z = v[p]
+
+        <span class="hljs-comment"># 处理最后一个字（后继为v[0]）</span>
+        y = v[<span class="hljs-number">0</span>]
+        v[n - <span class="hljs-number">1</span>] = (v[n - <span class="hljs-number">1</span>] + mx(sum_val, y, z, n - <span class="hljs-number">1</span>, e, k)) &amp; <span class="hljs-number">0xffffffff</span>
+        z = v[n - <span class="hljs-number">1</span>]
+
+        q -= <span class="hljs-number">1</span>
+
+    <span class="hljs-comment"># 将字数组转换回字节数组（小端序）</span>
+    result = <span class="hljs-built_in">bytearray</span>()
+    <span class="hljs-keyword">for</span> val <span class="hljs-keyword">in</span> v:
+        result.extend(val.to_bytes(<span class="hljs-number">4</span>, <span class="hljs-string">&#x27;little&#x27;</span>))
+
+    <span class="hljs-keyword">return</span> <span class="hljs-built_in">bytes</span>(result)
+
+<span class="hljs-keyword">def</span> <span class="hljs-title function_">xxtea_decrypt</span>(<span class="hljs-params">data, key</span>):
+    <span class="hljs-comment"># 解密使用相同的MX函数</span>
+    <span class="hljs-keyword">def</span> <span class="hljs-title function_">mx</span>(<span class="hljs-params">sum_val, y, z, p, e, k</span>):
+        <span class="hljs-keyword">return</span> (((z &gt;&gt; <span class="hljs-number">5</span>) ^ (y &lt;&lt; <span class="hljs-number">2</span>)) + ((y &gt;&gt; <span class="hljs-number">3</span>) ^ (z &lt;&lt; <span class="hljs-number">4</span>))) ^ ((sum_val ^ y) + (k[(p &amp; <span class="hljs-number">3</span>) ^ e] ^ z))
+    
+    <span class="hljs-comment"># 将数据转换为32位字数组</span>
+    n = <span class="hljs-built_in">len</span>(data) // <span class="hljs-number">4</span>
+    v = []
+    <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(n):
+        v.append(<span class="hljs-built_in">int</span>.from_bytes(data[i*<span class="hljs-number">4</span>:(i+<span class="hljs-number">1</span>)*<span class="hljs-number">4</span>], <span class="hljs-string">&#x27;little&#x27;</span>))
+    
+    <span class="hljs-comment"># 密钥处理同加密</span>
+    key = <span class="hljs-built_in">bytearray</span>(key)
+    <span class="hljs-keyword">while</span> <span class="hljs-built_in">len</span>(key) &lt; <span class="hljs-number">16</span>:
+        key.append(<span class="hljs-number">0</span>)
+    
+    k = []
+    <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">0</span>, <span class="hljs-number">16</span>, <span class="hljs-number">4</span>):
+        k.append(<span class="hljs-built_in">int</span>.from_bytes(key[i:i+<span class="hljs-number">4</span>], <span class="hljs-string">&#x27;little&#x27;</span>))
+    
+    <span class="hljs-keyword">if</span> n &lt; <span class="hljs-number">2</span>:
+        <span class="hljs-keyword">return</span> data
+    
+    <span class="hljs-comment"># 自适应轮数</span>
+    q = <span class="hljs-number">6</span> + <span class="hljs-number">52</span> // n
+    <span class="hljs-comment"># 解密时累加和从最大值开始递减</span>
+    sum_val = (q * <span class="hljs-number">0x9E3779B9</span>) &amp; <span class="hljs-number">0xFFFFFFFF</span>
+    y = v[<span class="hljs-number">0</span>]
+    
+    <span class="hljs-comment"># 外层循环：解密顺序与加密相反</span>
+    <span class="hljs-keyword">while</span> q &gt; <span class="hljs-number">0</span>:
+        e = (sum_val &gt;&gt; <span class="hljs-number">2</span>) &amp; <span class="hljs-number">3</span>
+        
+        <span class="hljs-comment"># 内层循环：逆序遍历</span>
+        <span class="hljs-keyword">for</span> p <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(n - <span class="hljs-number">1</span>, <span class="hljs-number">0</span>, -<span class="hljs-number">1</span>):
+            z = v[p - <span class="hljs-number">1</span>]
+            v[p] = (v[p] - mx(sum_val, y, z, p, e, k)) &amp; <span class="hljs-number">0xFFFFFFFF</span>
+            y = v[p]
+        
+        <span class="hljs-comment"># 处理第一个字（前驱为v[n-1]）</span>
+        z = v[n - <span class="hljs-number">1</span>]
+        v[<span class="hljs-number">0</span>] = (v[<span class="hljs-number">0</span>] - mx(sum_val, y, z, <span class="hljs-number">0</span>, e, k)) &amp; <span class="hljs-number">0xFFFFFFFF</span>
+        y = v[<span class="hljs-number">0</span>]
+        
+        <span class="hljs-comment"># 累加和递减</span>
+        sum_val = (sum_val - <span class="hljs-number">0x9E3779B9</span>) &amp; <span class="hljs-number">0xFFFFFFFF</span>
+        q -= <span class="hljs-number">1</span>
+    
+    <span class="hljs-comment"># 转换回字节数组并去除填充</span>
+    result = <span class="hljs-built_in">bytearray</span>()
+    <span class="hljs-keyword">for</span> val <span class="hljs-keyword">in</span> v:
+        result.extend(val.to_bytes(<span class="hljs-number">4</span>, <span class="hljs-string">&#x27;little&#x27;</span>))
+    
+    <span class="hljs-keyword">return</span> <span class="hljs-built_in">bytes</span>(result).rstrip(<span class="hljs-string">b&#x27;\x00&#x27;</span>)
+
+<span class="hljs-keyword">if</span> __name__ == <span class="hljs-string">&#x27;__main__&#x27;</span>:
+    <span class="hljs-comment"># 密钥（不足16字节自动填充）</span>
+    key = <span class="hljs-string">b&#x27;0123456789abcdef&#x27;</span>
+    plaintext = <span class="hljs-string">b&#x27;Hello World!&#x27;</span>
+
+    ciphertext = xxtea_encrypt(plaintext, key)
+    <span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;secret: &#x27;</span>, ciphertext.<span class="hljs-built_in">hex</span>())
+
+    decrypted = xxtea_decrypt(ciphertext, key)
+    <span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;public: &#x27;</span>, decrypted.decode())</code></pre>
+
+<p>输出结果</p>
+<pre><code class="hljs avrasm"><span class="hljs-symbol">secret:</span> <span class="hljs-number">8625</span>DD3CB5D52593CF781E57
+<span class="hljs-symbol">public:</span> Hello World!</code></pre>
+
+<h3 id="c代码演示-2"><a href="#c代码演示-2" class="headerlink" title="c代码演示"></a>c代码演示</h3><pre><code class="hljs c"><span class="hljs-comment">// XXTEA加密算法C语言实现</span>
+<span class="hljs-comment">// 支持变长数据块，自适应轮数，循环依赖扩散</span>
+
+<span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stdio.h&gt;</span></span>
+<span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;string.h&gt;</span></span>
+<span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stdint.h&gt;</span></span>
+<span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stdlib.h&gt;</span></span>
+
+<span class="hljs-comment">// 核心混合函数MX：前驱z与后继y的双向交叉混合</span>
+<span class="hljs-type">uint32_t</span> <span class="hljs-title function_">mx</span><span class="hljs-params">(<span class="hljs-type">uint32_t</span> sum_val, <span class="hljs-type">uint32_t</span> y, <span class="hljs-type">uint32_t</span> z, <span class="hljs-type">int</span> p, <span class="hljs-type">uint32_t</span> e, <span class="hljs-type">uint32_t</span> k[<span class="hljs-number">4</span>])</span>
+&#123;
+    <span class="hljs-comment">// 第一部分：z和y的非对称移位交叉相加</span>
+    <span class="hljs-comment">// 第二部分：累加和与密钥的异或混合</span>
+    <span class="hljs-keyword">return</span> (((z &gt;&gt; <span class="hljs-number">5</span>) ^ (y &lt;&lt; <span class="hljs-number">2</span>)) + ((y &gt;&gt; <span class="hljs-number">3</span>) ^ (z &lt;&lt; <span class="hljs-number">4</span>))) ^ ((sum_val ^ y) + (k[(p &amp; <span class="hljs-number">3</span>) ^ e] ^ z));
+&#125;
+
+<span class="hljs-comment">// XXTEA加密：支持任意长度数据</span>
+<span class="hljs-type">void</span> <span class="hljs-title function_">xxtea_encrypt</span><span class="hljs-params">(<span class="hljs-type">unsigned</span> <span class="hljs-type">char</span> *data, <span class="hljs-type">int</span> data_len, <span class="hljs-type">unsigned</span> <span class="hljs-type">char</span> *key, <span class="hljs-type">unsigned</span> <span class="hljs-type">char</span> *output, <span class="hljs-type">int</span> *output_len)</span>
+&#123;
+    <span class="hljs-type">uint32_t</span> k[<span class="hljs-number">4</span>];
+    <span class="hljs-type">int</span> i;
+    
+    <span class="hljs-comment">// 将16字节密钥转换为4个32位整数（小端序）</span>
+    <span class="hljs-keyword">for</span> (i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">4</span>; i++)
+    &#123;
+        k[i] = ((<span class="hljs-type">uint32_t</span>)key[i*<span class="hljs-number">4</span>]) |
+               ((<span class="hljs-type">uint32_t</span>)key[i*<span class="hljs-number">4</span>+<span class="hljs-number">1</span>] &lt;&lt; <span class="hljs-number">8</span>) |
+               ((<span class="hljs-type">uint32_t</span>)key[i*<span class="hljs-number">4</span>+<span class="hljs-number">2</span>] &lt;&lt; <span class="hljs-number">16</span>) |
+               ((<span class="hljs-type">uint32_t</span>)key[i*<span class="hljs-number">4</span>+<span class="hljs-number">3</span>] &lt;&lt; <span class="hljs-number">24</span>);
+    &#125;
+    
+    <span class="hljs-comment">// 零填充至4字节对齐</span>
+    <span class="hljs-type">int</span> padding = (<span class="hljs-number">4</span> - data_len % <span class="hljs-number">4</span>) % <span class="hljs-number">4</span>;
+    <span class="hljs-type">int</span> padded_len = data_len + padding;
+    <span class="hljs-type">unsigned</span> <span class="hljs-type">char</span> *padded_data = (<span class="hljs-type">unsigned</span> <span class="hljs-type">char</span>*)<span class="hljs-built_in">malloc</span>(padded_len);
+    <span class="hljs-built_in">memcpy</span>(padded_data, data, data_len);
+    <span class="hljs-built_in">memset</span>(padded_data + data_len, <span class="hljs-number">0</span>, padding);
+    
+    <span class="hljs-comment">// 字节数组转32位字数组（小端序）</span>
+    <span class="hljs-type">int</span> n = padded_len / <span class="hljs-number">4</span>;
+    <span class="hljs-type">uint32_t</span> *v = (<span class="hljs-type">uint32_t</span>*)<span class="hljs-built_in">malloc</span>(n * <span class="hljs-keyword">sizeof</span>(<span class="hljs-type">uint32_t</span>));
+    <span class="hljs-keyword">for</span> (i = <span class="hljs-number">0</span>; i &lt; n; i++)
+    &#123;
+        v[i] = ((<span class="hljs-type">uint32_t</span>)padded_data[i*<span class="hljs-number">4</span>]) |
+               ((<span class="hljs-type">uint32_t</span>)padded_data[i*<span class="hljs-number">4</span>+<span class="hljs-number">1</span>] &lt;&lt; <span class="hljs-number">8</span>) |
+               ((<span class="hljs-type">uint32_t</span>)padded_data[i*<span class="hljs-number">4</span>+<span class="hljs-number">2</span>] &lt;&lt; <span class="hljs-number">16</span>) |
+               ((<span class="hljs-type">uint32_t</span>)padded_data[i*<span class="hljs-number">4</span>+<span class="hljs-number">3</span>] &lt;&lt; <span class="hljs-number">24</span>);
+    &#125;
+    
+    <span class="hljs-comment">// 数据过短时直接拷贝返回</span>
+    <span class="hljs-keyword">if</span> (n &lt; <span class="hljs-number">2</span>)
+    &#123;
+        <span class="hljs-built_in">memcpy</span>(output, padded_data, padded_len);
+        *output_len = padded_len;
+        <span class="hljs-built_in">free</span>(padded_data);
+        <span class="hljs-built_in">free</span>(v);
+        <span class="hljs-keyword">return</span>;
+    &#125;
+    
+    <span class="hljs-comment">// 自适应轮数：6 + 52/n，n越小轮数越多</span>
+    <span class="hljs-type">int</span> q = <span class="hljs-number">6</span> + <span class="hljs-number">52</span> / n;
+    <span class="hljs-type">uint32_t</span> sum_val = <span class="hljs-number">0</span>;
+    <span class="hljs-type">uint32_t</span> z = v[n - <span class="hljs-number">1</span>];
+    <span class="hljs-type">uint32_t</span> y;
+    <span class="hljs-type">int</span> p;
+    
+    <span class="hljs-comment">// 外层循环：共q轮</span>
+    <span class="hljs-keyword">while</span> (q &gt; <span class="hljs-number">0</span>)
+    &#123;
+        <span class="hljs-comment">// 累加和递增，使用黄金分割常数</span>
+        sum_val += <span class="hljs-number">0x9E3779B9</span>;
+        <span class="hljs-comment">// 根据累加和高位计算密钥索引偏移</span>
+        <span class="hljs-type">uint32_t</span> e = (sum_val &gt;&gt; <span class="hljs-number">2</span>) &amp; <span class="hljs-number">3</span>;
+        
+        <span class="hljs-comment">// 内层循环：顺序遍历，每个字与前驱z和后继y混合</span>
+        <span class="hljs-keyword">for</span> (p = <span class="hljs-number">0</span>; p &lt; n - <span class="hljs-number">1</span>; p++)
+        &#123;
+            y = v[p + <span class="hljs-number">1</span>];
+            v[p] += mx(sum_val, y, z, p, e, k);
+            z = v[p];
+        &#125;
+        
+        <span class="hljs-comment">// 处理最后一个字：后继为v[0]，前驱为z</span>
+        y = v[<span class="hljs-number">0</span>];
+        v[n - <span class="hljs-number">1</span>] += mx(sum_val, y, z, n - <span class="hljs-number">1</span>, e, k);
+        z = v[n - <span class="hljs-number">1</span>];
+        
+        q--;
+    &#125;
+    
+    <span class="hljs-comment">// 字数组转字节数组输出（小端序）</span>
+    *output_len = n * <span class="hljs-number">4</span>;
+    <span class="hljs-keyword">for</span> (i = <span class="hljs-number">0</span>; i &lt; n; i++)
+    &#123;
+        output[i*<span class="hljs-number">4</span>] = v[i] &amp; <span class="hljs-number">0xFF</span>;
+        output[i*<span class="hljs-number">4</span>+<span class="hljs-number">1</span>] = (v[i] &gt;&gt; <span class="hljs-number">8</span>) &amp; <span class="hljs-number">0xFF</span>;
+        output[i*<span class="hljs-number">4</span>+<span class="hljs-number">2</span>] = (v[i] &gt;&gt; <span class="hljs-number">16</span>) &amp; <span class="hljs-number">0xFF</span>;
+        output[i*<span class="hljs-number">4</span>+<span class="hljs-number">3</span>] = (v[i] &gt;&gt; <span class="hljs-number">24</span>) &amp; <span class="hljs-number">0xFF</span>;
+    &#125;
+    
+    <span class="hljs-built_in">free</span>(padded_data);
+    <span class="hljs-built_in">free</span>(v);
+&#125;
+
+<span class="hljs-comment">// XXTEA解密：加密的严格逆运算</span>
+<span class="hljs-type">void</span> <span class="hljs-title function_">xxtea_decrypt</span><span class="hljs-params">(<span class="hljs-type">unsigned</span> <span class="hljs-type">char</span> *data, <span class="hljs-type">int</span> data_len, <span class="hljs-type">unsigned</span> <span class="hljs-type">char</span> *key, <span class="hljs-type">unsigned</span> <span class="hljs-type">char</span> *output, <span class="hljs-type">int</span> *output_len)</span>
+&#123;
+    <span class="hljs-type">uint32_t</span> k[<span class="hljs-number">4</span>];
+    <span class="hljs-type">int</span> i;
+    
+    <span class="hljs-comment">// 密钥转换同加密</span>
+    <span class="hljs-keyword">for</span> (i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">4</span>; i++)
+    &#123;
+        k[i] = ((<span class="hljs-type">uint32_t</span>)key[i*<span class="hljs-number">4</span>]) |
+               ((<span class="hljs-type">uint32_t</span>)key[i*<span class="hljs-number">4</span>+<span class="hljs-number">1</span>] &lt;&lt; <span class="hljs-number">8</span>) |
+               ((<span class="hljs-type">uint32_t</span>)key[i*<span class="hljs-number">4</span>+<span class="hljs-number">2</span>] &lt;&lt; <span class="hljs-number">16</span>) |
+               ((<span class="hljs-type">uint32_t</span>)key[i*<span class="hljs-number">4</span>+<span class="hljs-number">3</span>] &lt;&lt; <span class="hljs-number">24</span>);
+    &#125;
+    
+    <span class="hljs-comment">// 字节转字</span>
+    <span class="hljs-type">int</span> n = data_len / <span class="hljs-number">4</span>;
+    <span class="hljs-type">uint32_t</span> *v = (<span class="hljs-type">uint32_t</span>*)<span class="hljs-built_in">malloc</span>(n * <span class="hljs-keyword">sizeof</span>(<span class="hljs-type">uint32_t</span>));
+    <span class="hljs-keyword">for</span> (i = <span class="hljs-number">0</span>; i &lt; n; i++)
+    &#123;
+        v[i] = ((<span class="hljs-type">uint32_t</span>)data[i*<span class="hljs-number">4</span>]) |
+               ((<span class="hljs-type">uint32_t</span>)data[i*<span class="hljs-number">4</span>+<span class="hljs-number">1</span>] &lt;&lt; <span class="hljs-number">8</span>) |
+               ((<span class="hljs-type">uint32_t</span>)data[i*<span class="hljs-number">4</span>+<span class="hljs-number">2</span>] &lt;&lt; <span class="hljs-number">16</span>) |
+               ((<span class="hljs-type">uint32_t</span>)data[i*<span class="hljs-number">4</span>+<span class="hljs-number">3</span>] &lt;&lt; <span class="hljs-number">24</span>);
+    &#125;
+    
+    <span class="hljs-keyword">if</span> (n &lt; <span class="hljs-number">2</span>)
+    &#123;
+        <span class="hljs-built_in">memcpy</span>(output, data, data_len);
+        *output_len = data_len;
+        <span class="hljs-built_in">free</span>(v);
+        <span class="hljs-keyword">return</span>;
+    &#125;
+    
+    <span class="hljs-comment">// 自适应轮数</span>
+    <span class="hljs-type">int</span> q = <span class="hljs-number">6</span> + <span class="hljs-number">52</span> / n;
+    <span class="hljs-comment">// 解密时累加和从最大值开始递减</span>
+    <span class="hljs-type">uint32_t</span> sum_val = q * <span class="hljs-number">0x9E3779B9</span>;
+    <span class="hljs-type">uint32_t</span> y = v[<span class="hljs-number">0</span>];
+    <span class="hljs-type">uint32_t</span> z;
+    <span class="hljs-type">int</span> p;
+    
+    <span class="hljs-comment">// 解密轮数逆序</span>
+    <span class="hljs-keyword">while</span> (q &gt; <span class="hljs-number">0</span>)
+    &#123;
+        <span class="hljs-type">uint32_t</span> e = (sum_val &gt;&gt; <span class="hljs-number">2</span>) &amp; <span class="hljs-number">3</span>;
+        
+        <span class="hljs-comment">// 内层逆序遍历：先恢复后面的字</span>
+        <span class="hljs-keyword">for</span> (p = n - <span class="hljs-number">1</span>; p &gt; <span class="hljs-number">0</span>; p--)
+        &#123;
+            z = v[p - <span class="hljs-number">1</span>];
+            v[p] -= mx(sum_val, y, z, p, e, k);
+            y = v[p];
+        &#125;
+        
+        <span class="hljs-comment">// 恢复第一个字：前驱为v[n-1]，后继为y</span>
+        z = v[n - <span class="hljs-number">1</span>];
+        v[<span class="hljs-number">0</span>] -= mx(sum_val, y, z, <span class="hljs-number">0</span>, e, k);
+        y = v[<span class="hljs-number">0</span>];
+        
+        <span class="hljs-comment">// 累加和递减</span>
+        sum_val -= <span class="hljs-number">0x9E3779B9</span>;
+        q--;
+    &#125;
+    
+    <span class="hljs-comment">// 字转字节输出</span>
+    *output_len = n * <span class="hljs-number">4</span>;
+    <span class="hljs-keyword">for</span> (i = <span class="hljs-number">0</span>; i &lt; n; i++)
+    &#123;
+        output[i*<span class="hljs-number">4</span>] = v[i] &amp; <span class="hljs-number">0xFF</span>;
+        output[i*<span class="hljs-number">4</span>+<span class="hljs-number">1</span>] = (v[i] &gt;&gt; <span class="hljs-number">8</span>) &amp; <span class="hljs-number">0xFF</span>;
+        output[i*<span class="hljs-number">4</span>+<span class="hljs-number">2</span>] = (v[i] &gt;&gt; <span class="hljs-number">16</span>) &amp; <span class="hljs-number">0xFF</span>;
+        output[i*<span class="hljs-number">4</span>+<span class="hljs-number">3</span>] = (v[i] &gt;&gt; <span class="hljs-number">24</span>) &amp; <span class="hljs-number">0xFF</span>;
+    &#125;
+    
+    <span class="hljs-comment">// 去除零填充</span>
+    <span class="hljs-keyword">while</span> (*output_len &gt; <span class="hljs-number">0</span> &amp;&amp; output[*output_len - <span class="hljs-number">1</span>] == <span class="hljs-number">0</span>)
+    &#123;
+        (*output_len)--;
+    &#125;
+    
+    <span class="hljs-built_in">free</span>(v);
+&#125;
+
+<span class="hljs-type">int</span> <span class="hljs-title function_">main</span><span class="hljs-params">(<span class="hljs-type">void</span>)</span>
+&#123;
+    <span class="hljs-comment">// 128位密钥（16字节）</span>
+    <span class="hljs-type">unsigned</span> <span class="hljs-type">char</span> key[<span class="hljs-number">16</span>] = <span class="hljs-string">&quot;0123456789abcdef&quot;</span>;
+    <span class="hljs-type">unsigned</span> <span class="hljs-type">char</span> plaintext[] = <span class="hljs-string">&quot;Hello World!&quot;</span>;
+    <span class="hljs-type">int</span> data_len = <span class="hljs-built_in">strlen</span>((<span class="hljs-type">char</span>*)plaintext);
+    <span class="hljs-type">unsigned</span> <span class="hljs-type">char</span> ciphertext[<span class="hljs-number">256</span>];
+    <span class="hljs-type">unsigned</span> <span class="hljs-type">char</span> decrypted[<span class="hljs-number">256</span>];
+    <span class="hljs-type">int</span> cipher_len, decrypted_len;
+    <span class="hljs-type">int</span> i;
+    
+    <span class="hljs-comment">// 加密</span>
+    xxtea_encrypt(plaintext, data_len, key, ciphertext, &amp;cipher_len);
+    
+    <span class="hljs-comment">// 输出密文（十六进制）</span>
+    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;secret: &quot;</span>);
+    <span class="hljs-keyword">for</span> (i = <span class="hljs-number">0</span>; i &lt; cipher_len; i++)
+        <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%02X&quot;</span>, ciphertext[i]);
+    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;\n&quot;</span>);
+    
+    <span class="hljs-comment">// 解密</span>
+    xxtea_decrypt(ciphertext, cipher_len, key, decrypted, &amp;decrypted_len);
+    
+    <span class="hljs-comment">// 输出解密结果</span>
+    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;public: &quot;</span>);
+    <span class="hljs-keyword">for</span> (i = <span class="hljs-number">0</span>; i &lt; decrypted_len; i++)
+        <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%c&quot;</span>, decrypted[i]);
+    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;\n&quot;</span>);
+    
+    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+&#125;</code></pre>
+
+<p>输出结果</p>
+<pre><code class="hljs avrasm"><span class="hljs-symbol">secret:</span> <span class="hljs-number">8625</span>DD3CB5D52593CF781E57
+<span class="hljs-symbol">public:</span> Hello World!</code></pre>
+
+<h2 id="XXTEA魔改"><a href="#XXTEA魔改" class="headerlink" title="XXTEA魔改"></a>XXTEA魔改</h2><h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>XXTEA算法在实战中同样也会衣魔改的身份存在接下给出如下魔改方式的代码作为演示</p>
+<p>双混合函数：前2轮用标准MX，后续轮用魔改MX（不同移位位数）</p>
+<p>负delta值：使用0x61C88647（-0x9E3779B9）改变累加方式</p>
+<p>循环遍历：所有字统一处理，消除边界特殊处理</p>
+<p>轮数调整：基础轮数8 + 52&#x2F;n（标准为6 + 52&#x2F;n）</p>
+<h3 id="python代码演示-3"><a href="#python代码演示-3" class="headerlink" title="python代码演示"></a>python代码演示</h3><pre><code class="hljs python"><span class="hljs-comment"># XXTEA魔改变体加密算法实现</span>
+<span class="hljs-keyword">def</span> <span class="hljs-title function_">_bytes_to_words</span>(<span class="hljs-params">data</span>):
+    <span class="hljs-string">&quot;&quot;&quot;将字节数组转换为32位字数组（小端序），自动零填充至4字节对齐&quot;&quot;&quot;</span>
+    n = <span class="hljs-built_in">len</span>(data)
+    <span class="hljs-keyword">if</span> n % <span class="hljs-number">4</span>:
+        data += <span class="hljs-string">b&#x27;\x00&#x27;</span> * (<span class="hljs-number">4</span> - n % <span class="hljs-number">4</span>)
+    words = []
+    <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">0</span>, <span class="hljs-built_in">len</span>(data), <span class="hljs-number">4</span>):
+        <span class="hljs-comment"># 4字节小端序组装为32位整数</span>
+        w = data[i] | (data[i+<span class="hljs-number">1</span>] &lt;&lt; <span class="hljs-number">8</span>) | (data[i+<span class="hljs-number">2</span>] &lt;&lt; <span class="hljs-number">16</span>) | (data[i+<span class="hljs-number">3</span>] &lt;&lt; <span class="hljs-number">24</span>)
+        words.append(w &amp; <span class="hljs-number">0xFFFFFFFF</span>)
+    <span class="hljs-keyword">return</span> words
+
+<span class="hljs-keyword">def</span> <span class="hljs-title function_">_words_to_bytes</span>(<span class="hljs-params">words</span>):
+    <span class="hljs-string">&quot;&quot;&quot;将32位字数组转换回字节数组（小端序）&quot;&quot;&quot;</span>
+    data = <span class="hljs-built_in">bytearray</span>()
+    <span class="hljs-keyword">for</span> w <span class="hljs-keyword">in</span> words:
+        data.append(w &amp; <span class="hljs-number">0xFF</span>)
+        data.append((w &gt;&gt; <span class="hljs-number">8</span>) &amp; <span class="hljs-number">0xFF</span>)
+        data.append((w &gt;&gt; <span class="hljs-number">16</span>) &amp; <span class="hljs-number">0xFF</span>)
+        data.append((w &gt;&gt; <span class="hljs-number">24</span>) &amp; <span class="hljs-number">0xFF</span>)
+    <span class="hljs-keyword">return</span> <span class="hljs-built_in">bytes</span>(data)
+
+<span class="hljs-keyword">def</span> <span class="hljs-title function_">_mx</span>(<span class="hljs-params">z, y, total, key, p, e</span>):
+    <span class="hljs-string">&quot;&quot;&quot;标准MX混合函数：右移5左移2 + 右移3左移4&quot;&quot;&quot;</span>
+    <span class="hljs-keyword">return</span> ((z &gt;&gt; <span class="hljs-number">5</span> ^ y &lt;&lt; <span class="hljs-number">2</span>) + (y &gt;&gt; <span class="hljs-number">3</span> ^ z &lt;&lt; <span class="hljs-number">4</span>)) ^ ((total ^ y) + (key[(p &amp; <span class="hljs-number">3</span>) ^ e] ^ z))
+
+<span class="hljs-keyword">def</span> <span class="hljs-title function_">_magic_mx</span>(<span class="hljs-params">z, y, total, key, p, e</span>):
+    <span class="hljs-string">&quot;&quot;&quot;魔改MX混合函数：改变移位位数（右移7左移6 + 右移5左移3），增强非线性扩散&quot;&quot;&quot;</span>
+    h = (z &gt;&gt; <span class="hljs-number">7</span> ^ y &lt;&lt; <span class="hljs-number">6</span>) + (y &gt;&gt; <span class="hljs-number">5</span> ^ z &lt;&lt; <span class="hljs-number">3</span>)
+    <span class="hljs-keyword">return</span> h ^ ((total ^ y) + (key[(p &amp; <span class="hljs-number">3</span>) ^ e] ^ z))
+
+<span class="hljs-keyword">def</span> <span class="hljs-title function_">xxtea_encrypt</span>(<span class="hljs-params">data, key</span>):
+    <span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> data <span class="hljs-keyword">or</span> <span class="hljs-built_in">len</span>(data) == <span class="hljs-number">0</span>:
+        <span class="hljs-keyword">return</span> <span class="hljs-string">b&#x27;&#x27;</span>
+    
+    <span class="hljs-comment"># 密钥处理：截取或填充至16字节</span>
+    key_bytes = key[:<span class="hljs-number">16</span>]
+    <span class="hljs-keyword">while</span> <span class="hljs-built_in">len</span>(key_bytes) &lt; <span class="hljs-number">16</span>:
+        key_bytes += <span class="hljs-string">b&#x27;\x00&#x27;</span>
+    
+    <span class="hljs-comment"># 密钥转换为4个32位字（小端序）</span>
+    key_words = []
+    <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">0</span>, <span class="hljs-number">16</span>, <span class="hljs-number">4</span>):
+        w = key_bytes[i] | (key_bytes[i+<span class="hljs-number">1</span>] &lt;&lt; <span class="hljs-number">8</span>) | (key_bytes[i+<span class="hljs-number">2</span>] &lt;&lt; <span class="hljs-number">16</span>) | (key_bytes[i+<span class="hljs-number">3</span>] &lt;&lt; <span class="hljs-number">24</span>)
+        key_words.append(w &amp; <span class="hljs-number">0xFFFFFFFF</span>)
+    
+    <span class="hljs-comment"># 明文转换为字数组</span>
+    v = _bytes_to_words(data)
+    n = <span class="hljs-built_in">len</span>(v)
+    
+    <span class="hljs-comment"># 魔改轮数：8 + 52/n（标准XXTEA为6 + 52/n）</span>
+    rounds = <span class="hljs-number">8</span> + <span class="hljs-number">52</span> // n
+    
+    total = <span class="hljs-number">0</span>
+    <span class="hljs-comment"># 魔改delta：使用负值0x61C88647（标准为0x9E3779B9）</span>
+    delta = <span class="hljs-number">0x61C88647</span>
+    
+    <span class="hljs-keyword">for</span> r <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(rounds):
+        total = (total + delta) &amp; <span class="hljs-number">0xFFFFFFFF</span>
+        
+        e = (total &gt;&gt; <span class="hljs-number">2</span>) &amp; <span class="hljs-number">3</span>
+        <span class="hljs-keyword">if</span> r &lt; <span class="hljs-number">2</span>:
+            <span class="hljs-comment"># 前2轮使用标准MX函数进行初始扩散</span>
+            <span class="hljs-keyword">for</span> p <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(n):
+                y = v[(p + <span class="hljs-number">1</span>) % n]  <span class="hljs-comment"># 后继字（循环取模）</span>
+                v[p] = (v[p] + _mx(v[(p - <span class="hljs-number">1</span>) % n], y, total, key_words, p, e)) &amp; <span class="hljs-number">0xFFFFFFFF</span>
+        <span class="hljs-keyword">else</span>:
+            <span class="hljs-comment"># 后续轮使用魔改MX函数增强混淆</span>
+            <span class="hljs-keyword">for</span> p <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(n):
+                y = v[(p + <span class="hljs-number">1</span>) % n]  <span class="hljs-comment"># 后继字（循环取模）</span>
+                v[p] = (v[p] + _magic_mx(v[(p - <span class="hljs-number">1</span>) % n], y, total, key_words, p, e)) &amp; <span class="hljs-number">0xFFFFFFFF</span>
+    
+    <span class="hljs-keyword">return</span> _words_to_bytes(v)
+
+<span class="hljs-keyword">def</span> <span class="hljs-title function_">xxtea_decrypt</span>(<span class="hljs-params">data, key</span>):
+    <span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> data <span class="hljs-keyword">or</span> <span class="hljs-built_in">len</span>(data) == <span class="hljs-number">0</span>:
+        <span class="hljs-keyword">return</span> <span class="hljs-string">b&#x27;&#x27;</span>
+    
+    <span class="hljs-comment"># 去除多余字节保证4字节对齐</span>
+    <span class="hljs-keyword">if</span> <span class="hljs-built_in">len</span>(data) % <span class="hljs-number">4</span>:
+        data = data[:-(<span class="hljs-built_in">len</span>(data) % <span class="hljs-number">4</span>)]
+    
+    <span class="hljs-comment"># 密钥处理同加密</span>
+    key_bytes = key[:<span class="hljs-number">16</span>]
+    <span class="hljs-keyword">while</span> <span class="hljs-built_in">len</span>(key_bytes) &lt; <span class="hljs-number">16</span>:
+        key_bytes += <span class="hljs-string">b&#x27;\x00&#x27;</span>
+    
+    key_words = []
+    <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">0</span>, <span class="hljs-number">16</span>, <span class="hljs-number">4</span>):
+        w = key_bytes[i] | (key_bytes[i+<span class="hljs-number">1</span>] &lt;&lt; <span class="hljs-number">8</span>) | (key_bytes[i+<span class="hljs-number">2</span>] &lt;&lt; <span class="hljs-number">16</span>) | (key_bytes[i+<span class="hljs-number">3</span>] &lt;&lt; <span class="hljs-number">24</span>)
+        key_words.append(w &amp; <span class="hljs-number">0xFFFFFFFF</span>)
+    
+    v = _bytes_to_words(data)
+    n = <span class="hljs-built_in">len</span>(v)
+    
+    rounds = <span class="hljs-number">8</span> + <span class="hljs-number">52</span> // n
+    
+    <span class="hljs-comment"># 解密时total从最大值开始递减</span>
+    total = (<span class="hljs-number">0x61C88647</span> * rounds) &amp; <span class="hljs-number">0xFFFFFFFF</span>
+    
+    <span class="hljs-keyword">for</span> r <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(rounds):
+        e = (total &gt;&gt; <span class="hljs-number">2</span>) &amp; <span class="hljs-number">3</span>
+        <span class="hljs-keyword">if</span> r &lt; rounds - <span class="hljs-number">2</span>:
+            <span class="hljs-comment"># 最后2轮对应加密的前2轮，使用魔改MX（因为加密时这两轮用了魔改MX）</span>
+            <span class="hljs-keyword">for</span> p <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(n - <span class="hljs-number">1</span>, -<span class="hljs-number">1</span>, -<span class="hljs-number">1</span>):
+                y = v[(p + <span class="hljs-number">1</span>) % n]
+                v[p] = (v[p] - _magic_mx(v[(p - <span class="hljs-number">1</span>) % n], y, total, key_words, p, e)) &amp; <span class="hljs-number">0xFFFFFFFF</span>
+        <span class="hljs-keyword">else</span>:
+            <span class="hljs-comment"># 前若干轮对应加密的后2轮，使用标准MX（因为加密时后2轮用了标准MX）</span>
+            <span class="hljs-keyword">for</span> p <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(n - <span class="hljs-number">1</span>, -<span class="hljs-number">1</span>, -<span class="hljs-number">1</span>):
+                y = v[(p + <span class="hljs-number">1</span>) % n]
+                v[p] = (v[p] - _mx(v[(p - <span class="hljs-number">1</span>) % n], y, total, key_words, p, e)) &amp; <span class="hljs-number">0xFFFFFFFF</span>
+        
+        total = (total - <span class="hljs-number">0x61C88647</span>) &amp; <span class="hljs-number">0xFFFFFFFF</span>
+    
+    result = _words_to_bytes(v)
+    
+    <span class="hljs-comment"># 去除零填充</span>
+    end = <span class="hljs-built_in">len</span>(result)
+    <span class="hljs-keyword">while</span> end &gt; <span class="hljs-number">0</span> <span class="hljs-keyword">and</span> result[end-<span class="hljs-number">1</span>] == <span class="hljs-number">0</span>:
+        end -= <span class="hljs-number">1</span>
+    
+    <span class="hljs-keyword">return</span> result[:end]
+
+<span class="hljs-keyword">if</span> __name__ == <span class="hljs-string">&#x27;__main__&#x27;</span>:
+    key = <span class="hljs-string">b&#x27;0123456789abcdef&#x27;</span>
+    plaintext = <span class="hljs-string">b&#x27;Hello World!&#x27;</span>
+
+    ciphertext = xxtea_encrypt(plaintext, key)
+    <span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;secret: &#x27;</span>, ciphertext.<span class="hljs-built_in">hex</span>())
+
+    decrypted = xxtea_decrypt(ciphertext, key)
+    <span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;public: &#x27;</span>, decrypted.decode())</code></pre>
+
+<p>输出结果</p>
+<pre><code class="hljs avrasm"><span class="hljs-symbol">secret:</span>  cc15dd978ebe7d667f9bbe59
+<span class="hljs-symbol">public:</span>  Hello World!</code></pre>
+
+<h3 id="c代码演示-3"><a href="#c代码演示-3" class="headerlink" title="c代码演示"></a>c代码演示</h3><pre><code class="hljs c"><span class="hljs-comment">// XXTEA魔改变体加密算法C语言实现</span>
+<span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stdio.h&gt;</span></span>
+<span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;string.h&gt;</span></span>
+<span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stdlib.h&gt;</span></span>
+<span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stdint.h&gt;</span></span>
+
+<span class="hljs-comment">// 魔改delta：使用负值（标准为0x9E3779B9）</span>
+<span class="hljs-meta">#<span class="hljs-keyword">define</span> DELTA 0x61C88647</span>
+
+<span class="hljs-comment">// 标准MX混合函数：右移5左移2 + 右移3左移4</span>
+<span class="hljs-type">uint32_t</span> _mx(<span class="hljs-type">uint32_t</span> z, <span class="hljs-type">uint32_t</span> y, <span class="hljs-type">uint32_t</span> total, <span class="hljs-type">uint32_t</span> key[<span class="hljs-number">4</span>], <span class="hljs-type">uint32_t</span> p, <span class="hljs-type">uint32_t</span> e) &#123;
+    <span class="hljs-keyword">return</span> ((z &gt;&gt; <span class="hljs-number">5</span> ^ y &lt;&lt; <span class="hljs-number">2</span>) + (y &gt;&gt; <span class="hljs-number">3</span> ^ z &lt;&lt; <span class="hljs-number">4</span>)) ^ ((total ^ y) + (key[(p &amp; <span class="hljs-number">3</span>) ^ e] ^ z));
+&#125;
+
+<span class="hljs-comment">// 魔改MX混合函数：改变移位位数（右移7左移6 + 右移5左移3），增强非线性扩散</span>
+<span class="hljs-type">uint32_t</span> _magic_mx(<span class="hljs-type">uint32_t</span> z, <span class="hljs-type">uint32_t</span> y, <span class="hljs-type">uint32_t</span> total, <span class="hljs-type">uint32_t</span> key[<span class="hljs-number">4</span>], <span class="hljs-type">uint32_t</span> p, <span class="hljs-type">uint32_t</span> e) &#123;
+    <span class="hljs-type">uint32_t</span> h = (z &gt;&gt; <span class="hljs-number">7</span> ^ y &lt;&lt; <span class="hljs-number">6</span>) + (y &gt;&gt; <span class="hljs-number">5</span> ^ z &lt;&lt; <span class="hljs-number">3</span>);
+    <span class="hljs-keyword">return</span> h ^ ((total ^ y) + (key[(p &amp; <span class="hljs-number">3</span>) ^ e] ^ z));
+&#125;
+
+<span class="hljs-comment">// 字节数组转32位字数组（小端序），自动零填充至4字节对齐</span>
+<span class="hljs-type">void</span> _bytes_to_words(<span class="hljs-type">const</span> <span class="hljs-type">uint8_t</span>* data, <span class="hljs-type">size_t</span> data_len, <span class="hljs-type">uint32_t</span>* words, <span class="hljs-type">size_t</span>* words_len) &#123;
+    <span class="hljs-type">size_t</span> n = data_len;
+    <span class="hljs-type">size_t</span> padding = <span class="hljs-number">0</span>;
+    <span class="hljs-keyword">if</span> (n % <span class="hljs-number">4</span>) &#123;
+        padding = <span class="hljs-number">4</span> - n % <span class="hljs-number">4</span>;
+    &#125;
+    
+    *words_len = (n + padding) / <span class="hljs-number">4</span>;
+    
+    <span class="hljs-keyword">for</span> (<span class="hljs-type">size_t</span> i = <span class="hljs-number">0</span>; i &lt; *words_len; i++) &#123;
+        words[i] = <span class="hljs-number">0</span>;
+        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> j = <span class="hljs-number">0</span>; j &lt; <span class="hljs-number">4</span>; j++) &#123;
+            <span class="hljs-type">size_t</span> idx = i * <span class="hljs-number">4</span> + j;
+            <span class="hljs-keyword">if</span> (idx &lt; n) &#123;
+                words[i] |= ((<span class="hljs-type">uint32_t</span>)data[idx]) &lt;&lt; (j * <span class="hljs-number">8</span>);
+            &#125;
+        &#125;
+    &#125;
+&#125;
+
+<span class="hljs-comment">// 32位字数组转字节数组（小端序）</span>
+<span class="hljs-type">void</span> _words_to_bytes(<span class="hljs-type">const</span> <span class="hljs-type">uint32_t</span>* words, <span class="hljs-type">size_t</span> words_len, <span class="hljs-type">uint8_t</span>* data) &#123;
+    <span class="hljs-keyword">for</span> (<span class="hljs-type">size_t</span> i = <span class="hljs-number">0</span>; i &lt; words_len; i++) &#123;
+        data[i * <span class="hljs-number">4</span>] = words[i] &amp; <span class="hljs-number">0xFF</span>;
+        data[i * <span class="hljs-number">4</span> + <span class="hljs-number">1</span>] = (words[i] &gt;&gt; <span class="hljs-number">8</span>) &amp; <span class="hljs-number">0xFF</span>;
+        data[i * <span class="hljs-number">4</span> + <span class="hljs-number">2</span>] = (words[i] &gt;&gt; <span class="hljs-number">16</span>) &amp; <span class="hljs-number">0xFF</span>;
+        data[i * <span class="hljs-number">4</span> + <span class="hljs-number">3</span>] = (words[i] &gt;&gt; <span class="hljs-number">24</span>) &amp; <span class="hljs-number">0xFF</span>;
+    &#125;
+&#125;
+
+<span class="hljs-comment">// XXTEA魔改加密</span>
+<span class="hljs-type">uint8_t</span>* <span class="hljs-title function_">xxtea_encrypt</span><span class="hljs-params">(<span class="hljs-type">const</span> <span class="hljs-type">uint8_t</span>* data, <span class="hljs-type">size_t</span> data_len, <span class="hljs-type">const</span> <span class="hljs-type">uint8_t</span>* key, <span class="hljs-type">size_t</span> key_len, <span class="hljs-type">size_t</span>* out_len)</span> &#123;
+    <span class="hljs-keyword">if</span> (!data || data_len == <span class="hljs-number">0</span>) &#123;
+        *out_len = <span class="hljs-number">0</span>;
+        <span class="hljs-keyword">return</span> <span class="hljs-literal">NULL</span>;
+    &#125;
+    
+    <span class="hljs-comment">// 密钥处理：转换为4个32位字（小端序），不足16字节自动补零</span>
+    <span class="hljs-type">uint32_t</span> key_words[<span class="hljs-number">4</span>] = &#123;<span class="hljs-number">0</span>&#125;;
+    <span class="hljs-keyword">for</span> (<span class="hljs-type">size_t</span> i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">16</span> &amp;&amp; i &lt; key_len; i++) &#123;
+        key_words[i / <span class="hljs-number">4</span>] |= ((<span class="hljs-type">uint32_t</span>)key[i]) &lt;&lt; ((i % <span class="hljs-number">4</span>) * <span class="hljs-number">8</span>);
+    &#125;
+    
+    <span class="hljs-comment">// 明文转换为字数组</span>
+    <span class="hljs-type">size_t</span> words_len;
+    <span class="hljs-type">uint32_t</span>* v = (<span class="hljs-type">uint32_t</span>*)<span class="hljs-built_in">malloc</span>((data_len / <span class="hljs-number">4</span> + <span class="hljs-number">2</span>) * <span class="hljs-keyword">sizeof</span>(<span class="hljs-type">uint32_t</span>));
+    _bytes_to_words(data, data_len, v, &amp;words_len);
+    
+    <span class="hljs-type">size_t</span> n = words_len;
+    <span class="hljs-comment">// 魔改轮数：8 + 52/n（标准XXTEA为6 + 52/n）</span>
+    <span class="hljs-type">size_t</span> rounds = <span class="hljs-number">8</span> + <span class="hljs-number">52</span> / n;
+    
+    <span class="hljs-type">uint32_t</span> total = <span class="hljs-number">0</span>;
+    
+    <span class="hljs-keyword">for</span> (<span class="hljs-type">size_t</span> r = <span class="hljs-number">0</span>; r &lt; rounds; r++) &#123;
+        <span class="hljs-comment">// 累加和递增（使用负delta）</span>
+        total = (total + DELTA) &amp; <span class="hljs-number">0xFFFFFFFF</span>;
+        
+        <span class="hljs-comment">// 根据累加和高位计算密钥索引偏移</span>
+        <span class="hljs-type">uint32_t</span> e = (total &gt;&gt; <span class="hljs-number">2</span>) &amp; <span class="hljs-number">3</span>;
+        
+        <span class="hljs-keyword">if</span> (r &lt; <span class="hljs-number">2</span>) &#123;
+            <span class="hljs-comment">// 前2轮使用标准MX函数进行初始扩散</span>
+            <span class="hljs-keyword">for</span> (<span class="hljs-type">size_t</span> p = <span class="hljs-number">0</span>; p &lt; n; p++) &#123;
+                <span class="hljs-type">uint32_t</span> y = v[(p + <span class="hljs-number">1</span>) % n];  <span class="hljs-comment">// 后继字（循环取模）</span>
+                <span class="hljs-comment">// 所有字统一循环处理，消除边界特殊处理</span>
+                v[p] = (v[p] + _mx(v[(p - <span class="hljs-number">1</span> + n) % n], y, total, key_words, p, e)) &amp; <span class="hljs-number">0xFFFFFFFF</span>;
+            &#125;
+        &#125; <span class="hljs-keyword">else</span> &#123;
+            <span class="hljs-comment">// 后续轮使用魔改MX函数增强混淆</span>
+            <span class="hljs-keyword">for</span> (<span class="hljs-type">size_t</span> p = <span class="hljs-number">0</span>; p &lt; n; p++) &#123;
+                <span class="hljs-type">uint32_t</span> y = v[(p + <span class="hljs-number">1</span>) % n];  <span class="hljs-comment">// 后继字（循环取模）</span>
+                v[p] = (v[p] + _magic_mx(v[(p - <span class="hljs-number">1</span> + n) % n], y, total, key_words, p, e)) &amp; <span class="hljs-number">0xFFFFFFFF</span>;
+            &#125;
+        &#125;
+    &#125;
+    
+    <span class="hljs-comment">// 输出结果</span>
+    *out_len = words_len * <span class="hljs-number">4</span>;
+    <span class="hljs-type">uint8_t</span>* result = (<span class="hljs-type">uint8_t</span>*)<span class="hljs-built_in">malloc</span>(*out_len);
+    _words_to_bytes(v, words_len, result);
+    
+    <span class="hljs-built_in">free</span>(v);
+    <span class="hljs-keyword">return</span> result;
+&#125;
+
+<span class="hljs-comment">// XXTEA魔改解密</span>
+<span class="hljs-type">uint8_t</span>* <span class="hljs-title function_">xxtea_decrypt</span><span class="hljs-params">(<span class="hljs-type">const</span> <span class="hljs-type">uint8_t</span>* data, <span class="hljs-type">size_t</span> data_len, <span class="hljs-type">const</span> <span class="hljs-type">uint8_t</span>* key, <span class="hljs-type">size_t</span> key_len, <span class="hljs-type">size_t</span>* out_len)</span> &#123;
+    <span class="hljs-keyword">if</span> (!data || data_len == <span class="hljs-number">0</span>) &#123;
+        *out_len = <span class="hljs-number">0</span>;
+        <span class="hljs-keyword">return</span> <span class="hljs-literal">NULL</span>;
+    &#125;
+    
+    <span class="hljs-comment">// 对齐到4字节边界</span>
+    <span class="hljs-type">size_t</span> aligned_len = data_len;
+    <span class="hljs-keyword">if</span> (data_len % <span class="hljs-number">4</span>) &#123;
+        aligned_len = data_len - (data_len % <span class="hljs-number">4</span>);
+    &#125;
+    
+    <span class="hljs-comment">// 密钥处理同加密</span>
+    <span class="hljs-type">uint32_t</span> key_words[<span class="hljs-number">4</span>] = &#123;<span class="hljs-number">0</span>&#125;;
+    <span class="hljs-keyword">for</span> (<span class="hljs-type">size_t</span> i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">16</span> &amp;&amp; i &lt; key_len; i++) &#123;
+        key_words[i / <span class="hljs-number">4</span>] |= ((<span class="hljs-type">uint32_t</span>)key[i]) &lt;&lt; ((i % <span class="hljs-number">4</span>) * <span class="hljs-number">8</span>);
+    &#125;
+    
+    <span class="hljs-comment">// 密文字节转字</span>
+    <span class="hljs-type">size_t</span> words_len = aligned_len / <span class="hljs-number">4</span>;
+    <span class="hljs-type">uint32_t</span>* v = (<span class="hljs-type">uint32_t</span>*)<span class="hljs-built_in">malloc</span>(words_len * <span class="hljs-keyword">sizeof</span>(<span class="hljs-type">uint32_t</span>));
+    
+    <span class="hljs-keyword">for</span> (<span class="hljs-type">size_t</span> i = <span class="hljs-number">0</span>; i &lt; words_len; i++) &#123;
+        v[i] = data[i * <span class="hljs-number">4</span>] | ((<span class="hljs-type">uint32_t</span>)data[i * <span class="hljs-number">4</span> + <span class="hljs-number">1</span>] &lt;&lt; <span class="hljs-number">8</span>) | 
+               ((<span class="hljs-type">uint32_t</span>)data[i * <span class="hljs-number">4</span> + <span class="hljs-number">2</span>] &lt;&lt; <span class="hljs-number">16</span>) | ((<span class="hljs-type">uint32_t</span>)data[i * <span class="hljs-number">4</span> + <span class="hljs-number">3</span>] &lt;&lt; <span class="hljs-number">24</span>);
+    &#125;
+    
+    <span class="hljs-type">size_t</span> n = words_len;
+    <span class="hljs-type">size_t</span> rounds = <span class="hljs-number">8</span> + <span class="hljs-number">52</span> / n;
+    
+    <span class="hljs-comment">// 解密时total从最大值开始递减</span>
+    <span class="hljs-type">uint32_t</span> total = (DELTA * rounds) &amp; <span class="hljs-number">0xFFFFFFFF</span>;
+    
+    <span class="hljs-keyword">for</span> (<span class="hljs-type">size_t</span> r = <span class="hljs-number">0</span>; r &lt; rounds; r++) &#123;
+        <span class="hljs-type">uint32_t</span> e = (total &gt;&gt; <span class="hljs-number">2</span>) &amp; <span class="hljs-number">3</span>;
+        
+        <span class="hljs-keyword">if</span> (r &lt; rounds - <span class="hljs-number">2</span>) &#123;
+            <span class="hljs-comment">// 对应加密的后n-2轮，使用魔改MX逆运算</span>
+            <span class="hljs-keyword">for</span> (<span class="hljs-type">size_t</span> p_idx = <span class="hljs-number">0</span>; p_idx &lt; n; p_idx++) &#123;
+                <span class="hljs-type">size_t</span> p = n - <span class="hljs-number">1</span> - p_idx;  <span class="hljs-comment">// 逆序遍历</span>
+                <span class="hljs-type">uint32_t</span> y = v[(p + <span class="hljs-number">1</span>) % n];
+                v[p] = (v[p] - _magic_mx(v[(p - <span class="hljs-number">1</span> + n) % n], y, total, key_words, p, e)) &amp; <span class="hljs-number">0xFFFFFFFF</span>;
+            &#125;
+        &#125; <span class="hljs-keyword">else</span> &#123;
+            <span class="hljs-comment">// 对应加密的前2轮，使用标准MX逆运算</span>
+            <span class="hljs-keyword">for</span> (<span class="hljs-type">size_t</span> p_idx = <span class="hljs-number">0</span>; p_idx &lt; n; p_idx++) &#123;
+                <span class="hljs-type">size_t</span> p = n - <span class="hljs-number">1</span> - p_idx;  <span class="hljs-comment">// 逆序遍历</span>
+                <span class="hljs-type">uint32_t</span> y = v[(p + <span class="hljs-number">1</span>) % n];
+                v[p] = (v[p] - _mx(v[(p - <span class="hljs-number">1</span> + n) % n], y, total, key_words, p, e)) &amp; <span class="hljs-number">0xFFFFFFFF</span>;
+            &#125;
+        &#125;
+        
+        <span class="hljs-comment">// 累加和递减</span>
+        total = (total - DELTA) &amp; <span class="hljs-number">0xFFFFFFFF</span>;
+    &#125;
+    
+    <span class="hljs-comment">// 字转字节</span>
+    <span class="hljs-type">uint8_t</span>* temp_result = (<span class="hljs-type">uint8_t</span>*)<span class="hljs-built_in">malloc</span>(n * <span class="hljs-number">4</span>);
+    _words_to_bytes(v, n, temp_result);
+    
+    <span class="hljs-comment">// 去除零填充</span>
+    <span class="hljs-type">size_t</span> actual_len = n * <span class="hljs-number">4</span>;
+    <span class="hljs-keyword">while</span> (actual_len &gt; <span class="hljs-number">0</span> &amp;&amp; temp_result[actual_len - <span class="hljs-number">1</span>] == <span class="hljs-number">0</span>) &#123;
+        actual_len--;
+    &#125;
+    
+    *out_len = actual_len;
+    <span class="hljs-type">uint8_t</span>* result = (<span class="hljs-type">uint8_t</span>*)<span class="hljs-built_in">malloc</span>(actual_len);
+    <span class="hljs-built_in">memcpy</span>(result, temp_result, actual_len);
+    
+    <span class="hljs-built_in">free</span>(temp_result);
+    <span class="hljs-built_in">free</span>(v);
+    <span class="hljs-keyword">return</span> result;
+&#125;
+
+<span class="hljs-comment">// 十六进制输出辅助函数</span>
+<span class="hljs-type">void</span> <span class="hljs-title function_">print_hex</span><span class="hljs-params">(<span class="hljs-type">const</span> <span class="hljs-type">uint8_t</span>* data, <span class="hljs-type">size_t</span> len)</span> &#123;
+    <span class="hljs-keyword">for</span> (<span class="hljs-type">size_t</span> i = <span class="hljs-number">0</span>; i &lt; len; i++) &#123;
+        <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%02x&quot;</span>, data[i]);
+    &#125;
+    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;\n&quot;</span>);
+&#125;
+
+<span class="hljs-type">int</span> <span class="hljs-title function_">main</span><span class="hljs-params">()</span> &#123;
+    <span class="hljs-comment">// 128位密钥（16字节）</span>
+    <span class="hljs-type">const</span> <span class="hljs-type">char</span>* key_str = <span class="hljs-string">&quot;0123456789abcdef&quot;</span>;
+    <span class="hljs-type">const</span> <span class="hljs-type">char</span>* plaintext_str = <span class="hljs-string">&quot;Hello World!&quot;</span>;
+    
+    <span class="hljs-type">uint8_t</span>* key = (<span class="hljs-type">uint8_t</span>*)key_str;
+    <span class="hljs-type">uint8_t</span>* plaintext = (<span class="hljs-type">uint8_t</span>*)plaintext_str;
+    
+    <span class="hljs-type">size_t</span> key_len = <span class="hljs-built_in">strlen</span>(key_str);
+    <span class="hljs-type">size_t</span> plaintext_len = <span class="hljs-built_in">strlen</span>(plaintext_str);
+    
+    <span class="hljs-comment">// 加密</span>
+    <span class="hljs-type">size_t</span> ciphertext_len;
+    <span class="hljs-type">uint8_t</span>* ciphertext = xxtea_encrypt(plaintext, plaintext_len, key, key_len, &amp;ciphertext_len);
+    
+    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;secret: &quot;</span>);
+    print_hex(ciphertext, ciphertext_len);
+    
+    <span class="hljs-comment">// 解密</span>
+    <span class="hljs-type">size_t</span> decrypted_len;
+    <span class="hljs-type">uint8_t</span>* decrypted = xxtea_decrypt(ciphertext, ciphertext_len, key, key_len, &amp;decrypted_len);
+    
+    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;public: %.*s\n&quot;</span>, (<span class="hljs-type">int</span>)decrypted_len, decrypted);
+    
+    <span class="hljs-built_in">free</span>(ciphertext);
+    <span class="hljs-built_in">free</span>(decrypted);
+    
+    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+&#125;</code></pre>
+
+<p>输出结果</p>
+<pre><code class="hljs avrasm"><span class="hljs-symbol">secret:</span> cc15dd978ebe7d667f9bbe59
+<span class="hljs-symbol">public:</span> Hello World!</code></pre>
+
+<h2 id="实战"><a href="#实战" class="headerlink" title="实战"></a>实战</h2><p>参考我们之前遇到的ezelf的题，第一层算法就是魔改后的XXTEA</p>
+<p>链接：</p>
+<h3 id="python代码演示-4"><a href="#python代码演示-4" class="headerlink" title="python代码演示"></a>python代码演示</h3><pre><code class="hljs python"><span class="hljs-keyword">import</span> struct
+
+<span class="hljs-comment"># 魔改DELTA：0x1145140</span>
+DELTA = <span class="hljs-number">0x11451400</span>
+
+<span class="hljs-comment"># 十六进制密文，去除空格后转字节</span>
+enc_hex = <span class="hljs-string">&quot;b4 b5 5a 42 a6 79 0b ac 0e 23 78 de e1 2d c6 1d bb 29 8c e2 94 fe 14 d9 aa 03 e3 8a 14 92 1c 64&quot;</span>
+enc_bytes = <span class="hljs-built_in">bytes</span>.fromhex(enc_hex.replace(<span class="hljs-string">&quot; &quot;</span>, <span class="hljs-string">&quot;&quot;</span>))
+<span class="hljs-comment"># 将密文按小端序解包为8个32位无符号整数</span>
+v = <span class="hljs-built_in">list</span>(struct.unpack(<span class="hljs-string">&#x27;&lt;8I&#x27;</span>, enc_bytes))
+
+<span class="hljs-comment"># 魔改密钥：4个小整数（非标准128位密钥，需从题目分析得出）</span>
+key = [<span class="hljs-number">11</span>, <span class="hljs-number">45</span>, <span class="hljs-number">14</span>, <span class="hljs-number">777</span>]
+
+<span class="hljs-keyword">def</span> <span class="hljs-title function_">btea_decrypt</span>(<span class="hljs-params">v, key</span>):
+    <span class="hljs-string">&quot;&quot;&quot;XXTEA解密（Block TEA变体）&quot;&quot;&quot;</span>
+    n = <span class="hljs-built_in">len</span>(v)
+    <span class="hljs-comment"># 魔改轮数：固定16轮（标准为6+52/n自适应）</span>
+    rounds = <span class="hljs-number">16</span>
+    <span class="hljs-comment"># 解密时累加和从最大值开始递减</span>
+    sum_val = (rounds * DELTA) &amp; <span class="hljs-number">0xFFFFFFFF</span>
+    y = v[<span class="hljs-number">0</span>]
+    
+    <span class="hljs-keyword">for</span> _ <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(rounds):
+        <span class="hljs-comment"># 根据累加和高位计算密钥索引偏移</span>
+        e = (sum_val &gt;&gt; <span class="hljs-number">2</span>) &amp; <span class="hljs-number">3</span>
+        
+        <span class="hljs-comment"># 内层循环：逆序遍历（p从n-1到1）</span>
+        <span class="hljs-keyword">for</span> p <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(n - <span class="hljs-number">1</span>, <span class="hljs-number">0</span>, -<span class="hljs-number">1</span>):
+            z = v[p - <span class="hljs-number">1</span>]                    <span class="hljs-comment"># 前驱字</span>
+            <span class="hljs-comment"># 标准XXTEA的MX混合函数</span>
+            mx = (((z &gt;&gt; <span class="hljs-number">5</span>) ^ (y &lt;&lt; <span class="hljs-number">2</span>)) + ((y &gt;&gt; <span class="hljs-number">3</span>) ^ (z &lt;&lt; <span class="hljs-number">4</span>))) ^ ((sum_val ^ y) + (key[(p &amp; <span class="hljs-number">3</span>) ^ e] ^ z))
+            v[p] = (v[p] - mx) &amp; <span class="hljs-number">0xFFFFFFFF</span>  <span class="hljs-comment"># 减操作（解密逆运算）</span>
+            y = v[p]                          <span class="hljs-comment"># 更新后继为当前值</span>
+        
+        <span class="hljs-comment"># 边界处理：恢复第一个字（前驱为v[n-1]，后继为v[0]）</span>
+        z = v[n - <span class="hljs-number">1</span>]
+        mx = (((z &gt;&gt; <span class="hljs-number">5</span>) ^ (y &lt;&lt; <span class="hljs-number">2</span>)) + ((y &gt;&gt; <span class="hljs-number">3</span>) ^ (z &lt;&lt; <span class="hljs-number">4</span>))) ^ ((sum_val ^ y) + (key[(<span class="hljs-number">0</span> &amp; <span class="hljs-number">3</span>) ^ e] ^ z))
+        v[<span class="hljs-number">0</span>] = (v[<span class="hljs-number">0</span>] - mx) &amp; <span class="hljs-number">0xFFFFFFFF</span>
+        y = v[<span class="hljs-number">0</span>]
+        
+        <span class="hljs-comment"># 累加和递减</span>
+        sum_val = (sum_val - DELTA) &amp; <span class="hljs-number">0xFFFFFFFF</span>
+    
+    <span class="hljs-keyword">return</span> v
+
+<span class="hljs-comment"># 执行解密</span>
+v = btea_decrypt(v, key)
+
+<span class="hljs-comment"># 将解密后的32位字数组按小端序打包为字节串</span>
+result = <span class="hljs-string">b&#x27;&#x27;</span>
+<span class="hljs-keyword">for</span> val <span class="hljs-keyword">in</span> v:
+    result += struct.pack(<span class="hljs-string">&#x27;&lt;I&#x27;</span>, val)
+
+<span class="hljs-comment"># 输出flag（UTF-8解码）</span>
+<span class="hljs-built_in">print</span>(result.decode(<span class="hljs-string">&#x27;utf-8&#x27;</span>))</code></pre>
+
+<p>输出结果</p>
+<pre><code class="hljs angelscript">DASCTF&#123;<span class="hljs-symbol">dr1nk_te@</span>_4nd_cont1nu3..&#125;</code></pre>
+
+<h3 id="c代码演示-4"><a href="#c代码演示-4" class="headerlink" title="c代码演示"></a>c代码演示</h3><pre><code class="hljs c"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stdio.h&gt;</span></span>
+<span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;string.h&gt;</span></span>
+<span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stdint.h&gt;</span></span>
+
+<span class="hljs-comment">// 魔改DELTA：0x11451400</span>
+<span class="hljs-meta">#<span class="hljs-keyword">define</span> DELTA 0x11451400</span>
+
+<span class="hljs-type">void</span> <span class="hljs-title function_">btea_decrypt</span><span class="hljs-params">(<span class="hljs-type">uint32_t</span>* v, <span class="hljs-type">int</span> n, <span class="hljs-type">uint32_t</span>* key)</span> &#123;
+    <span class="hljs-comment">// 魔改轮数：固定16轮</span>
+    <span class="hljs-type">int</span> rounds = <span class="hljs-number">16</span>;
+    <span class="hljs-comment">// 解密时累加和从最大值开始递减</span>
+    <span class="hljs-type">uint32_t</span> sum_val = (rounds * DELTA) &amp; <span class="hljs-number">0xFFFFFFFF</span>;
+    <span class="hljs-type">uint32_t</span> y = v[<span class="hljs-number">0</span>];
+    
+    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> r = <span class="hljs-number">0</span>; r &lt; rounds; r++) &#123;
+        <span class="hljs-comment">// 根据累加和高位计算密钥索引偏移</span>
+        <span class="hljs-type">uint32_t</span> e = (sum_val &gt;&gt; <span class="hljs-number">2</span>) &amp; <span class="hljs-number">3</span>;
+        
+        <span class="hljs-comment">// 内层循环：逆序遍历（p从n-1到1）</span>
+        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> p = n - <span class="hljs-number">1</span>; p &gt; <span class="hljs-number">0</span>; p--) &#123;
+            <span class="hljs-type">uint32_t</span> z = v[p - <span class="hljs-number">1</span>];                    <span class="hljs-comment">// 前驱字</span>
+            <span class="hljs-comment">// 标准XXTEA的MX混合函数</span>
+            <span class="hljs-type">uint32_t</span> mx = (((z &gt;&gt; <span class="hljs-number">5</span>) ^ (y &lt;&lt; <span class="hljs-number">2</span>)) + ((y &gt;&gt; <span class="hljs-number">3</span>) ^ (z &lt;&lt; <span class="hljs-number">4</span>))) ^ ((sum_val ^ y) + (key[(p &amp; <span class="hljs-number">3</span>) ^ e] ^ z));
+            v[p] = (v[p] - mx) &amp; <span class="hljs-number">0xFFFFFFFF</span>;          <span class="hljs-comment">// 减操作（解密逆运算）</span>
+            y = v[p];                                   <span class="hljs-comment">// 更新后继为当前值</span>
+        &#125;
+        
+        <span class="hljs-comment">// 边界处理：恢复第一个字</span>
+        <span class="hljs-type">uint32_t</span> z = v[n - <span class="hljs-number">1</span>];
+        <span class="hljs-type">uint32_t</span> mx = (((z &gt;&gt; <span class="hljs-number">5</span>) ^ (y &lt;&lt; <span class="hljs-number">2</span>)) + ((y &gt;&gt; <span class="hljs-number">3</span>) ^ (z &lt;&lt; <span class="hljs-number">4</span>))) ^ ((sum_val ^ y) + (key[(<span class="hljs-number">0</span> &amp; <span class="hljs-number">3</span>) ^ e] ^ z));
+        v[<span class="hljs-number">0</span>] = (v[<span class="hljs-number">0</span>] - mx) &amp; <span class="hljs-number">0xFFFFFFFF</span>;
+        y = v[<span class="hljs-number">0</span>];
+        
+        <span class="hljs-comment">// 累加和递减</span>
+        sum_val = (sum_val - DELTA) &amp; <span class="hljs-number">0xFFFFFFFF</span>;
+    &#125;
+&#125;
+
+<span class="hljs-type">int</span> <span class="hljs-title function_">main</span><span class="hljs-params">()</span> &#123;
+    <span class="hljs-comment">// 十六进制密文</span>
+    <span class="hljs-type">unsigned</span> <span class="hljs-type">char</span> enc_bytes[] = &#123;
+        <span class="hljs-number">0xb4</span>, <span class="hljs-number">0xb5</span>, <span class="hljs-number">0x5a</span>, <span class="hljs-number">0x42</span>, <span class="hljs-number">0xa6</span>, <span class="hljs-number">0x79</span>, <span class="hljs-number">0x0b</span>, <span class="hljs-number">0xac</span>,
+        <span class="hljs-number">0x0e</span>, <span class="hljs-number">0x23</span>, <span class="hljs-number">0x78</span>, <span class="hljs-number">0xde</span>, <span class="hljs-number">0xe1</span>, <span class="hljs-number">0x2d</span>, <span class="hljs-number">0xc6</span>, <span class="hljs-number">0x1d</span>,
+        <span class="hljs-number">0xbb</span>, <span class="hljs-number">0x29</span>, <span class="hljs-number">0x8c</span>, <span class="hljs-number">0xe2</span>, <span class="hljs-number">0x94</span>, <span class="hljs-number">0xfe</span>, <span class="hljs-number">0x14</span>, <span class="hljs-number">0xd9</span>,
+        <span class="hljs-number">0xaa</span>, <span class="hljs-number">0x03</span>, <span class="hljs-number">0xe3</span>, <span class="hljs-number">0x8a</span>, <span class="hljs-number">0x14</span>, <span class="hljs-number">0x92</span>, <span class="hljs-number">0x1c</span>, <span class="hljs-number">0x64</span>
+    &#125;;
+    
+    <span class="hljs-comment">// 将密文按小端序转换为8个32位无符号整数</span>
+    <span class="hljs-type">int</span> n = <span class="hljs-number">8</span>;
+    <span class="hljs-type">uint32_t</span> v[<span class="hljs-number">8</span>];
+    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">0</span>; i &lt; n; i++) &#123;
+        v[i] = enc_bytes[i * <span class="hljs-number">4</span>] |
+               ((<span class="hljs-type">uint32_t</span>)enc_bytes[i * <span class="hljs-number">4</span> + <span class="hljs-number">1</span>] &lt;&lt; <span class="hljs-number">8</span>) |
+               ((<span class="hljs-type">uint32_t</span>)enc_bytes[i * <span class="hljs-number">4</span> + <span class="hljs-number">2</span>] &lt;&lt; <span class="hljs-number">16</span>) |
+               ((<span class="hljs-type">uint32_t</span>)enc_bytes[i * <span class="hljs-number">4</span> + <span class="hljs-number">3</span>] &lt;&lt; <span class="hljs-number">24</span>);
+    &#125;
+    
+    <span class="hljs-comment">// 魔改密钥</span>
+    <span class="hljs-type">uint32_t</span> key[<span class="hljs-number">4</span>] = &#123;<span class="hljs-number">11</span>, <span class="hljs-number">45</span>, <span class="hljs-number">14</span>, <span class="hljs-number">777</span>&#125;;
+    
+    <span class="hljs-comment">// 执行解密</span>
+    btea_decrypt(v, n, key);
+    
+    <span class="hljs-comment">// 输出解密结果（直接作为字符串输出）</span>
+    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%s\n&quot;</span>, (<span class="hljs-type">char</span>*)v);
+    
+    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+&#125;</code></pre>
+
+<p>输出结果</p>
+<pre><code class="hljs angelscript">DASCTF&#123;<span class="hljs-symbol">dr1nk_te@</span>_4nd_cont1nu3..&#125;</code></pre>
+
+<h2 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h2><p>TEA系列算法算是ctf的常客，很多ctf的题都会只要这样的算法</p>
+<p>实战部分后面的详细可以参考我之前的文章</p>
+<p>链接：</p>
+
+                </div>
+                
+                    
+                        
+                                
+                                        
+                                                
+                                                        
+</div>
+            <footer id="footer">
+    <div id="footer-wrap">
+        <div>
+            &copy;
+            2022 - 2026 Xmx_Aolg07
+            <span id="footer-icon">
+                <i class="fa-solid fa-font-awesome fa-fw"></i>
+            </span>
+            &commat;Xmx_Aolg07
+        </div>
+        <div>
+            Based on the <a target="_blank" rel="noopener" href="https://hexo.io">Hexo Engine</a> &amp;
+            <a target="_blank" rel="noopener" href="https://github.com/theme-particlex/hexo-theme-particlex">ParticleX Theme</a>
+        </div>
+        
+    </div>
+</footer>
+
+        </div>
+        
+        <transition name="fade">
+            <div id="preview" ref="preview" v-show="previewShow">
+                <img id="preview-content" ref="previewContent" />
+            </div>
+        </transition>
+        
+    </div>
+    <script src="/js/main.js"></script>
+    
+    
+
+
+
+
+    
+</body>
+</html>
