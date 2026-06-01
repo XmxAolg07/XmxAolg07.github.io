@@ -177,14 +177,14 @@
                             
                                 <span class="tag">
                                     
-                                        <a href="/tags/CTF%E8%A7%A3%E9%A2%98/" style="color: #03a9f4">
+                                        <a href="/tags/CTF%E8%A7%A3%E9%A2%98/" style="color: #00bcd4">
                                             CTF解题
                                         </a>
                                 </span>
                                 
                                 <span class="tag">
                                     
-                                        <a href="/tags/%E8%80%83%E6%A0%B8/" style="color: #00a596">
+                                        <a href="/tags/%E8%80%83%E6%A0%B8/" style="color: #ff7d73">
                                             考核
                                         </a>
                                 </span>
@@ -330,7 +330,7 @@ v33 = v57;
 <p>通过这些看出这就是AES算法，点击byte_68154000看看</p>
 <p><img src="/assets/QQ_1780313231832.png" alt="Q_178031323183"></p>
 <p>可以看出来sbox就是标准的aes，但是使用标准aes</p>
-<p><img src="https://img2024.cnblogs.com/blog/3451107/202507/3451107-20250727202739436-1043418564.png" alt="image-20250727201056537"></p>
+<p><img src="/assets/3451107-20250727202739436-1043418564.png" alt="image-20250727201056537"></p>
 <p>然后继续分析看到了这个，在列混淆的时候多异或了一个0x55,这才是这个aes算法的完整	</p>
 <h4 id="sign"><a href="#sign" class="headerlink" title="sign"></a>sign</h4><p>函数很长，找到能重点识别的</p>
 <pre><code class="hljs c">v509 = Size_6 &gt;&gt; <span class="hljs-number">3</span>;
@@ -367,8 +367,8 @@ v87 = v86 + __ROL4__((v85 &amp; v86) + v528 + (v471 &amp; ~v86) + v469 + <span c
 <p>确认完此函数为魔改后的md5后，进入动态调试环节</p>
 <h3 id="动态调试"><a href="#动态调试" class="headerlink" title="动态调试"></a>动态调试</h3><h4 id="关键位置下断点"><a href="#关键位置下断点" class="headerlink" title="关键位置下断点"></a>关键位置下断点</h4><p>这道题有反调试直接下断点不可以，x64 dbg的ScyllaHide可以绕过大多数的反调试</p>
 <p>下断点的位置有这两处</p>
-<p><img src="file:///C:\Users\18042\AppData\Local\Temp\QQ_1780315111087.png" alt="img"></p>
-<p><img src="file:///C:\Users\18042\AppData\Local\Temp\QQ_1780315117574.png" alt="img"></p>
+<p><img src="/assets/QQ_1780315111087.png" alt="Q_178031511108"></p>
+<p><img src="/assets/QQ_1780315117574.png" alt="Q_178031511757"></p>
 <p>分别是第一次调用sign（用户名-&gt;密钥）和第二次调用sign（用户名+Showmaker11-&gt;密文）</p>
 <p>使用指令输入到命令框或者直接f2下断点</p>
 <pre><code class="hljs bash">bp 0x402696
@@ -590,7 +590,7 @@ bp 0x4027A8</code></pre>
 <p>代码输出结果</p>
 <pre><code class="hljs apache"><span class="hljs-attribute">result</span>: <span class="hljs-number">4</span>ac06ab6f14dfc1bbfa65d00c9cd012b</code></pre>
 
-<h4 id="检验"><a href="#检验" class="headerlink" title="检验"></a>检验</h4><p>![8c044be323f2b24e2c99d8b868d8d4](D:&#x2F;下载&#x2F;Tencent Files&#x2F;1804229132&#x2F;nt_qq&#x2F;nt_data&#x2F;Pic&#x2F;2026-06&#x2F;Ori&#x2F;78c044be323f2b24e2c99d8b868d8d4b.png)</p>
+<h4 id="检验"><a href="#检验" class="headerlink" title="检验"></a>检验</h4><p><img src="/assets/78c044be323f2b24e2c99d8b868d8d4b.png" alt="8c044be323f2b24e2c99d8b868d8d4"></p>
 <p>输出password correct！解密结果正确</p>
 
                 </div>
